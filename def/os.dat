@@ -25,6 +25,23 @@ Sun Solaris|Solaris|
 Wii|Wii|
 iPhone|iPhone|
 iPhone|iPod|
+Android Linux|Android|
+Mac OS X Cheetah|MacOSX10.0|
+Mac OS X Cheetah|MacOSX10_0|
+Mac OS X Puma|MacOSX10.1|
+Mac OS X Puma|MacOSX10_1|
+Mac OS X Jaguar|MacOSX10.2|
+Mac OS X Jaguar|MacOSX10_2|
+Mac OS X Panther|MacOSX10.3|
+Mac OS X Panther|MacOSX10_3|
+Mac OS X Tiger|MacOSX10.4|
+Mac OS X Tiger|MacOSX10_4|
+Mac OS X Leopard|MacOSX10.5|
+Mac OS X Leopard|MacOSX10_5|
+Mac OS X Snow Leopard|MacOSX10.6|
+Mac OS X Snow Leopard|MacOSX10_6|
+Mac OS X Lion|MacOSX10.7|
+Mac OS X Lion|MacOSX10_7|
 Mac OS X|MacOSX|
 Mac|Mac|
 FreeBSD|FreeBSD|
