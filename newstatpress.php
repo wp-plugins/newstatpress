@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.1.2
+Version: 0.1.3
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -1162,7 +1162,7 @@ function iri_NewStatPress_CreateTable() {
 	spider varchar(32),
 	feed varchar(8),
 	user varchar(16),
-	timestamp timestamp,
+	timestamp timestamp DEFAULT 0,
 	UNIQUE KEY id (id),
 	index spider_nation (spider, nation),  
 	index ip_date (ip, date),  
@@ -1205,6 +1205,7 @@ function iriStatAppend() {
 	$timestamp  = current_time('timestamp');
 	$vdate  = gmdate("Ymd",$timestamp);
 	$vtime  = gmdate("H:i:s",$timestamp);
+	$timestamp = date('Y-m-d H:i:s', $timestamp);
 
 	// IP
     $ipAddress = $_SERVER['REMOTE_ADDR'];
@@ -1261,7 +1262,7 @@ function iriStatAppend() {
 		$insert = "INSERT INTO " . $table_name .
             " (date, time, ip, urlrequested, agent, referrer, search,nation,os,browser,searchengine,spider,feed,user,timestamp) " .
             "VALUES ('$vdate','$vtime','$ipAddress','$urlRequested','".addslashes(strip_tags($userAgent))."','$referrer','" .
-            addslashes(strip_tags($search_phrase))."','".$countrylang."','$os','$browser','$searchengine','$spider','$feed','$userdata->user_login','$timestamp')";
+            addslashes(strip_tags($search_phrase))."','".$countrylang."','$os','$browser','$searchengine','$spider','$feed','$userdata->user_login', '$timestamp')";
 		$results = $wpdb->query( $insert );
 	}
 }
@@ -1448,15 +1449,15 @@ function iri_NewStatPress_Vars($body) {
    	   	$body = str_replace("%ip%", $ipAddress, $body);
    	}
 	if(strpos(strtolower($body),"%visitorsonline%") !== FALSE) { 	
-		$to_time = current_time('timestamp');
-		$from_time = strtotime('-4 minutes', $to_time);
-		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as visitors FROM $table_name WHERE spider='' and feed='' AND timestamp BETWEEN $from_time AND $to_time;");
+		$to_time =  date('Y-m-d H:i:s', current_time('timestamp'));
+		$from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
+		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as visitors FROM $table_name WHERE spider='' and feed='' AND timestamp BETWEEN '$from_time' AND '$to_time';");
    	   	$body = str_replace("%visitorsonline%", $qry[0]->visitors, $body);
    	}
 	if(strpos(strtolower($body),"%usersonline%") !== FALSE) { 	
-		$to_time = current_time('timestamp');
-		$from_time = strtotime('-4 minutes', $to_time);
-		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as users FROM $table_name WHERE spider='' and feed='' AND user<>'' AND timestamp BETWEEN $from_time AND $to_time;");
+		$to_time =  date('Y-m-d H:i:s', current_time('timestamp'));
+		$from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
+		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as users FROM $table_name WHERE spider='' and feed='' AND user<>'' AND timestamp BETWEEN '$from_time' AND '$to_time';");
    	   	$body = str_replace("%usersonline%", $qry[0]->users, $body);
    	}
 	if(strpos(strtolower($body),"%toppost%") !== FALSE) {
