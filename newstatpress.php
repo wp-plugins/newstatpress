@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.1.3
+Version: 0.1.4
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -1449,14 +1449,16 @@ function iri_NewStatPress_Vars($body) {
    	   	$body = str_replace("%ip%", $ipAddress, $body);
    	}
 	if(strpos(strtolower($body),"%visitorsonline%") !== FALSE) { 	
-		$to_time =  date('Y-m-d H:i:s', current_time('timestamp'));
+		$to_time =  current_time('timestamp');
 		$from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
+		$to_time = date('Y-m-d H:i:s', $to_time);
 		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as visitors FROM $table_name WHERE spider='' and feed='' AND timestamp BETWEEN '$from_time' AND '$to_time';");
    	   	$body = str_replace("%visitorsonline%", $qry[0]->visitors, $body);
    	}
 	if(strpos(strtolower($body),"%usersonline%") !== FALSE) { 	
-		$to_time =  date('Y-m-d H:i:s', current_time('timestamp'));
+		$to_time =  current_time('timestamp');
 		$from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
+		$to_time = date('Y-m-d H:i:s', $to_time);
 		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as users FROM $table_name WHERE spider='' and feed='' AND user<>'' AND timestamp BETWEEN '$from_time' AND '$to_time';");
    	   	$body = str_replace("%usersonline%", $qry[0]->users, $body);
    	}
