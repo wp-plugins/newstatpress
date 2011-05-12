@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.1.4
+Version: 0.1.5
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -607,7 +607,7 @@ function iriNewStatPressMain() {
 	print "<tbody id='the-list'>";	
 	$qry = $wpdb->get_results("SELECT date,time,referrer,urlrequested,search,searchengine FROM $table_name WHERE search<>'' ORDER BY id DESC $querylimit");
 	foreach ($qry as $rk) {
-		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."'>".$rk->search."</a></td><td>".$rk->searchengine."</td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
+		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".$rk->search."</a></td><td>".$rk->searchengine."</td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."' target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
 	}
 	print "</table></div>";
 	
@@ -616,7 +616,7 @@ function iriNewStatPressMain() {
 	print "<tbody id='the-list'>";	
 	$qry = $wpdb->get_results("SELECT date,time,referrer,urlrequested FROM $table_name WHERE ((referrer NOT LIKE '".get_option('home')."%') AND (referrer <>'') AND (searchengine='')) ORDER BY id DESC $querylimit");
 	foreach ($qry as $rk) {
-		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."'>".iri_NewStatPress_Abbrevia($rk->referrer,80)."</a></td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
+		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".iri_NewStatPress_Abbrevia($rk->referrer,80)."</a></td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'  target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
 	}
 	print "</table></div>";
 
@@ -769,13 +769,15 @@ document.getElementById(thediv).style.display="none"
 		print "<IMG SRC='http://api.hostip.info/flag.php?ip=".$rk->ip."' border=0 width=18 height=12>";
 		print " <strong><span><font size='2' color='#7b7b7b'>".$rk->ip."</font></span></strong> ";
 		print "<span style='color:#006dca;cursor:pointer;border-bottom:1px dotted #AFD5F9;font-size:8pt;' onClick=ttogle('".$rk->ip."');>".__('more info','newstatpress')."</span></div>";
-		print "<div id='".$rk->ip."' name='".$rk->ip."'>".$rk->os.", ".$rk->browser;
+		print "<div id='".$rk->ip."' name='".$rk->ip."'>";
 		if(get_option('newstatpress_cryptip')!='checked') {
-			print "<br><iframe style='overflow:hide;border:0px;width:100%;height:30px;font-family:helvetica;paddng:0;' scrolling='no' marginwidth=0 marginheight=0 src=http://api.hostip.info/get_html.php?ip=".$rk->ip."></iframe>";
+			print "<br><iframe style='overflow:hidden;border:0px;width:100%;height:60px;font-family:helvetica;padding:0;' scrolling='no' marginwidth=0 marginheight=0 src=http://api.hostip.info/get_html.php?ip=".$rk->ip."></iframe>";
 		}
-		print "<br><small>".gethostbyaddr($rk->ip)."</small>";
-		print "<br><small>".$rk->agent."</small>";
-		print "</div>";
+		print "<br><small><span style='font-weight:700;'>OS or device:</span> ".$rk->os."</small>";
+		print "<br><small><span style='font-weight:700;'>DNS Name:</span> ".gethostbyaddr($rk->ip)."</small>";
+		print "<br><small><span style='font-weight:700;'>Browser:</span> ".$rk->browser."</small>";
+		print "<br><small><span style='font-weight:700;'>Browser Detail:</span> ".$rk->agent."</small>";
+		print "<br><br></div>";
 		print "<script>document.getElementById('".$rk->ip."').style.display='none';</script>";
 		print "</td></tr>";
 		$qry2=$wpdb->get_results("SELECT * FROM $table_name WHERE ip='".$rk->ip."' AND (date BETWEEN '$yesterday' AND '$today') order by id LIMIT 10");
@@ -784,9 +786,9 @@ document.getElementById(thediv).style.display="none"
 			print "<td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>".irihdate($details->date)." ".$details->time."</strong></font></div></td>";
 			print "<td><div><a href='".get_bloginfo('url')."/?".$details->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($details->urlrequested)."</a>";
 			if($details->searchengine != '') {
-				print "<br><small>".__('arrived from','newstatpress')." <b>".$details->searchengine."</b> ".__('searching','newstatpress')." <a href='".$details->referrer."' target=_blank>".$details->search."</a></small>";
+				print "<br><small>".__('arrived from','newstatpress')." <b>".$details->searchengine."</b> ".__('searching','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->search."</a></small>";
 			} elseif($details->referrer != '' && strpos($details->referrer,get_option('home'))===FALSE) {
-				print "<br><small>".__('arrived from','newstatpress')." <a href='".$details->referrer."' target=_blank>".$details->referrer."</a></small>";
+				print "<br><small>".__('arrived from','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->referrer."</a></small>";
 			}
 			print "</div></td>";
 			print "</tr>\n";
@@ -1431,6 +1433,10 @@ function iri_NewStatPress_Vars($body) {
 		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as pageview FROM $table_name WHERE spider='' and feed='' AND urlrequested='".iri_NewStatPress_URL()."';");
 		$body = str_replace("%thistotalvisits%", $qry[0]->pageview, $body);
 	}
+	if(strpos(strtolower($body),"%alltotalvisits%") !== FALSE) {
+		$qry = $wpdb->get_results("SELECT SUM(pageview) AS pageview FROM (SELECT count(DISTINCT(ip)) AS pageview FROM $table_name AS t1 WHERE spider='' and feed='' AND urlrequested!='' GROUP BY urlrequested) AS t2;");
+		$body = str_replace("%alltotalvisits%", $qry[0]->pageview, $body);
+	}
 	if(strpos(strtolower($body),"%since%") !== FALSE) {
 		$qry = $wpdb->get_results("SELECT date FROM $table_name ORDER BY date LIMIT 1;");
 		$body = str_replace("%since%", irihdate($qry[0]->date), $body);
@@ -1484,7 +1490,7 @@ function iri_NewStatPress_TopPosts($limit=5, $showcounts='checked') {
 	$table_name = $wpdb->prefix . "statpress";
 	$qry = $wpdb->get_results("SELECT urlrequested,count(*) as totale FROM $table_name WHERE spider='' AND feed='' AND urlrequested LIKE '%p=%' GROUP BY urlrequested ORDER BY totale DESC LIMIT $limit;");
 	foreach ($qry as $rk) {
-		$res.="<li><a href='?".$rk->urlrequested."'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
+		$res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
 		if(strtolower($showcounts) == 'checked') { $res.=" (".$rk->totale.")"; }
 	}
 	return "$res</ul>\n";

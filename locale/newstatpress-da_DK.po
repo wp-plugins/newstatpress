@@ -1,8 +1,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: StatPress v1.3\n"
-"PO-Revision-Date: 2009-02-04 22:38+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-08 22:57+0100\n"
+"PO-Revision-Date: 2011-05-08 22:58+0100\n"
 "Last-Translator: admin <gsa@blogos.dk>\n"
+"Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,348 +16,676 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;__ngettext_noop:1,2;_c\n"
 "X-Poedit-Basepath: ../../\n"
-"X-Poedit-SearchPath-0: ."
+"X-Poedit-SearchPath-0: .\n"
 
-#: statpress.php:35
-#: statpress.php:35
-#: statpress.php:181
+#: trunk/newstatpress.php:44
+#: trunk/newstatpress.php:206
+#: tags/0.1.4/newstatpress.php:44
+#: tags/0.1.4/newstatpress.php:206
+#: tags/0.1.2/newstatpress.php:44
+#: tags/0.1.2/newstatpress.php:206
+#: tags/0.1.0/newstatpress.php:44
+#: tags/0.1.0/newstatpress.php:206
 msgid "Overview"
 msgstr "Oversigt"
 
-#: statpress.php:36
-#: statpress.php:36
+#: trunk/newstatpress.php:45
+#: tags/0.1.4/newstatpress.php:45
+#: tags/0.1.2/newstatpress.php:45
+#: tags/0.1.0/newstatpress.php:45
 msgid "Details"
 msgstr "Detaljer"
 
-#: statpress.php:37
-#: statpress.php:37
-#: statpress.php:700
+#: trunk/newstatpress.php:46
+#: trunk/newstatpress.php:752
+#: tags/0.1.4/newstatpress.php:46
+#: tags/0.1.4/newstatpress.php:752
+#: tags/0.1.2/newstatpress.php:46
+#: tags/0.1.2/newstatpress.php:752
+#: tags/0.1.0/newstatpress.php:46
+#: tags/0.1.0/newstatpress.php:752
 msgid "Spy"
 msgstr "Spionere"
 
-#: statpress.php:38
-#: statpress.php:38
-#: statpress.php:764
-#: statpress.php:803
-#: statpress.php:907
+#: trunk/newstatpress.php:47
+#: trunk/newstatpress.php:821
+#: trunk/newstatpress.php:860
+#: trunk/newstatpress.php:953
+#: tags/0.1.4/newstatpress.php:47
+#: tags/0.1.4/newstatpress.php:821
+#: tags/0.1.4/newstatpress.php:860
+#: tags/0.1.4/newstatpress.php:953
+#: tags/0.1.2/newstatpress.php:47
+#: tags/0.1.2/newstatpress.php:821
+#: tags/0.1.2/newstatpress.php:860
+#: tags/0.1.2/newstatpress.php:953
+#: tags/0.1.0/newstatpress.php:47
+#: tags/0.1.0/newstatpress.php:821
+#: tags/0.1.0/newstatpress.php:860
+#: tags/0.1.0/newstatpress.php:953
 msgid "Search"
 msgstr "Søgning"
 
-#: statpress.php:39
-#: statpress.php:39
-#: statpress.php:141
+#: trunk/newstatpress.php:48
+#: trunk/newstatpress.php:154
+#: tags/0.1.4/newstatpress.php:48
+#: tags/0.1.4/newstatpress.php:154
+#: tags/0.1.2/newstatpress.php:48
+#: tags/0.1.2/newstatpress.php:154
+#: tags/0.1.0/newstatpress.php:48
+#: tags/0.1.0/newstatpress.php:154
 msgid "Export"
 msgstr "Eksport"
 
-#: statpress.php:40
-#: statpress.php:40
-#: statpress.php:79
+#: trunk/newstatpress.php:49
+#: trunk/newstatpress.php:90
+#: tags/0.1.4/newstatpress.php:49
+#: tags/0.1.4/newstatpress.php:90
+#: tags/0.1.2/newstatpress.php:49
+#: tags/0.1.2/newstatpress.php:90
+#: tags/0.1.0/newstatpress.php:49
+#: tags/0.1.0/newstatpress.php:90
 msgid "Options"
 msgstr "Indstillinger"
 
-#: statpress.php:41
-#: statpress.php:41
-msgid "StatPressUpdate"
+#: trunk/newstatpress.php:50
+#: tags/0.1.4/newstatpress.php:50
+#: tags/0.1.2/newstatpress.php:50
+#: tags/0.1.0/newstatpress.php:50
+#, fuzzy
+msgid "NewStatPressUpdate"
 msgstr "StatPressOpdatering"
 
-#: statpress.php:42
-#: statpress.php:42
-msgid "Support"
-msgstr "Support"
+#: trunk/newstatpress.php:51
+#: tags/0.1.4/newstatpress.php:51
+#: tags/0.1.2/newstatpress.php:51
+#: tags/0.1.0/newstatpress.php:51
+msgid "NewStatpress blog"
+msgstr ""
 
-#: statpress.php:76
+#: trunk/newstatpress.php:87
+#: tags/0.1.4/newstatpress.php:87
+#: tags/0.1.2/newstatpress.php:87
+#: tags/0.1.0/newstatpress.php:87
 msgid "Saved"
 msgstr "Gemt"
 
-#: statpress.php:82
+#: trunk/newstatpress.php:93
+#: tags/0.1.4/newstatpress.php:93
+#: tags/0.1.2/newstatpress.php:93
+#: tags/0.1.0/newstatpress.php:93
 msgid "Collect data about logged users, too."
 msgstr "Indsaml også data om brugere, der er logget på."
 
-#: statpress.php:83
+#: trunk/newstatpress.php:94
+#: tags/0.1.4/newstatpress.php:94
+#: tags/0.1.2/newstatpress.php:94
+#: tags/0.1.0/newstatpress.php:94
 msgid "Do not collect spiders visits"
 msgstr "Indsaml ikke data om søgerobotbesøg"
 
-#: statpress.php:85
+#: trunk/newstatpress.php:95
+#: tags/0.1.4/newstatpress.php:95
+#: tags/0.1.2/newstatpress.php:95
+#: tags/0.1.0/newstatpress.php:95
+msgid "Crypt IP addresses"
+msgstr ""
+
+#: trunk/newstatpress.php:98
+#: tags/0.1.4/newstatpress.php:98
+#: tags/0.1.2/newstatpress.php:98
+#: tags/0.1.0/newstatpress.php:98
 msgid "Automatically delete visits older than"
 msgstr "Automatisk slet besøg ældre end"
 
-#: statpress.php:87
+#: trunk/newstatpress.php:100
+#: tags/0.1.4/newstatpress.php:100
+#: tags/0.1.2/newstatpress.php:100
+#: tags/0.1.0/newstatpress.php:100
 msgid "Never delete!"
 msgstr "Slet aldrig!"
 
-#: statpress.php:88
+#: trunk/newstatpress.php:101
+#: tags/0.1.4/newstatpress.php:101
+#: tags/0.1.2/newstatpress.php:101
+#: tags/0.1.0/newstatpress.php:101
 msgid "month"
 msgstr "måned"
 
-#: statpress.php:89
-#: statpress.php:90
+#: trunk/newstatpress.php:102
+#: trunk/newstatpress.php:103
+#: tags/0.1.4/newstatpress.php:102
+#: tags/0.1.4/newstatpress.php:103
+#: tags/0.1.2/newstatpress.php:102
+#: tags/0.1.2/newstatpress.php:103
+#: tags/0.1.0/newstatpress.php:102
+#: tags/0.1.0/newstatpress.php:103
 msgid "months"
 msgstr "måneder"
 
-#: statpress.php:91
+#: trunk/newstatpress.php:104
+#: tags/0.1.4/newstatpress.php:104
+#: tags/0.1.2/newstatpress.php:104
+#: tags/0.1.0/newstatpress.php:104
 msgid "year"
 msgstr "år"
 
-#: statpress.php:94
+#: trunk/newstatpress.php:107
+#: tags/0.1.4/newstatpress.php:107
+#: tags/0.1.2/newstatpress.php:107
+#: tags/0.1.0/newstatpress.php:107
 msgid "Days in Overview graph"
 msgstr "Dage i Oversigtsgraf"
 
-#: statpress.php:103
+#: trunk/newstatpress.php:116
+#: tags/0.1.4/newstatpress.php:116
+#: tags/0.1.2/newstatpress.php:116
+#: tags/0.1.0/newstatpress.php:116
 msgid "Minimum capability to view stats"
 msgstr "Minimumskrav for at se statistikker"
 
-#: statpress.php:107
-#: statpress.php:719
+#: trunk/newstatpress.php:120
+#: trunk/newstatpress.php:771
+#: tags/0.1.4/newstatpress.php:120
+#: tags/0.1.4/newstatpress.php:771
+#: tags/0.1.2/newstatpress.php:120
+#: tags/0.1.2/newstatpress.php:771
+#: tags/0.1.0/newstatpress.php:120
+#: tags/0.1.0/newstatpress.php:771
 msgid "more info"
 msgstr "mere info"
 
-#: statpress.php:110
+#: trunk/newstatpress.php:123
+#: tags/0.1.4/newstatpress.php:123
+#: tags/0.1.2/newstatpress.php:123
+#: tags/0.1.0/newstatpress.php:123
 msgid "Save options"
 msgstr "Gem indstillinger"
 
-#: statpress.php:136
+#: trunk/newstatpress.php:149
+#: tags/0.1.4/newstatpress.php:149
+#: tags/0.1.2/newstatpress.php:149
+#: tags/0.1.0/newstatpress.php:149
 msgid "Export stats to text file"
 msgstr "Eksportér statistik til tekstfil"
 
-#: statpress.php:138
+#: trunk/newstatpress.php:151
+#: tags/0.1.4/newstatpress.php:151
+#: tags/0.1.2/newstatpress.php:151
+#: tags/0.1.0/newstatpress.php:151
 msgid "From"
 msgstr "Fra"
 
-#: statpress.php:139
+#: trunk/newstatpress.php:152
+#: tags/0.1.4/newstatpress.php:152
+#: tags/0.1.2/newstatpress.php:152
+#: tags/0.1.0/newstatpress.php:152
 msgid "To"
 msgstr "Til"
 
-#: statpress.php:140
+#: trunk/newstatpress.php:153
+#: tags/0.1.4/newstatpress.php:153
+#: tags/0.1.2/newstatpress.php:153
+#: tags/0.1.0/newstatpress.php:153
 msgid "Fields delimiter"
 msgstr "Adskillelsestegn for felter"
 
-#: statpress.php:184
+#: trunk/newstatpress.php:209
+#: tags/0.1.4/newstatpress.php:209
+#: tags/0.1.2/newstatpress.php:209
+#: tags/0.1.0/newstatpress.php:209
 msgid "Total"
 msgstr "Total"
 
-#: statpress.php:185
+#: trunk/newstatpress.php:210
+#: tags/0.1.4/newstatpress.php:210
+#: tags/0.1.2/newstatpress.php:210
+#: tags/0.1.0/newstatpress.php:210
 msgid "Last month"
 msgstr "Sidste måned"
 
-#: statpress.php:186
-#: statpress.php:187
+#: trunk/newstatpress.php:211
+#: trunk/newstatpress.php:212
+#: tags/0.1.4/newstatpress.php:211
+#: tags/0.1.4/newstatpress.php:212
+#: tags/0.1.2/newstatpress.php:211
+#: tags/0.1.2/newstatpress.php:212
+#: tags/0.1.0/newstatpress.php:211
+#: tags/0.1.0/newstatpress.php:212
 msgid "This month"
 msgstr "Denne måned"
 
-#: statpress.php:188
+#: trunk/newstatpress.php:213
+#: tags/0.1.4/newstatpress.php:213
+#: tags/0.1.2/newstatpress.php:213
+#: tags/0.1.0/newstatpress.php:213
 msgid "Yesterday"
 msgstr "I går"
 
-#: statpress.php:189
+#: trunk/newstatpress.php:214
+#: tags/0.1.4/newstatpress.php:214
+#: tags/0.1.2/newstatpress.php:214
+#: tags/0.1.0/newstatpress.php:214
 msgid "Today"
 msgstr "I dag"
 
-#: statpress.php:195
+#: trunk/newstatpress.php:220
+#: tags/0.1.4/newstatpress.php:220
+#: tags/0.1.2/newstatpress.php:220
+#: tags/0.1.0/newstatpress.php:220
 msgid "Visitors"
 msgstr "Besøgende"
 
-#: statpress.php:263
+#: trunk/newstatpress.php:288
+#: tags/0.1.4/newstatpress.php:288
+#: tags/0.1.2/newstatpress.php:288
+#: tags/0.1.0/newstatpress.php:288
 msgid "Pageviews"
 msgstr "Sidevisninger"
 
-#: statpress.php:549
+#: trunk/newstatpress.php:574
+#: tags/0.1.4/newstatpress.php:574
+#: tags/0.1.2/newstatpress.php:574
+#: tags/0.1.0/newstatpress.php:574
 msgid "Last hits"
 msgstr "Seneste hits"
 
-#: statpress.php:549
-#: statpress.php:569
-#: statpress.php:578
-#: statpress.php:588
-#: statpress.php:613
-#: statpress.php:622
+#: trunk/newstatpress.php:574
+#: trunk/newstatpress.php:606
+#: trunk/newstatpress.php:615
+#: trunk/newstatpress.php:649
+#: trunk/newstatpress.php:674
+#: tags/0.1.4/newstatpress.php:574
+#: tags/0.1.4/newstatpress.php:606
+#: tags/0.1.4/newstatpress.php:615
+#: tags/0.1.4/newstatpress.php:649
+#: tags/0.1.4/newstatpress.php:674
+#: tags/0.1.2/newstatpress.php:574
+#: tags/0.1.2/newstatpress.php:606
+#: tags/0.1.2/newstatpress.php:615
+#: tags/0.1.2/newstatpress.php:649
+#: tags/0.1.2/newstatpress.php:674
+#: tags/0.1.0/newstatpress.php:574
+#: tags/0.1.0/newstatpress.php:606
+#: tags/0.1.0/newstatpress.php:615
+#: tags/0.1.0/newstatpress.php:649
+#: tags/0.1.0/newstatpress.php:674
 msgid "Date"
 msgstr "Dato"
 
-#: statpress.php:549
-#: statpress.php:569
-#: statpress.php:578
-#: statpress.php:588
-#: statpress.php:613
-#: statpress.php:622
+#: trunk/newstatpress.php:574
+#: trunk/newstatpress.php:606
+#: trunk/newstatpress.php:615
+#: trunk/newstatpress.php:649
+#: trunk/newstatpress.php:674
+#: tags/0.1.4/newstatpress.php:574
+#: tags/0.1.4/newstatpress.php:606
+#: tags/0.1.4/newstatpress.php:615
+#: tags/0.1.4/newstatpress.php:649
+#: tags/0.1.4/newstatpress.php:674
+#: tags/0.1.2/newstatpress.php:574
+#: tags/0.1.2/newstatpress.php:606
+#: tags/0.1.2/newstatpress.php:615
+#: tags/0.1.2/newstatpress.php:649
+#: tags/0.1.2/newstatpress.php:674
+#: tags/0.1.0/newstatpress.php:574
+#: tags/0.1.0/newstatpress.php:606
+#: tags/0.1.0/newstatpress.php:615
+#: tags/0.1.0/newstatpress.php:649
+#: tags/0.1.0/newstatpress.php:674
 msgid "Time"
 msgstr "Tid"
 
-#: statpress.php:549
-msgid "Domain"
-msgstr "Domæne"
+#: trunk/newstatpress.php:574
+#: tags/0.1.4/newstatpress.php:574
+#: tags/0.1.2/newstatpress.php:574
+#: tags/0.1.0/newstatpress.php:574
+#, fuzzy
+msgid "Country"
+msgstr "Tæller"
 
-#: statpress.php:549
-#: statpress.php:613
-#: statpress.php:904
-#: statpress.php:914
+#: trunk/newstatpress.php:574
+#: tags/0.1.4/newstatpress.php:574
+#: tags/0.1.2/newstatpress.php:574
+#: tags/0.1.0/newstatpress.php:574
+msgid "Language"
+msgstr ""
+
+#: trunk/newstatpress.php:574
+#: trunk/newstatpress.php:649
+#: trunk/newstatpress.php:950
+#: trunk/newstatpress.php:960
+#: tags/0.1.4/newstatpress.php:574
+#: tags/0.1.4/newstatpress.php:649
+#: tags/0.1.4/newstatpress.php:950
+#: tags/0.1.4/newstatpress.php:960
+#: tags/0.1.2/newstatpress.php:574
+#: tags/0.1.2/newstatpress.php:649
+#: tags/0.1.2/newstatpress.php:950
+#: tags/0.1.2/newstatpress.php:960
+#: tags/0.1.0/newstatpress.php:574
+#: tags/0.1.0/newstatpress.php:649
+#: tags/0.1.0/newstatpress.php:950
+#: tags/0.1.0/newstatpress.php:960
 msgid "Page"
 msgstr "Side"
 
-#: statpress.php:569
+#: trunk/newstatpress.php:606
+#: tags/0.1.4/newstatpress.php:606
+#: tags/0.1.2/newstatpress.php:606
+#: tags/0.1.0/newstatpress.php:606
 msgid "Last search terms"
 msgstr "Seneste søgetermer"
 
-#: statpress.php:569
+#: trunk/newstatpress.php:606
+#: tags/0.1.4/newstatpress.php:606
+#: tags/0.1.2/newstatpress.php:606
+#: tags/0.1.0/newstatpress.php:606
 msgid "Terms"
 msgstr "termer"
 
-#: statpress.php:569
+#: trunk/newstatpress.php:606
+#: tags/0.1.4/newstatpress.php:606
+#: tags/0.1.2/newstatpress.php:606
+#: tags/0.1.0/newstatpress.php:606
 msgid "Engine"
 msgstr "Maskine"
 
-#: statpress.php:569
-#: statpress.php:578
+#: trunk/newstatpress.php:606
+#: trunk/newstatpress.php:615
+#: trunk/newstatpress.php:1279
+#: tags/0.1.4/newstatpress.php:606
+#: tags/0.1.4/newstatpress.php:615
+#: tags/0.1.4/newstatpress.php:1279
+#: tags/0.1.2/newstatpress.php:606
+#: tags/0.1.2/newstatpress.php:615
+#: tags/0.1.2/newstatpress.php:1278
+#: tags/0.1.0/newstatpress.php:606
+#: tags/0.1.0/newstatpress.php:615
+#: tags/0.1.0/newstatpress.php:1278
 msgid "Result"
 msgstr "Resultat"
 
-#: statpress.php:573
-#: statpress.php:582
+#: trunk/newstatpress.php:610
+#: trunk/newstatpress.php:619
+#: tags/0.1.4/newstatpress.php:610
+#: tags/0.1.4/newstatpress.php:619
+#: tags/0.1.2/newstatpress.php:610
+#: tags/0.1.2/newstatpress.php:619
+#: tags/0.1.0/newstatpress.php:610
+#: tags/0.1.0/newstatpress.php:619
 msgid "page viewed"
 msgstr "viste side"
 
-#: statpress.php:578
+#: trunk/newstatpress.php:615
+#: tags/0.1.4/newstatpress.php:615
+#: tags/0.1.2/newstatpress.php:615
+#: tags/0.1.0/newstatpress.php:615
 msgid "Last referrers"
 msgstr "Seneste henvisningssteder"
 
-#: statpress.php:578
+#: trunk/newstatpress.php:615
+#: tags/0.1.4/newstatpress.php:615
+#: tags/0.1.2/newstatpress.php:615
+#: tags/0.1.0/newstatpress.php:615
 msgid "URL"
 msgstr "URL"
 
-#: statpress.php:588
-#: statpress.php:598
+#: trunk/newstatpress.php:625
+#: tags/0.1.4/newstatpress.php:625
+#: tags/0.1.2/newstatpress.php:625
+#: tags/0.1.0/newstatpress.php:625
 msgid "Last agents"
 msgstr "Seneste softwareagenter"
 
-#: statpress.php:588
-#: statpress.php:598
-#: statpress.php:622
-#: statpress.php:755
+#: trunk/newstatpress.php:625
+#: trunk/newstatpress.php:674
+#: trunk/newstatpress.php:812
+#: tags/0.1.4/newstatpress.php:625
+#: tags/0.1.4/newstatpress.php:674
+#: tags/0.1.4/newstatpress.php:812
+#: tags/0.1.2/newstatpress.php:625
+#: tags/0.1.2/newstatpress.php:674
+#: tags/0.1.2/newstatpress.php:812
+#: tags/0.1.0/newstatpress.php:625
+#: tags/0.1.0/newstatpress.php:674
+#: tags/0.1.0/newstatpress.php:812
 msgid "Agent"
 msgstr "Softwareagent"
 
-#: statpress.php:588
-#: statpress.php:613
-msgid "What"
-msgstr "Hvad"
-
-#: statpress.php:613
+#: trunk/newstatpress.php:649
+#: tags/0.1.4/newstatpress.php:649
+#: tags/0.1.2/newstatpress.php:649
+#: tags/0.1.0/newstatpress.php:649
 msgid "Last pages"
 msgstr "Seneste sider"
 
-#: statpress.php:622
+#: trunk/newstatpress.php:649
+#: tags/0.1.4/newstatpress.php:649
+#: tags/0.1.2/newstatpress.php:649
+#: tags/0.1.0/newstatpress.php:649
+msgid "OS"
+msgstr ""
+
+#: trunk/newstatpress.php:649
+#: tags/0.1.4/newstatpress.php:649
+#: tags/0.1.2/newstatpress.php:649
+#: tags/0.1.0/newstatpress.php:649
+msgid "Browser"
+msgstr ""
+
+#: trunk/newstatpress.php:674
+#: tags/0.1.4/newstatpress.php:674
+#: tags/0.1.2/newstatpress.php:674
+#: tags/0.1.0/newstatpress.php:674
 msgid "Last spiders"
 msgstr "Seneste søgerobotter"
 
-#: statpress.php:622
+#: trunk/newstatpress.php:674
+#: tags/0.1.4/newstatpress.php:674
+#: tags/0.1.2/newstatpress.php:674
+#: tags/0.1.0/newstatpress.php:674
 msgid "Spider"
 msgstr "Søgerobot"
 
-#: statpress.php:735
-#: statpress.php:737
+#: trunk/newstatpress.php:787
+#: trunk/newstatpress.php:789
+#: tags/0.1.4/newstatpress.php:787
+#: tags/0.1.4/newstatpress.php:789
+#: tags/0.1.2/newstatpress.php:787
+#: tags/0.1.2/newstatpress.php:789
+#: tags/0.1.0/newstatpress.php:787
+#: tags/0.1.0/newstatpress.php:789
 msgid "arrived from"
 msgstr "kommet fra"
 
-#: statpress.php:735
+#: trunk/newstatpress.php:787
+#: tags/0.1.4/newstatpress.php:787
+#: tags/0.1.2/newstatpress.php:787
+#: tags/0.1.0/newstatpress.php:787
 msgid "searching"
 msgstr "søger"
 
-#: statpress.php:754
+#: trunk/newstatpress.php:811
+#: tags/0.1.4/newstatpress.php:811
+#: tags/0.1.2/newstatpress.php:811
+#: tags/0.1.0/newstatpress.php:811
 msgid "URL Requested"
 msgstr "Rekvireret URL"
 
-#: statpress.php:756
+#: trunk/newstatpress.php:813
+#: tags/0.1.4/newstatpress.php:813
+#: tags/0.1.2/newstatpress.php:813
+#: tags/0.1.0/newstatpress.php:813
 msgid "Referrer"
 msgstr "Henvisningssted"
 
-#: statpress.php:757
+#: trunk/newstatpress.php:814
+#: tags/0.1.4/newstatpress.php:814
+#: tags/0.1.2/newstatpress.php:814
+#: tags/0.1.0/newstatpress.php:814
 msgid "Search terms"
 msgstr "Søgetermer"
 
-#: statpress.php:758
+#: trunk/newstatpress.php:815
+#: tags/0.1.4/newstatpress.php:815
+#: tags/0.1.2/newstatpress.php:815
+#: tags/0.1.0/newstatpress.php:815
 msgid "Search engine"
 msgstr "Søgemaskine"
 
-#: statpress.php:759
+#: trunk/newstatpress.php:816
+#: tags/0.1.4/newstatpress.php:816
+#: tags/0.1.2/newstatpress.php:816
+#: tags/0.1.0/newstatpress.php:816
 msgid "Operative system"
 msgstr "Operativsystem"
 
-#: statpress.php:769
+#: trunk/newstatpress.php:826
+#: tags/0.1.4/newstatpress.php:826
+#: tags/0.1.2/newstatpress.php:826
+#: tags/0.1.0/newstatpress.php:826
 msgid "Field"
 msgstr "Felt"
 
-#: statpress.php:776
+#: trunk/newstatpress.php:833
+#: tags/0.1.4/newstatpress.php:833
+#: tags/0.1.2/newstatpress.php:833
+#: tags/0.1.0/newstatpress.php:833
 msgid "Group by"
 msgstr "Gruppér efter"
 
-#: statpress.php:777
+#: trunk/newstatpress.php:834
+#: tags/0.1.4/newstatpress.php:834
+#: tags/0.1.2/newstatpress.php:834
+#: tags/0.1.0/newstatpress.php:834
 msgid "Sort by"
 msgstr "Sortér efter"
 
-#: statpress.php:778
+#: trunk/newstatpress.php:835
+#: tags/0.1.4/newstatpress.php:835
+#: tags/0.1.2/newstatpress.php:835
+#: tags/0.1.0/newstatpress.php:835
 msgid "if contains"
 msgstr "hvis det indeholder"
 
-#: statpress.php:788
+#: trunk/newstatpress.php:845
+#: tags/0.1.4/newstatpress.php:845
+#: tags/0.1.2/newstatpress.php:845
+#: tags/0.1.0/newstatpress.php:845
 msgid "sort by count if grouped"
 msgstr "sortér efter tæller hvis grupperet"
 
-#: statpress.php:789
+#: trunk/newstatpress.php:846
+#: tags/0.1.4/newstatpress.php:846
+#: tags/0.1.2/newstatpress.php:846
+#: tags/0.1.0/newstatpress.php:846
 msgid "include spiders/crawlers/bot"
 msgstr "Medtag søgerobotter/webcrawlere/bot"
 
-#: statpress.php:790
+#: trunk/newstatpress.php:847
+#: tags/0.1.4/newstatpress.php:847
+#: tags/0.1.2/newstatpress.php:847
+#: tags/0.1.0/newstatpress.php:847
 msgid "include feed"
 msgstr "Medtag feed"
 
-#: statpress.php:797
-#: statpress.php:1492
+#: trunk/newstatpress.php:854
+#: trunk/newstatpress.php:1545
+#: tags/0.1.4/newstatpress.php:854
+#: tags/0.1.4/newstatpress.php:1545
+#: tags/0.1.2/newstatpress.php:854
+#: tags/0.1.2/newstatpress.php:1542
+#: tags/0.1.0/newstatpress.php:854
+#: tags/0.1.0/newstatpress.php:1542
 msgid "Limit results to"
 msgstr "Begræns resultater til"
 
-#: statpress.php:860
+#: trunk/newstatpress.php:917
+#: tags/0.1.4/newstatpress.php:917
+#: tags/0.1.2/newstatpress.php:917
+#: tags/0.1.0/newstatpress.php:917
 msgid "Results"
 msgstr "Resultater"
 
-#: statpress.php:867
+#: trunk/newstatpress.php:924
+#: tags/0.1.4/newstatpress.php:924
+#: tags/0.1.2/newstatpress.php:924
+#: tags/0.1.0/newstatpress.php:924
 msgid "Count"
 msgstr "Tæller"
 
-#: statpress.php:905
+#: trunk/newstatpress.php:951
+#: tags/0.1.4/newstatpress.php:951
+#: tags/0.1.2/newstatpress.php:951
+#: tags/0.1.0/newstatpress.php:951
 msgid "Category"
 msgstr "Kategori"
 
-#: statpress.php:906
+#: trunk/newstatpress.php:952
+#: tags/0.1.4/newstatpress.php:952
+#: tags/0.1.2/newstatpress.php:952
+#: tags/0.1.0/newstatpress.php:952
 msgid "Calendar"
 msgstr "Kalender"
 
-#: statpress.php:962
-#: statpress.php:1000
-#: statpress.php:1493
+#: trunk/newstatpress.php:1008
+#: trunk/newstatpress.php:1546
+#: tags/0.1.4/newstatpress.php:1008
+#: tags/0.1.4/newstatpress.php:1546
+#: tags/0.1.2/newstatpress.php:1008
+#: tags/0.1.2/newstatpress.php:1543
+#: tags/0.1.0/newstatpress.php:1008
+#: tags/0.1.0/newstatpress.php:1543
 msgid "Visits"
 msgstr "Besøg"
 
-#: statpress.php:1263
-#: statpress.php:1298
-#: statpress.php:1309
-#: statpress.php:1320
-#: statpress.php:1331
-#: statpress.php:1352
-msgid "done"
-msgstr "udført"
+#: trunk/newstatpress.php:1279
+#: tags/0.1.4/newstatpress.php:1279
+#: tags/0.1.2/newstatpress.php:1278
+#: tags/0.1.0/newstatpress.php:1278
+msgid "Updating..."
+msgstr ""
 
-#: statpress.php:1356
-msgid "Updated"
-msgstr "Opdateret"
+#: trunk/newstatpress.php:1279
+#: tags/0.1.4/newstatpress.php:1279
+#: tags/0.1.2/newstatpress.php:1278
+#: tags/0.1.0/newstatpress.php:1278
+msgid "Size"
+msgstr ""
 
-#: statpress.php:1457
+#: trunk/newstatpress.php:1510
+#: tags/0.1.4/newstatpress.php:1510
+#: tags/0.1.2/newstatpress.php:1507
+#: tags/0.1.0/newstatpress.php:1507
 msgid "Title:"
 msgstr "Titel:"
 
-#: statpress.php:1458
+#: trunk/newstatpress.php:1511
+#: tags/0.1.4/newstatpress.php:1511
+#: tags/0.1.2/newstatpress.php:1508
+#: tags/0.1.0/newstatpress.php:1508
 msgid "Body:"
 msgstr "Body:"
 
-#: statpress.php:1491
+#: trunk/newstatpress.php:1544
+#: tags/0.1.4/newstatpress.php:1544
+#: tags/0.1.2/newstatpress.php:1541
+#: tags/0.1.0/newstatpress.php:1541
 msgid "Title"
 msgstr "Titel"
 
+#~ msgid "Support"
+#~ msgstr "Support"
+
+#~ msgid "Domain"
+#~ msgstr "Domæne"
+
+#~ msgid "What"
+#~ msgstr "Hvad"
+
+#~ msgid "done"
+#~ msgstr "udført"
+
+#~ msgid "Updated"
+#~ msgstr "Opdateret"
