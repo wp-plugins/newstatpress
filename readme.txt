@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.1
-Stable Tag: 0.1.4
+Stable Tag: 0.1.7
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -43,6 +43,7 @@ This features is left as original StatPress but it will be replaced by the histo
 Widget is customizable. These are the available variables:
 
 * %thistotalvisits% - this page, total visits
+* %alltotalvisits% - all page, total visits
 * %since% - Date of the first hit
 * %visits% - Today visits
 * %totalvisits% - Total visits
@@ -114,6 +115,22 @@ Check at http://newstatpress.altervista.org
 
 * Fix fromDate calculation
 
+= 0.1.5 =
+
+* Open link in new tab/window (thanks to Sisko)
+* New displays of data for spy function (thanks to Sisko)
+* Added %alltotalvisits%
+
+= 0.1.6 =
+
+* Add option for not track given IPs (from wp_slimstat)
+* update Italian translation
+
+= 0.1.7 =
+
+* Let Search function to works again (thank to Ladislav)
+
+
 == Upgrade Notice ==
 
 = 0.1.0 =
@@ -135,3 +152,15 @@ Check at http://newstatpress.altervista.org
 = 0.1.4 =
 
 * relased 24/04/2011
+
+= 0.1.5 =
+
+* relased 12/05/2011
+
+= 0.1.6 =
+
+* relased 15/05/2011
+
+= 0.1.7 =
+
+* relased 29/05/2011
