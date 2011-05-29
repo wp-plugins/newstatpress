@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.1.6
+Version: 0.1.7
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -13,64 +13,72 @@ $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
 
+/**
+ * Get the url of the plugin
+ *
+ * @return the url of the plugin
+ */
 function PluginUrl() {
+  //Try to use WP API if possible, introduced in WP 2.6
+  if (function_exists('plugins_url')) return trailingslashit(plugins_url(basename(dirname(__FILE__))));
 
-        //Try to use WP API if possible, introduced in WP 2.6
-        if (function_exists('plugins_url')) return trailingslashit(plugins_url(basename(dirname(__FILE__))));
-
-        //Try to find manually... can't work if wp-content was renamed or is redirected
-        $path = dirname(__FILE__);
-        $path = str_replace("\\","/",$path);
-        $path = trailingslashit(get_bloginfo('wpurl')) . trailingslashit(substr($path,strpos($path,"wp-content/")));
-        return $path;
-    }
-
-
-function iri_add_pages() {
-	# Crea/aggiorna tabella se non esiste
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
-		iri_NewStatPress_CreateTable();
-	}
-	# add submenu
-	$mincap=get_option('newstatpress_mincap');
-	if($mincap == '') {
-		$mincap="level_8";
-	}
-// ORIG   add_submenu_page('index.php', 'StatPress', 'StatPress', 8, 'statpress', 'iriNewStatPress');
-
-    add_menu_page('NewStatPress', 'NewStatPress', $mincap, __FILE__, 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Overview','newstatpress'), __('Overview','newstatpress'), $mincap, __FILE__, 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Details','newstatpress'), __('Details','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=details', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Search','newstatpress'), __('Search','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=search', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=export', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Options','newstatpress'), __('Options','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=options', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=up', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('NewStatpress blog','newstatpress'), __('NewStatpress blog','newstatpress'), $mincap, 'http://newstatpress.altervista.org');
-
+  //Try to find manually... can't work if wp-content was renamed or is redirected
+  $path = dirname(__FILE__);
+  $path = str_replace("\\","/",$path);
+  $path = trailingslashit(get_bloginfo('wpurl')) . trailingslashit(substr($path,strpos($path,"wp-content/")));
+  return $path;
 }
 
+/**
+ * Add pages with NewStatPress commands
+ */
+function iri_add_pages() {
+  # Create/update table if it not exists
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+  if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+    iri_NewStatPress_CreateTable();
+  }
 
+  # add submenu
+  $mincap=get_option('newstatpress_mincap');
+  if($mincap == '') {
+    $mincap="level_8";
+  }
+  
+  // ORIG   add_submenu_page('index.php', 'StatPress', 'StatPress', 8, 'statpress', 'iriNewStatPress');
+  add_menu_page('NewStatPress', 'NewStatPress', $mincap, __FILE__, 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Overview','newstatpress'), __('Overview','newstatpress'), $mincap, __FILE__, 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Details','newstatpress'), __('Details','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=details', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Search','newstatpress'), __('Search','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=search', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=export', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Options','newstatpress'), __('Options','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=options', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=up', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('NewStatpress blog','newstatpress'), __('NewStatpress blog','newstatpress'), $mincap, 'http://newstatpress.altervista.org');
+}
+
+/**
+ * General function for calling the action that user had choice
+ */
 function iriNewStatPress() {
-?>
-<?php
-	if ($_GET['newstatpress_action'] == 'export') {
-		iriNewStatPressExport();
-	} elseif ($_GET['newstatpress_action'] == 'up') {
-		iriNewStatPressUpdate();
-	} elseif ($_GET['newstatpress_action'] == 'spy') {
-		iriNewStatPressSpy();
-	} elseif ($_GET['newstatpress_action'] == 'search') {
-		iriNewStatPressSearch();
-	} elseif ($_GET['newstatpress_action'] == 'details') {
-		iriNewStatPressDetails();
-	} elseif ($_GET['newstatpress_action'] == 'options') {
-		iriNewStatPressOptions();
-	} elseif(1) {
-		iriNewStatPressMain();
-	}
+  ?>
+  <?php
+    if ($_GET['newstatpress_action'] == 'export') {
+      iriNewStatPressExport();
+    } elseif ($_GET['newstatpress_action'] == 'up') {
+        iriNewStatPressUpdate();
+    } elseif ($_GET['newstatpress_action'] == 'spy') {
+        iriNewStatPressSpy();
+    } elseif ($_GET['newstatpress_action'] == 'search') {
+         iriNewStatPressSearch();
+    } elseif ($_GET['newstatpress_action'] == 'details') {
+         iriNewStatPressDetails();
+    } elseif ($_GET['newstatpress_action'] == 'options') {
+         iriNewStatPressOptions();
+    } elseif(1) {
+       iriNewStatPressMain();
+    }
 }
 
 /**
@@ -144,16 +152,16 @@ function iriNewStatPressOptions() {
           <option value="50" <?php if(get_option('newstatpress_daysinoverviewgraph') == 50) print "selected"; ?>>50</option>
         </select></td></tr>
 
-       <tr><td><?php _e('Minimum capability to view stats','newstatpress'); ?>
+      <tr><td><?php _e('Minimum capability to view stats','newstatpress'); ?>
         <select name="newstatpress_mincap">
          <?php iri_dropdown_caps(get_option('newstatpress_mincap')); ?>
         </select> 
         <a href="http://codex.wordpress.org/Roles_and_Capabilities" target="_blank"><?php _e("more info",'newstatpress'); ?></a>
         </td></tr>
 
-       <tr><td><hr></hr></td></tr>
+      <tr><td><hr></hr></td></tr>
 
-       <tr><td>
+      <tr><td>
         <h3><label for="newstatpress_ignore_ip"><?php _e('IP addresses to ignore','newstatpress') ?></label></h3>
         <p><?php _e("Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly.",'newstatpress') ?></p>
         <p><textarea class="large-text code" cols="50" rows="1" name="newstatpress_ignore_ip" id="newstatpress_ignore_ip">
@@ -161,9 +169,9 @@ function iriNewStatPressOptions() {
             </textarea></p>
         </td></tr>
 
-       <tr><td><hr></hr></td></tr>
+      <tr><td><hr></hr></td></tr>
 
-       <tr><td><br><input type=submit value="<?php _e('Save options','newstatpress'); ?>"></td></tr>
+      <tr><td><br><input type=submit value="<?php _e('Save options','newstatpress'); ?>"></td></tr>
       </tr>
       </table>
       <input type=hidden name=saveit value=yes>
@@ -201,31 +209,38 @@ function iriNewStatPressExport() {
 }
 
 function iri_checkExport(){
-	if ($_GET['newstatpress_action'] == 'exportnow') {
-		$mincap=get_option('newstatpress_mincap');
-		if ($mincap == '')
-			$mincap = "level_8";
-		if ( current_user_can( $mincap ) ) {
-			iriNewStatPressExportNow();
-		}
-	}
+  if ($_GET['newstatpress_action'] == 'exportnow') {
+    $mincap=get_option('newstatpress_mincap');
+    if ($mincap == '') $mincap = "level_8";
+    if ( current_user_can( $mincap ) ) {
+      iriNewStatPressExportNow();
+    }
+  }
 }
 
+/**
+ * Export the NewStatPress data
+ */
 function iriNewStatPressExportNow() {
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	$filename=get_bloginfo('title' )."-newstatpress_".$_GET['from']."-".$_GET['to'].".csv";
-	header('Content-Description: File Transfer');
-	header("Content-Disposition: attachment; filename=$filename");
-	header('Content-Type: text/plain charset=' . get_option('blog_charset'), true);
-    $qry = $wpdb->get_results("SELECT * FROM $table_name WHERE date>='".(date("Ymd",strtotime(substr($_GET['from'],0,8))))."' AND date<='".(date("Ymd",strtotime(substr($_GET['to'],0,8))))."';");
-	$del=substr($_GET['del'],0,1);
-	print "date".$del."time".$del."ip".$del."urlrequested".$del."agent".$del."referrer".$del."search".$del."nation".$del."os".$del."browser".$del."searchengine".$del."spider".$del."feed\n";
-	foreach ($qry as $rk) {
-		print '"'.$rk->date.'"'.$del.'"'.$rk->time.'"'.$del.'"'.$rk->ip.'"'.$del.'"'.$rk->urlrequested.'"'.$del.'"'.$rk->agent.'"'.$del.'"'.$rk->referrer.'"'.$del.'"'.$rk->search.'"'.$del.'"'.$rk->nation.'"'.$del.'"'.$rk->os.'"'.$del.'"'.$rk->browser.'"'.$del.'"'.$rk->searchengine.'"'.$del.'"'.$rk->spider.'"'.$del.'"'.$rk->feed.'"'."\n";
-
-	}
-	die();
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+  $filename=get_bloginfo('title' )."-newstatpress_".$_GET['from']."-".$_GET['to'].".csv";
+  header('Content-Description: File Transfer');
+  header("Content-Disposition: attachment; filename=$filename");
+  header('Content-Type: text/plain charset=' . get_option('blog_charset'), true);
+  $qry = $wpdb->get_results(
+    "SELECT * 
+     FROM $table_name 
+     WHERE 
+       date>='".(date("Ymd",strtotime(substr($_GET['from'],0,8))))."' AND 
+       date<='".(date("Ymd",strtotime(substr($_GET['to'],0,8))))."';
+    ");
+  $del=substr($_GET['del'],0,1);
+  print "date".$del."time".$del."ip".$del."urlrequested".$del."agent".$del."referrer".$del."search".$del."nation".$del."os".$del."browser".$del."searchengine".$del."spider".$del."feed\n";
+  foreach ($qry as $rk) {
+    print '"'.$rk->date.'"'.$del.'"'.$rk->time.'"'.$del.'"'.$rk->ip.'"'.$del.'"'.$rk->urlrequested.'"'.$del.'"'.$rk->agent.'"'.$del.'"'.$rk->referrer.'"'.$del.'"'.$rk->search.'"'.$del.'"'.$rk->nation.'"'.$del.'"'.$rk->os.'"'.$del.'"'.$rk->browser.'"'.$del.'"'.$rk->searchengine.'"'.$del.'"'.$rk->spider.'"'.$del.'"'.$rk->feed.'"'."\n";
+  }
+  die();
 }
 
 function iriNewStatPressMain() {
@@ -907,7 +922,7 @@ function iriNewStatPressSearch($what='') {
 		</td>
 	</tr>		
 	</table>	
-	<input type=hidden name=page value='wp-statpress/statpress.php'><input type=hidden name=newstatpress_action value=search>
+	<input type=hidden name=page value='newstatpress/newstatpress.php'><input type=hidden name=newstatpress_action value=search>
 	</form><br>
 <?php
 
@@ -1692,17 +1707,33 @@ function iri_NewStatPress_Vars($body) {
   return $body;
 }
 
-
+/**
+ * Get top posts
+ *
+ * @param limit the number of post to show
+ * @param showcounts if checked show totals
+ * @return result of extraction
+ */
 function iri_NewStatPress_TopPosts($limit=5, $showcounts='checked') {
-   	global $wpdb;
-   	$res="\n<ul>\n";
-	$table_name = $wpdb->prefix . "statpress";
-	$qry = $wpdb->get_results("SELECT urlrequested,count(*) as totale FROM $table_name WHERE spider='' AND feed='' AND urlrequested LIKE '%p=%' GROUP BY urlrequested ORDER BY totale DESC LIMIT $limit;");
-	foreach ($qry as $rk) {
-		$res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
-		if(strtolower($showcounts) == 'checked') { $res.=" (".$rk->totale.")"; }
-	}
-	return "$res</ul>\n";
+  global $wpdb;
+  $res="\n<ul>\n";
+  $table_name = $wpdb->prefix . "statpress";
+  $qry = $wpdb->get_results(
+    "SELECT urlrequested,count(*) as totale 
+     FROM $table_name 
+     WHERE 
+       spider='' AND 
+       feed='' AND 
+       urlrequested LIKE '%p=%' 
+     GROUP BY urlrequested 
+     ORDER BY totale DESC LIMIT $limit;
+    ");
+
+  foreach ($qry as $rk) {
+    $res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
+    if(strtolower($showcounts) == 'checked') { $res.=" (".$rk->totale.")"; }
+  }
+  return "$res</ul>\n";
 }
 
 
