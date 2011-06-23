@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.1.7
+Version: 0.1.8
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -120,6 +120,7 @@ function iriNewStatPressOptions() {
     update_option('newstatpress_donotcollectspider', $_POST['newstatpress_donotcollectspider']);
     update_option('newstatpress_cryptip', $_POST['newstatpress_cryptip']);
     update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
+    update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
 
     # update database too
     iri_NewStatPress_CreateTable();
@@ -166,6 +167,14 @@ function iriNewStatPressOptions() {
         <p><?php _e("Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly.",'newstatpress') ?></p>
         <p><textarea class="large-text code" cols="50" rows="1" name="newstatpress_ignore_ip" id="newstatpress_ignore_ip">
               <?php echo implode(',', get_option('newstatpress_ignore_ip',array())) ?>
+            </textarea></p>
+        </td></tr>
+
+      <tr><td>
+        <h3><label for="newstatpress_ignore_permalink"><?php _e('Pages and posts to ignore','newstatpress') ?></label></h3>
+        <p><?php _e("Enter a list of permalinks you don't want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them.",'newstatpress') ?></p>
+        <p><textarea class="large-text code" cols="50" rows="1" name="newstatpress_ignore_permalink" id="newstatpress_ignore_permalink">
+              <?php echo implode(',', get_option('newstatpress_ignore_permalink',array())) ?>
             </textarea></p>
         </td></tr>
 
@@ -1301,6 +1310,12 @@ function iriStatAppend() {
   if (stristr($urlRequested,"/wp-content/plugins") != FALSE) { return ''; }
   if (stristr($urlRequested,"/wp-content/themes") != FALSE) { return ''; }
   if (stristr($urlRequested,"/wp-admin/") != FALSE) { return ''; }
+
+  // Is a given permalink blacklisted?
+  $to_ignore = get_option('newstatpress_ignore_permalink', array());
+    foreach($to_ignore as $a_filter){
+    if (!empty($urlRequested) && strpos($urlRequested, $a_filter) === 0) { return ''; }
+  }
 
   $referrer = (isset($_SERVER['HTTP_REFERER']) ? htmlentities($_SERVER['HTTP_REFERER']) : '');
   $userAgent = (isset($_SERVER['HTTP_USER_AGENT']) ? htmlentities($_SERVER['HTTP_USER_AGENT']) : '');
