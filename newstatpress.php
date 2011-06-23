@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.1.4
+Version: 0.1.8
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -13,123 +13,182 @@ $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
 
+/**
+ * Get the url of the plugin
+ *
+ * @return the url of the plugin
+ */
 function PluginUrl() {
+  //Try to use WP API if possible, introduced in WP 2.6
+  if (function_exists('plugins_url')) return trailingslashit(plugins_url(basename(dirname(__FILE__))));
 
-        //Try to use WP API if possible, introduced in WP 2.6
-        if (function_exists('plugins_url')) return trailingslashit(plugins_url(basename(dirname(__FILE__))));
+  //Try to find manually... can't work if wp-content was renamed or is redirected
+  $path = dirname(__FILE__);
+  $path = str_replace("\\","/",$path);
+  $path = trailingslashit(get_bloginfo('wpurl')) . trailingslashit(substr($path,strpos($path,"wp-content/")));
+  return $path;
+}
 
-        //Try to find manually... can't work if wp-content was renamed or is redirected
-        $path = dirname(__FILE__);
-        $path = str_replace("\\","/",$path);
-        $path = trailingslashit(get_bloginfo('wpurl')) . trailingslashit(substr($path,strpos($path,"wp-content/")));
-        return $path;
-    }
-
-
+/**
+ * Add pages with NewStatPress commands
+ */
 function iri_add_pages() {
-	# Crea/aggiorna tabella se non esiste
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
-		iri_NewStatPress_CreateTable();
-	}
-	# add submenu
-	$mincap=get_option('newstatpress_mincap');
-	if($mincap == '') {
-		$mincap="level_8";
-	}
-// ORIG   add_submenu_page('index.php', 'StatPress', 'StatPress', 8, 'statpress', 'iriNewStatPress');
+  # Create/update table if it not exists
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+  if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+    iri_NewStatPress_CreateTable();
+  }
 
-    add_menu_page('NewStatPress', 'NewStatPress', $mincap, __FILE__, 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Overview','newstatpress'), __('Overview','newstatpress'), $mincap, __FILE__, 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Details','newstatpress'), __('Details','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=details', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Search','newstatpress'), __('Search','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=search', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=export', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('Options','newstatpress'), __('Options','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=options', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=up', 'iriNewStatPress');
-    add_submenu_page(__FILE__, __('NewStatpress blog','newstatpress'), __('NewStatpress blog','newstatpress'), $mincap, 'http://newstatpress.altervista.org');
-
+  # add submenu
+  $mincap=get_option('newstatpress_mincap');
+  if($mincap == '') {
+    $mincap="level_8";
+  }
+  
+  // ORIG   add_submenu_page('index.php', 'StatPress', 'StatPress', 8, 'statpress', 'iriNewStatPress');
+  add_menu_page('NewStatPress', 'NewStatPress', $mincap, __FILE__, 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Overview','newstatpress'), __('Overview','newstatpress'), $mincap, __FILE__, 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Details','newstatpress'), __('Details','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=details', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Search','newstatpress'), __('Search','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=search', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=export', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Options','newstatpress'), __('Options','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=options', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=up', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('NewStatpress blog','newstatpress'), __('NewStatpress blog','newstatpress'), $mincap, 'http://newstatpress.altervista.org');
 }
 
-
+/**
+ * General function for calling the action that user had choice
+ */
 function iriNewStatPress() {
-?>
-<?php
-	if ($_GET['newstatpress_action'] == 'export') {
-		iriNewStatPressExport();
-	} elseif ($_GET['newstatpress_action'] == 'up') {
-		iriNewStatPressUpdate();
-	} elseif ($_GET['newstatpress_action'] == 'spy') {
-		iriNewStatPressSpy();
-	} elseif ($_GET['newstatpress_action'] == 'search') {
-		iriNewStatPressSearch();
-	} elseif ($_GET['newstatpress_action'] == 'details') {
-		iriNewStatPressDetails();
-	} elseif ($_GET['newstatpress_action'] == 'options') {
-		iriNewStatPressOptions();
-	} elseif(1) {
-		iriNewStatPressMain();
-	}
+  ?>
+  <?php
+    if ($_GET['newstatpress_action'] == 'export') {
+      iriNewStatPressExport();
+    } elseif ($_GET['newstatpress_action'] == 'up') {
+        iriNewStatPressUpdate();
+    } elseif ($_GET['newstatpress_action'] == 'spy') {
+        iriNewStatPressSpy();
+    } elseif ($_GET['newstatpress_action'] == 'search') {
+         iriNewStatPressSearch();
+    } elseif ($_GET['newstatpress_action'] == 'details') {
+         iriNewStatPressDetails();
+    } elseif ($_GET['newstatpress_action'] == 'options') {
+         iriNewStatPressOptions();
+    } elseif(1) {
+       iriNewStatPressMain();
+    }
 }
 
+/**
+ * Filter the given value for preventing XSS attacks
+ *
+ * @param _value the value to filter
+ * @return filtered value
+ */
+function iriNewStatPress_filter_for_xss($_value){
+  $_value=trim($_value);
+
+  // Avoid XSS attacks
+  $clean_value = preg_replace('/[^a-zA-Z0-9\,\.\/\ \-\_\?=&;]/', '', $_value);
+  if (strlen($_value)==0){
+    return array();
+  } else {
+      $array_values = explode(',',$clean_value);
+      array_walk($array_values, 'iriNewStatPress_trim_value');
+      return $array_values;
+    }
+}
+
+/**
+ * Trim the given string
+ */
+function iriNewStatPress_trim_value(&$value) { 
+  $value = trim($value); 
+}
+
+/**
+ * Generate HTML for option menu in Wordpress
+ */
 function iriNewStatPressOptions() {
-	if($_POST['saveit'] == 'yes') {
-		update_option('newstatpress_collectloggeduser', $_POST['newstatpress_collectloggeduser']);
-		update_option('newstatpress_autodelete', $_POST['newstatpress_autodelete']);
-		update_option('newstatpress_daysinoverviewgraph', $_POST['newstatpress_daysinoverviewgraph']);
-		update_option('newstatpress_mincap', $_POST['newstatpress_mincap']);
-		update_option('newstatpress_donotcollectspider', $_POST['newstatpress_donotcollectspider']);
-		update_option('newstatpress_cryptip', $_POST['newstatpress_cryptip']);
-		
-		# update database too
-		iri_NewStatPress_CreateTable();
-		print "<br /><div class='updated'><p>".__('Saved','newstatpress')."!</p></div>";
-	} else {
-?>
-	<div class='wrap'><h2><?php _e('Options','newstatpress'); ?></h2>
-	<form method=post><table width=100%>
-<?php
-	print "<tr><td><input type=checkbox name='newstatpress_collectloggeduser' value='checked' ".get_option('newstatpress_collectloggeduser')."> ".__('Collect data about logged users, too.','newstatpress')."</td></tr>";
-	print "<tr><td><input type=checkbox name='newstatpress_donotcollectspider' value='checked' ".get_option('newstatpress_donotcollectspider')."> ".__('Do not collect spiders visits','newstatpress')."</td></tr>";
-	print "<tr><td><input type=checkbox name='newstatpress_cryptip' value='checked' ".get_option('newstatpress_cryptip')."> ".__('Crypt IP addresses','newstatpress')."</td></tr>";
+  if($_POST['saveit'] == 'yes') {
+    update_option('newstatpress_collectloggeduser', $_POST['newstatpress_collectloggeduser']);
+    update_option('newstatpress_autodelete', $_POST['newstatpress_autodelete']);
+    update_option('newstatpress_daysinoverviewgraph', $_POST['newstatpress_daysinoverviewgraph']);
+    update_option('newstatpress_mincap', $_POST['newstatpress_mincap']);
+    update_option('newstatpress_donotcollectspider', $_POST['newstatpress_donotcollectspider']);
+    update_option('newstatpress_cryptip', $_POST['newstatpress_cryptip']);
+    update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
+    update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
 
-?>
-	<tr><td><?php _e('Automatically delete visits older than','newstatpress'); ?>
-	<select name="newstatpress_autodelete">
-	<option value="" <?php if(get_option('newstatpress_autodelete') =='' ) print "selected"; ?>><?php _e('Never delete!','newstatpress'); ?></option>
-	<option value="1 month" <?php if(get_option('newstatpress_autodelete') == "1 month") print "selected"; ?>>1 <?php _e('month','newstatpress'); ?></option>
-	<option value="3 months" <?php if(get_option('newstatpress_autodelete') == "3 months") print "selected"; ?>>3 <?php _e('months','newstatpress'); ?></option>
-	<option value="6 months" <?php if(get_option('newstatpress_autodelete') == "6 months") print "selected"; ?>>6 <?php _e('months','newstatpress'); ?></option>
-	<option value="1 year" <?php if(get_option('newstatpress_autodelete') == "1 year") print "selected"; ?>>1 <?php _e('year','newstatpress'); ?></option>
-	</select></td></tr>
+    # update database too
+    iri_NewStatPress_CreateTable();
+    print "<br /><div class='updated'><p>".__('Saved','newstatpress')."!</p></div>";
+  } else {
+      ?>
+      <div class='wrap'><h2><?php _e('Options','newstatpress'); ?></h2>
+      <form method=post><table width=100%>
+      <?php
+        print "<tr><td><input type=checkbox name='newstatpress_collectloggeduser' value='checked' ".get_option('newstatpress_collectloggeduser')."> ".__('Collect data about logged users, too.','newstatpress')."</td></tr>";
+        print "<tr><td><input type=checkbox name='newstatpress_donotcollectspider' value='checked' ".get_option('newstatpress_donotcollectspider')."> ".__('Do not collect spiders visits','newstatpress')."</td></tr>";
+        print "<tr><td><input type=checkbox name='newstatpress_cryptip' value='checked' ".get_option('newstatpress_cryptip')."> ".__('Crypt IP addresses','newstatpress')."</td></tr>";
 
-	<tr><td><?php  _e('Days in Overview graph','newstatpress'); ?>
-	<select name="newstatpress_daysinoverviewgraph">
-	<option value="7" <?php if(get_option('newstatpress_daysinoverviewgraph') == 7) print "selected"; ?>>7</option>
-	<option value="10" <?php if(get_option('newstatpress_daysinoverviewgraph') == 10) print "selected"; ?>>10</option>
-	<option value="20" <?php if(get_option('newstatpress_daysinoverviewgraph') == 20) print "selected"; ?>>20</option>
-	<option value="30" <?php if(get_option('newstatpress_daysinoverviewgraph') == 30) print "selected"; ?>>30</option>
-	<option value="50" <?php if(get_option('newstatpress_daysinoverviewgraph') == 50) print "selected"; ?>>50</option>
-	</select></td></tr>
+      ?>
+      <tr><td><?php _e('Automatically delete visits older than','newstatpress'); ?>
+        <select name="newstatpress_autodelete">
+          <option value="" <?php if(get_option('newstatpress_autodelete') =='' ) print "selected"; ?>><?php _e('Never delete!','newstatpress'); ?></option>
+          <option value="1 month" <?php if(get_option('newstatpress_autodelete') == "1 month") print "selected"; ?>>1 <?php _e('month','newstatpress'); ?></option>
+          <option value="3 months" <?php if(get_option('newstatpress_autodelete') == "3 months") print "selected"; ?>>3 <?php _e('months','newstatpress'); ?></option>
+          <option value="6 months" <?php if(get_option('newstatpress_autodelete') == "6 months") print "selected"; ?>>6 <?php _e('months','newstatpress'); ?></option>
+          <option value="1 year" <?php if(get_option('newstatpress_autodelete') == "1 year") print "selected"; ?>>1 <?php _e('year','newstatpress'); ?></option>
+        </select></td></tr>
 
-	<tr><td><?php _e('Minimum capability to view stats','newstatpress'); ?>
-	<select name="newstatpress_mincap">
-<?php iri_dropdown_caps(get_option('newstatpress_mincap')); ?>
-	</select> 
-	<a href="http://codex.wordpress.org/Roles_and_Capabilities" target="_blank"><?php _e("more info",'newstatpress'); ?></a>
-	</td></tr>
-	
-	<tr><td><br><input type=submit value="<?php _e('Save options','newstatpress'); ?>"></td></tr>
-	</tr>
-	</table>
-	<input type=hidden name=saveit value=yes>
-	<input type=hidden name=page value=newstatpress><input type=hidden name=newstatpress_action value=options>
-	</form>
-	</div>
-<?php
+      <tr><td><?php _e('Days in Overview graph','newstatpress'); ?>
+        <select name="newstatpress_daysinoverviewgraph">
+          <option value="7" <?php if(get_option('newstatpress_daysinoverviewgraph') == 7) print "selected"; ?>>7</option>
+          <option value="10" <?php if(get_option('newstatpress_daysinoverviewgraph') == 10) print "selected"; ?>>10</option>
+          <option value="20" <?php if(get_option('newstatpress_daysinoverviewgraph') == 20) print "selected"; ?>>20</option>
+          <option value="30" <?php if(get_option('newstatpress_daysinoverviewgraph') == 30) print "selected"; ?>>30</option>
+          <option value="50" <?php if(get_option('newstatpress_daysinoverviewgraph') == 50) print "selected"; ?>>50</option>
+        </select></td></tr>
 
-	} # chiude saveit
+      <tr><td><?php _e('Minimum capability to view stats','newstatpress'); ?>
+        <select name="newstatpress_mincap">
+         <?php iri_dropdown_caps(get_option('newstatpress_mincap')); ?>
+        </select> 
+        <a href="http://codex.wordpress.org/Roles_and_Capabilities" target="_blank"><?php _e("more info",'newstatpress'); ?></a>
+        </td></tr>
+
+      <tr><td><hr></hr></td></tr>
+
+      <tr><td>
+        <h3><label for="newstatpress_ignore_ip"><?php _e('IP addresses to ignore','newstatpress') ?></label></h3>
+        <p><?php _e("Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly.",'newstatpress') ?></p>
+        <p><textarea class="large-text code" cols="50" rows="1" name="newstatpress_ignore_ip" id="newstatpress_ignore_ip">
+              <?php echo implode(',', get_option('newstatpress_ignore_ip',array())) ?>
+            </textarea></p>
+        </td></tr>
+
+      <tr><td>
+        <h3><label for="newstatpress_ignore_permalink"><?php _e('Pages and posts to ignore','newstatpress') ?></label></h3>
+        <p><?php _e("Enter a list of permalinks you don't want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them.",'newstatpress') ?></p>
+        <p><textarea class="large-text code" cols="50" rows="1" name="newstatpress_ignore_permalink" id="newstatpress_ignore_permalink">
+              <?php echo implode(',', get_option('newstatpress_ignore_permalink',array())) ?>
+            </textarea></p>
+        </td></tr>
+
+      <tr><td><hr></hr></td></tr>
+
+      <tr><td><br><input type=submit value="<?php _e('Save options','newstatpress'); ?>"></td></tr>
+      </tr>
+      </table>
+      <input type=hidden name=saveit value=yes>
+      <input type=hidden name=page value=newstatpress><input type=hidden name=newstatpress_action value=options>
+      </form>
+      </div>
+      <?php
+    } 
 }
 
 
@@ -159,31 +218,38 @@ function iriNewStatPressExport() {
 }
 
 function iri_checkExport(){
-	if ($_GET['newstatpress_action'] == 'exportnow') {
-		$mincap=get_option('newstatpress_mincap');
-		if ($mincap == '')
-			$mincap = "level_8";
-		if ( current_user_can( $mincap ) ) {
-			iriNewStatPressExportNow();
-		}
-	}
+  if ($_GET['newstatpress_action'] == 'exportnow') {
+    $mincap=get_option('newstatpress_mincap');
+    if ($mincap == '') $mincap = "level_8";
+    if ( current_user_can( $mincap ) ) {
+      iriNewStatPressExportNow();
+    }
+  }
 }
 
+/**
+ * Export the NewStatPress data
+ */
 function iriNewStatPressExportNow() {
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	$filename=get_bloginfo('title' )."-newstatpress_".$_GET['from']."-".$_GET['to'].".csv";
-	header('Content-Description: File Transfer');
-	header("Content-Disposition: attachment; filename=$filename");
-	header('Content-Type: text/plain charset=' . get_option('blog_charset'), true);
-    $qry = $wpdb->get_results("SELECT * FROM $table_name WHERE date>='".(date("Ymd",strtotime(substr($_GET['from'],0,8))))."' AND date<='".(date("Ymd",strtotime(substr($_GET['to'],0,8))))."';");
-	$del=substr($_GET['del'],0,1);
-	print "date".$del."time".$del."ip".$del."urlrequested".$del."agent".$del."referrer".$del."search".$del."nation".$del."os".$del."browser".$del."searchengine".$del."spider".$del."feed\n";
-	foreach ($qry as $rk) {
-		print '"'.$rk->date.'"'.$del.'"'.$rk->time.'"'.$del.'"'.$rk->ip.'"'.$del.'"'.$rk->urlrequested.'"'.$del.'"'.$rk->agent.'"'.$del.'"'.$rk->referrer.'"'.$del.'"'.$rk->search.'"'.$del.'"'.$rk->nation.'"'.$del.'"'.$rk->os.'"'.$del.'"'.$rk->browser.'"'.$del.'"'.$rk->searchengine.'"'.$del.'"'.$rk->spider.'"'.$del.'"'.$rk->feed.'"'."\n";
-
-	}
-	die();
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+  $filename=get_bloginfo('title' )."-newstatpress_".$_GET['from']."-".$_GET['to'].".csv";
+  header('Content-Description: File Transfer');
+  header("Content-Disposition: attachment; filename=$filename");
+  header('Content-Type: text/plain charset=' . get_option('blog_charset'), true);
+  $qry = $wpdb->get_results(
+    "SELECT * 
+     FROM $table_name 
+     WHERE 
+       date>='".(date("Ymd",strtotime(substr($_GET['from'],0,8))))."' AND 
+       date<='".(date("Ymd",strtotime(substr($_GET['to'],0,8))))."';
+    ");
+  $del=substr($_GET['del'],0,1);
+  print "date".$del."time".$del."ip".$del."urlrequested".$del."agent".$del."referrer".$del."search".$del."nation".$del."os".$del."browser".$del."searchengine".$del."spider".$del."feed\n";
+  foreach ($qry as $rk) {
+    print '"'.$rk->date.'"'.$del.'"'.$rk->time.'"'.$del.'"'.$rk->ip.'"'.$del.'"'.$rk->urlrequested.'"'.$del.'"'.$rk->agent.'"'.$del.'"'.$rk->referrer.'"'.$del.'"'.$rk->search.'"'.$del.'"'.$rk->nation.'"'.$del.'"'.$rk->os.'"'.$del.'"'.$rk->browser.'"'.$del.'"'.$rk->searchengine.'"'.$del.'"'.$rk->spider.'"'.$del.'"'.$rk->feed.'"'."\n";
+  }
+  die();
 }
 
 function iriNewStatPressMain() {
@@ -607,7 +673,7 @@ function iriNewStatPressMain() {
 	print "<tbody id='the-list'>";	
 	$qry = $wpdb->get_results("SELECT date,time,referrer,urlrequested,search,searchengine FROM $table_name WHERE search<>'' ORDER BY id DESC $querylimit");
 	foreach ($qry as $rk) {
-		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."'>".$rk->search."</a></td><td>".$rk->searchengine."</td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
+		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".$rk->search."</a></td><td>".$rk->searchengine."</td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."' target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
 	}
 	print "</table></div>";
 	
@@ -616,7 +682,7 @@ function iriNewStatPressMain() {
 	print "<tbody id='the-list'>";	
 	$qry = $wpdb->get_results("SELECT date,time,referrer,urlrequested FROM $table_name WHERE ((referrer NOT LIKE '".get_option('home')."%') AND (referrer <>'') AND (searchengine='')) ORDER BY id DESC $querylimit");
 	foreach ($qry as $rk) {
-		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."'>".iri_NewStatPress_Abbrevia($rk->referrer,80)."</a></td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
+		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".iri_NewStatPress_Abbrevia($rk->referrer,80)."</a></td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'  target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
 	}
 	print "</table></div>";
 
@@ -769,13 +835,15 @@ document.getElementById(thediv).style.display="none"
 		print "<IMG SRC='http://api.hostip.info/flag.php?ip=".$rk->ip."' border=0 width=18 height=12>";
 		print " <strong><span><font size='2' color='#7b7b7b'>".$rk->ip."</font></span></strong> ";
 		print "<span style='color:#006dca;cursor:pointer;border-bottom:1px dotted #AFD5F9;font-size:8pt;' onClick=ttogle('".$rk->ip."');>".__('more info','newstatpress')."</span></div>";
-		print "<div id='".$rk->ip."' name='".$rk->ip."'>".$rk->os.", ".$rk->browser;
+		print "<div id='".$rk->ip."' name='".$rk->ip."'>";
 		if(get_option('newstatpress_cryptip')!='checked') {
-			print "<br><iframe style='overflow:hide;border:0px;width:100%;height:30px;font-family:helvetica;paddng:0;' scrolling='no' marginwidth=0 marginheight=0 src=http://api.hostip.info/get_html.php?ip=".$rk->ip."></iframe>";
+			print "<br><iframe style='overflow:hidden;border:0px;width:100%;height:60px;font-family:helvetica;padding:0;' scrolling='no' marginwidth=0 marginheight=0 src=http://api.hostip.info/get_html.php?ip=".$rk->ip."></iframe>";
 		}
-		print "<br><small>".gethostbyaddr($rk->ip)."</small>";
-		print "<br><small>".$rk->agent."</small>";
-		print "</div>";
+		print "<br><small><span style='font-weight:700;'>OS or device:</span> ".$rk->os."</small>";
+		print "<br><small><span style='font-weight:700;'>DNS Name:</span> ".gethostbyaddr($rk->ip)."</small>";
+		print "<br><small><span style='font-weight:700;'>Browser:</span> ".$rk->browser."</small>";
+		print "<br><small><span style='font-weight:700;'>Browser Detail:</span> ".$rk->agent."</small>";
+		print "<br><br></div>";
 		print "<script>document.getElementById('".$rk->ip."').style.display='none';</script>";
 		print "</td></tr>";
 		$qry2=$wpdb->get_results("SELECT * FROM $table_name WHERE ip='".$rk->ip."' AND (date BETWEEN '$yesterday' AND '$today') order by id LIMIT 10");
@@ -784,9 +852,9 @@ document.getElementById(thediv).style.display="none"
 			print "<td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>".irihdate($details->date)." ".$details->time."</strong></font></div></td>";
 			print "<td><div><a href='".get_bloginfo('url')."/?".$details->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($details->urlrequested)."</a>";
 			if($details->searchengine != '') {
-				print "<br><small>".__('arrived from','newstatpress')." <b>".$details->searchengine."</b> ".__('searching','newstatpress')." <a href='".$details->referrer."' target=_blank>".$details->search."</a></small>";
+				print "<br><small>".__('arrived from','newstatpress')." <b>".$details->searchengine."</b> ".__('searching','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->search."</a></small>";
 			} elseif($details->referrer != '' && strpos($details->referrer,get_option('home'))===FALSE) {
-				print "<br><small>".__('arrived from','newstatpress')." <a href='".$details->referrer."' target=_blank>".$details->referrer."</a></small>";
+				print "<br><small>".__('arrived from','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->referrer."</a></small>";
 			}
 			print "</div></td>";
 			print "</tr>\n";
@@ -863,7 +931,7 @@ function iriNewStatPressSearch($what='') {
 		</td>
 	</tr>		
 	</table>	
-	<input type=hidden name=page value='wp-statpress/statpress.php'><input type=hidden name=newstatpress_action value=search>
+	<input type=hidden name=page value='newstatpress/newstatpress.php'><input type=hidden name=newstatpress_action value=search>
 	</form><br>
 <?php
 
@@ -1193,78 +1261,140 @@ function iri_NewStatPress_is_feed($url) {
 	return '';
 }
 
+/**
+ * Insert statistic into the database
+ */
 function iriStatAppend() {
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	global $userdata;
-	global $_STATPRESS;
-    get_currentuserinfo();
-	$feed='';
-	
-	// Time
-	$timestamp  = current_time('timestamp');
-	$vdate  = gmdate("Ymd",$timestamp);
-	$vtime  = gmdate("H:i:s",$timestamp);
-	$timestamp = date('Y-m-d H:i:s', $timestamp);
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+  global $userdata;
+  global $_STATPRESS;
 
-	// IP
-    $ipAddress = $_SERVER['REMOTE_ADDR'];
-    if(iriCheckBanIP($ipAddress) == '') { return ''; }
-	if(get_option('newstatpress_cryptip')=='checked') {
-		$ipAddress = crypt($ipAddress,'newstatpress');
-	}
-	
-	// URL (requested)
-	$urlRequested=iri_NewStatPress_URL();
-	if (eregi(".ico$", $urlRequested)) { return ''; }
-	if (eregi("favicon.ico", $urlRequested)) { return ''; }
-	if (eregi(".css$", $urlRequested)) { return ''; }
-	if (eregi(".js$", $urlRequested)) { return ''; }
-	if (stristr($urlRequested,"/wp-content/plugins") != FALSE) { return ''; }
-	if (stristr($urlRequested,"/wp-content/themes") != FALSE) { return ''; }
-	if (stristr($urlRequested,"/wp-admin/") != FALSE) { return ''; }
+  get_currentuserinfo();
+  $feed='';
 
-	$referrer = (isset($_SERVER['HTTP_REFERER']) ? htmlentities($_SERVER['HTTP_REFERER']) : '');
-	$userAgent = (isset($_SERVER['HTTP_USER_AGENT']) ? htmlentities($_SERVER['HTTP_USER_AGENT']) : '');
-	$spider=iriGetSpider($userAgent);
-	
-   	if(($spider != '') and (get_option('newstatpress_donotcollectspider')=='checked')) { return ''; }
+  // Time
+  $timestamp  = current_time('timestamp');
+  $vdate  = gmdate("Ymd",$timestamp);
+  $vtime  = gmdate("H:i:s",$timestamp);
+  $timestamp = date('Y-m-d H:i:s', $timestamp);
+
+  // IP
+  $ipAddress = $_SERVER['REMOTE_ADDR'];
+
+  // Is this IP blacklisted from file?
+  if(iriCheckBanIP($ipAddress) == '') { return ''; }
+
+  // Is this IP blacklisted from user?
+  $to_ignore = get_option('newstatpress_ignore_ip', array());
+  foreach($to_ignore as $a_ip_range){
+    list ($ip_to_ignore, $mask) = @explode("/", trim($a_ip_range));
+    if (empty($mask)) $mask = 32;
+    $long_ip_to_ignore = ip2long($ip_to_ignore);
+    $long_mask = bindec( str_pad('', $mask, '1') . str_pad('', 32-$mask, '0') );
+    $long_masked_user_ip = $ipAddress & $long_mask;
+    $long_masked_ip_to_ignore = $long_ip_to_ignore & $long_mask;
+    if ($long_masked_user_ip == $long_masked_ip_to_ignore) { return ''; }
+  }
+
+  if(get_option('newstatpress_cryptip')=='checked') {
+    $ipAddress = crypt($ipAddress,'newstatpress');
+  }
+
+  // URL (requested)
+  $urlRequested=iri_NewStatPress_URL();
+  if (eregi(".ico$", $urlRequested)) { return ''; }
+  if (eregi("favicon.ico", $urlRequested)) { return ''; }
+  if (eregi(".css$", $urlRequested)) { return ''; }
+  if (eregi(".js$", $urlRequested)) { return ''; }
+  if (stristr($urlRequested,"/wp-content/plugins") != FALSE) { return ''; }
+  if (stristr($urlRequested,"/wp-content/themes") != FALSE) { return ''; }
+  if (stristr($urlRequested,"/wp-admin/") != FALSE) { return ''; }
+
+  // Is a given permalink blacklisted?
+  $to_ignore = get_option('newstatpress_ignore_permalink', array());
+    foreach($to_ignore as $a_filter){
+    if (!empty($urlRequested) && strpos($urlRequested, $a_filter) === 0) { return ''; }
+  }
+
+  $referrer = (isset($_SERVER['HTTP_REFERER']) ? htmlentities($_SERVER['HTTP_REFERER']) : '');
+  $userAgent = (isset($_SERVER['HTTP_USER_AGENT']) ? htmlentities($_SERVER['HTTP_USER_AGENT']) : '');
+  $spider=iriGetSpider($userAgent);
+
+  if(($spider != '') and (get_option('newstatpress_donotcollectspider')=='checked')) { return ''; }
     
-   	if($spider != '') {
-	    $os=''; $browser='';
-	} else {
-		// Trap feeds
-		$feed=iri_NewStatPress_is_feed(get_bloginfo('url').$_SERVER['REQUEST_URI']);
-		// Get OS and browser
-		$os=iriGetOS($userAgent);
-		$browser=iriGetBrowser($userAgent);
-		list($searchengine,$search_phrase)=explode("|",iriGetSE($referrer));
-	}
-	// Country (ip2nation table) or language
-	$countrylang="";
-	if($wpdb->get_var("SHOW TABLES LIKE 'ip2nation'") == 'ip2nation') {
-		$sql='SELECT * FROM ip2nation WHERE ip < INET_ATON("'.$ipAddress.'") ORDER BY ip DESC LIMIT 0,1';
-		$qry = $wpdb->get_row($sql);
-		$countrylang=$qry->country;
-	}
-	if($countrylang == '') {
-		$countrylang=iriGetLanguage($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-	}
-	// Auto-delete visits if...
-	if(get_option('newstatpress_autodelete') != '') {
-		$t=gmdate("Ymd",strtotime('-'.get_option('newstatpress_autodelete')));
-		$results =	$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
-	}
-    if ((!is_user_logged_in()) OR (get_option('newstatpress_collectloggeduser')=='checked')) {
-		if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
-			iri_NewStatPress_CreateTable();
-		}
-		$insert = "INSERT INTO " . $table_name .
-            " (date, time, ip, urlrequested, agent, referrer, search,nation,os,browser,searchengine,spider,feed,user,timestamp) " .
-            "VALUES ('$vdate','$vtime','$ipAddress','$urlRequested','".addslashes(strip_tags($userAgent))."','$referrer','" .
-            addslashes(strip_tags($search_phrase))."','".$countrylang."','$os','$browser','$searchengine','$spider','$feed','$userdata->user_login', '$timestamp')";
-		$results = $wpdb->query( $insert );
-	}
+  if($spider != '') {
+    $os=''; $browser='';
+  } else {
+      // Trap feeds
+      $feed=iri_NewStatPress_is_feed(get_bloginfo('url').$_SERVER['REQUEST_URI']);
+      // Get OS and browser
+      $os=iriGetOS($userAgent);
+      $browser=iriGetBrowser($userAgent);
+      list($searchengine,$search_phrase)=explode("|",iriGetSE($referrer));
+    }
+
+  // Country (ip2nation table) or language
+  $countrylang="";
+  if($wpdb->get_var("SHOW TABLES LIKE 'ip2nation'") == 'ip2nation') {
+    $sql='SELECT * 
+          FROM ip2nation 
+          WHERE ip < INET_ATON("'.$ipAddress.'") 
+          ORDER BY ip DESC 
+          LIMIT 0,1';
+    $qry = $wpdb->get_row($sql);
+    $countrylang=$qry->country;
+  }
+
+  if($countrylang == '') {
+    $countrylang=iriGetLanguage($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+  }
+
+  // Auto-delete visits if...
+  if(get_option('newstatpress_autodelete') != '') {
+    $t=gmdate("Ymd",strtotime('-'.get_option('newstatpress_autodelete')));
+    $results =$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
+  }
+  if ((!is_user_logged_in()) OR (get_option('newstatpress_collectloggeduser')=='checked')) {
+    if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+      iri_NewStatPress_CreateTable();
+    }
+    $insert = 
+      "INSERT INTO " . $table_name . "(
+        date, 
+        time, 
+        ip, 
+        urlrequested, 
+        agent, 
+        referrer, 
+        search,
+        nation,
+        os, 
+        browser,
+        searchengine,
+        spider,
+        feed,
+        user,
+        timestamp
+       ) VALUES (
+        '$vdate',
+        '$vtime',
+        '$ipAddress',
+        '$urlRequested',
+        '".addslashes(strip_tags($userAgent))."',
+        '$referrer','" .
+        addslashes(strip_tags($search_phrase))."',
+        '".$countrylang."',
+        '$os',
+        '$browser',
+        '$searchengine',
+        '$spider',
+        '$feed',
+        '$userdata->user_login', 
+        '$timestamp'
+       )";
+    $results = $wpdb->query( $insert );
+  }
 }
 
 
@@ -1416,78 +1546,209 @@ function NewStatPress_Print($body='') {
 }
 
 
+/**
+ * Expand vars into the give code
+ * 
+ * @param boby the code where to look for variables to expand
+ * @return the modified code
+ */
 function iri_NewStatPress_Vars($body) {
-   	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	if(strpos(strtolower($body),"%visits%") !== FALSE) {
-		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as pageview FROM $table_name WHERE date = '".gmdate("Ymd",current_time('timestamp'))."' and spider='' and feed='';");
-		$body = str_replace("%visits%", $qry[0]->pageview, $body);
-	}
-	if(strpos(strtolower($body),"%totalvisits%") !== FALSE) {
-		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as pageview FROM $table_name WHERE spider='' and feed='';");
-		$body = str_replace("%totalvisits%", $qry[0]->pageview, $body);
-	}
-	if(strpos(strtolower($body),"%thistotalvisits%") !== FALSE) {
-		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as pageview FROM $table_name WHERE spider='' and feed='' AND urlrequested='".iri_NewStatPress_URL()."';");
-		$body = str_replace("%thistotalvisits%", $qry[0]->pageview, $body);
-	}
-	if(strpos(strtolower($body),"%since%") !== FALSE) {
-		$qry = $wpdb->get_results("SELECT date FROM $table_name ORDER BY date LIMIT 1;");
-		$body = str_replace("%since%", irihdate($qry[0]->date), $body);
-	}
-	if(strpos(strtolower($body),"%os%") !== FALSE) {
-        $userAgent = (isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '');
-   	   	$os=iriGetOS($userAgent);
-       	$body = str_replace("%os%", $os, $body);
-    }
-	if(strpos(strtolower($body),"%browser%") !== FALSE) {
-		$browser=iriGetBrowser($userAgent);
-   	   	$body = str_replace("%browser%", $browser, $body);
-   	}
-	if(strpos(strtolower($body),"%ip%") !== FALSE) { 	
-   	    $ipAddress = $_SERVER['REMOTE_ADDR'];
-   	   	$body = str_replace("%ip%", $ipAddress, $body);
-   	}
-	if(strpos(strtolower($body),"%visitorsonline%") !== FALSE) { 	
-		$to_time =  current_time('timestamp');
-		$from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
-		$to_time = date('Y-m-d H:i:s', $to_time);
-		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as visitors FROM $table_name WHERE spider='' and feed='' AND timestamp BETWEEN '$from_time' AND '$to_time';");
-   	   	$body = str_replace("%visitorsonline%", $qry[0]->visitors, $body);
-   	}
-	if(strpos(strtolower($body),"%usersonline%") !== FALSE) { 	
-		$to_time =  current_time('timestamp');
-		$from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
-		$to_time = date('Y-m-d H:i:s', $to_time);
-		$qry = $wpdb->get_results("SELECT count(DISTINCT(ip)) as users FROM $table_name WHERE spider='' and feed='' AND user<>'' AND timestamp BETWEEN '$from_time' AND '$to_time';");
-   	   	$body = str_replace("%usersonline%", $qry[0]->users, $body);
-   	}
-	if(strpos(strtolower($body),"%toppost%") !== FALSE) {
-		$qry = $wpdb->get_results("SELECT urlrequested,count(*) as totale FROM $table_name WHERE spider='' AND feed='' AND urlrequested LIKE '%p=%' GROUP BY urlrequested ORDER BY totale DESC LIMIT 1;");
-		$body = str_replace("%toppost%", iri_NewStatPress_Decode($qry[0]->urlrequested), $body);
-	}
-	if(strpos(strtolower($body),"%topbrowser%") !== FALSE) {
-		$qry = $wpdb->get_results("SELECT browser,count(*) as totale FROM $table_name WHERE spider='' AND feed='' GROUP BY browser ORDER BY totale DESC LIMIT 1;");
-		$body = str_replace("%topbrowser%", iri_NewStatPress_Decode($qry[0]->browser), $body);
-	}
-	if(strpos(strtolower($body),"%topos%") !== FALSE) {
-		$qry = $wpdb->get_results("SELECT os,count(*) as totale FROM $table_name WHERE spider='' AND feed='' GROUP BY os ORDER BY totale DESC LIMIT 1;");
-		$body = str_replace("%topos%", iri_NewStatPress_Decode($qry[0]->os), $body);
-	}
-	return $body;
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+
+  # look for %visits%
+  if(strpos(strtolower($body),"%visits%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT count(DISTINCT(ip)) AS pageview 
+       FROM $table_name 
+       WHERE 
+        date = '".gmdate("Ymd",current_time('timestamp'))."' AND
+        spider='' and feed='';
+      ");
+    $body = str_replace("%visits%", $qry[0]->pageview, $body);
+  }
+
+  # look for %totalvisits%
+  if(strpos(strtolower($body),"%totalvisits%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT count(DISTINCT(ip)) AS pageview 
+       FROM $table_name 
+       WHERE 
+         spider='' AND
+         feed='';
+      ");
+    $body = str_replace("%totalvisits%", $qry[0]->pageview, $body);
+  }
+
+  # look for %thistotalvisits%
+  if(strpos(strtolower($body),"%thistotalvisits%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT count(DISTINCT(ip)) AS pageview 
+       FROM $table_name 
+       WHERE 
+         spider='' AND
+         feed='' AND 
+         urlrequested='".iri_NewStatPress_URL()."';
+      ");
+    $body = str_replace("%thistotalvisits%", $qry[0]->pageview, $body);
+  }
+
+  # look for %alltotalvisits%
+  if(strpos(strtolower($body),"%alltotalvisits%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT SUM(pageview) AS pageview 
+       FROM (
+         SELECT count(DISTINCT(ip)) AS pageview 
+         FROM $table_name AS t1 
+         WHERE 
+           spider='' AND 
+           feed='' AND 
+           urlrequested!='' 
+         GROUP BY urlrequested
+       ) AS t2;
+      ");
+    $body = str_replace("%alltotalvisits%", $qry[0]->pageview, $body); 
+  }
+
+  # look for %since%
+  if(strpos(strtolower($body),"%since%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT date 
+       FROM $table_name 
+       ORDER BY date 
+       LIMIT 1;
+      ");
+    $body = str_replace("%since%", irihdate($qry[0]->date), $body);
+  }
+
+  # look for %os%
+  if(strpos(strtolower($body),"%os%") !== FALSE) {
+    $userAgent = (isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '');
+    $os=iriGetOS($userAgent);
+    $body = str_replace("%os%", $os, $body);
+  }
+
+  # look for %browser%
+  if(strpos(strtolower($body),"%browser%") !== FALSE) {
+    $browser=iriGetBrowser($userAgent);
+    $body = str_replace("%browser%", $browser, $body);
+  }
+
+  # look for %ip%
+  if(strpos(strtolower($body),"%ip%") !== FALSE) { 	
+    $ipAddress = $_SERVER['REMOTE_ADDR'];
+    $body = str_replace("%ip%", $ipAddress, $body);
+  }
+
+  # look for %visitorsonline%
+  if(strpos(strtolower($body),"%visitorsonline%") !== FALSE) { 	
+    $to_time =  current_time('timestamp');
+    $from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
+    $to_time = date('Y-m-d H:i:s', $to_time);
+    $qry = $wpdb->get_results(
+      "SELECT count(DISTINCT(ip)) AS visitors 
+       FROM $table_name 
+       WHERE 
+         spider='' AND
+         feed='' AND 
+         timestamp BETWEEN '$from_time' AND '$to_time';
+      ");
+    $body = str_replace("%visitorsonline%", $qry[0]->visitors, $body);
+  }
+
+  # look for %usersonline%
+  if(strpos(strtolower($body),"%usersonline%") !== FALSE) { 	
+    $to_time =  current_time('timestamp');
+    $from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
+    $to_time = date('Y-m-d H:i:s', $to_time);
+    $qry = $wpdb->get_results(
+      "SELECT count(DISTINCT(ip)) AS users 
+       FROM $table_name 
+       WHERE 
+         spider='' AND 
+         feed='' AND 
+         user<>'' AND 
+         timestamp BETWEEN '$from_time' AND '$to_time';
+      ");
+    $body = str_replace("%usersonline%", $qry[0]->users, $body);
+  }
+
+  # look for %toppost%
+  if(strpos(strtolower($body),"%toppost%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT urlrequested,count(*) AS totale 
+       FROM $table_name 
+       WHERE 
+         spider='' AND 
+         feed='' AND 
+         urlrequested LIKE '%p=%' 
+       GROUP BY urlrequested 
+       ORDER BY totale DESC 
+       LIMIT 1;
+      ");
+    $body = str_replace("%toppost%", iri_NewStatPress_Decode($qry[0]->urlrequested), $body);
+  }
+
+  # look for %topbrowser%
+  if(strpos(strtolower($body),"%topbrowser%") !== FALSE) {
+    $qry = $wpdb->get_results(
+       "SELECT browser,count(*) AS totale 
+        FROM $table_name 
+        WHERE 
+          spider='' AND 
+          feed='' 
+        GROUP BY browser 
+        ORDER BY totale DESC 
+        LIMIT 1;
+       ");
+    $body = str_replace("%topbrowser%", iri_NewStatPress_Decode($qry[0]->browser), $body);
+  }
+
+  # look for %topos%
+  if(strpos(strtolower($body),"%topos%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT os,count(*) AS totale 
+       FROM $table_name 
+       WHERE 
+         spider='' AND 
+         feed='' 
+       GROUP BY os 
+       ORDER BY totale DESC
+       LIMIT 1;
+      ");
+    $body = str_replace("%topos%", iri_NewStatPress_Decode($qry[0]->os), $body);
+  }
+
+  return $body;
 }
 
-
+/**
+ * Get top posts
+ *
+ * @param limit the number of post to show
+ * @param showcounts if checked show totals
+ * @return result of extraction
+ */
 function iri_NewStatPress_TopPosts($limit=5, $showcounts='checked') {
-   	global $wpdb;
-   	$res="\n<ul>\n";
-	$table_name = $wpdb->prefix . "statpress";
-	$qry = $wpdb->get_results("SELECT urlrequested,count(*) as totale FROM $table_name WHERE spider='' AND feed='' AND urlrequested LIKE '%p=%' GROUP BY urlrequested ORDER BY totale DESC LIMIT $limit;");
-	foreach ($qry as $rk) {
-		$res.="<li><a href='?".$rk->urlrequested."'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
-		if(strtolower($showcounts) == 'checked') { $res.=" (".$rk->totale.")"; }
-	}
-	return "$res</ul>\n";
+  global $wpdb;
+  $res="\n<ul>\n";
+  $table_name = $wpdb->prefix . "statpress";
+  $qry = $wpdb->get_results(
+    "SELECT urlrequested,count(*) as totale 
+     FROM $table_name 
+     WHERE 
+       spider='' AND 
+       feed='' AND 
+       urlrequested LIKE '%p=%' 
+     GROUP BY urlrequested 
+     ORDER BY totale DESC LIMIT $limit;
+    ");
+
+  foreach ($qry as $rk) {
+    $res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
+    if(strtolower($showcounts) == 'checked') { $res.=" (".$rk->totale.")"; }
+  }
+  return "$res</ul>\n";
 }
 
 
