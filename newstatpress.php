@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.1.8
+Version: 0.1.9
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -121,6 +121,19 @@ function iriNewStatPressOptions() {
     update_option('newstatpress_cryptip', $_POST['newstatpress_cryptip']);
     update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
     update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
+    update_option('newstatpress_el_top_days', $_POST['newstatpress_el_top_days']);
+    update_option('newstatpress_el_os', $_POST['newstatpress_el_os']);
+    update_option('newstatpress_el_browser', $_POST['newstatpress_el_browser']);
+    update_option('newstatpress_el_feed', $_POST['newstatpress_el_feed']);
+    update_option('newstatpress_el_searchengine', $_POST['newstatpress_el_searchengine']);
+    update_option('newstatpress_el_search', $_POST['newstatpress_el_search']);
+    update_option('newstatpress_el_referrer', $_POST['newstatpress_el_referrer']);
+    update_option('newstatpress_el_languages', $_POST['newstatpress_el_languages']);
+    update_option('newstatpress_el_spiders', $_POST['newstatpress_el_spiders']);
+    update_option('newstatpress_el_pages', $_POST['newstatpress_el_pages']);
+    update_option('newstatpress_el_visitors', $_POST['newstatpress_el_visitors']);
+    update_option('newstatpress_el_daypages', $_POST['newstatpress_el_daypages']);
+    update_option('newstatpress_el_ippages', $_POST['newstatpress_el_ippages']);
 
     # update database too
     iri_NewStatPress_CreateTable();
@@ -177,6 +190,91 @@ function iriNewStatPressOptions() {
               <?php echo implode(',', get_option('newstatpress_ignore_permalink',array())) ?>
             </textarea></p>
         </td></tr>
+
+      <tr><td><hr></hr></td></tr>
+
+      <tr>
+        <td>
+      <h3><label for="newstatpress_details_options"><?php _e('Details options','newstatpress') ?></label></h3>
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_top_days"><?php _e('Elements in Top days (default 5)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_top_days" value="<?php echo (get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_os"><?php _e('Elements in O.S. (default 10)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_os" value="<?php echo (get_option('newstatpress_el_os')=='') ? 10:get_option('newstatpress_el_os'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_browser"><?php _e('Elements in Browser (default 10)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_browser" value="<?php echo (get_option('newstatpress_el_browser')=='') ? 10:get_option('newstatpress_el_browser'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_feed"><?php _e('Elements in Feed (default 5)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_feed" value="<?php echo (get_option('newstatpress_el_feed')=='') ? 5:get_option('newstatpress_el_feed'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_searchengine"><?php _e('Elements in Search Engines (default 10)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_searchengine" value="<?php echo (get_option('newstatpress_el_searchengine')=='') ? 10:get_option('newstatpress_el_searchengine'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_search"><?php _e('Elements in Top Search Terms (default 20)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_search" value="<?php echo (get_option('newstatpress_el_search')=='') ? 20:get_option('newstatpress_el_search'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_referrer"><?php _e('Elements in Top Refferer (default 10)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_referrer" value="<?php echo (get_option('newstatpress_el_referrer')=='') ? 10:get_option('newstatpress_el_referrer'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_languages"><?php _e('Elements in Countries/Languages (default 20)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_languages" value="<?php echo (get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_spiders"><?php _e('Elements in Spiders (default 10)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_spiders" value="<?php echo (get_option('newstatpress_el_spiders')=='') ? 10:get_option('newstatpress_el_spiders'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_pages"><?php _e('Elements in Top Pages (default 5)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_pages" value="<?php echo (get_option('newstatpress_el_pages')=='') ? 5:get_option('newstatpress_el_pages'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_visitors"><?php _e('Elements in Top Days - Unique visitors (default 5)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_visitors" value="<?php echo (get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_daypages"><?php _e('Elements in Top Days - Pageviews (default 5)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_daypages" value="<?php echo (get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'); ?>" size="3" maxlength="3" />
+       </td></tr>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_ippages"><?php _e('Elements in Top IPs - Pageviews (default 5)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_ippages" value="<?php echo (get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'); ?>" size="3" maxlength="3" />
+       </td></tr>
 
       <tr><td><hr></hr></td></tr>
 
@@ -767,44 +865,43 @@ function iriNewStatPressDetails() {
 	$querylimit="LIMIT 10";
 
 	# Top days
-    iriValueTable2("date","Top days",5);
+    iriValueTable2("date","Top days",(get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'));
 
 	# O.S.
-    iriValueTable2("os","O.S.",10,"","","AND feed='' AND spider='' AND os<>''");
+    iriValueTable2("os","O.S.",(get_option('newstatpress_el_os')=='') ? 10:get_option('newstatpress_el_os'),"","","AND feed='' AND spider='' AND os<>''");
 
 	# Browser
-    iriValueTable2("browser","Browser",10,"","","AND feed='' AND spider='' AND browser<>''");	
+    iriValueTable2("browser","Browser",(get_option('newstatpress_el_browser')=='') ? 10:get_option('newstatpress_el_browser'),"","","AND feed='' AND spider='' AND browser<>''");	
 	
 	# Feeds
-    iriValueTable2("feed","Feeds",5,"","","AND feed<>''");
+    iriValueTable2("feed","Feeds",(get_option('newstatpress_el_feed')=='') ? 5:get_option('newstatpress_el_feed'),"","","AND feed<>''");
     
 	# SE
-    iriValueTable2("searchengine","Search engines",10,"","","AND searchengine<>''");
+    iriValueTable2("searchengine","Search engines",(get_option('newstatpress_el_searchengine')=='') ? 10:get_option('newstatpress_el_searchengine'),"","","AND searchengine<>''");
 
 	# Search terms
-    iriValueTable2("search","Top search terms",20,"","","AND search<>''");
+    iriValueTable2("search","Top search terms",(get_option('newstatpress_el_search')=='') ? 20:get_option('newstatpress_el_search'),"","","AND search<>''");
 
 	# Top referrer
-    iriValueTable2("referrer","Top referrer",10,"","","AND referrer<>'' AND referrer NOT LIKE '%".get_bloginfo('url')."%'");
+    iriValueTable2("referrer","Top referrer",(get_option('newstatpress_el_referrer')=='') ? 10:get_option('newstatpress_el_referrer'),"","","AND referrer<>'' AND referrer NOT LIKE '%".get_bloginfo('url')."%'");
  	
 	# Languages
-    iriValueTable2("nation","Countries/Languages",20,"","","AND nation<>'' AND spider=''");
+    iriValueTable2("nation","Countries/Languages",(get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'),"","","AND nation<>'' AND spider=''");
 
 	# Spider
-    iriValueTable2("spider","Spiders",10,"","","AND spider<>''");
+    iriValueTable2("spider","Spiders",(get_option('newstatpress_el_spiders')=='') ? 10:get_option('newstatpress_el_spiders'),"","","AND spider<>''");
 
 	# Top Pages
-    iriValueTable2("urlrequested","Top pages",5,"","urlrequested","AND feed='' and spider=''");
-	
+    iriValueTable2("urlrequested","Top pages",(get_option('newstatpress_el_pages')=='') ? 5:get_option('newstatpress_el_pages'),"","urlrequested","AND feed='' and spider=''");
 	
 	# Top Days - Unique visitors
-    iriValueTable2("date","Top Days - Unique visitors",5,"distinct","ip","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+    iriValueTable2("date","Top Days - Unique visitors",(get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'),"distinct","ip","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
 
     # Top Days - Pageviews
-    iriValueTable2("date","Top Days - Pageviews",5,"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+    iriValueTable2("date","Top Days - Pageviews",(get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
 
     # Top IPs - Pageviews
-    iriValueTable2("ip","Top IPs - Pageviews",5,"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+    iriValueTable2("ip","Top IPs - Pageviews",(get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
 }
 
 
@@ -1068,47 +1165,63 @@ function iriindextablesize($table) {
 }
 
 
-function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $exclude= "") {
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	
-	if ($queryfld == '') { $queryfld = $fld; }
-	print "<div class='wrap'><table class='widefat'><thead><tr><th scope='col' style='width:400px;'><h2>$fldtitle</h2></th><th scope='col' style='width:100px;'>".__('Visits','newstatpress')."</th><th></th></tr></thead>";
-	$rks = $wpdb->get_var("SELECT count($param $queryfld) as rks FROM $table_name WHERE 1=1 $exclude;"); 
-	if($rks > 0) {
-		$sql="SELECT count($param $queryfld) as pageview, $fld FROM $table_name WHERE 1=1 $exclude GROUP BY $fld ORDER BY pageview DESC";
-		if($limit > 0) { $sql=$sql." LIMIT $limit"; }
-		$qry = $wpdb->get_results($sql);
-	    $tdwidth=450;
-		
-		// Collects data
-		$data=array();
-		foreach ($qry as $rk) {
-			$pc=round(($rk->pageview*100/$rks),1);
-			if($fld == 'nation') { $rk->$fld = strtoupper($rk->$fld); }
-			if($fld == 'date') { $rk->$fld = irihdate($rk->$fld); }
-			if($fld == 'urlrequested') { $rk->$fld = iri_NewStatPress_Decode($rk->$fld); }
-        	$data[substr($rk->$fld,0,50)]=$rk->pageview;
-		}
-	}
+function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $exclude= "", $print = TRUE) {
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
 
-	// Draw table body
-	print "<tbody id='the-list'>";
-	if($rks > 0) {  // Chart!
-		if($fld == 'nation') {
-			$chart=iriGoogleGeo("","",$data);
-		} else {
-			$chart=iriGoogleChart("","500x200",$data);
-		}
-		print "<tr><td></td><td></td><td rowspan='".($limit+2)."'>$chart</td></tr>";
-		foreach ($data as $key => $value) {
-    	   	print "<tr><td style='width:500px;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;'>".$key;
-        	print "</td><td style='width:100px;text-align:center;'>".$value."</td>";
-			print "</tr>";
-		}
-	}
-	print "</tbody></table></div><br>\n";
-	
+  if ($queryfld == '') { 
+    $queryfld = $fld; 
+  }
+  $text = "<div class='wrap'><table class='widefat'><thead><tr><th scope='col' style='width:400px;'><h2>$fldtitle</h2></th><th scope='col' style='width:100px;'>".__('Visits','newstatpress')."</th><th></th></tr></thead>";
+  $rks = $wpdb->get_var("
+     SELECT count($param $queryfld) as rks 
+     FROM $table_name 
+     WHERE 1=1 $exclude;
+  "); 
+
+  if($rks > 0) {
+    $sql="
+      SELECT count($param $queryfld) as pageview, $fld 
+      FROM $table_name 
+      WHERE 1=1 $exclude 
+      GROUP BY $fld 
+      ORDER BY pageview DESC
+    ";
+    if($limit > 0) { 
+      $sql=$sql." LIMIT $limit"; 
+    }
+    $qry = $wpdb->get_results($sql);
+    $tdwidth=450;
+
+    // Collects data
+    $data=array();
+    foreach ($qry as $rk) {
+      $pc=round(($rk->pageview*100/$rks),1);
+      if($fld == 'nation') { $rk->$fld = strtoupper($rk->$fld); }
+      if($fld == 'date') { $rk->$fld = irihdate($rk->$fld); }
+      if($fld == 'urlrequested') { $rk->$fld = iri_NewStatPress_Decode($rk->$fld); }
+      $data[substr($rk->$fld,0,50)]=$rk->pageview;
+    }
+  }
+
+  // Draw table body
+  $text = $text."<tbody id='the-list'>";
+  if($rks > 0) {  // Chart!
+    if($fld == 'nation') {
+      $chart=iriGoogleGeo("","",$data);
+    } else {
+        $chart=iriGoogleChart("","500x200",$data);
+      }
+    $text = $text. "<tr><td></td><td></td><td rowspan='".($limit+2)."'>$chart</td></tr>";
+    foreach ($data as $key => $value) {
+      $text = $text."<tr><td style='width:500px;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;'>".$key;
+      $text = $text."</td><td style='width:100px;text-align:center;'>".$value."</td>";
+      $text = $text."</tr>";
+    }
+  }
+  $text = $text."</tbody></table></div><br>\n";
+  if ($print) print $text;
+  else return $text;
 }
 
 
@@ -1211,42 +1324,44 @@ function iri_NewStatPress_lastmonth() {
 
 
 function iri_NewStatPress_CreateTable() {
-	global $wpdb;
-	global $wp_db_version;
-	$table_name = $wpdb->prefix . "statpress";
-	$sql_createtable = "CREATE TABLE " . $table_name . " (
-	id mediumint(9) NOT NULL AUTO_INCREMENT,
-	date int(8),
-	time time,
-	ip varchar(15),
-	urlrequested varchar(250),
-	agent varchar(250),
-	referrer varchar(250),
-	search varchar(250),
-	nation varchar(2),
-	os varchar(30),
-	browser varchar(32),
-	searchengine varchar(16),
-	spider varchar(32),
-	feed varchar(8),
-	user varchar(16),
-	timestamp timestamp DEFAULT 0,
-	UNIQUE KEY id (id),
-	index spider_nation (spider, nation),  
-	index ip_date (ip, date),  
-	index agent (agent),  
-	index search (search),  
-	index referrer (referrer),  
-	index feed_spider_os (feed, spider, os),  
-	index os (os),  
-	index date_feed_spider (date, feed, spider),  
-	index feed_spider_browser (feed, spider, browser),  
-	index browser (browser)
-	);";
-	if($wp_db_version >= 5540)	$page = 'wp-admin/includes/upgrade.php';  
-								else $page = 'wp-admin/upgrade'.'-functions.php';
-	require_once(ABSPATH . $page);
-	dbDelta($sql_createtable);	
+  global $wpdb;
+  global $wp_db_version;
+  $table_name = $wpdb->prefix . "statpress";
+  $sql_createtable = "
+    CREATE TABLE " . $table_name . " (
+      id mediumint(9) NOT NULL AUTO_INCREMENT,
+      date int(8),
+      time time,
+      ip varchar(15),
+      urlrequested varchar(250),
+      agent varchar(250),
+      referrer varchar(250),
+      search varchar(250),
+      nation varchar(2),
+      os varchar(30),
+      browser varchar(32),
+      searchengine varchar(16),
+      spider varchar(32),
+      feed varchar(8),
+      user varchar(16),
+      timestamp timestamp DEFAULT 0,
+      UNIQUE KEY id (id),
+      index spider_nation (spider, nation),  
+      index ip_date (ip, date),  
+      index agent (agent),  
+      index search (search),  
+      index referrer (referrer),  
+      index feed_spider_os (feed, spider, os),  
+      index os (os),  
+      index date_feed_spider (date, feed, spider),  
+      index feed_spider_browser (feed, spider, browser),  
+      index browser (browser)
+    );";
+  if($wp_db_version >= 5540)$page = 'wp-admin/includes/upgrade.php';  
+  else $page = 'wp-admin/upgrade'.'-functions.php';
+
+  require_once(ABSPATH . $page);
+  dbDelta($sql_createtable);	
 }
 
 function iri_NewStatPress_is_feed($url) {
@@ -1580,6 +1695,18 @@ function iri_NewStatPress_Vars($body) {
     $body = str_replace("%totalvisits%", $qry[0]->pageview, $body);
   }
 
+  # look for %totalpageviews%
+  if(strpos(strtolower($body),"%totalpageviews%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT count(id) AS pageview 
+       FROM $table_name 
+       WHERE 
+         spider='' AND 
+         feed='';
+      ");
+    $body = str_replace("%totalpageviews%", $qry[0]->pageview, $body);
+  }
+
   # look for %thistotalvisits%
   if(strpos(strtolower($body),"%thistotalvisits%") !== FALSE) {
     $qry = $wpdb->get_results(
@@ -1822,6 +1949,80 @@ function widget_newstatpress_init($args) {
 	register_widget_control(array('NewStatPress TopPosts','widgets'), 'widget_newstatpresstopposts_control', 300, 110);
 }
 
+/**
+ * Replace a content in page with NewStatPress output
+ * Used format is: [NewTatPress: type]
+ * Type can be:
+ *  [NewStatPress: Top days]
+ *  [NewStatPress: O.S.] 
+ *  [NewStatPress: Browser]
+ *  [NewStatPress: Feeds]
+ *  [NewStatPress: Search Engine]
+ *  [NewStatPress: Search terms]
+ *  [NewStatPress: Top referrer]
+ *  [NewStatPress: Languages]
+ *  [NewStatPress: Spider]
+ *  [NewStatPress: Top Pages]
+ *  [NewStatPress: Top Days - Unique visitors]
+ *  [NewStatPress: Top Days - Pageviews]
+ *  [NewStatPress: Top IPs - Pageviews]
+ * 
+ * @param content the content of page
+ */
+function content_newstatpress($content = '') {
+  ob_start();
+  $TYPEs = array();
+  $TYPE = preg_match_all('/\[NewStatPress: (.*)\]/Ui', $content, $TYPEs);
+
+  foreach ($TYPEs[1] as $k => $TYPE) {
+    switch ($TYPE) {
+      case "Top days":
+        $replacement=iriValueTable2("date","Top days", (get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'), FALSE);
+        break;
+      case "O.S.":
+        $replacement=iriValueTable2("os","O.S.",(get_option('newstatpress_el_os')=='') ? 10:get_option('newstatpress_el_os'),"","","AND feed='' AND spider='' AND os<>''", FALSE);
+        break;
+      case "Browser":
+        $replacement=iriValueTable2("browser","Browser",(get_option('newstatpress_el_browser')=='') ? 10:get_option('newstatpress_el_browser'),"","","AND feed='' AND spider='' AND browser<>''", FALSE);
+        break;
+      case "Feeds":
+        $replacement=iriValueTable2("feed","Feeds",(get_option('newstatpress_el_feed')=='') ? 5:get_option('newstatpress_el_feed'),"","","AND feed<>''", FALSE);
+        break;
+      case "Search Engine":
+        $replacement=iriValueTable2("searchengine","Search engines",(get_option('newstatpress_el_searchengine')=='') ? 10:get_option('newstatpress_el_searchengine'),"","","AND searchengine<>''", FALSE);
+        break;
+      case "Search terms":
+        $replacement=iriValueTable2("search","Top search terms",(get_option('newstatpress_el_search')=='') ? 20:get_option('newstatpress_el_search'),"","","AND search<>''", FALSE);
+        break;
+      case "Top referrer":
+        $replacement= iriValueTable2("referrer","Top referrer",(get_option('newstatpress_el_referrer')=='') ? 10:get_option('newstatpress_el_referrer'),"","","AND referrer<>'' AND referrer NOT LIKE '%".get_bloginfo('url')."%'", FALSE);
+        break;
+      case "Languages":
+        $replacement=iriValueTable2("nation","Countries/Languages",(get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'),"","","AND nation<>'' AND spider=''", FALSE);
+        break;
+      case "Spider":
+        $replacement=iriValueTable2("spider","Spiders",(get_option('newstatpress_el_spiders')=='') ? 10:get_option('newstatpress_el_spiders'),"","","AND spider<>''", FALSE);
+        break;
+      case "Top Pages":
+        $replacement=iriValueTable2("urlrequested","Top pages",(get_option('newstatpress_el_pages')=='') ? 5:get_option('newstatpress_el_pages'),"","urlrequested","AND feed='' and spider=''", FALSE);
+        break;
+      case "Top Days - Unique visitors":
+        $replacement=iriValueTable2("date","Top Days - Unique visitors",(get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'),"distinct","ip","AND feed='' and spider=''", FALSE); 
+        break;
+      case "Top Days - Pageviews":
+        $replacement=iriValueTable2("date","Top Days - Pageviews",(get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'),"","urlrequested","AND feed='' and spider=''", FALSE); 
+        break;
+      case "Top IPs - Pageviews":
+        $replacement=iriValueTable2("ip","Top IPs - Pageviews",(get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'),"","urlrequested","AND feed='' and spider=''", FALSE); 
+        break;
+      default:
+        $replacement="";
+    }
+    $content = str_replace($TYPEs[0][$k], $replacement, $content);
+  }
+  ob_get_clean();
+  return $content;
+}
 
 load_plugin_textdomain('newstatpress', 'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/locale');
 
@@ -1829,6 +2030,8 @@ add_action('admin_menu', 'iri_add_pages');
 add_action('plugins_loaded', 'widget_newstatpress_init');
 add_action('send_headers', 'iriStatAppend');  //add_action('wp_head', 'iriStatAppend');
 add_action('init','iri_checkExport');
+
+add_filter('the_content', 'content_newstatpress');
 
 register_activation_hook(__FILE__,'iri_NewStatPress_CreateTable');
 
