@@ -1,3 +1,24 @@
+Camino|Camino|
+Chromium|Chromium|
+Chrome 2|Chrome/2|
+Chrome 3|Chrome/3|
+Chrome 4|Chrome/4|
+Chrome 5|Chrome/5|
+Chrome 6|Chrome/6|
+Chrome 7|Chrome/7|
+Chrome 8|Chrome/8|
+Chrome 9|Chrome/9|
+Chrome 10|Chrome/10|
+Chrome 11|Chrome/11|
+Chrome 12|Chrome/12|
+Chrome 13|Chrome/13|
+Chrome 14|Chrome/14|
+Chrome 15|Chrome/15|
+Chrome 16|Chrome/16|
+Chrome 17|Chrome/17|
+Chrome|Chrome|
+Dillo|Dillo|
+Epiphany|Epiphany|
 Firefox 1|Firefox/1.0|
 Firefox 1.5|Firefox/1.5|
 Firefox 2|Firefox/2|
@@ -8,6 +29,8 @@ Firefox 4|Firefox/4|
 Firefox 5|Firefox/5|
 Firefox 6|Firefox/6|
 Firefox 7|Firefox/7|
+Firefox 8|Firefox/8|
+Firefox 9|Firefox/9|
 Firefox|Firefox|
 Firefox|Phoenix|
 Firebird|Firebird|
@@ -72,22 +95,6 @@ Opera Mini 6.1|OperaMini/6.1.25375|
 Opera Mini|OperaMini|
 Opera|Opera|
 Orca|Orca|
-Camino|Camino|
-Chromium|Chromium|
-Chrome 2|Chrome/2|
-Chrome 3|Chrome/3|
-Chrome 4|Chrome/4|
-Chrome 5|Chrome/5|
-Chrome 6|Chrome/6|
-Chrome 7|Chrome/7|
-Chrome 8|Chrome/8|
-Chrome 9|Chrome/9|
-Chrome 10|Chrome/10|
-Chrome 11|Chrome/11|
-Chrome 12|Chrome/12|
-Chrome 13|Chrome/13|
-Chrome 14|Chrome/14|
-Chrome|Chrome|
 Safari|Safari|
 Safari|AppleSyndication|
 Safari|AppleWebKit|
@@ -105,7 +112,6 @@ SeaMonkey|SeaMonkey|
 RssReader|rssreader.com|
 Radianrss|radianrss|
 NewsCopier|NewsCopier|
-Epiphany|Epiphany|
 K-Meleon|K-Meleon|
 iCab|iCab|
 Mozilla|Mozilla|

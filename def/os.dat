@@ -47,6 +47,7 @@ Amiga|Amiga|
 Android Linux 1|Android1|
 Android Linux 2|Android2|
 Android Linux 3|Android3|
+Android Linux 4|Android4|
 Android Linux|Android|
 Bada 1.2|Bada/1.2|
 Bada|Bada|
@@ -82,6 +83,7 @@ Ubuntu Jaunty|Ubuntu/9.25|
 Ubuntu Maverick|Ubuntu/10.10| 
 Ubuntu lucid Lynx|Ubuntu/10.04|
 Ubuntu Chromium|Ubuntu/11.04|
+Ubuntu Oneiric Ocelot|Ubuntu/11.10|
 Ubuntu Linux|Ubuntu|
 Suse Linux|Suse|
 Suse Linux|SUSE|
@@ -99,3 +101,4 @@ Mac OS X|Ensemble2|
 SGI Irix|Irix|
 Unix|Unix|
 Unix|X11|
+QNX|QNX|
