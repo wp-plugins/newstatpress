@@ -2,11 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: statpress-it_IT\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-14 17:23+0100\n"
-"PO-Revision-Date: 2011-10-14 17:23+0100\n"
-"Last-Translator: ice00 <ice00@libero.it>\n"
+"POT-Creation-Date: 2007-12-14 10:21+0100\n"
+"PO-Revision-Date: 2007-12-21 21:52+0300\n"
+"Last-Translator: Aleksandr <aleksandr@wp-web.com>\n"
 "Language-Team:  <ru@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,429 +13,300 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Country: UKRAINE\n"
-"X-Poedit-SearchPath-0: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk\n"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:51
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:370
-msgid "Overview"
-msgstr "Обзор"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:52
-msgid "Details"
-msgstr "Детали"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:53
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:915
-msgid "Spy"
-msgstr "Шпион"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:986
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1025
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1118
-msgid "Search"
-msgstr "Поиск"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:311
-msgid "Export"
-msgstr "Экспорт"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:143
-msgid "Options"
-msgstr "Настройки"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
-msgid "NewStatPressUpdate"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:58
-msgid "NewStatpress blog"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:140
-msgid "Saved"
-msgstr "Сохранено"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:146
-msgid "Collect data about logged users, too."
-msgstr "Собирать также информацию о вошедших пользователях."
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:147
-msgid "Do not collect spiders visits"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:148
-msgid "Crypt IP addresses"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:151
-msgid "Automatically delete visits older than"
-msgstr "Автоматически удалять просмотры старше чем"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:153
-msgid "Never delete!"
-msgstr "Никогда не удалять!"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:154
-msgid "month"
-msgstr "месяц"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:155
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:156
-msgid "months"
-msgstr "месяцы"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:157
-msgid "year"
-msgstr "год"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:160
-msgid "Days in Overview graph"
-msgstr "Дни в обзорном графике"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:169
-msgid "Minimum capability to view stats"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:173
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:934
-msgid "more info"
-msgstr "детальней"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:179
-msgid "IP addresses to ignore"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:180
-msgid "Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly."
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:187
-msgid "Pages and posts to ignore"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:188
-msgid "Enter a list of permalinks you don't want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them."
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:198
-#, fuzzy
-msgid "Details options"
-msgstr "Сохранить настройки"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:203
-msgid "Elements in Top days (default 5)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:209
-msgid "Elements in O.S. (default 10)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:215
-msgid "Elements in Browser (default 10)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:221
-msgid "Elements in Feed (default 5)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:227
-msgid "Elements in Search Engines (default 10)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:233
-msgid "Elements in Top Search Terms (default 20)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:239
-msgid "Elements in Top Refferer (default 10)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:245
-msgid "Elements in Countries/Languages (default 20)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:251
-msgid "Elements in Spiders (default 10)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:257
-msgid "Elements in Top Pages (default 5)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:263
-msgid "Elements in Top Days - Unique visitors (default 5)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:269
-msgid "Elements in Top Days - Pageviews (default 5)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:275
-msgid "Elements in Top IPs - Pageviews (default 5)"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:281
-msgid "Save options"
-msgstr "Сохранить настройки"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:306
-msgid "Export stats to text file"
-msgstr "Экспортировать статистику в текстовый файл"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:308
-msgid "From"
-msgstr "От"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:309
-msgid "To"
-msgstr "До"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:310
-msgid "Fields delimiter"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:373
-msgid "Total"
-msgstr "Всего"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:374
-msgid "Last month"
-msgstr "Предыдущий месяц"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:375
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:376
-msgid "This month"
-msgstr "Этот месяц"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:377
-msgid "Yesterday"
-msgstr "Вчера"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:378
-msgid "Today"
-msgstr "Сегодня"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:384
-msgid "Visitors"
-msgstr "Посетители"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:452
-msgid "Pageviews"
-msgstr "Просмотры"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:738
-msgid "Last hits"
-msgstr "Последние хиты"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:738
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:770
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:779
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:813
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:838
-msgid "Date"
-msgstr "Дата"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:738
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:770
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:779
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:813
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:838
-msgid "Time"
-msgstr "Время"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:738
-#, fuzzy
-msgid "Country"
-msgstr "Считать"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:738
-msgid "Language"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:738
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:813
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1115
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1125
-msgid "Page"
-msgstr "Страница"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:770
-msgid "Last search terms"
-msgstr "Последние поисковые запросы"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:770
-msgid "Terms"
-msgstr "Сроки"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:770
-msgid "Engine"
-msgstr "Движок"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:770
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:779
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1524
-msgid "Result"
-msgstr "Результат"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:774
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:783
-msgid "page viewed"
-msgstr "посещенная страница"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:779
-msgid "Last referrers"
-msgstr "Последние ссылающиеся ресурсы"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:779
-msgid "URL"
-msgstr "URL"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:789
-msgid "Last agents"
-msgstr "Последние браузерные агенты"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:789
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:838
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:977
-msgid "Agent"
-msgstr "Агент"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:813
-msgid "Last pages"
-msgstr "Последние страницы"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:813
-msgid "OS"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:813
-msgid "Browser"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:838
-#, fuzzy
-msgid "Last spiders"
-msgstr "Последние страницы"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:838
-msgid "Spider"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:952
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:954
-msgid "arrived from"
-msgstr "прибыл с"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:952
-msgid "searching"
-msgstr "искал"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:976
-msgid "URL Requested"
-msgstr "запрошенный URL"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:978
-msgid "Referrer"
-msgstr "Ссылающийся ресурс"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:979
-msgid "Search terms"
-msgstr "Поисковые запросы"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:980
-msgid "Search engine"
-msgstr "Поисковик"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:981
-msgid "Operative system"
-msgstr "Операционная система"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:991
-msgid "Field"
-msgstr "Поле"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:998
-msgid "Group by"
-msgstr "Сгруппировать по"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:999
-msgid "Sort by"
-msgstr "Сортировать по"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1000
-msgid "if contains"
-msgstr "если содержит"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1010
-msgid "sort by count if grouped"
-msgstr "сортировать по количеству если сгруппировано"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1011
-msgid "include spiders/crawlers/bot"
-msgstr "включить поисковых роботов/пауков/ботов"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1012
-msgid "include feed"
-msgstr "включить RSS-ленту"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1019
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1933
-msgid "Limit results to"
-msgstr "Ограничить результат"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1082
-msgid "Results"
-msgstr "Результаты"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1089
-msgid "Count"
-msgstr "Считать"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1116
-msgid "Category"
-msgstr "Категория"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1117
-msgid "Calendar"
-msgstr "Календарь"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1175
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1934
-msgid "Visits"
-msgstr "Посещений"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1524
-msgid "Updating..."
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1524
-msgid "Size"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1898
+"X-Poedit-SearchPath-0: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress\n"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress
+#: copia.php:688
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:1027
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1899
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress
+#: copia.php:689
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:1028
 msgid "Body:"
 msgstr "Тело:"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1932
-#, fuzzy
-msgid "Title"
-msgstr "Заголовок:"
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:33
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:147
+msgid "Overview"
+msgstr "Обзор"
 
-#~ msgid "Domain"
-#~ msgstr "Домен"
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:34
+msgid "Details"
+msgstr "Детали"
 
-#~ msgid "What"
-#~ msgstr "Что"
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:35
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:439
+msgid "Spy"
+msgstr "Шпион"
 
-#~ msgid "done"
-#~ msgstr "выполнено"
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:36
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:509
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:548
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:642
+msgid "Search"
+msgstr "Поиск"
 
-#~ msgid "Updated"
-#~ msgstr "Обновлено"
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:37
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:113
+msgid "Export"
+msgstr "Экспорт"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:38
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:71
+msgid "Options"
+msgstr "Настройки"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:68
+msgid "Saved"
+msgstr "Сохранено"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:74
+msgid "Collect data about logged users, too."
+msgstr "Собирать также информацию о вошедших пользователях."
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:76
+msgid "Automatically delete visits older than"
+msgstr "Автоматически удалять просмотры старше чем"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:78
+msgid "Never delete!"
+msgstr "Никогда не удалять!"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:79
+msgid "month"
+msgstr "месяц"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:80
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:81
+msgid "months"
+msgstr "месяцы"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:82
+msgid "year"
+msgstr "год"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:85
+msgid "Days in Overview graph"
+msgstr "Дни в обзорном графике"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:94
+msgid "Save options"
+msgstr "Сохранить настройки"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:109
+msgid "Export stats to text file"
+msgstr "Экспортировать статистику в текстовый файл"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:111
+msgid "From"
+msgstr "От"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:112
+msgid "To"
+msgstr "До"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
+msgid "Total"
+msgstr "Всего"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
+msgid "Last month"
+msgstr "Предыдущий месяц"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
+msgid "This month"
+msgstr "Этот месяц"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
+msgid "Yesterday"
+msgstr "Вчера"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
+msgid "Today"
+msgstr "Сегодня"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:152
+msgid "Visitors"
+msgstr "Посетители"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:175
+msgid "Pageviews"
+msgstr "Просмотры"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
+msgid "Last hits"
+msgstr "Последние хиты"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
+msgid "Date"
+msgstr "Дата"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
+msgid "Time"
+msgstr "Время"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
+msgid "Domain"
+msgstr "Домен"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:639
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:649
+msgid "Page"
+msgstr "Страница"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
+msgid "Last search terms"
+msgstr "Последние поисковые запросы"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
+msgid "Terms"
+msgstr "Сроки"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
+msgid "Engine"
+msgstr "Движок"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
+msgid "Result"
+msgstr "Результат"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:344
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:354
+msgid "page viewed"
+msgstr "посещенная страница"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
+msgid "Last referrers"
+msgstr "Последние ссылающиеся ресурсы"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
+msgid "URL"
+msgstr "URL"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
+msgid "Last agents"
+msgstr "Последние браузерные агенты"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:500
+msgid "Agent"
+msgstr "Агент"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
+msgid "What"
+msgstr "Что"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
+msgid "Last pages"
+msgstr "Последние страницы"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:458
+msgid "more info"
+msgstr "детальней"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:480
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:482
+msgid "arrived from"
+msgstr "прибыл с"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:480
+msgid "searching"
+msgstr "искал"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:499
+msgid "URL Requested"
+msgstr "запрошенный URL"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:501
+msgid "Referrer"
+msgstr "Ссылающийся ресурс"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:502
+msgid "Search terms"
+msgstr "Поисковые запросы"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:503
+msgid "Search engine"
+msgstr "Поисковик"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:504
+msgid "Operative system"
+msgstr "Операционная система"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:514
+msgid "Field"
+msgstr "Поле"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:521
+msgid "Group by"
+msgstr "Сгруппировать по"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:522
+msgid "Sort by"
+msgstr "Сортировать по"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:523
+msgid "if contains"
+msgstr "если содержит"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:533
+msgid "sort by count if grouped"
+msgstr "сортировать по количеству если сгруппировано"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:534
+msgid "include spiders/crawlers/bot"
+msgstr "включить поисковых роботов/пауков/ботов"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:535
+msgid "include feed"
+msgstr "включить RSS-ленту"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:542
+msgid "Limit results to"
+msgstr "Ограничить результат"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:605
+msgid "Results"
+msgstr "Результаты"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:612
+msgid "Count"
+msgstr "Считать"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:640
+msgid "Category"
+msgstr "Категория"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:641
+msgid "Calendar"
+msgstr "Календарь"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:697
+msgid "Visits"
+msgstr "Посещений"
+
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:889
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:900
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:911
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:922
+#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:943
+msgid "done"
+msgstr "выполнено"
+
+msgid "Updated"
+msgstr "Обновлено"
+
