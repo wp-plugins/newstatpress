@@ -3,8 +3,8 @@ Contributors: ice00
 Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
-Tested up to: 3.3.3
-Stable Tag: 0.2.1
+Tested up to: 3.3
+Stable Tag: 0.2.2
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -166,6 +166,12 @@ Check at http://newstatpress.altervista.org
 * Add new OS (+3), browsers (+6)
 * Add Simplified Chinese translation (thanks to Christopher Meng)
 
+= 0.2.2 =
+
+* Add source for Simplified Chinese translation (thanks to Christopher Meng)
+* Fix nb_NO over no_NO locale 
+* Lots of php warnings fixed in source
+
 
 == Upgrade Notice ==
 
@@ -216,3 +222,7 @@ Check at http://newstatpress.altervista.org
 = 0.2.1 =
 
 * relased 21/12/2011
+
+= 0.2.2 =
+
+* relased 11/01/2012

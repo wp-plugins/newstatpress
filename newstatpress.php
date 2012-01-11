@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.2.1
+Version: 0.2.2
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -64,21 +64,21 @@ function iri_add_pages() {
 function iriNewStatPress() {
   ?>
   <?php
-    if ($_GET['newstatpress_action'] == 'export') {
-      iriNewStatPressExport();
-    } elseif ($_GET['newstatpress_action'] == 'up') {
-        iriNewStatPressUpdate();
-    } elseif ($_GET['newstatpress_action'] == 'spy') {
-        iriNewStatPressSpy();
-    } elseif ($_GET['newstatpress_action'] == 'search') {
-         iriNewStatPressSearch();
-    } elseif ($_GET['newstatpress_action'] == 'details') {
-         iriNewStatPressDetails();
-    } elseif ($_GET['newstatpress_action'] == 'options') {
-         iriNewStatPressOptions();
-    } elseif(1) {
-       iriNewStatPressMain();
-    }
+    if(isset($_GET['newstatpress_action'])){
+      if ($_GET['newstatpress_action'] == 'export') {
+        iriNewStatPressExport();
+      } elseif ($_GET['newstatpress_action'] == 'up') {
+          iriNewStatPressUpdate();
+      } elseif ($_GET['newstatpress_action'] == 'spy') {
+          iriNewStatPressSpy();
+      } elseif ($_GET['newstatpress_action'] == 'search') {
+           iriNewStatPressSearch();
+      } elseif ($_GET['newstatpress_action'] == 'details') {
+           iriNewStatPressDetails();
+      } elseif ($_GET['newstatpress_action'] == 'options') {
+           iriNewStatPressOptions();
+      } 
+   } else iriNewStatPressMain();
 }
 
 /**
@@ -112,13 +112,16 @@ function iriNewStatPress_trim_value(&$value) {
  * Generate HTML for option menu in Wordpress
  */
 function iriNewStatPressOptions() {
-  if($_POST['saveit'] == 'yes') {
-    update_option('newstatpress_collectloggeduser', $_POST['newstatpress_collectloggeduser']);
+  if(isset($_POST['saveit']) && $_POST['saveit'] == 'yes') {
+    if (isset($_POST['newstatpress_collectloggeduser'])) update_option('newstatpress_collectloggeduser', $_POST['newstatpress_collectloggeduser']);
+    else update_option('newstatpress_collectloggeduser', null);
     update_option('newstatpress_autodelete', $_POST['newstatpress_autodelete']);
     update_option('newstatpress_daysinoverviewgraph', $_POST['newstatpress_daysinoverviewgraph']);
     update_option('newstatpress_mincap', $_POST['newstatpress_mincap']);
-    update_option('newstatpress_donotcollectspider', $_POST['newstatpress_donotcollectspider']);
-    update_option('newstatpress_cryptip', $_POST['newstatpress_cryptip']);
+    if (isset($_POST['newstatpress_donotcollectspider'])) update_option('newstatpress_donotcollectspider', $_POST['newstatpress_donotcollectspider']);
+    else update_option('newstatpress_donotcollectspider', null);
+    if (isset($_POST['newstatpress_cryptip'])) update_option('newstatpress_cryptip', $_POST['newstatpress_cryptip']);
+    else update_option('newstatpress_cryptip', null);
     update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
     update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
     update_option('newstatpress_el_top_days', $_POST['newstatpress_el_top_days']);
@@ -315,8 +318,11 @@ function iriNewStatPressExport() {
 <?php
 }
 
+/**
+ * Check and export if capability of user allow that
+ */
 function iri_checkExport(){
-  if ($_GET['newstatpress_action'] == 'exportnow') {
+  if (isset($_GET['newstatpress_action']) && $_GET['newstatpress_action'] == 'exportnow') {
     $mincap=get_option('newstatpress_mincap');
     if ($mincap == '') $mincap = "level_8";
     if ( current_user_can( $mincap ) ) {
@@ -410,6 +416,8 @@ function iriNewStatPressMain() {
 		AND spider=''
 		AND date LIKE '" . $thismonth . "%'
 	");
+	$qry_tmonth->change = null;
+	$qry_tmonth->added = null;
 	if($qry_lmonth->visitors <> 0) {
 		$pc = round( 100 * ($qry_tmonth->visitors / $qry_lmonth->visitors ) - 100,1);
 		if($pc >= 0) $pc = "+" . $pc;
@@ -479,6 +487,8 @@ function iriNewStatPressMain() {
 		AND spider=''
 		AND date LIKE '" . $thismonth . "%'
 	");
+	$qry_tmonth->change = null;
+	$qry_tmonth->added = null;
 	if($qry_lmonth->pageview <> 0) {
 		$pc = round( 100 * ($qry_tmonth->pageview / $qry_lmonth->pageview ) - 100,1);
 		if($pc >= 0) $pc = "+" . $pc;
@@ -546,6 +556,8 @@ function iriNewStatPressMain() {
 		AND spider<>''
 		AND date LIKE '" . $thismonth . "%'
 	");
+	$qry_tmonth->change = null;
+	$qry_tmonth->added = null;
 	if($qry_lmonth->spiders <> 0) {
 		$pc = round( 100 * ($qry_tmonth->spiders / $qry_lmonth->spiders ) - 100,1);
 		if($pc >= 0) $pc = "+" . $pc;
@@ -612,6 +624,8 @@ function iriNewStatPressMain() {
 		AND spider=''
 		AND date LIKE '" . $thismonth . "%'
 	");
+	$qry_tmonth->change = null;
+	$qry_tmonth->added = null;
 	if($qry_lmonth->feeds <> 0) {
 		$pc = round( 100 * ($qry_tmonth->feeds / $qry_lmonth->feeds ) - 100,1);
 		if($pc >= 0) $pc = "+" . $pc;
@@ -847,15 +861,21 @@ function iriNewStatPressMain() {
 	print "<br />";
 	print "&nbsp;<i>StatPress table size: <b>".iritablesize($wpdb->prefix . "statpress")."</b></i><br />";
 	print "&nbsp;<i>StatPress current time: <b>".current_time('mysql')."</b></i><br />";
-	print "&nbsp;<i>RSS2 url: <b>".get_bloginfo('rss2_url').' ('.iri_NewStatPress_extractfeedreq(get_bloginfo('rss2_url')).")</b></i><br />";
+	print "&nbsp;<i>RSS2 url: <b>".get_bloginfo('rss2_url').' ('.iriNewStatPress_extractfeedreq(get_bloginfo('rss2_url')).")</b></i><br />";
 	
 }	
 
-
-function iri_NewStatPress_extractfeedreq($url) {
-	list($null,$q)=explode("?",$url);
-	list($res,$null)=explode("&",$q);
-	return $res;
+/**
+ * Extract the feed from the given url
+ *
+ * @param url the url to parse
+ * @return the extracted url 
+ */
+function iriNewStatPress_extractfeedreq($url) {
+  list($null,$q)=explode("?",$url);
+  if (strpos($q, "&")!== false) list($res,$null)=explode("&",$q);
+  else $res=$q;
+  return $res;
 }
 
 function iriNewStatPressDetails() {
@@ -970,138 +990,146 @@ function iri_CheckIP($ip) {
 }
 
 function iriNewStatPressSearch($what='') {
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	
-	$f['urlrequested']=__('URL Requested','newstatpress');
-	$f['agent']=__('Agent','newstatpress');
-	$f['referrer']=__('Referrer','newstatpress');
-	$f['search']=__('Search terms','newstatpress');
-	$f['searchengine']=__('Search engine','newstatpress');
-	$f['os']=__('Operative system','newstatpress');	
-	$f['browser']="Browser";
-	$f['spider']="Spider";
-	$f['ip']="IP";
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+
+  $f['urlrequested']=__('URL Requested','newstatpress');
+  $f['agent']=__('Agent','newstatpress');
+  $f['referrer']=__('Referrer','newstatpress');
+  $f['search']=__('Search terms','newstatpress');
+  $f['searchengine']=__('Search engine','newstatpress');
+  $f['os']=__('Operative system','newstatpress');	
+  $f['browser']="Browser";
+  $f['spider']="Spider";
+  $f['ip']="IP";
 ?>
-	<div class='wrap'><h2><?php _e('Search','newstatpress'); ?></h2>
-	<form method=get><table>
-	<?php
-		for($i=1;$i<=3;$i++) {
-			print "<tr>";
-			print "<td>".__('Field','newstatpress')." <select name=where$i><option value=''></option>";
-			foreach ( array_keys($f) as $k ) {
-				print "<option value='$k'";
-				if($_GET["where$i"] == $k) { print " SELECTED "; }
-				print ">".$f[$k]."</option>";
-			}
-			print "</select></td>";
-			print "<td><input type=checkbox name=groupby$i value='checked' ".$_GET["groupby$i"]."> ".__('Group by','newstatpress')."</td>";
-			print "<td><input type=checkbox name=sortby$i value='checked' ".$_GET["sortby$i"]."> ".__('Sort by','newstatpress')."</td>";
-			print "<td>, ".__('if contains','newstatpress')." <input type=text name=what$i value='".$_GET["what$i"]."'></td>";
-			print "</tr>";
-		}
-	?>
-	</table>
-	<br>
-	<table>
-	<tr>
-		<td>
-			<table>
-				<tr><td><input type=checkbox name=oderbycount value=checked <?php print $_GET['oderbycount'] ?>> <?php _e('sort by count if grouped','newstatpress'); ?></td></tr>
-				<tr><td><input type=checkbox name=spider value=checked <?php print $_GET['spider'] ?>> <?php _e('include spiders/crawlers/bot','newstatpress'); ?></td></tr>
-				<tr><td><input type=checkbox name=feed value=checked <?php print $_GET['feed'] ?>> <?php _e('include feed','newstatpress'); ?></td></tr>
-			</table>
-		</td>
-		<td width=15> </td>
-		<td>
-			<table>
-				<tr>
-					<td><?php _e('Limit results to','newstatpress'); ?>
-						<select name=limitquery><?php if($_GET['limitquery'] >0) { print "<option>".$_GET['limitquery']."</option>";} ?><option>1</option><option>5</option><option>10</option><option>20</option><option>50</option></select>
-					</td>
-				</tr>
-				<tr><td>&nbsp;</td></tr>
-				<tr>
-					<td align=right><input type=submit value=<?php _e('Search','newstatpress'); ?> name=searchsubmit></td>
-				</tr>
-			</table>
-		</td>
-	</tr>		
-	</table>	
-	<input type=hidden name=page value='newstatpress/newstatpress.php'><input type=hidden name=newstatpress_action value=search>
-	</form><br>
+  <div class='wrap'><h2><?php _e('Search','newstatpress'); ?></h2>
+  <form method=get><table>
+  <?php
+    for($i=1;$i<=3;$i++) {
+      print "<tr>";
+      print "<td>".__('Field','newstatpress')." <select name=where$i><option value=''></option>";
+      foreach ( array_keys($f) as $k ) {
+        print "<option value='$k'";
+        if($_GET["where$i"] == $k) { print " SELECTED "; }
+        print ">".$f[$k]."</option>";
+      }
+      print "</select></td>";
+      if (isset($_GET["groupby$i"])) print "<td><input type=checkbox name=groupby$i value='checked' ".$_GET["groupby$i"]."> ".__('Group by','newstatpress')."</td>";
+      else print "<td><input type=checkbox name=groupby$i value='checked' "."> ".__('Group by','newstatpress')."</td>";
+
+      if (isset($_GET["sortby$i"])) print "<td><input type=checkbox name=sortby$i value='checked' ".$_GET["sortby$i"]."> ".__('Sort by','newstatpress')."</td>";
+      else print "<td><input type=checkbox name=sortby$i value='checked' "."> ".__('Sort by','newstatpress')."</td>";
+
+      print "<td>, ".__('if contains','newstatpress')." <input type=text name=what$i value='".$_GET["what$i"]."'></td>";
+      print "</tr>";
+    }
+?>
+  </table>
+  <br>
+  <table>
+   <tr>
+     <td>
+       <table>
+         <tr><td><input type=checkbox name=oderbycount value=checked <?php print $_GET['oderbycount'] ?>> <?php _e('sort by count if grouped','newstatpress'); ?></td></tr>
+         <tr><td><input type=checkbox name=spider value=checked <?php print $_GET['spider'] ?>> <?php _e('include spiders/crawlers/bot','newstatpress'); ?></td></tr>
+         <tr><td><input type=checkbox name=feed value=checked <?php print $_GET['feed'] ?>> <?php _e('include feed','newstatpress'); ?></td></tr>
+       </table>
+     </td>
+     <td width=15> </td>
+     <td>
+       <table>
+         <tr>
+           <td><?php _e('Limit results to','newstatpress'); ?>
+             <select name=limitquery><?php if($_GET['limitquery'] >0) { print "<option>".$_GET['limitquery']."</option>";} ?><option>1</option><option>5</option><option>10</option><option>20</option><option>50</option></select>
+           </td>
+         </tr>
+         <tr><td>&nbsp;</td></tr>
+         <tr>
+          <td align=right><input type=submit value=<?php _e('Search','newstatpress'); ?> name=searchsubmit></td>
+         </tr>
+       </table>
+     </td>
+    </tr>		
+   </table>	
+   <input type=hidden name=page value='newstatpress/newstatpress.php'><input type=hidden name=newstatpress_action value=search>
+  </form><br>
 <?php
 
  if(isset($_GET['searchsubmit'])) {
-	# query builder
-	$qry="";
-	# FIELDS
-	$fields="";
-	for($i=1;$i<=3;$i++) {
-		if($_GET["where$i"] != '') {
-			$fields.=$_GET["where$i"].",";
-		}
-	}
-	$fields=rtrim($fields,",");
-	# WHERE
-	$where="WHERE 1=1";
-	if($_GET['spider'] != 'checked') { $where.=" AND spider=''"; }
-	if($_GET['feed'] != 'checked') { $where.=" AND feed=''"; }
-	for($i=1;$i<=3;$i++) {
-		if(($_GET["what$i"] != '') && ($_GET["where$i"] != '')) {
-			$where.=" AND ".$_GET["where$i"]." LIKE '%".$_GET["what$i"]."%'";
-		}
-	}
-	# ORDER BY
-	$orderby="";
-	for($i=1;$i<=3;$i++) {
-		if(($_GET["sortby$i"] == 'checked') && ($_GET["where$i"] != '')) {
-			$orderby.=$_GET["where$i"].',';
-		}
-	}
-		
-	# GROUP BY
-	$groupby="";
-	for($i=1;$i<=3;$i++) {
-		if(($_GET["groupby$i"] == 'checked') && ($_GET["where$i"] != '')) {
-			$groupby.=$_GET["where$i"].',';
-		}
-	}
-	if($groupby != '') {
-		$groupby="GROUP BY ".rtrim($groupby,',');
-		$fields.=",count(*) as totale";
-		if($_GET['oderbycount'] == 'checked') { $orderby="totale DESC,".$orderby; }
-	}
-	
-	if($orderby != '') { $orderby="ORDER BY ".rtrim($orderby,','); }
-	
+   # query builder
+   $qry="";
+   # FIELDS
+   $fields="";
+   for($i=1;$i<=3;$i++) {
+     if($_GET["where$i"] != '') {
+       $fields.=$_GET["where$i"].",";
+     }
+   }
+   $fields=rtrim($fields,",");
+   # WHERE
+   $where="WHERE 1=1";
 
-	$limit="LIMIT ".$_GET['limitquery'];
+   if (!isset($_GET['spider'])) { $where.=" AND spider=''"; }
+   else if($_GET['spider'] != 'checked') { $where.=" AND spider=''"; }
 
-	# Results
-	print "<h2>".__('Results','newstatpress')."</h2>";
-	$sql="SELECT $fields FROM $table_name $where $groupby $orderby $limit;";
-//	print "$sql<br>";
-	print "<table class='widefat'><thead><tr>";
-	for($i=1;$i<=3;$i++) { 
-		if($_GET["where$i"] != '') { print "<th scope='col'>".ucfirst($_GET["where$i"])."</th>"; }
-	}
-	if($groupby != '') { print "<th scope='col'>".__('Count','newstatpress')."</th>"; }
-	print "</tr></thead><tbody id='the-list'>";	
-	$qry=$wpdb->get_results($sql,ARRAY_N);
-	foreach ($qry as $rk) {
-		print "<tr>";
-		for($i=1;$i<=3;$i++) {
-			print "<td>";
-			if($_GET["where$i"] == 'urlrequested') { print iri_NewStatPress_Decode($rk[$i-1]); } else { print $rk[$i-1]; }
-			print "</td>";
-		}
-		print "</tr>";
-	}
-	print "</table>";
-	print "<br /><br /><font size=1 color=gray>sql: $sql</font></div>";
- }
-	
+   if (!isset($_GET['feed'])) { $where.=" AND feed=''"; }
+   else if($_GET['feed'] != 'checked') { $where.=" AND feed=''"; }
+
+   for($i=1;$i<=3;$i++) {
+     if(($_GET["what$i"] != '') && ($_GET["where$i"] != '')) {
+       $where.=" AND ".$_GET["where$i"]." LIKE '%".$_GET["what$i"]."%'";
+     }
+   }
+   # ORDER BY
+   $orderby="";
+   for($i=1;$i<=3;$i++) {
+     if (isset($_GET["sortby$i"]) && ($_GET["sortby$i"] == 'checked') && ($_GET["where$i"] != '')) {
+       $orderby.=$_GET["where$i"].',';
+     }
+   }
+
+   # GROUP BY
+   $groupby="";
+   for($i=1;$i<=3;$i++) {
+     if(isset($_GET["groupby$i"]) && ($_GET["groupby$i"] == 'checked') && ($_GET["where$i"] != '')) {
+       $groupby.=$_GET["where$i"].',';
+     }
+   }
+   if($groupby != '') {
+     $groupby="GROUP BY ".rtrim($groupby,',');
+     $fields.=",count(*) as totale";
+     if(isset($_GET["oderbycount"]) && $_GET['oderbycount'] == 'checked') { $orderby="totale DESC,".$orderby; }
+   }
+
+   if($orderby != '') { $orderby="ORDER BY ".rtrim($orderby,','); }
+ 
+   $limit="LIMIT ".$_GET['limitquery'];
+
+   # Results
+   print "<h2>".__('Results','newstatpress')."</h2>";
+   $sql="SELECT $fields FROM $table_name $where $groupby $orderby $limit;";
+   //print "$sql<br>";
+   print "<table class='widefat'><thead><tr>";
+   for($i=1;$i<=3;$i++) { 
+     if($_GET["where$i"] != '') { print "<th scope='col'>".ucfirst($_GET["where$i"])."</th>"; }
+   }
+   if($groupby != '') { print "<th scope='col'>".__('Count','newstatpress')."</th>"; }
+     print "</tr></thead><tbody id='the-list'>";	
+     $qry=$wpdb->get_results($sql,ARRAY_N);
+     foreach ($qry as $rk) {
+       print "<tr>";
+       for($i=1;$i<=3;$i++) {
+         print "<td>";
+         if($_GET["where$i"] == 'urlrequested') { print iri_NewStatPress_Decode($rk[$i-1]); }
+         else { if(isset($rk[$i-1])) print $rk[$i-1]; }
+         print "</td>";
+       }
+         print "</tr>";
+     }
+     print "</table>";
+     print "<br /><br /><font size=1 color=gray>sql: $sql</font></div>";
+  }
 }
 
 function iri_NewStatPress_Abbrevia($s,$c) {
@@ -1554,27 +1582,27 @@ function iriNewStatPressUpdate() {
     $wpdb->query("UPDATE $table_name SET feed='RSS2' WHERE urlrequested LIKE '%/feed/%';");
     $wpdb->query("UPDATE $table_name SET feed='RSS2' WHERE urlrequested LIKE '%wp-feed.php%';");
 	# standard blog info urls
-	$s=iri_NewStatPress_extractfeedreq(get_bloginfo('comments_atom_url'));
+	$s=iriNewStatPress_extractfeedreq(get_bloginfo('comments_atom_url'));
 	if($s != '') {
 	    $wpdb->query("UPDATE $table_name SET feed='COMMENT' WHERE INSTR(urlrequested,'$s')>0;");
 	}
-	$s=iri_NewStatPress_extractfeedreq(get_bloginfo('comments_rss2_url'));
+	$s=iriNewStatPress_extractfeedreq(get_bloginfo('comments_rss2_url'));
 	if($s != '') {
 	    $wpdb->query("UPDATE $table_name SET feed='COMMENT' WHERE INSTR(urlrequested,'$s')>0;");
 	}
-	$s=iri_NewStatPress_extractfeedreq(get_bloginfo('atom_url'));
+	$s=iriNewStatPress_extractfeedreq(get_bloginfo('atom_url'));
 	if($s != '') {
 	    $wpdb->query("UPDATE $table_name SET feed='ATOM' WHERE INSTR(urlrequested,'$s')>0;");
 	}
-	$s=iri_NewStatPress_extractfeedreq(get_bloginfo('rdf_url'));
+	$s=iriNewStatPress_extractfeedreq(get_bloginfo('rdf_url'));
 	if($s != '') {
 	    $wpdb->query("UPDATE $table_name SET feed='RDF'  WHERE INSTR(urlrequested,'$s')>0;");
 	}
-	$s=iri_NewStatPress_extractfeedreq(get_bloginfo('rss_url'));
+	$s=iriNewStatPress_extractfeedreq(get_bloginfo('rss_url'));
 	if($s != '') {
 	    $wpdb->query("UPDATE $table_name SET feed='RSS'  WHERE INSTR(urlrequested,'$s')>0;");
 	}
-	$s=iri_NewStatPress_extractfeedreq(get_bloginfo('rss2_url'));
+	$s=iriNewStatPress_extractfeedreq(get_bloginfo('rss2_url'));
 	if($s != '') {
 	    $wpdb->query("UPDATE $table_name SET feed='RSS2' WHERE INSTR(urlrequested,'$s')>0;");
 	}
@@ -2035,4 +2063,7 @@ add_filter('the_content', 'content_newstatpress');
 
 register_activation_hook(__FILE__,'iri_NewStatPress_CreateTable');
 
+//display_errors(1);
 ?>
+
+
