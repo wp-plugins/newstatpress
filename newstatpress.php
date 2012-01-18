@@ -3,7 +3,7 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.2.3
+Version: 0.2.4
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
@@ -122,6 +122,8 @@ function iriNewStatPressOptions() {
     else update_option('newstatpress_donotcollectspider', null);
     if (isset($_POST['newstatpress_cryptip'])) update_option('newstatpress_cryptip', $_POST['newstatpress_cryptip']);
     else update_option('newstatpress_cryptip', null);
+    if (isset($_POST['newstatpress_dashboard'])) update_option('newstatpress_dashboard', $_POST['newstatpress_dashboard']);
+    else update_option('newstatpress_dashboard', null);
     update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
     update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
     update_option('newstatpress_el_top_days', $_POST['newstatpress_el_top_days']);
@@ -149,7 +151,7 @@ function iriNewStatPressOptions() {
         print "<tr><td><input type=checkbox name='newstatpress_collectloggeduser' value='checked' ".get_option('newstatpress_collectloggeduser')."> ".__('Collect data about logged users, too.','newstatpress')."</td></tr>";
         print "<tr><td><input type=checkbox name='newstatpress_donotcollectspider' value='checked' ".get_option('newstatpress_donotcollectspider')."> ".__('Do not collect spiders visits','newstatpress')."</td></tr>";
         print "<tr><td><input type=checkbox name='newstatpress_cryptip' value='checked' ".get_option('newstatpress_cryptip')."> ".__('Crypt IP addresses','newstatpress')."</td></tr>";
-
+        print "<tr><td><input type=checkbox name='newstatpress_dashboard' value='checked' ".get_option('newstatpress_dashboard')."> ".__('Show NewStatPress dashboard widget','newstatpress')."</td></tr>";
       ?>
       <tr><td><?php _e('Automatically delete visits older than','newstatpress'); ?>
         <select name="newstatpress_autodelete">
@@ -2052,12 +2054,337 @@ function content_newstatpress($content = '') {
   return $content;
 }
 
+
+function iri_dashboard_widget_function() {
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+
+  # Tabella OVERVIEW
+  $unique_color="#114477";
+  $web_color="#3377B6";
+  $rss_color="#f38f36";
+  $spider_color="#83b4d8";
+    $lastmonth = iri_NewStatPress_lastmonth();
+    $thismonth = gmdate('Ym', current_time('timestamp'));
+    $yesterday = gmdate('Ymd', current_time('timestamp')-86400);
+    $today = gmdate('Ymd', current_time('timestamp'));
+    $tlm[0]=substr($lastmonth,0,4); $tlm[1]=substr($lastmonth,4,2);
+
+	//print "<div class='wrap'><h2>". __('Overview','NewStatPress'). "</h2>";
+	print "<table class='widefat'><thead><tr>
+	<th scope='col'></th>
+	<th scope='col'>". __('Total since','NewStatPress'). "<br /><font size=1>";
+	echo NewStatPress_Print('%since%');
+	print "</font></th>
+	<th scope='col'>". __('Last month','NewStatPress'). "<br /><font size=1>" . gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0])) ."</font></th>
+	<th scope='col'>". __('This month','NewStatPress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
+	<th scope='col'>Target ". __('This month','NewStatPress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
+	<th scope='col'>". __('Yesterday','NewStatPress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')-86400) ."</font></th>
+	<th scope='col'>". __('Today','NewStatPress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')) ."</font></th>
+	</tr></thead>
+	<tbody id='the-list'>";
+
+	################################################################################################
+	# VISITORS ROW
+	print "<tr><td><div style='background:$unique_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Visitors','NewStatPress'). "</td>";
+
+	#TOTAL
+	$qry_total = $wpdb->get_row("
+		SELECT count(DISTINCT ip) AS visitors
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+	");
+	print "<td>" . $qry_total->visitors . "</td>\n";
+
+	#LAST MONTH
+	$qry_lmonth = $wpdb->get_row("
+		SELECT count(DISTINCT ip) AS visitors
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+		AND date LIKE '" . $lastmonth . "%'
+	");
+	print "<td>" . $qry_lmonth->visitors . "</td>\n";
+
+	#THIS MONTH
+	$qry_tmonth = $wpdb->get_row("
+		SELECT count(DISTINCT ip) AS visitors
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+		AND date LIKE '" . $thismonth . "%'
+	");
+	if($qry_lmonth->visitors <> 0) {
+		$pc = round( 100 * ($qry_tmonth->visitors / $qry_lmonth->visitors ) - 100,1);
+		if($pc >= 0) $pc = "+" . $pc;
+		$qry_tmonth->change = "<code> (" . $pc . "%)</code>";
+	}
+	print "<td>" . $qry_tmonth->visitors . $qry_tmonth->change . "</td>\n";
+
+	#TARGET
+	$qry_tmonth->target = round($qry_tmonth->visitors / date("d", current_time('timestamp')) * 30);
+	if($qry_lmonth->visitors <> 0) {
+		$pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->visitors ) - 100,1);
+		if($pt >= 0) $pt = "+" . $pt;
+		$qry_tmonth->added = "<code> (" . $pt . "%)</code>";
+	}
+	print "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
+
+	#YESTERDAY
+	$qry_y = $wpdb->get_row("
+		SELECT count(DISTINCT ip) AS visitors
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+		AND date = '$yesterday'
+	");
+	print "<td>" . $qry_y->visitors . "</td>\n";
+
+	#TODAY
+	$qry_t = $wpdb->get_row("
+		SELECT count(DISTINCT ip) AS visitors
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+		AND date = '$today'
+	");
+	print "<td>" . $qry_t->visitors . "</td>\n";
+    print "</tr>";
+
+	################################################################################################
+	# PAGEVIEWS ROW
+	print "<tr><td><div style='background:$web_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Pageviews','NewStatPress'). "</td>";
+
+	#TOTAL
+	$qry_total = $wpdb->get_row("
+		SELECT count(date) as pageview
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+	");
+	print "<td>" . $qry_total->pageview . "</td>\n";
+
+	#LAST MONTH
+	$prec=0;
+	$qry_lmonth = $wpdb->get_row("
+		SELECT count(date) as pageview
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+		AND date LIKE '" . $lastmonth . "%'
+	");
+	print "<td>".$qry_lmonth->pageview."</td>\n";
+
+	#THIS MONTH
+	$qry_tmonth = $wpdb->get_row("
+		SELECT count(date) as pageview
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+		AND date LIKE '" . $thismonth . "%'
+	");
+	if($qry_lmonth->pageview <> 0) {
+		$pc = round( 100 * ($qry_tmonth->pageview / $qry_lmonth->pageview ) - 100,1);
+		if($pc >= 0) $pc = "+" . $pc;
+		$qry_tmonth->change = "<code> (" . $pc . "%)</code>";
+	}
+	print "<td>" . $qry_tmonth->pageview . $qry_tmonth->change . "</td>\n";
+
+	#TARGET
+	$qry_tmonth->target = round($qry_tmonth->pageview / date("d", current_time('timestamp')) * 30);
+	if($qry_lmonth->pageview <> 0) {
+		$pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->pageview ) - 100,1);
+		if($pt >= 0) $pt = "+" . $pt;
+		$qry_tmonth->added = "<code> (" . $pt . "%)</code>";
+	}
+	print "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
+
+	#YESTERDAY
+	$qry_y = $wpdb->get_row("
+		SELECT count(date) as pageview
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+		AND date = '$yesterday'
+	");
+	print "<td>" . $qry_y->pageview . "</td>\n";
+
+	#TODAY
+	$qry_t = $wpdb->get_row("
+		SELECT count(date) as pageview
+		FROM $table_name
+		WHERE feed=''
+		AND spider=''
+		AND date = '$today'
+	");
+	print "<td>" . $qry_t->pageview . "</td>\n";
+	print "</tr>";
+	################################################################################################
+	# SPIDERS ROW
+	print "<tr><td><div style='background:$spider_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>Spiders</td>";
+	#TOTAL
+	$qry_total = $wpdb->get_row("
+		SELECT count(date) as spiders
+		FROM $table_name
+		WHERE feed=''
+		AND spider<>''
+	");
+	print "<td>" . $qry_total->spiders . "</td>\n";
+    #LAST MONTH
+    $prec=0;
+	$qry_lmonth = $wpdb->get_row("
+		SELECT count(date) as spiders
+		FROM $table_name
+		WHERE feed=''
+		AND spider<>''
+		AND date LIKE '" . $lastmonth . "%'
+	");
+	print "<td>" . $qry_lmonth->spiders. "</td>\n";
+	
+	#THIS MONTH
+	$prec=$qry_lmonth->spiders;
+	$qry_tmonth = $wpdb->get_row("
+		SELECT count(date) as spiders
+		FROM $table_name
+		WHERE feed=''
+		AND spider<>''
+		AND date LIKE '" . $thismonth . "%'
+	");
+	if($qry_lmonth->spiders <> 0) {
+		$pc = round( 100 * ($qry_tmonth->spiders / $qry_lmonth->spiders ) - 100,1);
+		if($pc >= 0) $pc = "+" . $pc;
+		$qry_tmonth->change = "<code> (" . $pc . "%)</code>";
+	}
+	print "<td>" . $qry_tmonth->spiders . $qry_tmonth->change . "</td>\n";
+
+	#TARGET
+	$qry_tmonth->target = round($qry_tmonth->spiders / date("d", current_time('timestamp')) * 30);
+	if($qry_lmonth->spiders <> 0) {
+		$pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->spiders ) - 100,1);
+		if($pt >= 0) $pt = "+" . $pt;
+		$qry_tmonth->added = "<code> (" . $pt . "%)</code>";
+	}
+	print "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
+
+	#YESTERDAY
+	$qry_y = $wpdb->get_row("
+		SELECT count(date) as spiders
+		FROM $table_name
+		WHERE feed=''
+		AND spider<>''
+		AND date = '$yesterday'
+	");
+	print "<td>" . $qry_y->spiders . "</td>\n";
+	
+	#TODAY
+	$qry_t = $wpdb->get_row("
+		SELECT count(date) as spiders
+		FROM $table_name
+		WHERE feed=''
+		AND spider<>''
+		AND date = '$today'
+	");
+	print "<td>" . $qry_t->spiders . "</td>\n";
+    print "</tr>";
+	################################################################################################
+	# FEEDS ROW
+	print "<tr><td><div style='background:$rss_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>Feeds</td>";
+	#TOTAL
+	$qry_total = $wpdb->get_row("
+		SELECT count(date) as feeds
+		FROM $table_name
+		WHERE feed<>''
+		AND spider=''
+	");
+	print "<td>".$qry_total->feeds."</td>\n";
+
+	#LAST MONTH
+	$qry_lmonth = $wpdb->get_row("
+		SELECT count(date) as feeds
+		FROM $table_name
+		WHERE feed<>''
+		AND spider=''
+		AND date LIKE '" . $lastmonth . "%'
+	");
+	print "<td>".$qry_lmonth->feeds."</td>\n";
+
+	#THIS MONTH
+	$qry_tmonth = $wpdb->get_row("
+		SELECT count(date) as feeds
+		FROM $table_name
+		WHERE feed<>''
+		AND spider=''
+		AND date LIKE '" . $thismonth . "%'
+	");
+	if($qry_lmonth->feeds <> 0) {
+		$pc = round( 100 * ($qry_tmonth->feeds / $qry_lmonth->feeds ) - 100,1);
+		if($pc >= 0) $pc = "+" . $pc;
+		$qry_tmonth->change = "<code> (" . $pc . "%)</code>";
+	}
+	print "<td>" . $qry_tmonth->feeds . $qry_tmonth->change . "</td>\n";
+
+	#TARGET
+	$qry_tmonth->target = round($qry_tmonth->feeds / date("d", current_time('timestamp')) * 30);
+	if($qry_lmonth->feeds <> 0) {
+		$pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->feeds ) - 100,1);
+		if($pt >= 0) $pt = "+" . $pt;
+		$qry_tmonth->added = "<code> (" . $pt . "%)</code>";
+	}
+	print "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
+
+	$qry_y = $wpdb->get_row("
+		SELECT count(date) as feeds
+		FROM $table_name
+		WHERE feed<>''
+		AND spider=''
+		AND date = '".$yesterday."'
+	");
+	print "<td>".$qry_y->feeds."</td>\n";
+
+	$qry_t = $wpdb->get_row("
+		SELECT count(date) as feeds
+		FROM $table_name
+		WHERE feed<>''
+		AND spider=''
+		AND date = '$today'
+	");
+	print "<td>".$qry_t->feeds."</td>\n";
+
+    print "</tr></table><br />\n\n";
+    
+
+	print '</tr></table>';
+
+	print '</div>';
+# END OF OVERVIEW
+####################################################################################################
+
+	print "<div class='wrap'><h4><a href='admin.php?page=newstatpress/newstatpress.php'>". __('More details','NewStatPress'). " &raquo;</a></h4>";
+
+}
+
+
+// Create the function use in the action hook
+
+function iri_add_dashboard_widgets() {
+  global $wp_meta_boxes;
+
+  if (get_option('newstatpress_dashboard')=='checked') {
+    wp_add_dashboard_widget('iri_dashboard_widget', 'NewStatPress Overview', 'iri_dashboard_widget_function');	
+  } else unset($wp_meta_boxes['dashboard']['side']['core']['wp_dashboard_setup']);
+} 
+
+
 load_plugin_textdomain('newstatpress', 'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/locale');
 
 add_action('admin_menu', 'iri_add_pages');
 add_action('plugins_loaded', 'widget_newstatpress_init');
 add_action('send_headers', 'iriStatAppend');  //add_action('wp_head', 'iriStatAppend');
 add_action('init','iri_checkExport');
+
+// Hoook into the 'wp_dashboard_setup' action to register our other functions
+add_action('wp_dashboard_setup', 'iri_add_dashboard_widgets' );
 
 add_filter('the_content', 'content_newstatpress');
 
