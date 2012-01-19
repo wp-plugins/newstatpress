@@ -176,7 +176,7 @@ Check at http://newstatpress.altervista.org
 
 * Fixing charaters after closing tags
 
-= 0.2.3 =
+= 0.2.4 =
 
 * Add option for show dashboard widget
 * Add dashboard widget (thanks to Maurice Cramer). Look into the blog for details.
