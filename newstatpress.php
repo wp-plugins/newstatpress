@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.2.4
+Version: 0.2.5
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.x';
+$_NEWSTATPRESS['version']='0.2.5';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -139,6 +139,7 @@ function iriNewStatPressOptions() {
     update_option('newstatpress_el_visitors', $_POST['newstatpress_el_visitors']);
     update_option('newstatpress_el_daypages', $_POST['newstatpress_el_daypages']);
     update_option('newstatpress_el_ippages', $_POST['newstatpress_el_ippages']);
+    update_option('newstatpress_updateint', $_POST['newstatpress_updateint']);
 
     # update database too
     iri_NewStatPress_CreateTable();
@@ -283,6 +284,34 @@ function iriNewStatPressOptions() {
 
       <tr><td><hr></hr></td></tr>
 
+      <tr>
+       <td>
+        <h2><?php _e('Database update option','newstatpress'); ?></h3>
+       </td></tr>
+      <tr>
+       <td>
+         <p><?php _e("Select the interval of date from today you want to use for updating your database with new definitions. More it is big and more times and resources it require. You can choose to not update some fields if you want.",'newstatpress') ?></p>
+       </td></tr>
+
+      <tr>
+       <td>
+        <?php _e('Update data in the given period','newstatpress'); ?>
+        <select name="newstatpress_updateint">
+          <option value="" <?php if(get_option('newstatpress_updateint') =='' ) print "selected"; ?>><?php _e('All!','newstatpress'); ?></option>
+          <option value="1 week" <?php if(get_option('newstatpress_updateint') == "1 week") print "selected"; ?>>1 <?php _e('week','newstatpress'); ?></option>
+          <option value="2 weeks" <?php if(get_option('newstatpress_updateint') == "2 weeks") print "selected"; ?>>2 <?php _e('weeks','newstatpress'); ?></option>
+          <option value="3 weeks" <?php if(get_option('newstatpress_updateint') == "3 weeks") print "selected"; ?>>3 <?php _e('weeks','newstatpress'); ?></option>
+          <option value="1 month" <?php if(get_option('newstatpress_updateint') == "1 month") print "selected"; ?>>1 <?php _e('month','newstatpress'); ?></option>
+          <option value="2 months" <?php if(get_option('newstatpress_updateint') == "2 months") print "selected"; ?>>2 <?php _e('months','newstatpress'); ?></option>
+          <option value="3 months" <?php if(get_option('newstatpress_updateint') == "3 months") print "selected"; ?>>3 <?php _e('months','newstatpress'); ?></option>
+          <option value="6 months" <?php if(get_option('newstatpress_updateint') == "6 months") print "selected"; ?>>6 <?php _e('months','newstatpress'); ?></option>
+          <option value="9 months" <?php if(get_option('newstatpress_updateint') == "9 months") print "selected"; ?>>9 <?php _e('months','newstatpress'); ?></option>
+          <option value="1 year" <?php if(get_option('newstatpress_updateint') == "1 year") print "selected"; ?>>1 <?php _e('year','newstatpress'); ?></option>
+        </select></td></tr>
+       </td></tr>
+
+      <tr><td><hr></hr></td></tr>
+
       <tr><td><br><input type=submit value="<?php _e('Save options','newstatpress'); ?>"></td></tr>
       </tr>
       </table>
@@ -378,7 +407,9 @@ function iriNewStatPressMain() {
 	print "<div class='wrap'><h2>". __('Overview','newstatpress'). "</h2>";
 	print "<table class='widefat'><thead><tr>
 	<th scope='col'></th>
-	<th scope='col'>". __('Total','newstatpress'). "</th>
+	<th scope='col'>". __('Total since','NewStatPress'). "<br /><font size=1>";
+        echo NewStatPress_Print('%since%');
+        print "</font></th>
 	<th scope='col'>". __('Last month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0])) ."</font></th>
 	<th scope='col'>". __('This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
 	<th scope='col'>Target ". __('This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
@@ -1543,142 +1574,293 @@ function iriStatAppend() {
 }
 
 
+/**
+ * Get the days a use has choice for updating the database
+ *
+ * @return the number of days of -1 for all days
+ */
+function iriNewStatPressDays() {
+  $days=-1;     // infinite in the past
+
+  // Get Current page periode from URL
+  $updateint =get_option('newstatpress_updateint');
+    
+  if     ($updateint=="1 week") $days=7;
+  elseif ($updateint=="2 weeks") $days=14;
+  elseif ($updateint=="3 weeks") $days=21;
+  elseif ($updateint=="1 month") $days=30;
+  elseif ($updateint=="2 months") $days=60;
+  elseif ($updateint=="3 months") $days=90;
+  elseif ($updateint=="6 months") $days=180;
+  elseif ($updateint=="9 months") $days=270;
+  elseif ($updateint=="1 year") $days=365;
+
+  return $days;  
+}
+
+/**
+ * Performes database update with new definitions
+ */
 function iriNewStatPressUpdate() {
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
 
-	$_newstatpress_url=PluginUrl();
-	
-	$wpdb->show_errors();
+  $wpdb->flush();     // flush for counting right the queries
+  $start_time = microtime(true);
 
-	print "<div class='wrap'><table class='widefat'><thead><tr><th scope='col'><h2>".__('Updating...','newstatpress')."</h2></th><th scope='col' style='width:150px;'>".__('Size','newstatpress')."</th><th scope='col' style='width:100px;'>".__('Result','newstatpress')."</th><th></th></tr></thead>";
-	print "<tbody id='the-list'>";
+  $days=iriNewStatPressDays();  // get the number of days for the update
+  
+  $to_date  = gmdate("Ymd",current_time('timestamp'));
 
-	# check if ip2nation .sql file exists
-	if(file_exists(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql')) {
-		print "<tr><td>ip2nation.sql</td>";
-		$FP = fopen (ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql', 'r' ); 
-		$READ = fread ( $FP, filesize (ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql') ); 
-		$READ = explode ( ";\n", $READ ); 
-		foreach ( $READ as $RED ) { 
-			if($RES != '') { $wpdb->query($RED); }
-		} 
-		print "<td>".iritablesize("ip2nation")."</td>";
-		print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
-	}
+  if ($days==-1) $from_date= "19990101";   // use a date where this plugin was not present
+  else $from_date = gmdate('Ymd', current_time('timestamp')-86400*$days);
 
-	# update table
-	print "<tr><td>Struct $table_name</td>";
-	iri_NewStatPress_CreateTable();
-	print "<td>".iritablesize($wpdb->prefix."statpress")."</td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+  $_newstatpress_url=PluginUrl();
 
-	print "<tr><td>Index $table_name</td>";
-	print "<td>".iriindextablesize($wpdb->prefix."statpress")."</td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
-	
-	# Update Feed
-	print "<tr><td>Feeds</td>";
-    $wpdb->query("UPDATE $table_name SET feed='';");
-    # not standard
-    $wpdb->query("UPDATE $table_name SET feed='RSS2' WHERE urlrequested LIKE '%/feed/%';");
-    $wpdb->query("UPDATE $table_name SET feed='RSS2' WHERE urlrequested LIKE '%wp-feed.php%';");
-	# standard blog info urls
-	$s=iriNewStatPress_extractfeedreq(get_bloginfo('comments_atom_url'));
-	if($s != '') {
-	    $wpdb->query("UPDATE $table_name SET feed='COMMENT' WHERE INSTR(urlrequested,'$s')>0;");
-	}
-	$s=iriNewStatPress_extractfeedreq(get_bloginfo('comments_rss2_url'));
-	if($s != '') {
-	    $wpdb->query("UPDATE $table_name SET feed='COMMENT' WHERE INSTR(urlrequested,'$s')>0;");
-	}
-	$s=iriNewStatPress_extractfeedreq(get_bloginfo('atom_url'));
-	if($s != '') {
-	    $wpdb->query("UPDATE $table_name SET feed='ATOM' WHERE INSTR(urlrequested,'$s')>0;");
-	}
-	$s=iriNewStatPress_extractfeedreq(get_bloginfo('rdf_url'));
-	if($s != '') {
-	    $wpdb->query("UPDATE $table_name SET feed='RDF'  WHERE INSTR(urlrequested,'$s')>0;");
-	}
-	$s=iriNewStatPress_extractfeedreq(get_bloginfo('rss_url'));
-	if($s != '') {
-	    $wpdb->query("UPDATE $table_name SET feed='RSS'  WHERE INSTR(urlrequested,'$s')>0;");
-	}
-	$s=iriNewStatPress_extractfeedreq(get_bloginfo('rss2_url'));
-	if($s != '') {
-	    $wpdb->query("UPDATE $table_name SET feed='RSS2' WHERE INSTR(urlrequested,'$s')>0;");
-	}
+  $wpdb->show_errors();
 
-	$wpdb->query("UPDATE $table_name SET feed = '' WHERE isnull(feed);");	
+  print "<div class='wrap'><table class='widefat'><thead><tr><th scope='col'><h2>".__('Updating...','newstatpress')."</h2></th><th scope='col' style='width:150px;'>".__('Size','newstatpress')."</th><th scope='col' style='width:100px;'>".__('Result','newstatpress')."</th><th></th></tr></thead>";
+  print "<tbody id='the-list'>";
 
-	print "<td></td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+  # check if ip2nation .sql file exists
+  if(file_exists(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql')) {
+    print "<tr><td>ip2nation.sql</td>";
+    $FP = fopen (ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql', 'r' ); 
+    $READ = fread ( $FP, filesize (ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql') ); 
+    $READ = explode ( ";\n", $READ ); 
+    foreach ( $READ as $RED ) { 
+      if($RES != '') { $wpdb->query($RED); }
+    } 
+    print "<td>".iritablesize("ip2nation")."</td>";
+    print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+  }
 
-	# Update OS
-	print "<tr><td>OSes</td>";
-    $wpdb->query("UPDATE $table_name SET os = '';");
-	$lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/os.dat');
-	foreach($lines as $line_num => $os) {
-		list($nome_os,$id_os)=explode("|",$os);
-		$qry="UPDATE $table_name SET os = '$nome_os' WHERE os='' AND replace(agent,' ','') LIKE '%".$id_os."%';";
-		$wpdb->query($qry);
-	}
-	print "<td></td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+  # update table
+  print "<tr><td>Struct $table_name</td>";
+  iri_NewStatPress_CreateTable();
+  print "<td>".iritablesize($wpdb->prefix."statpress")."</td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
 
-	
-	# Update Browser
-	print "<tr><td>Browsers</td>";
-    $wpdb->query("UPDATE $table_name SET browser = '';");
-	$lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/browser.dat');
-	foreach($lines as $line_num => $browser) {
-		list($nome,$id)=explode("|",$browser);
-		$qry="UPDATE $table_name SET browser = '$nome' WHERE browser='' AND replace(agent,' ','') LIKE '%".$id."%';";
-		$wpdb->query($qry);
-	}
-	print "<td></td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+  print "<tr><td>Index $table_name</td>";
+  print "<td>".iriindextablesize($wpdb->prefix."statpress")."</td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+
+  # Update Feed
+  print "<tr><td>Feeds</td>";
+  $wpdb->query("
+    UPDATE $table_name 
+    SET feed='' 
+    WHERE date BETWEEN $from_date AND $to_date;"
+  );
+
+  # not standard
+  $wpdb->query("
+    UPDATE $table_name 
+    SET feed='RSS2' 
+    WHERE 
+      urlrequested LIKE '%/feed/%' AND
+      date BETWEEN $from_date AND $to_date;"
+  );
+
+  $wpdb->query("
+    UPDATE $table_name 
+    SET feed='RSS2' 
+    WHERE 
+      urlrequested LIKE '%wp-feed.php%' AND
+      date BETWEEN $from_date AND $to_date;"    
+  );
+
+  # standard blog info urls
+  $s=iriNewStatPress_extractfeedreq(get_bloginfo('comments_atom_url'));
+  if($s != '') {
+    $wpdb->query("
+      UPDATE $table_name 
+      SET feed='COMMENT' 
+      WHERE 
+        INSTR(urlrequested,'$s')>0 AND
+        date BETWEEN $from_date AND $to_date;"
+    );
+  }
+  $s=iriNewStatPress_extractfeedreq(get_bloginfo('comments_rss2_url'));
+  if($s != '') {
+    $wpdb->query("
+      UPDATE $table_name 
+      SET feed='COMMENT' 
+      WHERE 
+        INSTR(urlrequested,'$s')>0 AND
+        date BETWEEN $from_date AND $to_date;"
+    );
+  }
+  $s=iriNewStatPress_extractfeedreq(get_bloginfo('atom_url'));
+  if($s != '') {
+    $wpdb->query("
+      UPDATE $table_name 
+      SET feed='ATOM' 
+      WHERE 
+        INSTR(urlrequested,'$s')>0 AND
+        date BETWEEN $from_date AND $to_date;"
+    );
+  }
+  $s=iriNewStatPress_extractfeedreq(get_bloginfo('rdf_url'));
+  if($s != '') {
+    $wpdb->query("
+      UPDATE $table_name 
+      SET feed='RDF'  
+      WHERE 
+        INSTR(urlrequested,'$s')>0 AND
+        date BETWEEN $from_date AND $to_date;"
+    );
+  }
+  $s=iriNewStatPress_extractfeedreq(get_bloginfo('rss_url'));
+  if($s != '') {
+    $wpdb->query("
+      UPDATE $table_name 
+      SET feed='RSS'  
+      WHERE 
+        INSTR(urlrequested,'$s')>0 AND
+        date BETWEEN $from_date AND $to_date;"
+    );
+  }
+  $s=iriNewStatPress_extractfeedreq(get_bloginfo('rss2_url'));
+  if($s != '') {
+    $wpdb->query("
+      UPDATE $table_name 
+      SET feed='RSS2' 
+      WHERE 
+        INSTR(urlrequested,'$s')>0 AND
+        date BETWEEN $from_date AND $to_date;"
+    );
+  }
+
+  $wpdb->query("
+    UPDATE $table_name 
+    SET feed = '' 
+    WHERE 
+      isnull(feed) AND
+      date BETWEEN $from_date AND $to_date;"
+   );
+
+  print "<td></td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+
+  # Update OS
+  print "<tr><td>OSes</td>";
+  $wpdb->query("
+    UPDATE $table_name 
+    SET os = ''
+    WHERE date BETWEEN $from_date AND $to_date;"
+  );
+  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/os.dat');
+  foreach($lines as $line_num => $os) {
+    list($nome_os,$id_os)=explode("|",$os);
+    $qry="
+      UPDATE $table_name 
+      SET os = '$nome_os' 
+      WHERE 
+        os='' AND 
+        replace(agent,' ','') LIKE '%".$id_os."%' AND
+        date BETWEEN $from_date AND $to_date;";
+    $wpdb->query($qry);
+  }
+  print "<td></td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
 
 
-	# Update Spider
-	print "<tr><td>Spiders</td>";
-    $wpdb->query("UPDATE $table_name SET spider = '';");
-	$lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/spider.dat');
-	foreach($lines as $line_num => $spider) {
-		list($nome,$id)=explode("|",$spider);
-		$qry="UPDATE $table_name SET spider = '$nome',os='',browser='' WHERE spider='' AND replace(agent,' ','') LIKE '%".$id."%';";
-		$wpdb->query($qry);
-	}
-	print "<td></td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+  # Update Browser
+  print "<tr><td>Browsers</td>";
+  $wpdb->query("
+    UPDATE $table_name 
+    SET browser = ''
+    WHERE date BETWEEN $from_date AND $to_date;"
+  );
+  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/browser.dat');
+  foreach($lines as $line_num => $browser) {
+    list($nome,$id)=explode("|",$browser);
+    $qry="
+      UPDATE $table_name 
+      SET browser = '$nome' 
+      WHERE 
+        browser='' AND 
+        replace(agent,' ','') LIKE '%".$id."%' AND
+        date BETWEEN $from_date AND $to_date;";
+    $wpdb->query($qry);
+  }
+  print "<td></td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
 
 
-	# Update Search engine
-	print "<tr><td>Search engines</td>";
-	$wpdb->query("UPDATE $table_name SET searchengine = '', search='';");
-	$qry = $wpdb->get_results("SELECT id, referrer FROM $table_name WHERE length(referrer)!=0" );
-	foreach ($qry as $rk) {
-		list($searchengine,$search_phrase)=explode("|",iriGetSE($rk->referrer));
-		if($searchengine <> '') {
-			$q="UPDATE $table_name SET searchengine = '$searchengine', search='".addslashes($search_phrase)."' WHERE id=".$rk->id;
-			$wpdb->query($q);
-		}
-	}
-	print "<td></td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+  # Update Spider
+  print "<tr><td>Spiders</td>";
+  $wpdb->query("
+    UPDATE $table_name 
+    SET spider = ''
+    WHERE date BETWEEN $from_date AND $to_date;"
+  );
+  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/spider.dat');
+  foreach($lines as $line_num => $spider) {
+    list($nome,$id)=explode("|",$spider);
+    $qry="
+      UPDATE $table_name 
+      SET spider = '$nome',os='',browser='' 
+      WHERE 
+        spider='' AND 
+        replace(agent,' ','') LIKE '%".$id."%' AND
+        date BETWEEN $from_date AND $to_date;";
+    $wpdb->query($qry);
+  }
+  print "<td></td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
 
-	# Final statistics
-	print "<tr><td>Final Struct $table_name</td>";
-	print "<td>".iritablesize($wpdb->prefix."statpress")."</td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
 
-	print "<tr><td>Final Index $table_name</td>";
-	print "<td>".iriindextablesize($wpdb->prefix."statpress")."</td>";
-	print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+  # Update Search engine
+  print "<tr><td>Search engines</td>";
+  $wpdb->query("
+    UPDATE $table_name 
+    SET searchengine = '', search=''
+    WHERE date BETWEEN $from_date AND $to_date;");
+  $qry = $wpdb->get_results("
+    SELECT id, referrer 
+    FROM $table_name 
+    WHERE 
+      length(referrer)!=0 AND
+      date BETWEEN $from_date AND $to_date");
+  foreach ($qry as $rk) {
+    list($searchengine,$search_phrase)=explode("|",iriGetSE($rk->referrer));
+    if($searchengine <> '') {
+      $q="
+        UPDATE $table_name 
+        SET searchengine = '$searchengine', search='".addslashes($search_phrase)."' 
+        WHERE 
+          id=".$rk->id." AND
+          date BETWEEN $from_date AND $to_date;";
+      $wpdb->query($q);
+    }
+  }
+  print "<td></td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
 
-	
-	print "</tbody></table></div><br>\n";
-	$wpdb->hide_errors();
+  $end_time = microtime(true);
+  $sql_queries=$wpdb->num_queries;
+
+  # Final statistics
+  print "<tr><td>Final Struct $table_name</td>";
+  print "<td>".iritablesize($wpdb->prefix."statpress")."</td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+
+  print "<tr><td>Final Index $table_name</td>";
+  print "<td>".iriindextablesize($wpdb->prefix."statpress")."</td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+
+  print "<tr><td>Duration of the update</td>";
+  print "<td>".round($end_time - $start_time, 2)." sec</td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+
+  print "<tr><td>This update was done in</td>";
+  print "<td>".$sql_queries." SQL queries.</td>";
+  print "<td><IMG style='border:0px;width:20px;height:20px;' SRC='".$_newstatpress_url."/images/ok.gif'></td></tr>";
+
+  print "</tbody></table></div><br>\n";
+  $wpdb->hide_errors();
 }
 
 
@@ -1981,7 +2163,7 @@ function widget_newstatpress_init($args) {
 
 /**
  * Replace a content in page with NewStatPress output
- * Used format is: [NewTatPress: type]
+ * Used format is: [NewStatPress: type]
  * Type can be:
  *  [NewStatPress: Top days]
  *  [NewStatPress: O.S.] 

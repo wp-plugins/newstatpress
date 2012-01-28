@@ -98,7 +98,6 @@ Orca|Orca|
 Safari|Safari|
 Safari|AppleSyndication|
 Safari|AppleWebKit|
-Netscape|Netscape|
 Konqueror 3.5|Konqueror/3.5|
 Konqueror 3|Konqueror/3|
 Konqueror|Konqueror|
@@ -114,8 +113,6 @@ Radianrss|radianrss|
 NewsCopier|NewsCopier|
 K-Meleon|K-Meleon|
 iCab|iCab|
-Mozilla|Mozilla|
-Mozilla Minefield|Minefield|
 Swiftweasel|Swiftweasel|
 Safari Mobile 5.0|Version/5.0.2Mobile/8J2Safari/6533.18.5|
 Safari Mobile 5.0|Version/5.0.2Mobile/8C148Safari/6533.18.5|
@@ -154,3 +151,6 @@ Playstation|PLAYSTATION|
 Playstation|PlayStationPortable|
 BlackBerry|BlackBerry|
 Vienna|Vienna|
+Mozilla|Mozilla|
+Mozilla Minefield|Minefield|
+Netscape|Netscape|
