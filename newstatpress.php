@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.2.5
+Version: 0.2.6
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.2.5';
+$_NEWSTATPRESS['version']='0.2.6';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -959,16 +959,23 @@ function iriNewStatPressDetails() {
 
 
 function iriNewStatPressSpy() {
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
-	
-	# Spy
-	$today = gmdate('Ymd', current_time('timestamp'));
-	$yesterday = gmdate('Ymd', current_time('timestamp')-86400);
-	print "<div class='wrap'><h2>".__('Spy','newstatpress')."</h2>";
-	$sql="SELECT ip,nation,os,browser,agent FROM $table_name WHERE (spider='' AND feed='') AND (date BETWEEN '$yesterday' AND '$today') GROUP BY ip ORDER BY id DESC LIMIT 20";
-	$qry = $wpdb->get_results($sql);
-	
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+
+  # Spy
+  $today = gmdate('Ymd', current_time('timestamp'));
+  $yesterday = gmdate('Ymd', current_time('timestamp')-86400);
+  print "<div class='wrap'><h2>".__('Spy','newstatpress')."</h2>";
+  $sql="
+    SELECT ip,nation,os,browser,agent 
+    FROM $table_name 
+    WHERE 
+      spider='' AND 
+      feed='' AND 
+      date BETWEEN '$yesterday' AND '$today' 
+    GROUP BY ip ORDER BY id DESC LIMIT 20";
+  $qry = $wpdb->get_results($sql);
+
 ?>
 <script>
 function ttogle(thediv){
@@ -977,39 +984,39 @@ document.getElementById(thediv).style.display="none"
 } else {document.getElementById(thediv).style.display="inline"}
 }
 </script>
-<div align="center">
+<div>
 <table id="mainspytab" name="mainspytab" width="99%" border="0" cellspacing="0" cellpadding="4">
 <?php
-	foreach ($qry as $rk) {
-		print "<tr><td colspan='2' bgcolor='#dedede'><div align='left'>";
-		print "<IMG SRC='http://api.hostip.info/flag.php?ip=".$rk->ip."' border=0 width=18 height=12>";
-		print " <strong><span><font size='2' color='#7b7b7b'>".$rk->ip."</font></span></strong> ";
-		print "<span style='color:#006dca;cursor:pointer;border-bottom:1px dotted #AFD5F9;font-size:8pt;' onClick=ttogle('".$rk->ip."');>".__('more info','newstatpress')."</span></div>";
-		print "<div id='".$rk->ip."' name='".$rk->ip."'>";
-		if(get_option('newstatpress_cryptip')!='checked') {
-			print "<br><iframe style='overflow:hidden;border:0px;width:100%;height:60px;font-family:helvetica;padding:0;' scrolling='no' marginwidth=0 marginheight=0 src=http://api.hostip.info/get_html.php?ip=".$rk->ip."></iframe>";
-		}
-		print "<br><small><span style='font-weight:700;'>OS or device:</span> ".$rk->os."</small>";
-		print "<br><small><span style='font-weight:700;'>DNS Name:</span> ".gethostbyaddr($rk->ip)."</small>";
-		print "<br><small><span style='font-weight:700;'>Browser:</span> ".$rk->browser."</small>";
-		print "<br><small><span style='font-weight:700;'>Browser Detail:</span> ".$rk->agent."</small>";
-		print "<br><br></div>";
-		print "<script>document.getElementById('".$rk->ip."').style.display='none';</script>";
-		print "</td></tr>";
-		$qry2=$wpdb->get_results("SELECT * FROM $table_name WHERE ip='".$rk->ip."' AND (date BETWEEN '$yesterday' AND '$today') order by id LIMIT 10");
-		foreach ($qry2 as $details) {
-			print "<tr>";
-			print "<td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>".irihdate($details->date)." ".$details->time."</strong></font></div></td>";
-			print "<td><div><a href='".get_bloginfo('url')."/?".$details->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($details->urlrequested)."</a>";
-			if($details->searchengine != '') {
-				print "<br><small>".__('arrived from','newstatpress')." <b>".$details->searchengine."</b> ".__('searching','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->search."</a></small>";
-			} elseif($details->referrer != '' && strpos($details->referrer,get_option('home'))===FALSE) {
-				print "<br><small>".__('arrived from','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->referrer."</a></small>";
-			}
-			print "</div></td>";
-			print "</tr>\n";
-		}
-	}
+  foreach ($qry as $rk) {
+    print "<tr><td colspan='2' bgcolor='#dedede'><div align='left'>";
+    print "<IMG SRC='http://api.hostip.info/flag.php?ip=".$rk->ip."' border=0 width=18 height=12>";
+    print " <strong><span><font size='2' color='#7b7b7b'>".$rk->ip."</font></span></strong> ";
+    print "<span style='color:#006dca;cursor:pointer;border-bottom:1px dotted #AFD5F9;font-size:8pt;' onClick=ttogle('".$rk->ip."');>".__('more info','newstatpress')."</span></div>";
+    print "<div id='".$rk->ip."' name='".$rk->ip."'>";
+    if(get_option('newstatpress_cryptip')!='checked') {
+      print "<br><iframe style='overflow:hidden;border:0px;width:100%;height:60px;font-family:helvetica;padding:0;' scrolling='no' marginwidth=0 marginheight=0 src=http://api.hostip.info/get_html.php?ip=".$rk->ip."></iframe>";
+    }
+    print "<br><small><span style='font-weight:700;'>OS or device:</span> ".$rk->os."</small>";
+    print "<br><small><span style='font-weight:700;'>DNS Name:</span> ".gethostbyaddr($rk->ip)."</small>";
+    print "<br><small><span style='font-weight:700;'>Browser:</span> ".$rk->browser."</small>";
+    print "<br><small><span style='font-weight:700;'>Browser Detail:</span> ".$rk->agent."</small>";
+    print "<br><br></div>";
+    print "<script>document.getElementById('".$rk->ip."').style.display='none';</script>";
+    print "</td></tr>";
+    $qry2=$wpdb->get_results("SELECT * FROM $table_name WHERE ip='".$rk->ip."' AND (date BETWEEN '$yesterday' AND '$today') order by id LIMIT 10");
+    foreach ($qry2 as $details) {
+      print "<tr>";
+      print "<td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>".irihdate($details->date)." ".$details->time."</strong></font></div></td>";
+      print "<td><div><a href='".get_bloginfo('url')."/?".$details->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($details->urlrequested)."</a>";
+      if($details->searchengine != '') {
+        print "<br><small>".__('arrived from','newstatpress')." <b>".$details->searchengine."</b> ".__('searching','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->search."</a></small>";
+      } elseif($details->referrer != '' && strpos($details->referrer,get_option('home'))===FALSE) {
+          print "<br><small>".__('arrived from','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->referrer."</a></small>";
+        }
+      print "</div></td>";
+      print "</tr>\n";
+    }
+  }
 ?>
 </table>
 </div>
