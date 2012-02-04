@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.3
-Stable Tag: 0.2.6
+Stable Tag: 0.2.7
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -191,6 +191,13 @@ Check at http://newstatpress.altervista.org
 * Fix missing browser image and IE aligment failure in spy section (thanks to Maurice Cramer)
 * Add new browser definitions (+2)
 
+= 0.2.7 =
+
+* replace deprecate PHP eregi function with preg_match
+* in spy show local nation images (taken from statpress-visitors)
+* new spy function taken from statpress-visitors (for beta testing)
+* use image for newstatpress menu in administration of wordpress (taken from statpress-visitors)
+
 == Upgrade Notice ==
 
 = 0.1.0 =
@@ -260,3 +267,7 @@ Check at http://newstatpress.altervista.org
 = 0.2.6 =
 
 * relased 01/02/2012
+
+= 0.2.7 =
+
+* relased 04/02/2012

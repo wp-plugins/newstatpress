@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.2.6
+Version: 0.2.7
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.2.6';
+$_NEWSTATPRESS['version']='0.2.7';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -47,12 +47,13 @@ function iri_add_pages() {
   }
   
   // ORIG   add_submenu_page('index.php', 'StatPress', 'StatPress', 8, 'statpress', 'iriNewStatPress');
-  add_menu_page('NewStatPress', 'NewStatPress', $mincap, __FILE__, 'iriNewStatPress');
+  add_menu_page('NewStatPress', 'NewStatPress', $mincap, __FILE__, 'iriNewStatPress', plugins_url('newstatpress/images/stat.png',dirname(plugin_basename(__FILE__))));
   add_submenu_page(__FILE__, __('Overview','newstatpress'), __('Overview','newstatpress'), $mincap, __FILE__, 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Details','newstatpress'), __('Details','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=details', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('New Spy','newstatpress'), __('New Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=newspy', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Search','newstatpress'), __('Search','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=search', 'iriNewStatPress');
-  add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=export', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpressaction=export', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Options','newstatpress'), __('Options','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=options', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=up', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('NewStatpress blog','newstatpress'), __('NewStatpress blog','newstatpress'), $mincap, 'http://newstatpress.altervista.org');
@@ -71,6 +72,8 @@ function iriNewStatPress() {
           iriNewStatPressUpdate();
       } elseif ($_GET['newstatpress_action'] == 'spy') {
           iriNewStatPressSpy();
+      } elseif ($_GET['newstatpress_action'] == 'newspy') {
+          iriNewStatPressNewSpy();
       } elseif ($_GET['newstatpress_action'] == 'search') {
            iriNewStatPressSearch();
       } elseif ($_GET['newstatpress_action'] == 'details') {
@@ -115,6 +118,8 @@ function iriNewStatPressOptions() {
   if(isset($_POST['saveit']) && $_POST['saveit'] == 'yes') {
     if (isset($_POST['newstatpress_collectloggeduser'])) update_option('newstatpress_collectloggeduser', $_POST['newstatpress_collectloggeduser']);
     else update_option('newstatpress_collectloggeduser', null);
+    update_option('newstatpress_ip_per_page_newspy', $_POST['newstatpress_ip_per_page_newspy']);
+    update_option('newstatpress_visits_per_ip_newspy', $_POST['newstatpress_visits_per_ip_newspy']);
     update_option('newstatpress_autodelete', $_POST['newstatpress_autodelete']);
     update_option('newstatpress_daysinoverviewgraph', $_POST['newstatpress_daysinoverviewgraph']);
     update_option('newstatpress_mincap', $_POST['newstatpress_mincap']);
@@ -154,6 +159,21 @@ function iriNewStatPressOptions() {
         print "<tr><td><input type=checkbox name='newstatpress_cryptip' value='checked' ".get_option('newstatpress_cryptip')."> ".__('Crypt IP addresses','newstatpress')."</td></tr>";
         print "<tr><td><input type=checkbox name='newstatpress_dashboard' value='checked' ".get_option('newstatpress_dashboard')."> ".__('Show NewStatPress dashboard widget','newstatpress')."</td></tr>";
       ?>
+
+      <tr><td><?php _e('New Spy: number of IP per page','newstatpress'); ?>
+        <select name="newstatpress_ip_per_page_newspy">          
+          <option value="20" <?php if(get_option('newstatpress_ip_per_page_newspy') == "20") print "selected"; ?>>20</option>
+          <option value="50" <?php if(get_option('newstatpress_ip_per_page_newspy') == "50") print "selected"; ?>>50</option>
+          <option value="100" <?php if(get_option('newstatpress_ip_per_page_newspy') == "100") print "selected"; ?>>100</option>          
+        </select></td></tr>
+
+      <tr><td><?php _e('New Spy: number of visits for IP','newstatpress'); ?>
+        <select name="newstatpress_visits_per_ip_newspy">          
+          <option value="20" <?php if(get_option('newstatpress_visits_per_ip_newspy') == "20") print "selected"; ?>>20</option>
+          <option value="50" <?php if(get_option('newstatpress_visits_per_ip_newspy') == "50") print "selected"; ?>>50</option>
+          <option value="100" <?php if(get_option('newstatpress_visits_per_ip_newspy') == "100") print "selected"; ?>>100</option>          
+        </select></td></tr>
+
       <tr><td><?php _e('Automatically delete visits older than','newstatpress'); ?>
         <select name="newstatpress_autodelete">
           <option value="" <?php if(get_option('newstatpress_autodelete') =='' ) print "selected"; ?>><?php _e('Never delete!','newstatpress'); ?></option>
@@ -912,52 +932,299 @@ function iriNewStatPress_extractfeedreq($url) {
 }
 
 function iriNewStatPressDetails() {
-	global $wpdb;
-	$table_name = $wpdb->prefix . "statpress";
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
 
-	$querylimit="LIMIT 10";
+  $querylimit="LIMIT 10";
 
-	# Top days
-    iriValueTable2("date","Top days",(get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'));
+  # Top days
+  iriValueTable2("date","Top days",(get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'));
 
-	# O.S.
-    iriValueTable2("os","O.S.",(get_option('newstatpress_el_os')=='') ? 10:get_option('newstatpress_el_os'),"","","AND feed='' AND spider='' AND os<>''");
+  # O.S.
+  iriValueTable2("os","O.S.",(get_option('newstatpress_el_os')=='') ? 10:get_option('newstatpress_el_os'),"","","AND feed='' AND spider='' AND os<>''");
 
-	# Browser
-    iriValueTable2("browser","Browser",(get_option('newstatpress_el_browser')=='') ? 10:get_option('newstatpress_el_browser'),"","","AND feed='' AND spider='' AND browser<>''");	
-	
-	# Feeds
-    iriValueTable2("feed","Feeds",(get_option('newstatpress_el_feed')=='') ? 5:get_option('newstatpress_el_feed'),"","","AND feed<>''");
+  # Browser
+  iriValueTable2("browser","Browser",(get_option('newstatpress_el_browser')=='') ? 10:get_option('newstatpress_el_browser'),"","","AND feed='' AND spider='' AND browser<>''");	
+
+  # Feeds
+  iriValueTable2("feed","Feeds",(get_option('newstatpress_el_feed')=='') ? 5:get_option('newstatpress_el_feed'),"","","AND feed<>''");
     
-	# SE
-    iriValueTable2("searchengine","Search engines",(get_option('newstatpress_el_searchengine')=='') ? 10:get_option('newstatpress_el_searchengine'),"","","AND searchengine<>''");
+  # SE
+  iriValueTable2("searchengine","Search engines",(get_option('newstatpress_el_searchengine')=='') ? 10:get_option('newstatpress_el_searchengine'),"","","AND searchengine<>''");
 
-	# Search terms
-    iriValueTable2("search","Top search terms",(get_option('newstatpress_el_search')=='') ? 20:get_option('newstatpress_el_search'),"","","AND search<>''");
+  # Search terms
+  iriValueTable2("search","Top search terms",(get_option('newstatpress_el_search')=='') ? 20:get_option('newstatpress_el_search'),"","","AND search<>''");
 
-	# Top referrer
-    iriValueTable2("referrer","Top referrer",(get_option('newstatpress_el_referrer')=='') ? 10:get_option('newstatpress_el_referrer'),"","","AND referrer<>'' AND referrer NOT LIKE '%".get_bloginfo('url')."%'");
- 	
-	# Languages
-    iriValueTable2("nation","Countries/Languages",(get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'),"","","AND nation<>'' AND spider=''");
+  # Top referrer
+  iriValueTable2("referrer","Top referrer",(get_option('newstatpress_el_referrer')=='') ? 10:get_option('newstatpress_el_referrer'),"","","AND referrer<>'' AND referrer NOT LIKE '%".get_bloginfo('url')."%'");
+ 
+  # Languages
+  iriValueTable2("nation","Countries/Languages",(get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'),"","","AND nation<>'' AND spider=''");
 
-	# Spider
-    iriValueTable2("spider","Spiders",(get_option('newstatpress_el_spiders')=='') ? 10:get_option('newstatpress_el_spiders'),"","","AND spider<>''");
+  # Spider
+  iriValueTable2("spider","Spiders",(get_option('newstatpress_el_spiders')=='') ? 10:get_option('newstatpress_el_spiders'),"","","AND spider<>''");
 
-	# Top Pages
-    iriValueTable2("urlrequested","Top pages",(get_option('newstatpress_el_pages')=='') ? 5:get_option('newstatpress_el_pages'),"","urlrequested","AND feed='' and spider=''");
-	
-	# Top Days - Unique visitors
-    iriValueTable2("date","Top Days - Unique visitors",(get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'),"distinct","ip","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+  # Top Pages
+  iriValueTable2("urlrequested","Top pages",(get_option('newstatpress_el_pages')=='') ? 5:get_option('newstatpress_el_pages'),"","urlrequested","AND feed='' and spider=''");
 
-    # Top Days - Pageviews
-    iriValueTable2("date","Top Days - Pageviews",(get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+  # Top Days - Unique visitors
+  iriValueTable2("date","Top Days - Unique visitors",(get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'),"distinct","ip","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
 
-    # Top IPs - Pageviews
-    iriValueTable2("ip","Top IPs - Pageviews",(get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+  # Top Days - Pageviews
+  iriValueTable2("date","Top Days - Pageviews",(get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+
+  # Top IPs - Pageviews
+  iriValueTable2("ip","Top IPs - Pageviews",(get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
 }
 
 
+/**
+ * Converte da data us to default format di Wordpress
+ *
+ * @param dt the date to convert
+ * @return converted data
+ */
+function newstatpress_hdate($dt = "00000000") {
+  return mysql2date(get_option('date_format'), my_substr($dt, 0, 4) . "-" . my_substr($dt, 4, 2) . "-" . my_substr($dt, 6, 2));
+}
+
+/**
+ * Decode the url in a better manner
+ */
+function newstatpress_Decode($out_url) {
+  if(!permalinksEnabled()) {
+    if ($out_url == '') $out_url = __('Page', 'newstatpress') . ": Home";
+    if (my_substr($out_url, 0, 4) == "cat=") $out_url = __('Category', 'statpress') . ": " . get_cat_name(my_substr($out_url, 4));
+    if (my_substr($out_url, 0, 2) == "m=") $out_url = __('Calendar', 'newstatpress') . ": " . my_substr($out_url, 6, 2) . "/" . my_substr($out_url, 2, 4);
+    if (my_substr($out_url, 0, 2) == "s=") $out_url = __('Search', 'newstatpress') . ": " . my_substr($out_url, 2);
+    if (my_substr($out_url, 0, 2) == "p=") {
+      $post_id_7 = get_post(my_substr($out_url, 2), ARRAY_A);
+      $out_url = $post_id_7['post_title'];
+    }
+    if (my_substr($out_url, 0, 8) == "page_id=") {
+      $post_id_7 = get_page(my_substr($out_url, 8), ARRAY_A);
+      $out_url = __('Page', 'newstatpress') . ": " . $post_id_7['post_title'];
+    }
+ } else {
+     if ($out_url == '') $out_url = __('Page', 'newstatpress') . ": Home";
+     else if (my_substr($out_url, 0, 9) == "category/") $out_url = __('Category', 'newstatpress') . ": " . get_cat_name(my_substr($out_url, 9));
+          else if (my_substr($out_url, 0, 2) == "s=") $out_url = __('Search', 'newstatpress') . ": " . my_substr($out_url, 2);
+               else if (my_substr($out_url, 0, 2) == "p=") {
+                      // not working yet           
+                      $post_id_7 = get_post(my_substr($out_url, 2), ARRAY_A);
+                      $out_url = $post_id_7['post_title'];
+                    } else if (my_substr($out_url, 0, 8) == "page_id=") { 
+                             // not working yet
+                             $post_id_7 = get_page(my_substr($out_url, 8), ARRAY_A);
+                             $out_url = __('Page', 'newstatpress') . ": " . $post_id_7['post_title'];
+                           }
+   }
+   return $out_url;
+}
+
+/**
+ * Get true if permalink is enabled in Wordpress
+ * (taken in statpress-visitors)
+ *
+ * @return true if permalink is enabled in Wordpress
+ */
+function permalinksEnabled() { 
+  global $wpdb;
+      
+  $result = $wpdb->get_row('SELECT `option_value` FROM `' . $wpdb->prefix . 'options` WHERE `option_name` = "permalink_structure"');
+  if ($result->option_value != '') return true;
+  else return false;
+}
+
+/** 
+ * PHP 4 compatible mb_substr function
+ * (taken in statpress-visitors)
+ */
+function my_substr($str, $x, $y = 0) {
+  if($y == 0) $y = strlen($str) - $x;
+  if(function_exists('mb_substr'))
+  return mb_substr($str, $x, $y);
+  else
+ return substr($str, $x, $y);
+}
+
+/**
+ * Display links for group of pages
+ *
+ * @param NP the group of pages
+ * @param pp the page to show
+ */
+function newstatpress_print_pp_link($NP,$pp) {
+  // For all pages ($NP) Display first 3 pages, 3 pages before current page($pp), 3 pages after current page , each 25 pages and the 3 last pages for($action)
+  $GUIL1 = FALSE;
+  $GUIL2 = FALSE;// suspension points  not writed  style='border:0px;width:16px;height:16px;   style="border:0px;width:16px;height:16px;"
+  if ($NP >1) {
+    print "<font size='1'>".__('period of days','newstatpress')." : </font>";
+    for ($i = 1; $i <= $NP; $i++) {
+      if ($i <= $NP) { 
+        // $page is not the last page
+        if($i == $pp) echo " [{$i}] "; // $page is current page
+        else { 
+          // Not the current page Hyperlink them
+          if (($i <= 3) or (($i >= $pp-3) and ($i <= $pp+3)) or ($i >= $NP-3) or is_int($i/100)) { 
+            echo '<a href="' . $_SERVER['SCRIPT_NAME'] . '?page=newstatpress/newstatpress.php&newstatpress_action=newspy&pp=' . $i .'">' . $i . '</a> ';
+          } else { 
+              if (($GUIL1 == FALSE) OR ($i==$pp+4)) {
+                echo "..."; 
+                $GUIL1 = TRUE;
+              }
+              if ($i == $pp-4) echo ".."; 
+              if (is_int(($i-1)/100)) echo "."; 
+              if ($i == $NP-4) echo "..";   
+              // suspension points writed
+            }
+         }
+      }
+    }
+  }
+}
+
+/**
+ * Get page period taken in statpress-visitors
+ */
+function newstatpress_page_periode() { 
+  // pp is the display page periode 
+  if(isset($_GET['pp'])) { 
+    // Get Current page periode from URL
+    $periode = $_GET['pp'];
+    if($periode <= 0)
+      // Periode is less than 0 then set it to 1
+      $periode = 1;
+  } else
+      // URL does not show the page set it to 1
+      $periode = 1;
+  return $periode;
+}
+
+/**
+ * New spy function taken in statpress-visitors
+ */
+function iriNewStatPressNewSpy() {
+  global $wpdb;
+  $table_name = $wpdb->prefix . "statpress";
+ 
+  // number of IP or bot by page
+  $LIMIT = get_option('newstatpress_ip_per_page_newspy');
+  $LIMIT_PROOF = get_option('newstatpress_visits_per_ip_newspy');
+  if ($LIMIT == 0) $LIMIT = 20;
+  if ($LIMIT_PROOF == 0) $LIMIT_PROOF = 20;
+
+  $pp = newstatpress_page_periode();
+
+  // Number of distinct ip (unique visitors)
+  $NumIP = $wpdb->get_var("
+    SELECT count(distinct ip) 
+    FROM $table_name 
+    WHERE spider=''"
+  );
+  $NP = ceil($NumIP/$LIMIT);
+  $LimitValue = ($pp * $LIMIT) - $LIMIT;
+        
+  $sql = "
+    SELECT *
+    FROM $table_name as T1
+    JOIN
+      (SELECT max(id) as MaxId,min(id) as MinId,ip, nation 
+       FROM $table_name 
+       WHERE spider='' 
+       GROUP BY ip 
+       ORDER BY MaxId 
+       DESC LIMIT $LimitValue, $LIMIT ) as T2
+    ON T1.ip = T2.ip 
+    WHERE id BETWEEN MinId AND MaxId
+    ORDER BY MaxId DESC, id DESC
+  ";
+
+  $qry = $wpdb->get_results($sql);
+
+  echo "<div class='wrap'><h2>" . __('Visitor Spy', 'newstatpress') . "</h2>";
+?>
+<script>
+function ttogle(thediv){
+if (document.getElementById(thediv).style.display=="inline") {
+document.getElementById(thediv).style.display="none"
+} else {document.getElementById(thediv).style.display="inline"}
+}
+</script>
+<?php    
+  $ip = 0;
+  $num_row=0;
+  echo'<div id="paginating" align="center">';
+  newstatpress_print_pp_link($NP,$pp);
+  echo'</div><table id="mainspytab" name="mainspytab" width="99%" border="0" cellspacing="0" cellpadding="4">';    
+  foreach ($qry as $rk) {
+    // Visitor Spy
+    if ($ip <> $rk->ip) { 
+      //this is the first time these ip appear, print informations
+      echo "<tr><td colspan='2' bgcolor='#dedede'><div align='left'>";  
+      $title='';
+      $id ='';
+      ///if ($rk->country <> '') { 
+      ///  $img=strtolower($rk->country).".png"; 
+      ///  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(dirname(dirname(plugin_basename(__FILE__)))) .'/def/domain.dat');
+      ///  foreach($lines as $line_num => $country) { 
+      ///    list($id,$title)=explode("|",$country);
+      ///    if($id===strtolower($rk->country)) break;
+      ///  }  
+      ///  echo "http country <IMG style='border:0px;height:16px;' alt='".$title."' title='".$title."' SRC='" .plugins_url('newstatpress/images/domain/'.$img, dirname(dirname(dirname(__FILE__)))). "'>  ";
+      ///} else
+        if($rk->nation <> '') { 
+          // the nation exist
+          $img=strtolower($rk->nation).".png"; 
+          $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/domain.dat');
+          foreach($lines as $line_num => $nation) { 
+            list($id,$title)=explode("|",$nation);
+            if($id===$rk->nation) break;
+          }  
+          print "".__('Http domain', 'newstatpress')." <IMG style='border:0px;height:16px;' alt='".$title."' title='".$title."' SRC='" .plugins_url('newstatpress/images/domain/'.$img, dirname(plugin_basename(__FILE__))). "'>  ";
+
+        } else print "".__('Hostip country','newstatpress')." <IMG SRC='http://api.hostip.info/flag.php?ip=".$rk->ip."' border=0 width=18 height=12>  ";
+        print "<strong><span><font size='2' color='#7b7b7b'>".$rk->ip."</font></span></strong> ";
+        print "<span style='color:#006dca;cursor:pointer;border-bottom:1px dotted #AFD5F9;font-size:8pt;' onClick=ttogle('".$rk->ip."');>".__('more info','newstatpress')."</span></div>";
+        print "<div id='".$rk->ip."' name='".$rk->ip."'>";
+
+        if(get_option('newstatpress_cryptip')!='checked') {
+          print "<br><iframe style='overflow:hidden;border:0px;width:100%;height:60px;font-family:helvetica;padding:0;' scrolling='no' marginwidth=0 marginheight=0 src=http://api.hostip.info/get_html.php?ip=".$rk->ip."></iframe>";
+        }
+        print "<br><small><span style='font-weight:700;'>OS or device:</span> ".$rk->os."</small>";
+        print "<br><small><span style='font-weight:700;'>DNS Name:</span> ".gethostbyaddr($rk->ip)."</small>";
+        print "<br><small><span style='font-weight:700;'>Browser:</span> ".$rk->browser."</small>";
+        print "<br><small><span style='font-weight:700;'>Browser Detail:</span> ".$rk->agent."</small>";
+        print "<br><br></div>";
+        print "<script>document.getElementById('".$rk->ip."').style.display='none';</script>";
+        print "</td></tr>";  
+
+
+        echo "<td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>" . newstatpress_hdate($rk->date) . " " . $rk->time . "</strong></font></div></td>
+              <td>" . newstatpress_Decode($rk->urlrequested) ."";
+        if ($rk->searchengine != '') print "<br><small>".__('arrived from','newstatpress')." <b>" . $rk->searchengine . "</b> ".__('searching','newstatpress')." <a href='" . $rk->referrer . "' target=_blank>" . urldecode($rk->search) . "</a></small>";
+        elseif ($rk->referrer != '' && strpos($rk->referrer, get_option('home')) === false) print "<br><small>".__('arrived from','newstatpress')." <a href='" . $rk->referrer . "' target=_blank>" . $rk->referrer . "</a></small>";
+        echo "</div></td></tr>\n";
+        $ip=$rk->ip;
+        $num_row = 1;
+    } elseif ($num_row < $LIMIT_PROOF) { 
+        echo "<tr><td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>" . newstatpress_hdate($rk->date) . " " . $rk->time . "</strong></font></div></td>
+              <td><div>" . newstatpress_Decode($rk->urlrequested) . "";
+        if ($rk->searchengine != '') print "<br><small>".__('arrived from','newstatpress')." <b>" . $rk->searchengine . "</b> ".__('searching','newstatpress')." <a href='" . $rk->referrer . "' target=_blank>" . urldecode($rk->search) . "</a></small>";
+        elseif ($rk->referrer != '' && strpos($rk->referrer, get_option('home')) === false) print "<br><small>".__('arrived from','newstatpress')." <a href='" . $rk->referrer . "' target=_blank>" . $rk->referrer . "</a></small>";
+        $num_row += 1;
+        echo "</div></td></tr>\n";
+      }
+   }
+   echo "</div></td></tr>\n</table>";   
+   newstatpress_print_pp_link($NP,$pp);
+   echo "</div>";
+} 
+
+
+/**
+ * Newstatpress spy function
+ */
 function iriNewStatPressSpy() {
   global $wpdb;
   $table_name = $wpdb->prefix . "statpress";
@@ -989,7 +1256,19 @@ document.getElementById(thediv).style.display="none"
 <?php
   foreach ($qry as $rk) {
     print "<tr><td colspan='2' bgcolor='#dedede'><div align='left'>";
-    print "<IMG SRC='http://api.hostip.info/flag.php?ip=".$rk->ip."' border=0 width=18 height=12>";
+
+    if($rk->nation <> '') { 
+      // the nation exist
+      $img=strtolower($rk->nation).".png"; 
+      $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/domain.dat');
+      foreach($lines as $line_num => $nation) { 
+        list($id,$title)=explode("|",$nation);
+        if($id===$rk->nation) break;
+      }  
+      echo "<IMG style='border:0px;height:16px;' alt='".$title."' title='".$title."' SRC='" .plugins_url('newstatpress/images/domain/'.$img, dirname(plugin_basename(__FILE__))). "'>  ";
+    } else print "<IMG SRC='http://api.hostip.info/flag.php?ip=".$rk->ip."' border=0 width=18 height=12>";
+
+    
     print " <strong><span><font size='2' color='#7b7b7b'>".$rk->ip."</font></span></strong> ";
     print "<span style='color:#006dca;cursor:pointer;border-bottom:1px dotted #AFD5F9;font-size:8pt;' onClick=ttogle('".$rk->ip."');>".__('more info','newstatpress')."</span></div>";
     print "<div id='".$rk->ip."' name='".$rk->ip."'>";
@@ -1003,7 +1282,15 @@ document.getElementById(thediv).style.display="none"
     print "<br><br></div>";
     print "<script>document.getElementById('".$rk->ip."').style.display='none';</script>";
     print "</td></tr>";
-    $qry2=$wpdb->get_results("SELECT * FROM $table_name WHERE ip='".$rk->ip."' AND (date BETWEEN '$yesterday' AND '$today') order by id LIMIT 10");
+    $qry2=$wpdb->get_results("
+      SELECT * 
+      FROM $table_name 
+      WHERE 
+        ip='".$rk->ip."' AND 
+        (date BETWEEN '$yesterday' AND '$today') 
+      ORDER BY id 
+      LIMIT 10"
+    );
     foreach ($qry2 as $details) {
       print "<tr>";
       print "<td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>".irihdate($details->date)." ".$details->time."</strong></font></div></td>";
@@ -1024,9 +1311,14 @@ document.getElementById(thediv).style.display="none"
 }
 
 
-
+/**
+ * Check if the argoument is an IP addresses
+ * 
+ * @param ip the ip to check
+ * @return TRUE if it is an ip
+ */
 function iri_CheckIP($ip) {
-	return ( ! preg_match( "/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/", $ip)) ? FALSE : TRUE;
+  return ( ! preg_match( "/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/", $ip)) ? FALSE : TRUE;
 }
 
 function iriNewStatPressSearch($what='') {
@@ -1310,27 +1602,38 @@ else{return null;}
 }
 
 
-function iriGetOS($arg){
-    $arg=str_replace(" ","",$arg);
-	$lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/os.dat');
-	foreach($lines as $line_num => $os) {
-		list($nome_os,$id_os)=explode("|",$os);
-		if(strpos($arg,$id_os)===FALSE) continue;
-    	return $nome_os; // riconosciuto
-	}
-    return '';
+/**
+ * Get OS from the given argument
+ * 
+ * @param arg the argument to parse for OS
+ * @return the OS find in configuration file
+ */
+function iriGetOS($arg) {
+  $arg=str_replace(" ","",$arg);
+  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/os.dat');
+  foreach($lines as $line_num => $os) {
+    list($nome_os,$id_os)=explode("|",$os);
+    if(strpos($arg,$id_os)===FALSE) continue;
+    return $nome_os;     // fount
+  }
+  return '';
 }
 
-
-function iriGetBrowser($arg){
-    $arg=str_replace(" ","",$arg);
-	$lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/browser.dat');
-	foreach($lines as $line_num => $browser) {
-		list($nome,$id)=explode("|",$browser);
-		if(strpos($arg,$id)===FALSE) continue;
-    	return $nome; // riconosciuto
-	}
-    return '';
+/**
+ * Get Browser from the given argument
+ * 
+ * @param arg the argument to parse for Brower
+ * @return the Browser find in configuration file
+ */
+function iriGetBrowser($arg) {
+  $arg=str_replace(" ","",$arg);
+  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/browser.dat');
+  foreach($lines as $line_num => $browser) {
+    list($nome,$id)=explode("|",$browser);
+    if(strpos($arg,$id)===FALSE) continue;
+    return $nome;     // fount
+  }
+  return '';
 }
 
 function iriCheckBanIP($arg){
@@ -1486,10 +1789,10 @@ function iriStatAppend() {
 
   // URL (requested)
   $urlRequested=iri_NewStatPress_URL();
-  if (eregi(".ico$", $urlRequested)) { return ''; }
-  if (eregi("favicon.ico", $urlRequested)) { return ''; }
-  if (eregi(".css$", $urlRequested)) { return ''; }
-  if (eregi(".js$", $urlRequested)) { return ''; }
+  if (preg_match("/.ico$/i", $urlRequested)) { return ''; }
+  if (preg_match("/favicon.ico/i", $urlRequested)) { return ''; }
+  if (preg_match("/.css$/i", $urlRequested)) { return ''; }
+  if (preg_match("/.js$/i", $urlRequested)) { return ''; }
   if (stristr($urlRequested,"/wp-content/plugins") != FALSE) { return ''; }
   if (stristr($urlRequested,"/wp-content/themes") != FALSE) { return ''; }
   if (stristr($urlRequested,"/wp-admin/") != FALSE) { return ''; }
