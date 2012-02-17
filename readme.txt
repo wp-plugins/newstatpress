@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.3
-Stable Tag: 0.2.7
+Stable Tag: 0.2.8
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -193,81 +193,90 @@ Check at http://newstatpress.altervista.org
 
 = 0.2.7 =
 
-* replace deprecate PHP eregi function with preg_match
-* in spy show local nation images (taken from statpress-visitors)
-* new spy function taken from statpress-visitors (for beta testing)
-* use image for newstatpress menu in administration of wordpress (taken from statpress-visitors)
+* Replace deprecate PHP eregi function with preg_match
+* In spy show local nation images (taken from statpress-visitors)
+* New spy function taken from statpress-visitors (for beta testing)
+* Use image for newstatpress menu in administration of wordpress (taken from statpress-visitors)
+
+= 0.2.8 =
+
+* Fix blog redirector in NewStatPressBlog (Tracker ID 137)
+* Fix nation image display in spy (thanks to Maurice Cramer)
 
 == Upgrade Notice ==
 
 = 0.1.0 =
 
-* relased 19/03/2011
+* released 19/03/2011
 
 = 0.1.1 =
 
-* relased 22/03/2011
+* released 22/03/2011
 
 = 0.1.2 =
 
-* relased 23/03/2011
+* released 23/03/2011
 
 = 0.1.3 =
 
-* relased 23/04/2011
+* released 23/04/2011
 
 = 0.1.4 =
 
-* relased 24/04/2011
+* released 24/04/2011
 
 = 0.1.5 =
 
-* relased 12/05/2011
+* released 12/05/2011
 
 = 0.1.6 =
 
-* relased 15/05/2011
+* released 15/05/2011
 
 = 0.1.7 =
 
-* relased 29/05/2011
+* released 29/05/2011
 
 = 0.1.8 =
 
-* relased 23/06/2011
+* released 23/06/2011
 
 = 0.1.9 =
 
-* relased 10/09/2011
+* released 10/09/2011
 
 = 0.2.0 =
 
-* relased 15/10/2011
+* released 15/10/2011
 
 = 0.2.1 =
 
-* relased 21/12/2011
+* released 21/12/2011
 
 = 0.2.2 =
 
-* relased 11/01/2012
+* released 11/01/2012
 
 = 0.2.3 =
 
-* relased 12/01/2012
+* released 12/01/2012
 
 = 0.2.4 =
 
-* relased 18/01/2012
+* released 18/01/2012
 
 = 0.2.5 =
 
-* relased 28/01/2012
+* released 28/01/2012
 
 = 0.2.6 =
 
-* relased 01/02/2012
+* released 01/02/2012
 
 = 0.2.7 =
 
-* relased 04/02/2012
+* released 04/02/2012
+
+= 0.2.8 =
+
+* released 17/02/2012
