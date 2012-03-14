@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.2.9
+Version: 0.3.0
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.2.9';
+$_NEWSTATPRESS['version']='0.3.0';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -57,6 +57,7 @@ function iri_add_pages() {
   add_submenu_page(__FILE__, __('Options','newstatpress'), __('Options','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=options', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=up', 'iriNewStatPress');  
   add_submenu_page(__FILE__, __('NewStatpress blog','newstatpress'), __('NewStatpress blog','newstatpress'), $mincap,  __FILE__ . '&newstatpress_action=redirect', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Credits','newstatpress'), __('Credits','newstatpress'), $mincap,  __FILE__ . '&newstatpress_action=credits', 'iriNewStatPress');
 }
 
 /**
@@ -81,7 +82,9 @@ function iriNewStatPress() {
       } elseif ($_GET['newstatpress_action'] == 'options') {
            iriNewStatPressOptions();
       } elseif ($_GET['newstatpress_action'] == 'redirect') {
-           iriNewStatPressRedirect();
+           iriNewStatPressRedirect();      
+      } elseif ($_GET['newstatpress_action'] == 'credits') {
+           iriNewStatPressCredits();
       } 
    } else iriNewStatPressMain();
 }
@@ -361,6 +364,17 @@ function iri_dropdown_caps( $default = false ) {
 		if($default == $cap) { print "selected "; }
 		print ">$cap</option>";
 	}
+}
+
+/**
+ * Show credits about this plugin
+ */
+function iriNewStatPressCredits() {
+?>
+  <div class='wrap'><h2><?php _e('Credits','newstatpress'); ?></h2>
+  Coming soon...
+  </div>
+<?php
 }
 
 
