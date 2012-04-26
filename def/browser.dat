@@ -17,6 +17,7 @@ Chrome 15|Chrome/15|
 Chrome 16|Chrome/16|
 Chrome 17|Chrome/17|
 Chrome 18|Chrome/18|
+Chrome 19|Chrome/19|
 Chrome|Chrome|
 Dillo|Dillo|
 Epiphany|Epiphany|
@@ -34,14 +35,18 @@ Firefox 8|Firefox/8|
 Firefox 9|Firefox/9|
 Firefox 10|Firefox/10|
 Firefox 11|Firefox/11|
+Firefox 12|Firefox/12|
 Firefox|Firefox|
 Firefox|Phoenix|
 Firebird|Firebird|
 Galeon|Galeon|
 Generic Gecko|Gecko/|
 Thunderbird|Thunderbird|
+Internet Explorer Mobile 9.0|IEMobile/9.0|
+Internet Explorer Mobile 7.11|IEMobile 7.11|
 Internet Explorer Mobile 7|IEMobile/7.0|
 Internet Explorer Mobile|IEMobile|
+Internet Explorer 10|MSIE10.|
 Internet Explorer 9|MSIE9.|
 Internet Explorer 8|MSIE8.|
 Internet Explorer 7|MSIE7.|
@@ -94,6 +99,7 @@ Opera 11.5|Presto/2.9.168Version/11.50|
 Opera 12|Presto/2.9.181Version/12.00|
 Opera 11|Opera/11|
 Opera 12|Opera/12|
+Opera 13|Opera/13|
 Opera Mini 6.1|OperaMini/6.1.25375|
 Opera Mini|OperaMini|
 Opera|Opera|
@@ -134,6 +140,7 @@ Safari Mobile 3|Version/3.0Mobile/1A543aSafari/419.3|
 Safari Mobile 3|MobileSafari/525.20.1|
 Safari Mobile 3|MobileSafari/533.1|
 Safari Mobile|MobileSafari|
+Safari 5.2|Version/5.2 Safari/535.18.5|
 Safari 5.1|Version/5.1Safari/534.50|
 Safari 5.1|Version/5.1Safari/534.48.3|
 Safari 5.0|Version/5.0.6Safari/533.22.3|
