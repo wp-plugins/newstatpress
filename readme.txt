@@ -221,6 +221,11 @@ Check at http://newstatpress.altervista.org
 
 * Add new OS (+1), browsers (+7), spiders (+1)
 
+= 0.3.3 =
+
+* Updating French translation (thanks to shilom)
+* Inserting credits table
+
 == Upgrade Notice ==
 
 = 0.1.0 =
@@ -314,3 +319,7 @@ Check at http://newstatpress.altervista.org
 = 0.3.2 =
 
 * released 26/04/2012
+
+= 0.3.3 =
+
+* released 29/04/2012

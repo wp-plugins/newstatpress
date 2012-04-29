@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.3.2
+Version: 0.3.3
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.3.2';
+$_NEWSTATPRESS['version']='0.3.3';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -372,7 +372,68 @@ function iri_dropdown_caps( $default = false ) {
 function iriNewStatPressCredits() {
 ?>
   <div class='wrap'><h2><?php _e('Credits','newstatpress'); ?></h2>
-  Coming soon...
+  <table border="1">
+   <tr>
+    <th>People</th>
+    <th>Description</th>
+    <th>Link</th>
+   </tr>
+   <tr>
+    <td>Stefano Tognon</td>
+    <td>NewStatPress develoup</td>
+    <td><a href="http://newstatpress.altervista.org">NewStatPress site</a></td>
+   </tr>
+   <tr>
+    <td>Daniele Lippi</td>
+    <td>Original StatPress develoup</td>
+    <td><a href="http://wordpress.org/extend/plugins/statpress/">StatPress site</a></td>
+   </tr>
+   <tr>
+    <td>Pawel Dworniak</td>
+    <td>Better polish translation</td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>Sisko</td>
+    <td>Open link in new tab/window<br>
+        New displays of data for spy function<br>
+    </td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>from wp_slimstat</td>
+    <td>Add option for not track given IPs<br>
+        Add option for not track given permalinks
+    </td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>Ladislav</td>
+    <td>Let Search function to works again</td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>from statpress-visitors</td>
+    <td>Add new OS (+44), browsers (+52) and spiders (+71)<br>
+        Add in the option the ability to update in a range of date
+    </td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>Christopher Meng</td>
+    <td>Add Simplified Chinese translation</td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>Maurice Cramer</td>
+    <td>Add dashboard widget<br>
+        Fix total since in overwiew<br>
+        Fix missing browser image and IE aligment failure in spy section<br>
+        Fix nation image display in spy
+    </td>
+    <td></td>
+   </tr>
+  </table>
   </div>
 <?php
 }
