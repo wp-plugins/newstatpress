@@ -1,0 +1,530 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: statpress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-29 11:02+0100\n"
+"PO-Revision-Date: 2012-04-29 11:02+0100\n"
+"Last-Translator: Christopher Meng <cickumqt@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SearchPath-0: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk\n"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:51
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:453
+msgid "Overview"
+msgstr "总览"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:52
+msgid "Details"
+msgstr "详细信息"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:53
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1286
+msgid "Spy"
+msgstr "探针"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
+msgid "New Spy"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1039
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1051
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1399
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1442
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1539
+msgid "Search"
+msgstr "搜索"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:388
+msgid "Export"
+msgstr "导出"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:166
+msgid "Options"
+msgstr "选项"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:58
+msgid "NewStatPressUpdate"
+msgstr "NewStatpress更新日志"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:59
+msgid "NewStatpress blog"
+msgstr "NewStatpress官方博客"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:60
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:374
+msgid "Credits"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:163
+msgid "Saved"
+msgstr "已保存"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:169
+msgid "Collect data about logged users, too."
+msgstr "记录已登录用户"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:170
+msgid "Do not collect spiders visits"
+msgstr "不记录搜索引擎蜘蛛访问"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:171
+msgid "Crypt IP addresses"
+msgstr "隐藏IP地址"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:172
+msgid "Show NewStatPress dashboard widget"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:175
+msgid "New Spy: number of IP per page"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:182
+msgid "New Spy: number of visits for IP"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:189
+msgid "Automatically delete visits older than"
+msgstr "自动删除超过多少天的用户信息"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:191
+msgid "Never delete!"
+msgstr "永不删除!"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:192
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:336
+msgid "month"
+msgstr "月"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:193
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:194
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:337
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:338
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:339
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:340
+msgid "months"
+msgstr "月"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:195
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:341
+msgid "year"
+msgstr "年"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:198
+msgid "Days in Overview graph"
+msgstr "总览中图标显示最近天数"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:207
+msgid "Minimum capability to view stats"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:211
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1239
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1334
+msgid "more info"
+msgstr "更多信息"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:217
+msgid "IP addresses to ignore"
+msgstr "要忽略的IP地址"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:218
+msgid "Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly."
+msgstr "输入一段你不想跟踪的IP，请用半角逗号分开。请按规则填写 (例如192.168.1.1/24)。如果格式有误，NewStatPress可能不会正常跟踪页面。"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:225
+msgid "Pages and posts to ignore"
+msgstr "忽略的文章或者页面"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:226
+msgid "Enter a list of permalinks you don't want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them."
+msgstr "输入一段你不想不想跟踪的永久链接，请用半角逗号分开。请按照规则填写：: /about或者p=1。NewStatPress会忽略所有您填写的页面请求。"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:236
+msgid "Details options"
+msgstr "详细信息设置"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:241
+msgid "Elements in Top days (default 5)"
+msgstr "来访最多日期统计显示个数(默认为5)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:247
+msgid "Elements in O.S. (default 10)"
+msgstr "操作系统统计显示个数(默认为10)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:253
+msgid "Elements in Browser (default 10)"
+msgstr "浏览器统计显示个数(默认为10)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:259
+msgid "Elements in Feed (default 5)"
+msgstr "Feed统计显示个数(默认为5)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:265
+msgid "Elements in Search Engines (default 10)"
+msgstr "搜索引擎统计显示个数(默认为10)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:271
+msgid "Elements in Top Search Terms (default 20)"
+msgstr "搜索关键字统计显示个数(默认为20)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:277
+msgid "Elements in Top Refferer (default 10)"
+msgstr "来源统计显示个数(默认为10)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:283
+msgid "Elements in Countries/Languages (default 20)"
+msgstr "国家/语言统计显示个数(默认为20)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:289
+msgid "Elements in Spiders (default 10)"
+msgstr "蜘蛛统计显示个数(默认为10)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:295
+msgid "Elements in Top Pages (default 5)"
+msgstr "来访最多页面统计显示个数(默认为5)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:301
+msgid "Elements in Top Days - Unique visitors (default 5)"
+msgstr "来访最多的特殊访客统计显示个数(默认为5)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:307
+msgid "Elements in Top Days - Pageviews (default 5)"
+msgstr "来访最多的日期的PV统计显示个数(默认为5)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:313
+msgid "Elements in Top IPs - Pageviews (default 5)"
+msgstr "最多IP统计显示个数(默认为10)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:321
+msgid "Database update option"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:325
+msgid "Select the interval of date from today you want to use for updating your database with new definitions. More it is big and more times and resources it require. You can choose to not update some fields if you want."
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:330
+msgid "Update data in the given period"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:332
+msgid "All!"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:333
+msgid "week"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:334
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:335
+msgid "weeks"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:347
+msgid "Save options"
+msgstr "保存设置"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:383
+msgid "Export stats to text file"
+msgstr "导出为txt文本"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:385
+msgid "From"
+msgstr "从"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:386
+msgid "To"
+msgstr "到"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:387
+msgid "Fields delimiter"
+msgstr "日期分隔符"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:456
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2633
+#, fuzzy
+msgid "Total since"
+msgstr "总计"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:459
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2636
+msgid "Last month"
+msgstr "上月"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:460
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:461
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2637
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2638
+msgid "This month"
+msgstr "本月"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:462
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2639
+msgid "Yesterday"
+msgstr "昨天"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:463
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2640
+msgid "Today"
+msgstr "今天"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:469
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2645
+msgid "Visitors"
+msgstr "来访者总计"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:544
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2720
+msgid "Pageviews"
+msgstr "PV"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+msgid "Last hits"
+msgstr "最后请求"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+msgid "Date"
+msgstr "日期"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+msgid "Time"
+msgstr "时间"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+msgid "Country"
+msgstr "国家"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+msgid "Language"
+msgstr "语言"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1036
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1046
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1049
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1059
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1536
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1546
+msgid "Page"
+msgstr "页面"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+msgid "Last search terms"
+msgstr "最近的搜索关键字"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+msgid "Terms"
+msgstr "搜索项目"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+msgid "Engine"
+msgstr "搜索引擎"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1993
+msgid "Result"
+msgstr "结果"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:881
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:890
+msgid "page viewed"
+msgstr "已查看"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
+msgid "Last referrers"
+msgstr "最近来源地址"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
+msgid "URL"
+msgstr "URL"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:896
+msgid "Last agents"
+msgstr "最近来访客户端"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:896
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1390
+msgid "Agent"
+msgstr "客户端头"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+msgid "Last pages"
+msgstr "最近请求的页面"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+msgid "OS"
+msgstr "操作系统"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+msgid "Browser"
+msgstr "浏览器"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+msgid "Last spiders"
+msgstr "最近来访的蜘蛛"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+msgid "Spider"
+msgstr "蜘蛛"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1037
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1050
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1537
+msgid "Category"
+msgstr "分类"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1038
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1538
+msgid "Calendar"
+msgstr "日历"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1102
+msgid "period of days"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1185
+#, fuzzy
+msgid "Visitor Spy"
+msgstr "来访者总计"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1224
+msgid "Http domain"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1235
+msgid "Hostip country"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1256
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1257
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1264
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1265
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1360
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1362
+msgid "arrived from"
+msgstr "从何处来访"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1256
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1264
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1360
+msgid "searching"
+msgstr "搜索中"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1389
+msgid "URL Requested"
+msgstr "请求的URL"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1391
+msgid "Referrer"
+msgstr "来源"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1392
+msgid "Search terms"
+msgstr "关键字"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1393
+msgid "Search engine"
+msgstr "搜索引擎"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1394
+msgid "Operative system"
+msgstr "操作系统"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1404
+msgid "Field"
+msgstr "类型"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1411
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1412
+msgid "Group by"
+msgstr "由此分组"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1414
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1415
+msgid "Sort by"
+msgstr "由此分类"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1417
+msgid "if contains"
+msgstr "如果包含"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1427
+msgid "sort by count if grouped"
+msgstr "如果被分组则由计数分类"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1428
+msgid "include spiders/crawlers/bot"
+msgstr "包含蜘蛛统计"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1429
+msgid "include feed"
+msgstr "包含feed"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1436
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2517
+msgid "Limit results to"
+msgstr "限制结果个数为"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1503
+msgid "Results"
+msgstr "结果"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1510
+msgid "Count"
+msgstr "计数"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1596
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2518
+msgid "Visits"
+msgstr "来访次数"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1993
+msgid "Updating..."
+msgstr "更新中……"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1993
+msgid "Size"
+msgstr "大小"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2480
+msgid "Title:"
+msgstr "标题："
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2481
+msgid "Body:"
+msgstr "内容："
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2516
+msgid "Title"
+msgstr "标题"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2946
+#, fuzzy
+msgid "More details"
+msgstr "详细信息"
+
+#~ msgid "Total"
+#~ msgstr "总计"
