@@ -2,108 +2,110 @@ msgid ""
 msgstr ""
 "Project-Id-Version: statpress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-29 11:02+0100\n"
-"PO-Revision-Date: 2012-04-29 11:02+0100\n"
-"Last-Translator: ice00 <ice00@libero.it>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2012-05-02 19:28+0100\n"
+"PO-Revision-Date: 2012-05-02 19:28+0100\n"
+"Last-Translator: \n"
+"Language-Team:  <Host1Free>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Lithuanian\n"
+"X-Poedit-Country: Lithuania\n"
 "X-Poedit-SearchPath-0: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk\n"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:51
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:453
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:514
 msgid "Overview"
-msgstr ""
+msgstr "Apžvalga"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:52
 msgid "Details"
-msgstr ""
+msgstr "Informacija"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:53
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1286
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1347
 msgid "Spy"
-msgstr ""
+msgstr "Šnipas"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
 msgid "New Spy"
-msgstr ""
+msgstr "Naujas Šnipas"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1039
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1051
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1399
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1442
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1539
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1100
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1112
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1460
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1503
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1600
 msgid "Search"
-msgstr ""
+msgstr "Ieškoti"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:388
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:449
 msgid "Export"
-msgstr ""
+msgstr "Eksportuoti"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:166
 msgid "Options"
-msgstr ""
+msgstr "Parinktys"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:58
 msgid "NewStatPressUpdate"
-msgstr ""
+msgstr "NewStatPress Atnaujinimas"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:59
 msgid "NewStatpress blog"
-msgstr ""
+msgstr "NewStatpress tinklaraštis"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:60
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:374
 msgid "Credits"
-msgstr ""
+msgstr "Kreditai"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:163
 msgid "Saved"
-msgstr ""
+msgstr "Įrašyta"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:169
 msgid "Collect data about logged users, too."
-msgstr ""
+msgstr "Rinkti duomenis apie prisijungusius vartotojus taip pat."
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:170
 msgid "Do not collect spiders visits"
-msgstr ""
+msgstr "Neįtraukti vorų apsilankymų"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:171
 msgid "Crypt IP addresses"
-msgstr ""
+msgstr "Šifruoti IP adresus"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:172
 msgid "Show NewStatPress dashboard widget"
-msgstr ""
+msgstr "Rodyti NewStatPress prietaisų skydelio valdiklį"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:175
 msgid "New Spy: number of IP per page"
-msgstr ""
+msgstr "Naujas Šnipas: IP adresų skaičius puslapyje"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:182
 msgid "New Spy: number of visits for IP"
-msgstr ""
+msgstr "Naujas Šnipas: apsilankymų skaičius IP adresui"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:189
 msgid "Automatically delete visits older than"
-msgstr ""
+msgstr "Automatiškai ištrinti apsilankymus, senesnius nei"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:191
 msgid "Never delete!"
-msgstr ""
+msgstr "Niekada neištrinti!"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:192
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:336
 msgid "month"
-msgstr ""
+msgstr "mėnesis"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:193
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:194
@@ -112,414 +114,414 @@ msgstr ""
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:339
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:340
 msgid "months"
-msgstr ""
+msgstr "mėnesiai"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:195
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:341
 msgid "year"
-msgstr ""
+msgstr "metai"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:198
 msgid "Days in Overview graph"
-msgstr ""
+msgstr "Dienos Apžvalgos diagramoje"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:207
 msgid "Minimum capability to view stats"
-msgstr ""
+msgstr "Mažiausia geba statistikos peržiūrėjimui"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:211
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1239
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1334
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1300
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1395
 msgid "more info"
-msgstr ""
+msgstr "daugiau informacijos"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:217
 msgid "IP addresses to ignore"
-msgstr ""
+msgstr "Ignoruojami IP adresai"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:218
 msgid "Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly."
-msgstr ""
+msgstr "Įveskite tinklų, kurių nenorite sekti, sąrašą, atskirkite juos kebleliais. Kiekvienas tinklas <strong>privalo</strong> būti apibūdintas naudojant CIDR užrašą (pvz. (i.e. <em>192.168.1.1/24</em>). Jeigu formatas neteisingas. NewStatPress gali teisingai nesusekti puslapių peržiūrų."
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:225
 msgid "Pages and posts to ignore"
-msgstr ""
+msgstr "Ignoruojami puslapiai ir įrašai"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:226
 msgid "Enter a list of permalinks you don't want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them."
-msgstr ""
+msgstr "Įveskite permanuorodų sąrašą, kurių nenorite sekti, atskirkite permanuorodas kableliais. Jūs turėtumėte vengti sričių vardų iš šių išteklių: <em>/about, p=1</em>, ir pn. NewStatPress ignoruos visas peržiūras, turinčias bent vieną iš šių permanuorodų."
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:236
 msgid "Details options"
-msgstr ""
+msgstr "Informacijos parinktys"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:241
 msgid "Elements in Top days (default 5)"
-msgstr ""
+msgstr "Elementai Top dienose (numatyti 5)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:247
 msgid "Elements in O.S. (default 10)"
-msgstr ""
+msgstr "Elementai Operacinėje Sistemoje (numatyta 10)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:253
 msgid "Elements in Browser (default 10)"
-msgstr ""
+msgstr "Elementai Naršyklėje (numatyta 10)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:259
 msgid "Elements in Feed (default 5)"
-msgstr ""
+msgstr "Elementai Padavime (numatyta 5)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:265
 msgid "Elements in Search Engines (default 10)"
-msgstr ""
+msgstr "Elementai Paieškos Sistemose (numatyta 10)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:271
 msgid "Elements in Top Search Terms (default 20)"
-msgstr ""
+msgstr "Elementai Top Paieškos Terminuose (numatyta 20)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:277
 msgid "Elements in Top Refferer (default 10)"
-msgstr ""
+msgstr "Elementai Top Nukreipėjuje (numatyta 10)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:283
 msgid "Elements in Countries/Languages (default 20)"
-msgstr ""
+msgstr "Elementai Šalyse/Kalbose (numatyta 20)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:289
 msgid "Elements in Spiders (default 10)"
-msgstr ""
+msgstr "Elementai Voruose (numatyta 10)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:295
 msgid "Elements in Top Pages (default 5)"
-msgstr ""
+msgstr "Elementai Top Puslapiuose (numatyta 5)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:301
 msgid "Elements in Top Days - Unique visitors (default 5)"
-msgstr ""
+msgstr "Elementai Top Dienose - Unikaliuose lankytojuose (numatyta 5)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:307
 msgid "Elements in Top Days - Pageviews (default 5)"
-msgstr ""
+msgstr "Elementai Top Dienose - Puslapių peržiūrose (numatyta 5)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:313
 msgid "Elements in Top IPs - Pageviews (default 5)"
-msgstr ""
+msgstr "Elementai Top IP Adresuose - Puslapių peržiūrose (numatyta 5)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:321
 msgid "Database update option"
-msgstr ""
+msgstr "Duomenų bazės atnaujinimo parinktys"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:325
 msgid "Select the interval of date from today you want to use for updating your database with new definitions. More it is big and more times and resources it require. You can choose to not update some fields if you want."
-msgstr ""
+msgstr "Pasirinkite datos intervalą nuo šiandien, kurį norite naudoti atnaujinant Jūsų duomenų bazę naujais apibūdinimais. Kuo ilgesnis intervalas, tuo daugiau duomenų reikės atnaujinti, reiškia bus sunaudojama daugiau resursų. Jūs galite rinktis, kad kai kurie laukeliai būtų neatnaujinami, jeigu norite."
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:330
 msgid "Update data in the given period"
-msgstr ""
+msgstr "Atnaujinimo data duotame periode"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:332
 msgid "All!"
-msgstr ""
+msgstr "Visi!"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:333
 msgid "week"
-msgstr ""
+msgstr "savaitė"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:334
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:335
 msgid "weeks"
-msgstr ""
+msgstr "savaitės"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:347
 msgid "Save options"
-msgstr ""
+msgstr "Įrašyti parinktis"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:383
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:444
 msgid "Export stats to text file"
-msgstr ""
+msgstr "Eksportuoti statistiką į tekstinę rinkmeną"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:385
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:446
 msgid "From"
-msgstr ""
+msgstr "Nuo"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:386
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:447
 msgid "To"
-msgstr ""
+msgstr "Į"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:387
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:448
 msgid "Fields delimiter"
-msgstr ""
+msgstr "Laukelių skirtukas"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:456
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2633
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:517
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2694
 msgid "Total since"
-msgstr ""
+msgstr "Iš viso nuo"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:459
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2636
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:520
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2697
 msgid "Last month"
-msgstr ""
+msgstr "Paskutinio mėnesio"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:460
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:461
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2637
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2638
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:521
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:522
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2698
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2699
 msgid "This month"
-msgstr ""
+msgstr "Šio mėnesio"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:462
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2639
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:523
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2700
 msgid "Yesterday"
-msgstr ""
+msgstr "Vakar"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:463
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2640
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:524
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2701
 msgid "Today"
-msgstr ""
+msgstr "Šiandien"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:469
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2645
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:530
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2706
 msgid "Visitors"
-msgstr ""
+msgstr "Lankytojai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:544
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2720
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:605
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2781
 msgid "Pageviews"
-msgstr ""
+msgstr "Puslapių peržiūros"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:906
 msgid "Last hits"
-msgstr ""
+msgstr "Paskutiniai paspaudimai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:906
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:938
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:947
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:981
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1006
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:906
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:938
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:947
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:981
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1006
 msgid "Time"
-msgstr ""
+msgstr "Laikas"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:906
 msgid "Country"
-msgstr ""
+msgstr "Šalis"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:906
 msgid "Language"
-msgstr ""
+msgstr "Kalba"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1036
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1046
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1049
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1059
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1536
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1546
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:906
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:981
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1097
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1107
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1110
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1120
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1597
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1607
 msgid "Page"
-msgstr ""
+msgstr "Puslapis"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:938
 msgid "Last search terms"
-msgstr ""
+msgstr "Paskutiniai paieškos terminai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:938
 msgid "Terms"
-msgstr ""
+msgstr "Terminai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:938
 msgid "Engine"
-msgstr ""
+msgstr "Sistema"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:877
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1993
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:938
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:947
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2054
 msgid "Result"
-msgstr ""
+msgstr "Rezultatas"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:881
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:890
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:942
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:951
 msgid "page viewed"
-msgstr ""
+msgstr "puslapis peržiūrėtas"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:947
 msgid "Last referrers"
-msgstr ""
+msgstr "Paskutiniai nukreipėjai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:886
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:947
 msgid "URL"
-msgstr ""
+msgstr "Universalioji nuoroda"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:896
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:957
 msgid "Last agents"
-msgstr ""
+msgstr "Paskutiniai agentai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:896
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1390
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:957
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1006
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1451
 msgid "Agent"
-msgstr ""
+msgstr "Agentas"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:981
 msgid "Last pages"
-msgstr ""
+msgstr "Paskutiniai puslpiai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:981
 msgid "OS"
-msgstr ""
+msgstr "Operacinė Sistema"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:920
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:981
 msgid "Browser"
-msgstr ""
+msgstr "Naršyklė"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1006
 msgid "Last spiders"
-msgstr ""
+msgstr "Paskutiniai vorai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:945
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1006
 msgid "Spider"
-msgstr ""
+msgstr "Voras"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1037
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1050
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1537
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1098
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1111
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1598
 msgid "Category"
-msgstr ""
+msgstr "Kategorija"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1038
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1538
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1099
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1599
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendorius"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1102
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1163
 msgid "period of days"
-msgstr ""
+msgstr "dienų periodas"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1185
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1246
 msgid "Visitor Spy"
-msgstr ""
+msgstr "Lankytojo Šnipas"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1224
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1285
 msgid "Http domain"
-msgstr ""
+msgstr "Http sritis"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1235
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1296
 msgid "Hostip country"
-msgstr ""
+msgstr "Servero IP šalis"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1256
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1257
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1264
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1265
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1360
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1362
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1317
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1318
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1325
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1326
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1421
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1423
 msgid "arrived from"
-msgstr ""
+msgstr "atvyko iš"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1256
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1264
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1360
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1317
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1325
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1421
 msgid "searching"
-msgstr ""
+msgstr "ieškoma"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1389
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1450
 msgid "URL Requested"
-msgstr ""
+msgstr "URL Pareikalauta"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1391
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1452
 msgid "Referrer"
-msgstr ""
+msgstr "Nukreipėjas"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1392
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1453
 msgid "Search terms"
-msgstr ""
+msgstr "Paieškos terminai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1393
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1454
 msgid "Search engine"
-msgstr ""
+msgstr "Paieškos sistema"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1394
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1455
 msgid "Operative system"
-msgstr ""
+msgstr "Operacinė sistema"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1404
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1465
 msgid "Field"
-msgstr ""
+msgstr "Laukelis"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1411
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1412
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1472
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1473
 msgid "Group by"
-msgstr ""
+msgstr "Grupuoti pagal"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1414
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1415
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1475
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1476
 msgid "Sort by"
-msgstr ""
+msgstr "Rikiuoti pagal"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1417
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1478
 msgid "if contains"
-msgstr ""
+msgstr "jeigu turi savyje"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1427
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1488
 msgid "sort by count if grouped"
-msgstr ""
+msgstr "rinkiuoti pagal skaičių, jeigu sugrupuota"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1428
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1489
 msgid "include spiders/crawlers/bot"
-msgstr ""
+msgstr "įtraukti vorus/vikšrus/robotus"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1429
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1490
 msgid "include feed"
-msgstr ""
+msgstr "įtraukti padavimą"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1436
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2517
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1497
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2578
 msgid "Limit results to"
-msgstr ""
+msgstr "Apriboti rezultatų skaičių iki"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1503
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1564
 msgid "Results"
-msgstr ""
+msgstr "Rezultatai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1510
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1571
 msgid "Count"
-msgstr ""
+msgstr "Skaičiuoti"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1596
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2518
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1657
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2579
 msgid "Visits"
-msgstr ""
+msgstr "Apsilankymai"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1993
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2054
 msgid "Updating..."
-msgstr ""
+msgstr "Atnaujinama..."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1993
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2054
 msgid "Size"
-msgstr ""
+msgstr "Dydis"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2480
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2541
 msgid "Title:"
-msgstr ""
+msgstr "Antraštė:"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2481
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2542
 msgid "Body:"
-msgstr ""
+msgstr "Tekstas:"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2516
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2577
 msgid "Title"
-msgstr ""
+msgstr "Antraštė"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2946
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3007
 msgid "More details"
-msgstr ""
+msgstr "Daugiau informacijos"
 
 #~ msgid "Total"
 #~ msgstr "Totale"

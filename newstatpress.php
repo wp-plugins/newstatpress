@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.3.3
+Version: 0.3.4
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.3.3';
+$_NEWSTATPRESS['version']='0.3.4';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -432,6 +432,16 @@ function iriNewStatPressCredits() {
         Fix nation image display in spy
     </td>
     <td></td>
+   </tr>
+   <tr>
+    <td>shilom</td>
+    <td>Updating French translation</td>
+    <td></td>
+   </tr>
+   <tr>
+    <td>Vincent G</td>
+    <td>Add Lithuanian translation</td>
+    <td><a href="http://www.Host1Free.com">Host1Free (Free Hosting)</a></td>
    </tr>
   </table>
   </div>
