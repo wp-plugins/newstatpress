@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.3.4
+Version: 0.3.5
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.3.4';
+$_NEWSTATPRESS['version']='0.3.5';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -524,7 +524,7 @@ function iriNewStatPressMain() {
   print "<div class='wrap'><h2>". __('Overview','newstatpress'). "</h2>";
   print "<table class='widefat'><thead><tr>
          <th scope='col'></th>
-         <th scope='col'>". __('Total since','NewStatPress'). "<br /><font size=1>";
+         <th scope='col'>". __('Total since','newstatpress'). "<br /><font size=1>";
   echo NewStatPress_Print('%since%');
   print "</font></th>
          <th scope='col'>". __('Last month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0])) ."</font></th>
@@ -2701,19 +2701,19 @@ function iri_dashboard_widget_function() {
   //print "<div class='wrap'><h2>". __('Overview','NewStatPress'). "</h2>";
   print "<table class='widefat'><thead><tr>
   <th scope='col'></th>
-  <th scope='col'>". __('Total since','NewStatPress'). "<br /><font size=1>";
+  <th scope='col'>". __('Total since','newstatpress'). "<br /><font size=1>";
   echo NewStatPress_Print('%since%');
   print "</font></th>
-  <th scope='col'>". __('Last month','NewStatPress'). "<br /><font size=1>" . gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0])) ."</font></th>
-  <th scope='col'>". __('This month','NewStatPress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
-  <th scope='col'>Target ". __('This month','NewStatPress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
-  <th scope='col'>". __('Yesterday','NewStatPress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')-86400) ."</font></th>
-  <th scope='col'>". __('Today','NewStatPress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')) ."</font></th>
+  <th scope='col'>". __('Last month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0])) ."</font></th>
+  <th scope='col'>". __('This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
+  <th scope='col'>Target ". __('This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
+  <th scope='col'>". __('Yesterday','newstatpress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')-86400) ."</font></th>
+  <th scope='col'>". __('Today','newstatpress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')) ."</font></th>
   </tr></thead>
   <tbody id='the-list'>";
   ################################################################################################
   # VISITORS ROW
-  print "<tr><td><div style='background:$unique_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Visitors','NewStatPress'). "</td>";
+  print "<tr><td><div style='background:$unique_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Visitors','newstatpress'). "</td>";
 
   #TOTAL
   $qry_total = $wpdb->get_row("
@@ -2788,7 +2788,7 @@ function iri_dashboard_widget_function() {
 
   ################################################################################################
   # PAGEVIEWS ROW
-  print "<tr><td><div style='background:$web_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Pageviews','NewStatPress'). "</td>";
+  print "<tr><td><div style='background:$web_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Pageviews','newstatpress'). "</td>";
 
   #TOTAL
   $qry_total = $wpdb->get_row("
@@ -3014,7 +3014,7 @@ function iri_dashboard_widget_function() {
   # END OF OVERVIEW
   ####################################################################################################
 
-  print "<div class='wrap'><h4><a href='admin.php?page=newstatpress/newstatpress.php'>". __('More details','NewStatPress'). " &raquo;</a></h4>";
+  print "<div class='wrap'><h4><a href='admin.php?page=newstatpress/newstatpress.php'>". __('More details','newstatpress'). " &raquo;</a></h4>";
 }
 
 // Create the function use in the action hook
