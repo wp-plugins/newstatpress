@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.3
-Stable Tag: 0.3.5
+Stable Tag: 0.3.6
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -63,6 +63,7 @@ Now you could add these values everywhere! NewStatPress offers a new PHP functio
 New sperimental functions: place this command [NewStatPress: xxx] every were in your Wordpress blog pages and you will have the graph about the xxx function.
 
 Available functions are:
+ *  [NewStatPress: Overview]
  *  [NewStatPress: Top days]
  *  [NewStatPress: O.S.] 
  *  [NewStatPress: Browser]
@@ -235,6 +236,10 @@ Check at http://newstatpress.altervista.org
 * Updating French translation (thanks to shilom)
 * Fix dashboard and overview translation
 
+= 0.3.6 =
+
+* Add Overview for [NewStatPress: xxx] command (tracker id 166)
+
 == Upgrade Notice ==
 
 = 0.1.0 =
@@ -340,3 +345,7 @@ Check at http://newstatpress.altervista.org
 = 0.3.5 =
 
 * released 16/05/2012
+
+= 0.3.6 =
+
+* released 01/06/2012
