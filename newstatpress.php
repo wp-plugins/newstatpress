@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.3.7
+Version: 0.3.8
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.3.7';
+$_NEWSTATPRESS['version']='0.3.8';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -518,7 +518,12 @@ function iriNewStatPressMain() {
   print "<div class='wrap'><h2>". __('Last hits','newstatpress'). "</h2><table class='widefat'><thead><tr><th scope='col'>". __('Date','newstatpress'). "</th><th scope='col'>". __('Time','newstatpress'). "</th><th scope='col'>IP</th><th scope='col'>". __('Country','newstatpress').'/'.__('Language','newstatpress'). "</th><th scope='col'>". __('Page','newstatpress'). "</th><th scope='col'>Feed</th><th></th><th scope='col' style='width:120px;'>OS</th><th></th><th scope='col' style='width:120px;'>Browser</th></tr></thead>";
   print "<tbody id='the-list'>";	
 
-  $fivesdrafts = $wpdb->get_results("SELECT * FROM $table_name WHERE (os<>'' OR feed<>'') order by id DESC $querylimit");
+  $fivesdrafts = $wpdb->get_results("
+    SELECT * 
+    FROM $table_name 
+    WHERE (os<>'' OR feed<>'') 
+    ORDER bY id DESC $querylimit
+  ");
   foreach ($fivesdrafts as $fivesdraft) {
     print "<tr>";
     print "<td>". irihdate($fivesdraft->date) ."</td>";
@@ -546,90 +551,115 @@ function iriNewStatPressMain() {
   print "</table></div>";
 
 
-	# Last Search terms
-	print "<div class='wrap'><h2>" . __('Last search terms','newstatpress') . "</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('Terms','newstatpress')."</th><th scope='col'>". __('Engine','newstatpress'). "</th><th scope='col'>". __('Result','newstatpress'). "</th></tr></thead>";
-	print "<tbody id='the-list'>";	
-	$qry = $wpdb->get_results("SELECT date,time,referrer,urlrequested,search,searchengine FROM $table_name WHERE search<>'' ORDER BY id DESC $querylimit");
-	foreach ($qry as $rk) {
-		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".$rk->search."</a></td><td>".$rk->searchengine."</td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."' target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
-	}
-	print "</table></div>";
-	
-	# Referrer
-	print "<div class='wrap'><h2>".__('Last referrers','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('URL','newstatpress')."</th><th scope='col'>".__('Result','newstatpress')."</th></tr></thead>";
-	print "<tbody id='the-list'>";	
-	$qry = $wpdb->get_results("SELECT date,time,referrer,urlrequested FROM $table_name WHERE ((referrer NOT LIKE '".get_option('home')."%') AND (referrer <>'') AND (searchengine='')) ORDER BY id DESC $querylimit");
-	foreach ($qry as $rk) {
-		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".iri_NewStatPress_Abbrevia($rk->referrer,80)."</a></td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'  target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
-	}
-	print "</table></div>";
+  # Last Search terms
+  print "<div class='wrap'><h2>" . __('Last search terms','newstatpress') . "</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('Terms','newstatpress')."</th><th scope='col'>". __('Engine','newstatpress'). "</th><th scope='col'>". __('Result','newstatpress'). "</th></tr></thead>";
+  print "<tbody id='the-list'>";	
+  $qry = $wpdb->get_results("
+    SELECT date,time,referrer,urlrequested,search,searchengine 
+    FROM $table_name 
+    WHERE search<>'' 
+    ORDER BY id DESC $querylimit
+  ");
+  foreach ($qry as $rk) {
+    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".$rk->search."</a></td><td>".$rk->searchengine."</td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."' target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
+  }
+  print "</table></div>";
+
+  # Referrer
+  print "<div class='wrap'><h2>".__('Last referrers','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('URL','newstatpress')."</th><th scope='col'>".__('Result','newstatpress')."</th></tr></thead>";
+  print "<tbody id='the-list'>";	
+  $qry = $wpdb->get_results("
+    SELECT date,time,referrer,urlrequested 
+    FROM $table_name 
+    WHERE 
+     ((referrer NOT LIKE '".get_option('home')."%') AND 
+      (referrer <>'') AND 
+      (searchengine='')
+     ) ORDER BY id DESC $querylimit
+  ");
+  foreach ($qry as $rk) {
+    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".iri_NewStatPress_Abbrevia($rk->referrer,80)."</a></td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'  target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
+  }
+  print "</table></div>";
 
 
-	# Last Agents
-	print "<div class='wrap'><h2>".__('Last agents','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Agent','newstatpress')."</th><th scope='col'></th><th scope='col' style='width:120px;'>OS</th><th scope='col'></th><th scope='col' style='width:120px;'>Browser/Spider</th></tr></thead>";
-	print "<tbody id='the-list'>";	
-	$qry = $wpdb->get_results("SELECT agent,os,browser,spider FROM $table_name GROUP BY agent,os,browser,spider ORDER BY id DESC $querylimit");
-	foreach ($qry as $rk) {
-		print "<tr><td>".$rk->agent."</td>";
-		if($rk->os != '') {
-			$img=str_replace(" ","_",strtolower($rk->os)).".png";
-			print "<td><IMG style='border:0px;width:16px;height:16px;' SRC='".$_newstatpress_url."/images/os/$img'> </td>";
-		} else {
-			print "<td></td>";
-		}
-		print "<td>". $rk->os . "</td>";
-		if($rk->browser != '') {
-			$img=str_replace(" ","",strtolower($rk->browser)).".png";
-			print "<td><IMG style='border:0px;width:16px;height:16px;' SRC='".$_newstatpress_url."/images/browsers/$img'></td>";
-		} else {
-			print "<td></td>";
-		}
-		print "<td>".$rk->browser." ".$rk->spider."</td></tr>\n";
-	}
-	print "</table></div>";
+  # Last Agents
+  print "<div class='wrap'><h2>".__('Last agents','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Agent','newstatpress')."</th><th scope='col'></th><th scope='col' style='width:120px;'>OS</th><th scope='col'></th><th scope='col' style='width:120px;'>Browser/Spider</th></tr></thead>";
+  print "<tbody id='the-list'>";	
+  $qry = $wpdb->get_results("
+    SELECT agent,os,browser,spider 
+    FROM $table_name 
+    GROUP BY agent,os,browser,spider 
+    ORDER BY id DESC $querylimit
+  ");
+  foreach ($qry as $rk) {
+    print "<tr><td>".$rk->agent."</td>";
+    if($rk->os != '') {
+      $img=str_replace(" ","_",strtolower($rk->os)).".png";
+      print "<td><IMG style='border:0px;width:16px;height:16px;' SRC='".$_newstatpress_url."/images/os/$img'> </td>";
+    } else {
+        print "<td></td>";
+      }
+    print "<td>". $rk->os . "</td>";
+    if($rk->browser != '') {
+      $img=str_replace(" ","",strtolower($rk->browser)).".png";
+      print "<td><IMG style='border:0px;width:16px;height:16px;' SRC='".$_newstatpress_url."/images/browsers/$img'></td>";
+    } else {
+        print "<td></td>";
+      }
+    print "<td>".$rk->browser." ".$rk->spider."</td></tr>\n";
+  }
+  print "</table></div>";
 
 
-	# Last pages
-	print "<div class='wrap'><h2>".__('Last pages','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('Page','newstatpress')."</th><th scope='col' style='width:17px;'></th><th scope='col' style='width:120px;'>".__('OS','newstatpress')."</th><th style='width:17px;'></th><th scope='col' style='width:120px;'>".__('Browser','newstatpress')."</th></tr></thead>";
-	print "<tbody id='the-list'>";	
-	$qry = $wpdb->get_results("SELECT date,time,urlrequested,os,browser,spider FROM $table_name WHERE (spider='' AND feed='') ORDER BY id DESC $querylimit");
-	foreach ($qry as $rk) {
-		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td>".iri_NewStatPress_Abbrevia(iri_NewStatPress_Decode($rk->urlrequested),60)."</td>";
-		if($rk->os != '') {
-			$img=str_replace(" ","_",strtolower($rk->os)).".png";
-			print "<td><IMG style='border:0px;width:16px;height:16px;' SRC='".$_newstatpress_url."/images/os/$img'> </td>";
-		} else {
-			print "<td></td>";
-		}
-		print "<td>". $rk->os . "</td>";
-		if($rk->browser != '') {
-			$img=str_replace(" ","",strtolower($rk->browser)).".png";
-			print "<td><IMG style='border:0px;width:16px;height:16px;' SRC='".$_newstatpress_url."/images/browsers/$img'></td>";
-		} else {
-			print "<td></td>";
-		}
-		print "<td>".$rk->browser." ".$rk->spider."</td></tr>\n";
-		
-	}
-	print "</table></div>";
-	
-	
-	# Last Spiders
-	print "<div class='wrap'><h2>".__('Last spiders','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('Spider','newstatpress')."</th><th scope='col'>".__('Agent','newstatpress')."</th></tr></thead>";
-	print "<tbody id='the-list'>";	
-	$qry = $wpdb->get_results("SELECT date,time,agent,os,browser,spider FROM $table_name WHERE (spider<>'') ORDER BY id DESC $querylimit");
-	foreach ($qry as $rk) {
-		print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td>".$rk->spider."</td><td> ".$rk->agent."</td></tr>\n";
-	}
-	print "</table></div>";
-	
-	
-	print "<br />";
-	print "&nbsp;<i>StatPress table size: <b>".iritablesize($wpdb->prefix . "statpress")."</b></i><br />";
-	print "&nbsp;<i>StatPress current time: <b>".current_time('mysql')."</b></i><br />";
-	print "&nbsp;<i>RSS2 url: <b>".get_bloginfo('rss2_url').' ('.iriNewStatPress_extractfeedreq(get_bloginfo('rss2_url')).")</b></i><br />";
-	
-}	
+  # Last pages
+  print "<div class='wrap'><h2>".__('Last pages','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('Page','newstatpress')."</th><th scope='col' style='width:17px;'></th><th scope='col' style='width:120px;'>".__('OS','newstatpress')."</th><th style='width:17px;'></th><th scope='col' style='width:120px;'>".__('Browser','newstatpress')."</th></tr></thead>";
+  print "<tbody id='the-list'>";	
+  $qry = $wpdb->get_results("
+    SELECT date,time,urlrequested,os,browser,spider 
+    FROM $table_name 
+    WHERE (spider='' AND feed='') 
+    ORDER BY id DESC $querylimit
+  ");
+  foreach ($qry as $rk) {
+    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td>".iri_NewStatPress_Abbrevia(iri_NewStatPress_Decode($rk->urlrequested),60)."</td>";
+    if($rk->os != '') {
+      $img=str_replace(" ","_",strtolower($rk->os)).".png";
+      print "<td><IMG style='border:0px;width:16px;height:16px;' SRC='".$_newstatpress_url."/images/os/$img'> </td>";
+    } else {
+        print "<td></td>";
+      }
+    print "<td>". $rk->os . "</td>";
+    if($rk->browser != '') {
+      $img=str_replace(" ","",strtolower($rk->browser)).".png";
+      print "<td><IMG style='border:0px;width:16px;height:16px;' SRC='".$_newstatpress_url."/images/browsers/$img'></td>";
+    } else {
+        print "<td></td>";
+      }
+    print "<td>".$rk->browser." ".$rk->spider."</td></tr>\n";
+  }
+  print "</table></div>";
+
+
+  # Last Spiders
+  print "<div class='wrap'><h2>".__('Last spiders','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('Spider','newstatpress')."</th><th scope='col'>".__('Agent','newstatpress')."</th></tr></thead>";
+  print "<tbody id='the-list'>";	
+  $qry = $wpdb->get_results("
+    SELECT date,time,agent,os,browser,spider 
+    FROM $table_name 
+    WHERE (spider<>'') 
+    ORDER BY id DESC $querylimit
+  ");
+  foreach ($qry as $rk) {
+    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td>".$rk->spider."</td><td> ".$rk->agent."</td></tr>\n";
+  }
+  print "</table></div>";
+
+  print "<br />";
+  print "&nbsp;<i>StatPress table size: <b>".iritablesize($wpdb->prefix . "statpress")."</b></i><br />";
+  print "&nbsp;<i>StatPress current time: <b>".current_time('mysql')."</b></i><br />";
+  print "&nbsp;<i>RSS2 url: <b>".get_bloginfo('rss2_url').' ('.iriNewStatPress_extractfeedreq(get_bloginfo('rss2_url')).")</b></i><br />"; 
+}
 
 /**
  * Extract the feed from the given url
