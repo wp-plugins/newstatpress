@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.3.8
+Version: 0.3.9
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.3.8';
+$_NEWSTATPRESS['version']='0.3.9';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -141,6 +141,7 @@ function iriNewStatPressOptions() {
     else update_option('newstatpress_cryptip', null);
     if (isset($_POST['newstatpress_dashboard'])) update_option('newstatpress_dashboard', $_POST['newstatpress_dashboard']);
     else update_option('newstatpress_dashboard', null);
+    update_option('newstatpress_ignore_users', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_users']));
     update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
     update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
     update_option('newstatpress_el_top_days', $_POST['newstatpress_el_top_days']);
@@ -212,6 +213,14 @@ function iriNewStatPressOptions() {
         </td></tr>
 
       <tr><td><hr></hr></td></tr>
+
+      <tr><td>
+        <h3><label for="newstatpress_ignore_users"><?php _e('Logged users to ignore','newstatpress') ?></label></h3>
+        <p><?php _e("Enter a list of users you don't want to track, separated by commas, even if collect data about logged users is on",'newstatpress') ?></p>
+        <p><textarea class="large-text code" cols="50" rows="1" name="newstatpress_ignore_users" id="newstatpress_ignore_users">
+              <?php echo implode(',', get_option('newstatpress_ignore_users',array())) ?>
+            </textarea></p>
+        </td></tr>
 
       <tr><td>
         <h3><label for="newstatpress_ignore_ip"><?php _e('IP addresses to ignore','newstatpress') ?></label></h3>
@@ -1606,9 +1615,20 @@ function iriStatAppend() {
     $results =$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
   }
   if ((!is_user_logged_in()) OR (get_option('newstatpress_collectloggeduser')=='checked')) {
+    if (get_option('newstatpress_collectloggeduser')=='checked') {
+      $current_user = wp_get_current_user();
+
+      // Is a given name to ignore?
+      $to_ignore = get_option('newstatpress_ignore_users', array());
+      foreach($to_ignore as $a_filter) {
+        if ($current_user->user_login == $a_filter) { return ''; }
+      }
+    }
+
     if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
       iri_NewStatPress_CreateTable();
     }
+
     $insert = 
       "INSERT INTO " . $table_name . "(
         date, 
