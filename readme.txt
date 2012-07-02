@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.3
-Stable Tag: 0.3.9
+Stable Tag: 0.4.0
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -249,11 +249,15 @@ Check at http://newstatpress.altervista.org
 * Code restructuration
 * Add browser (+1)
 
-= 0.3.8 =
+= 0.3.9 =
 
 * Add the abilities to not monitoring only a given list of names 
  (so, administrators can still monitoring authenticated users) for users that are logged (tracker id 201)
 * Update Italian locale
+
+= 0.4.0 =
+
+* Fix total since date bug (tracker id 216)
 
 == Upgrade Notice ==
 
@@ -376,3 +380,7 @@ Check at http://newstatpress.altervista.org
 = 0.3.9 =
 
 * released 01/07/2012
+
+= 0.4.0 =
+
+* released 02/07/2012

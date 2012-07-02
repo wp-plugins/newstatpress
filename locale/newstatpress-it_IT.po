@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: statpress\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-01 19:48+0100\n"
-"PO-Revision-Date: 2012-07-01 19:50+0100\n"
+"PO-Revision-Date: 2012-07-02 20:06+0100\n"
 "Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -491,7 +491,7 @@ msgstr "Titolo:"
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2360
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2702
 msgid "Total since"
-msgstr "Totale"
+msgstr "Totale dal"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2363
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2705

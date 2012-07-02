@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.3.9
+Version: 0.4.0
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.3.9';
+$_NEWSTATPRESS['version']='0.4.0';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -1962,8 +1962,11 @@ function NewStatPress_Widget($w='') {
 
 }
 
+/**
+ * Return the expanded vars into the give code. Wrapper for internal use
+ */
 function NewStatPress_Print($body='') {
-	print iri_NewStatPress_Vars($body);
+  return iri_NewStatPress_Vars($body);
 }
 
 
@@ -2358,7 +2361,7 @@ function iri_dashboard_widget_function() {
   print "<table class='widefat'><thead><tr>
   <th scope='col'></th>
   <th scope='col'>". __('Total since','newstatpress'). "<br /><font size=1>";
-  echo NewStatPress_Print('%since%');
+  print NewStatPress_Print('%since%');
   print "</font></th>
   <th scope='col'>". __('Last month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0])) ."</font></th>
   <th scope='col'>". __('This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
