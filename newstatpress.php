@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.4.0
+Version: 0.4.1
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://eeepc901.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.4.0';
+$_NEWSTATPRESS['version']='0.4.1';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -1615,7 +1615,7 @@ function iriStatAppend() {
     $results =$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
   }
   if ((!is_user_logged_in()) OR (get_option('newstatpress_collectloggeduser')=='checked')) {
-    if (get_option('newstatpress_collectloggeduser')=='checked') {
+    if (is_user_logged_in() AND get_option('newstatpress_collectloggeduser')=='checked') {
       $current_user = wp_get_current_user();
 
       // Is a given name to ignore?
