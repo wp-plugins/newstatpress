@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.4.1
+Version: 0.4.2
 Author: Stefano Tognon (from Daniele Lippi works)
-Author URI: http://eeepc901.altervista.org
+Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.4.1';
+$_NEWSTATPRESS['version']='0.4.2';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -431,7 +431,7 @@ function iriNewStatPressCredits() {
    <tr>
     <td>Christopher Meng</td>
     <td>Add Simplified Chinese translation</td>
-    <td></td>
+    <td><a href="http://cicku.me">cicku.me</a></td>
    </tr>
    <tr>
     <td>Maurice Cramer</td>
@@ -452,6 +452,11 @@ function iriNewStatPressCredits() {
     <td>Add Lithuanian translation</td>
     <td><a href="http://www.Host1Free.com">Host1Free (Free Hosting)</a></td>
    </tr>
+   <tr>
+    <td>Ruud van der Veen</td>
+    <td>Add tab delimiter for exporting data</td>
+    <td></td>
+   </tr>
   </table>
   </div>
 <?php
@@ -464,7 +469,7 @@ function iriNewStatPressExport() {
 	<form method=get><table>
 	<tr><td><?php _e('From','newstatpress'); ?></td><td><input type=text name=from> (YYYYMMDD)</td></tr>
 	<tr><td><?php _e('To','newstatpress'); ?></td><td><input type=text name=to> (YYYYMMDD)</td></tr>
-	<tr><td><?php _e('Fields delimiter','newstatpress'); ?></td><td><select name=del><option>,</option><option>;</option><option>|</option></select></tr>
+	<tr><td><?php _e('Fields delimiter','newstatpress'); ?></td><td><select name=del><option>,</option><option>tab</option><option>;</option><option>|</option></select></tr>
 	<tr><td></td><td><input type=submit value=<?php _e('Export','newstatpress'); ?>></td></tr>
 	<input type=hidden name=page value=newstatpress><input type=hidden name=newstatpress_action value=exportnow>
 	</table></form>
@@ -481,7 +486,7 @@ function iri_checkExport(){
     if ($mincap == '') $mincap = "level_8";
     if ( current_user_can( $mincap ) ) {
       iriNewStatPressExportNow();
-    }
+    } 
   }
 }
 
@@ -503,6 +508,9 @@ function iriNewStatPressExportNow() {
        date<='".(date("Ymd",strtotime(substr($_GET['to'],0,8))))."';
     ");
   $del=substr($_GET['del'],0,1);
+  if ($del=="t") { 
+    $del="\t"; 
+  }
   print "date".$del."time".$del."ip".$del."urlrequested".$del."agent".$del."referrer".$del."search".$del."nation".$del."os".$del."browser".$del."searchengine".$del."spider".$del."feed\n";
   foreach ($qry as $rk) {
     print '"'.$rk->date.'"'.$del.'"'.$rk->time.'"'.$del.'"'.$rk->ip.'"'.$del.'"'.$rk->urlrequested.'"'.$del.'"'.$rk->agent.'"'.$del.'"'.$rk->referrer.'"'.$del.'"'.$rk->search.'"'.$del.'"'.$rk->nation.'"'.$del.'"'.$rk->os.'"'.$del.'"'.$rk->browser.'"'.$del.'"'.$rk->searchengine.'"'.$del.'"'.$rk->spider.'"'.$del.'"'.$rk->feed.'"'."\n";
@@ -1615,7 +1623,7 @@ function iriStatAppend() {
     $results =$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
   }
   if ((!is_user_logged_in()) OR (get_option('newstatpress_collectloggeduser')=='checked')) {
-    if (is_user_logged_in() AND get_option('newstatpress_collectloggeduser')=='checked') {
+    if (is_user_logged_in() AND (get_option('newstatpress_collectloggeduser')=='checked')) {
       $current_user = wp_get_current_user();
 
       // Is a given name to ignore?

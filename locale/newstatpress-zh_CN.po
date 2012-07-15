@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: statpress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-01 19:48+0100\n"
-"PO-Revision-Date: 2012-07-01 19:48+0100\n"
-"Last-Translator: Christopher Meng <cickumqt@gmail.com>\n"
+"POT-Creation-Date: 2012-07-15 19:53+0100\n"
+"PO-Revision-Date: 2012-07-15 19:53+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk\n"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:51
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2699
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2702
 msgid "Overview"
 msgstr "总览"
 
@@ -28,11 +28,11 @@ msgstr "详细信息"
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:53
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:998
 msgid "Spy"
-msgstr "探针"
+msgstr "探测"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
 msgid "New Spy"
-msgstr ""
+msgstr "新探测"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:751
@@ -55,16 +55,16 @@ msgstr "选项"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:58
 msgid "NewStatPressUpdate"
-msgstr "NewStatpress更新日志"
+msgstr "NewStatpress 环境检查"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:59
 msgid "NewStatpress blog"
-msgstr "NewStatpress官方博客"
+msgstr "NewStatpress 作者博客"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:60
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:383
 msgid "Credits"
-msgstr ""
+msgstr "致谢"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:164
 msgid "Saved"
@@ -80,19 +80,19 @@ msgstr "不记录搜索引擎蜘蛛访问"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:172
 msgid "Crypt IP addresses"
-msgstr "隐藏IP地址"
+msgstr "隐藏 IP 地址"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:173
 msgid "Show NewStatPress dashboard widget"
-msgstr ""
+msgstr "显示 NewStatPress 仪表盘挂件"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:176
 msgid "New Spy: number of IP per page"
-msgstr ""
+msgstr "新探测：每页的 IP 个数"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:183
 msgid "New Spy: number of visits for IP"
-msgstr ""
+msgstr "新探测：同 IP 来访次数"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:190
 msgid "Automatically delete visits older than"
@@ -127,7 +127,7 @@ msgstr "总览中图标显示最近天数"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:208
 msgid "Minimum capability to view stats"
-msgstr ""
+msgstr "最简查看统计信息"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:212
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:951
@@ -136,21 +136,20 @@ msgid "more info"
 msgstr "更多信息"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:218
-#, fuzzy
 msgid "Logged users to ignore"
-msgstr "忽略的文章或者页面"
+msgstr "忽略已登录用户"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:219
 msgid "Enter a list of users you don't want to track, separated by commas, even if collect data about logged users is on"
-msgstr ""
+msgstr "在列表中输入您不想跟踪的用户，即使收集已登录用户信息功能已启用。"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:226
 msgid "IP addresses to ignore"
-msgstr "要忽略的IP地址"
+msgstr "要忽略的 IP 地址"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:227
 msgid "Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly."
-msgstr "输入一段你不想跟踪的IP，请用半角逗号分开。请按规则填写 (例如192.168.1.1/24)。如果格式有误，NewStatPress可能不会正常跟踪页面。"
+msgstr "输入一段您不想跟踪的 IP，请用半角逗号分开。请按规则填写 (例如192.168.1.1/24)。如果格式有误，NewStatPress 可能不会正常跟踪页面。"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:234
 msgid "Pages and posts to ignore"
@@ -158,7 +157,7 @@ msgstr "忽略的文章或者页面"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:235
 msgid "Enter a list of permalinks you don't want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them."
-msgstr "输入一段你不想不想跟踪的永久链接，请用半角逗号分开。请按照规则填写：: /about或者p=1。NewStatPress会忽略所有您填写的页面请求。"
+msgstr "输入一段您不想不想跟踪的永久链接，请用半角逗号分开。请按照规则填写：: /about 或者 p=1。NewStatPress 会忽略所有您填写的页面请求。"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:245
 msgid "Details options"
@@ -178,7 +177,7 @@ msgstr "浏览器统计显示个数(默认为10)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:268
 msgid "Elements in Feed (default 5)"
-msgstr "Feed统计显示个数(默认为5)"
+msgstr "Feed 统计显示个数(默认为5)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:274
 msgid "Elements in Search Engines (default 10)"
@@ -218,28 +217,28 @@ msgstr "最多IP统计显示个数(默认为10)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:330
 msgid "Database update option"
-msgstr ""
+msgstr "数据库升级选项"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:334
 msgid "Select the interval of date from today you want to use for updating your database with new definitions. More it is big and more times and resources it require. You can choose to not update some fields if you want."
-msgstr ""
+msgstr "选择从今天开始您想要更新数据库的时间间隔。该功能需要更多时间和资源。您可以选择部分不更新。"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:339
 msgid "Update data in the given period"
-msgstr ""
+msgstr "在给定时期内更新数据"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:341
 msgid "All!"
-msgstr ""
+msgstr "全部！"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:342
 msgid "week"
-msgstr ""
+msgstr "周"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:343
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:344
 msgid "weeks"
-msgstr ""
+msgstr "周"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:356
 msgid "Save options"
@@ -247,7 +246,7 @@ msgstr "保存设置"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:463
 msgid "Export stats to text file"
-msgstr "导出为txt文本"
+msgstr "导出为 txt 格式文本"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:465
 msgid "From"
@@ -329,7 +328,7 @@ msgstr "最近来源地址"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:578
 msgid "URL"
-msgstr "URL"
+msgstr "地址"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:596
 msgid "Last agents"
@@ -339,7 +338,7 @@ msgstr "最近来访客户端"
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:654
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1102
 msgid "Agent"
-msgstr "客户端头"
+msgstr "用户代理"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
 msgid "Last pages"
@@ -374,20 +373,19 @@ msgstr "日历"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:814
 msgid "period of days"
-msgstr ""
+msgstr "周期(天)"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:897
-#, fuzzy
 msgid "Visitor Spy"
-msgstr "来访者总计"
+msgstr "来访者探测"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:936
 msgid "Http domain"
-msgstr ""
+msgstr "Http 域名"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:947
 msgid "Hostip country"
-msgstr ""
+msgstr "ip 所在国家"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:968
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:969
@@ -406,7 +404,7 @@ msgstr "搜索中"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1101
 msgid "URL Requested"
-msgstr "请求的URL"
+msgstr "请求的地址"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1103
 msgid "Referrer"
@@ -452,10 +450,10 @@ msgstr "包含蜘蛛统计"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1141
 msgid "include feed"
-msgstr "包含feed"
+msgstr "包含 feed"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1148
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2240
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2243
 msgid "Limit results to"
 msgstr "限制结果个数为"
 
@@ -468,7 +466,7 @@ msgid "Count"
 msgstr "计数"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1308
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2241
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2244
 msgid "Visits"
 msgstr "来访次数"
 
@@ -480,60 +478,58 @@ msgstr "更新中……"
 msgid "Size"
 msgstr "大小"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2203
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2206
 msgid "Title:"
 msgstr "标题："
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2204
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2207
 msgid "Body:"
 msgstr "内容："
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2239
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2242
 msgid "Title"
 msgstr "标题"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2360
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2702
-#, fuzzy
-msgid "Total since"
-msgstr "总计"
-
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2363
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2705
-msgid "Last month"
-msgstr "上月"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2364
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2365
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2706
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2707
-msgid "This month"
-msgstr "本月"
+msgid "Total since"
+msgstr "从总计"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2366
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2708
+msgid "Last month"
+msgstr "上月"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2367
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2368
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2709
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2710
+msgid "This month"
+msgstr "本月"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2369
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2711
 msgid "Yesterday"
 msgstr "昨天"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2367
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2709
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2370
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2712
 msgid "Today"
 msgstr "今天"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2372
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2715
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2375
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2718
 msgid "Visitors"
 msgstr "来访者总计"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2447
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2790
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2450
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2793
 msgid "Pageviews"
 msgstr "PV"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2673
-#, fuzzy
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2676
 msgid "More details"
-msgstr "详细信息"
+msgstr "更多信息"
 
 #~ msgid "Total"
 #~ msgstr "总计"
