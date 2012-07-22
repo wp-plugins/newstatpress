@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.4.2
+Version: 0.4.3
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.4.2';
+$_NEWSTATPRESS['version']='0.4.3';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -52,6 +52,7 @@ function iri_add_pages() {
   add_submenu_page(__FILE__, __('Details','newstatpress'), __('Details','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=details', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('New Spy','newstatpress'), __('New Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=newspy', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Spy Bot','newstatpress'), __('Spy Bot','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spybot', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Search','newstatpress'), __('Search','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=search', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=export', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Options','newstatpress'), __('Options','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=options', 'iriNewStatPress');
@@ -75,6 +76,8 @@ function iriNewStatPress() {
           iriNewStatPressSpy();
       } elseif ($_GET['newstatpress_action'] == 'newspy') {
           iriNewStatPressNewSpy();
+      } elseif ($_GET['newstatpress_action'] == 'spybot') {
+          iriNewStatPressSpyBot();
       } elseif ($_GET['newstatpress_action'] == 'search') {
            iriNewStatPressSearch();
       } elseif ($_GET['newstatpress_action'] == 'details') {
@@ -132,6 +135,8 @@ function iriNewStatPressOptions() {
     else update_option('newstatpress_collectloggeduser', null);
     update_option('newstatpress_ip_per_page_newspy', $_POST['newstatpress_ip_per_page_newspy']);
     update_option('newstatpress_visits_per_ip_newspy', $_POST['newstatpress_visits_per_ip_newspy']);
+    update_option('newstatpress_bot_per_page_spybot', $_POST['newstatpress_bot_per_page_spybot']);
+    update_option('newstatpress_visits_per_bot_spybot', $_POST['newstatpress_visits_per_bot_spybot']);
     update_option('newstatpress_autodelete', $_POST['newstatpress_autodelete']);
     update_option('newstatpress_daysinoverviewgraph', $_POST['newstatpress_daysinoverviewgraph']);
     update_option('newstatpress_mincap', $_POST['newstatpress_mincap']);
@@ -185,6 +190,20 @@ function iriNewStatPressOptions() {
           <option value="20" <?php if(get_option('newstatpress_visits_per_ip_newspy') == "20") print "selected"; ?>>20</option>
           <option value="50" <?php if(get_option('newstatpress_visits_per_ip_newspy') == "50") print "selected"; ?>>50</option>
           <option value="100" <?php if(get_option('newstatpress_visits_per_ip_newspy') == "100") print "selected"; ?>>100</option>          
+        </select></td></tr>
+
+      <tr><td><?php _e('Spy Bot: number of bot per page','newstatpress'); ?>
+        <select name="newstatpress_bot_per_page_spybot">          
+          <option value="20" <?php if(get_option('newstatpress_bot_per_page_spybot') == "20") print "selected"; ?>>20</option>
+          <option value="50" <?php if(get_option('newstatpress_bot_per_page_spybot') == "50") print "selected"; ?>>50</option>
+          <option value="100" <?php if(get_option('newstatpress_bot_per_page_spybot') == "100") print "selected"; ?>>100</option>          
+        </select></td></tr>
+
+      <tr><td><?php _e('Spy Bot: number of bot for IP','newstatpress'); ?>
+        <select name="newstatpress_visits_per_bot_spybot">          
+          <option value="20" <?php if(get_option('newstatpress_visits_per_bot_spybot') == "20") print "selected"; ?>>20</option>
+          <option value="50" <?php if(get_option('newstatpress_visits_per_bot_spybot') == "50") print "selected"; ?>>50</option>
+          <option value="100" <?php if(get_option('newstatpress_visits_per_bot_spybot') == "100") print "selected"; ?>>100</option>          
         </select></td></tr>
 
       <tr><td><?php _e('Automatically delete visits older than','newstatpress'); ?>
@@ -366,13 +385,13 @@ function iriNewStatPressOptions() {
 
 
 function iri_dropdown_caps( $default = false ) {
-	global $wp_roles;
-	$role = get_role('administrator');
-	foreach($role->capabilities as $cap => $grant) {
-		print "<option ";
-		if($default == $cap) { print "selected "; }
-		print ">$cap</option>";
-	}
+  global $wp_roles;
+  $role = get_role('administrator');
+  foreach($role->capabilities as $cap => $grant) {
+    print "<option ";
+    if($default == $cap) { print "selected "; }
+    print ">$cap</option>";
+  }
 }
 
 /**
@@ -424,7 +443,8 @@ function iriNewStatPressCredits() {
    <tr>
     <td>from statpress-visitors</td>
     <td>Add new OS (+44), browsers (+52) and spiders (+71)<br>
-        Add in the option the ability to update in a range of date
+        Add in the option the ability to update in a range of date<br>
+        New spy and bot
     </td>
     <td></td>
    </tr>
@@ -659,7 +679,7 @@ function iriNewStatPressMain() {
 
 
   # Last Spiders
-  print "<div class='wrap'><h2>".__('Last spiders','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'>".__('Spider','newstatpress')."</th><th scope='col'>".__('Agent','newstatpress')."</th></tr></thead>";
+  print "<div class='wrap'><h2>".__('Last spiders','newstatpress')."</h2><table class='widefat'><thead><tr><th scope='col'>".__('Date','newstatpress')."</th><th scope='col'>".__('Time','newstatpress')."</th><th scope='col'></th><th scope='col'>".__('Spider','newstatpress')."</th><th scope='col'>".__('Agent','newstatpress')."</th></tr></thead>";
   print "<tbody id='the-list'>";	
   $qry = $wpdb->get_results("
     SELECT date,time,agent,os,browser,spider 
@@ -668,7 +688,12 @@ function iriNewStatPressMain() {
     ORDER BY id DESC $querylimit
   ");
   foreach ($qry as $rk) {
-    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td>".$rk->spider."</td><td> ".$rk->agent."</td></tr>\n";
+    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td>";
+    if($rk->spider != '') {
+      $img=str_replace(" ","_",strtolower($rk->spider)).".png";
+      print "<td><IMG style='border:0px;height:16px;' SRC='".$_newstatpress_url."/images/spider/$img'> </td>";
+    } else print "<td></td>";
+    print "<td>".$rk->spider."</td><td> ".$rk->agent."</td></tr>\n";
   }
   print "</table></div>";
 
@@ -813,8 +838,9 @@ function my_substr($str, $x, $y = 0) {
  *
  * @param NP the group of pages
  * @param pp the page to show
+ * @param action the action
  */
-function newstatpress_print_pp_link($NP,$pp) {
+function newstatpress_print_pp_link($NP,$pp,$action) {
   // For all pages ($NP) Display first 3 pages, 3 pages before current page($pp), 3 pages after current page , each 25 pages and the 3 last pages for($action)
   $GUIL1 = FALSE;
   $GUIL2 = FALSE;// suspension points  not writed  style='border:0px;width:16px;height:16px;   style="border:0px;width:16px;height:16px;"
@@ -827,7 +853,7 @@ function newstatpress_print_pp_link($NP,$pp) {
         else { 
           // Not the current page Hyperlink them
           if (($i <= 3) or (($i >= $pp-3) and ($i <= $pp+3)) or ($i >= $NP-3) or is_int($i/100)) { 
-            echo '<a href="' . $_SERVER['SCRIPT_NAME'] . '?page=newstatpress/newstatpress.php&newstatpress_action=newspy&pp=' . $i .'">' . $i . '</a> ';
+            echo '<a href="' . $_SERVER['SCRIPT_NAME'] . '?page=newstatpress/newstatpress.php&newstatpress_action='.$action.'&pp=' . $i .'">' . $i . '</a> ';
           } else { 
               if (($GUIL1 == FALSE) OR ($i==$pp+4)) {
                 echo "..."; 
@@ -839,6 +865,46 @@ function newstatpress_print_pp_link($NP,$pp) {
               // suspension points writed
             }
          }
+      }
+    }
+  }
+}
+
+/**
+ * Display links for group of pages
+ *
+ * @param NP the group of pages
+ * @param pp the page to show
+ * @param action the action
+ * @param NA group
+ * @param pa current page
+ */
+function newstatpress_print_pp_pa_link($NP,$pp,$action,$NA,$pa) {   
+  if ($NP<>0) newstatpress_print_pp_link($NP,$pp,$action);
+
+  // For all pages ($NP) display first 5 pages, 3 pages before current page($pa), 3 pages after current page , 3 last pages 
+  $GUIL1 = FALSE;// suspension points not writed
+  $GUIL2 = FALSE;
+
+  echo '<table width="100%" border="0"><tr></tr></table>';
+  if ($NA >1 ) {
+    echo "<font size='1'>".__('Pages','newstatpress')." : </font>";
+    for ($j = 1; $j <= $NA; $j++) {
+      if ($j <= $NA) {  // $i is not the last Articles page
+        if($j == $pa)  // $i is current page
+          echo " [{$j}] ";
+        else { // Not the current page Hyperlink them
+          if (($j <= 5) or (( $j>=$pa-2) and ($j <= $pa+2)) or ($j >= $NA-2)) 
+            echo '<a href="' . $_SERVER['SCRIPT_NAME'] . '?page=newstatpress/newstatpress.php&newstatpress_action='.$action.'&pp=' . $pp . '&pa='. $j . '">' . $j . '</a> ';
+          else { 
+            if ($GUIL1 == FALSE) echo "... "; $GUIL1 = TRUE;
+            if (($j == $pa+4) and ($GUIL2 == FALSE)) {
+              echo " ... "; 
+              $GUIL2 = TRUE;
+            }
+            // suspension points writed
+          }
+        }
       }
     }
   }
@@ -862,10 +928,29 @@ function newstatpress_page_periode() {
 }
 
 /**
+ * Get page post taken in statprss-visitors
+ */
+function newstatpress_page_posts() {
+  global $wpdb;
+  // pa is the display pages Articles
+  if(isset($_GET['pa'])) {
+    // Get Current page Articles from URL 
+    $pageA = $_GET['pa']; 
+    if($pageA <= 0) 
+      // Article is less than 0 then set it to 1
+      $pageA = 1;
+  } else  
+      // URL does not show the Article set it to 1
+      $pageA = 1;
+  return $pageA;
+}
+
+/**
  * New spy function taken in statpress-visitors
  */
 function iriNewStatPressNewSpy() {
   global $wpdb;
+  $action="newspy";
   $table_name = $wpdb->prefix . "statpress";
  
   // number of IP or bot by page
@@ -915,7 +1000,7 @@ document.getElementById(thediv).style.display="none"
   $ip = 0;
   $num_row=0;
   echo'<div id="paginating" align="center">';
-  newstatpress_print_pp_link($NP,$pp);
+  newstatpress_print_pp_link($NP,$pp,$action);
   echo'</div><table id="mainspytab" name="mainspytab" width="99%" border="0" cellspacing="0" cellpadding="4">';    
   foreach ($qry as $rk) {
     // Visitor Spy
@@ -988,10 +1073,114 @@ document.getElementById(thediv).style.display="none"
       }
    }
    echo "</div></td></tr>\n</table>";   
-   newstatpress_print_pp_link($NP,$pp);
+   newstatpress_print_pp_link($NP,$pp,$action);
    echo "</div>";
 } 
 
+/**
+ * New spy bot function taken in statpress-visitors
+ */
+function iriNewStatPressSpyBot() {
+  global $wpdb;
+
+  $action="spybot";
+  $table_name = $wpdb->prefix . "statpress";
+ 
+  $LIMIT = get_option('newstatpress_bot_per_page_spybot');
+  $LIMIT_PROOF = get_option('newstatpress_visits_per_bot_spybot');
+
+  if ($LIMIT ==0) $LIMIT = 10;
+  if ($LIMIT_PROOF == 0) $LIMIT_PROOF = 30;
+
+  $pa = newstatpress_page_posts();
+  $LimitValue = ($pa * $LIMIT) - $LIMIT;
+
+  // limit the search 7 days ago
+  $day_ago = gmdate('Ymd', current_time('timestamp') - 7*86400);	   
+  $MinId = $wpdb->get_var("
+    SELECT min(id) as MinId 
+    FROM $table_name 
+    WHERE date > $day_ago
+  ");
+
+  // Number of distinct spiders after $day_ago
+  $Num = $wpdb->get_var("
+    SELECT count(distinct spider) 
+    FROM $table_name 
+    WHERE 
+      spider<>'' AND 
+      id >$MinId
+  ");
+  $NA = ceil($Num/$LIMIT);
+
+  echo "<div class='wrap'><h2>" . __('Spy Bot', 'newstatpress') . "</h2>";
+
+  // selection of spider, group by spider, order by most recently visit (last id in the table)
+  $sql = "
+    SELECT *
+    FROM $table_name as T1
+    JOIN
+    (SELECT spider,max(id) as MaxId 
+     FROM $table_name 
+     WHERE spider<>'' 
+     GROUP BY spider 
+     ORDER BY MaxId 
+     DESC LIMIT $LimitValue, $LIMIT 
+    ) as T2
+    ON T1.spider = T2.spider
+    WHERE T1.id > $MinId
+    ORDER BY MaxId DESC, id DESC
+  ";
+  $qry = $wpdb->get_results($sql);
+
+  echo '<div align="center">';
+  newstatpress_print_pp_pa_link (0,0,$action,$NA,$pa);
+  echo '</div><div align="left">';
+?>
+<script>
+function ttogle(thediv){
+if (document.getElementById(thediv).style.display=="inline") {
+document.getElementById(thediv).style.display="none"
+} else {document.getElementById(thediv).style.display="inline"}
+}
+</script>
+<table id="mainspytab" name="mainspytab" width="99%" border="0" cellspacing="0" cellpadding="4"><div align='left'>
+<?php        
+  $spider="robot";
+  $num_row=0;
+  foreach ($qry as $rk) {  // Bot Spy
+    if ($robot <> $rk->spider) {
+      echo "<div align='left'>
+            <tr>
+            <td colspan='2' bgcolor='#dedede'>";
+      $img=str_replace(" ","_",strtolower($rk->spider));
+      $img=str_replace('.','',$img).".png";
+      $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/spider.dat');
+      foreach($lines as $line_num => $spider) { //seeks the tooltip corresponding to the photo
+        list($title,$id)=explode("|",$spider);
+        if($title==$rk->spider) break; // break, the tooltip ($title) is found
+      }
+      echo "<IMG style='border:0px;height:16px;align:left;' alt='".$title."' title='".$title."' SRC='" .plugins_url('newstatpress/images/spider/'.$img, dirname(dirname(dirname(__FILE__)))). "'>    		
+            <span style='color:#006dca;cursor:pointer;border-bottom:1px dotted #AFD5F9;font-size:8pt;' onClick=ttogle('" . $img . "');>http more info</span>
+            <div id='" . $img . "' name='" . $img . "'><br /><small>" . $rk->ip . "</small><br><small>" . $rk->agent . "<br /></small></div>
+            <script>document.getElementById('" . $img . "').style.display='none';</script>
+            </tr>
+            <tr><td valign='top' width='170'><div><font size='1' color='#3B3B3B'><strong>" . newstatpress_hdate($rk->date) . " " . $rk->time . "</strong></font></div></td>
+            <td><div>" . newstatpress_Decode($rk->urlrequested) . "</div></td></tr>";
+      $robot=$rk->spider;
+      $num_row=1;
+    } elseif ($num_row < $LIMIT_PROOF) {
+        echo "<tr>
+              <td valign='top' width='170'><div><font size='1' color='#3B3B3B'><strong>" . newstatpress_hdate($rk->date) . " " . $rk->time . "</strong></font></div></td>
+              <td><div>" . newstatpress_Decode($rk->urlrequested) . "</div></td></tr>";
+        $num_row+=1;
+      }
+      echo "</div></td></tr>\n";
+  }
+  echo "</table>"; 
+  newstatpress_print_pp_pa_link (0,0,$action,$NA,$pa);
+  echo "</div>";
+}
 
 /**
  * Newstatpress spy function
@@ -1443,19 +1632,24 @@ function iriGetSE($referrer = null){
 	return null;
 }
 
+/**
+ * Get the spider from the given agent
+ *
+ * @param agent the agent string
+ * @return agent the fount agent
+ */
 function iriGetSpider($agent = null){
-    $agent=str_replace(" ","",$agent);
-	$key = null;
-	$lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/spider.dat');
-	foreach($lines as $line_num => $spider) {
-		list($nome,$key)=explode("|",$spider);
-		if(strpos($agent,$key)===FALSE) continue;
-		# trovato
-		return $nome;
-	}
-	return null;
+  $agent=str_replace(" ","",$agent);
+  $key = null;
+  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/spider.dat');
+  foreach($lines as $line_num => $spider) {
+    list($nome,$key)=explode("|",$spider);
+    if(strpos($agent,$key)===FALSE) continue;
+    # fount
+    return $nome;
+  }
+  return null;
 }
-
 
 function iri_NewStatPress_lastmonth() {
   $ta = getdate(current_time('timestamp'));
@@ -1474,7 +1668,9 @@ function iri_NewStatPress_lastmonth() {
   return sprintf( $year.'%02d', $month); 
 }
 
-
+/**
+ * Create or update the table
+ */
 function iri_NewStatPress_CreateTable() {
   global $wpdb;
   global $wp_db_version;
@@ -1509,7 +1705,7 @@ function iri_NewStatPress_CreateTable() {
       index feed_spider_browser (feed, spider, browser),  
       index browser (browser)
     );";
-  if($wp_db_version >= 5540)$page = 'wp-admin/includes/upgrade.php';  
+  if($wp_db_version >= 5540) $page = 'wp-admin/includes/upgrade.php';  
   else $page = 'wp-admin/upgrade'.'-functions.php';
 
   require_once(ABSPATH . $page);
