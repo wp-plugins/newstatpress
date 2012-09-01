@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.4.3
+Version: 0.4.4
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.4.3';
+$_NEWSTATPRESS['version']='0.4.4';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -1160,7 +1160,7 @@ document.getElementById(thediv).style.display="none"
         list($title,$id)=explode("|",$spider);
         if($title==$rk->spider) break; // break, the tooltip ($title) is found
       }
-      echo "<IMG style='border:0px;height:16px;align:left;' alt='".$title."' title='".$title."' SRC='" .plugins_url('newstatpress/images/spider/'.$img, dirname(dirname(dirname(__FILE__)))). "'>    		
+      echo "<IMG style='border:0px;height:16px;align:left;' alt='".$title."' title='".$title."' SRC='" .plugins_url('newstatpress/images/spider/'.$img, dirname(plugin_basename(__FILE__))). "'>
             <span style='color:#006dca;cursor:pointer;border-bottom:1px dotted #AFD5F9;font-size:8pt;' onClick=ttogle('" . $img . "');>http more info</span>
             <div id='" . $img . "' name='" . $img . "'><br /><small>" . $rk->ip . "</small><br><small>" . $rk->agent . "<br /></small></div>
             <script>document.getElementById('" . $img . "').style.display='none';</script>
