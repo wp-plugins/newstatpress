@@ -19,6 +19,7 @@ Chrome 18|Chrome/18|
 Chrome 19|Chrome/19|
 Chrome 20|Chrome/20|
 Chrome 21|Chrome/21|
+Chrome 22|Chrome/22|
 Chrome 2|Chrome/2|
 Chrome|Chrome|
 Dillo|Dillo|
@@ -41,6 +42,7 @@ Firefox 12|Firefox/12|
 Firefox 13|Firefox/13|
 Firefox 14|Firefox/14|
 Firefox 15|Firefox/15|
+Firefox 16|Firefox/16|
 Firefox|Firefox|
 Firefox|Phoenix|
 Firebird|Firebird|
@@ -109,9 +111,6 @@ Opera Mini 6.1|OperaMini/6.1.25375|
 Opera Mini|OperaMini|
 Opera|Opera|
 Orca|Orca|
-Safari|Safari|
-Safari|AppleSyndication|
-Safari|AppleWebKit|
 Konqueror 3.5|Konqueror/3.5|
 Konqueror 3|Konqueror/3|
 Konqueror|Konqueror|
@@ -128,6 +127,7 @@ NewsCopier|NewsCopier|
 K-Meleon|K-Meleon|
 iCab|iCab|
 Swiftweasel|Swiftweasel|
+Safari Mobile 6.0|6.0 Mobile/10A5355d Safari/8536.25|
 Safari Mobile 5.0|Version/5.0.2Mobile/8J2Safari/6533.18.5|
 Safari Mobile 5.0|Version/5.0.2Mobile/8C148Safari/6533.18.5|
 Safari Mobile 5.0|Version/5.0.2Mobile/8G4Safari/6533.18.5|
@@ -161,6 +161,8 @@ Safari 4.0|Version/4.0Safari/534.13|
 Safari 3.1|Safari/525.13|
 Safari|Safari|
 Safari|CFNetwork|
+Safari|AppleSyndication|
+Safari|AppleWebKit|
 Slim Browser|SlimBrowser|
 Playstation|PLAYSTATION|
 Playstation|PlayStationPortable|
