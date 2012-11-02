@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.4.6
+Version: 0.4.7
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.4.6';
+$_NEWSTATPRESS['version']='0.4.7';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -788,11 +788,13 @@ function newstatpress_Decode($out_url) {
     if (my_substr($out_url, 0, 2) == "m=") $out_url = __('Calendar', 'newstatpress') . ": " . my_substr($out_url, 6, 2) . "/" . my_substr($out_url, 2, 4);
     if (my_substr($out_url, 0, 2) == "s=") $out_url = __('Search', 'newstatpress') . ": " . my_substr($out_url, 2);
     if (my_substr($out_url, 0, 2) == "p=") {
-      $post_id_7 = get_post(my_substr($out_url, 2), ARRAY_A);
+      $subOut=my_substr($out_url, 2);
+      $post_id_7 = get_post($subOut, ARRAY_A);
       $out_url = $post_id_7['post_title'];
     }
     if (my_substr($out_url, 0, 8) == "page_id=") {
-      $post_id_7 = get_page(my_substr($out_url, 8), ARRAY_A);
+      $subOut=my_substr($out_url, 8);
+      $post_id_7 = get_page($subOut, ARRAY_A);
       $out_url = __('Page', 'newstatpress') . ": " . $post_id_7['post_title'];
     }
  } else {
@@ -800,12 +802,14 @@ function newstatpress_Decode($out_url) {
      else if (my_substr($out_url, 0, 9) == "category/") $out_url = __('Category', 'newstatpress') . ": " . get_cat_name(my_substr($out_url, 9));
           else if (my_substr($out_url, 0, 2) == "s=") $out_url = __('Search', 'newstatpress') . ": " . my_substr($out_url, 2);
                else if (my_substr($out_url, 0, 2) == "p=") {
-                      // not working yet           
-                      $post_id_7 = get_post(my_substr($out_url, 2), ARRAY_A);
+                      // not working yet 
+                      $subOut=my_substr($out_url, 2);
+                      $post_id_7 = get_post($subOut, ARRAY_A);
                       $out_url = $post_id_7['post_title'];
                     } else if (my_substr($out_url, 0, 8) == "page_id=") { 
                              // not working yet
-                             $post_id_7 = get_page(my_substr($out_url, 8), ARRAY_A);
+                             $subOut=my_substr($out_url, 8);
+                             $post_id_7 = get_page($subOut, ARRAY_A);
                              $out_url = __('Page', 'newstatpress') . ": " . $post_id_7['post_title'];
                            }
    }
@@ -858,7 +862,7 @@ function newstatpress_print_pp_link($NP,$pp,$action) {
         else { 
           // Not the current page Hyperlink them
           if (($i <= 3) or (($i >= $pp-3) and ($i <= $pp+3)) or ($i >= $NP-3) or is_int($i/100)) { 
-            echo '<a href="' . $_SERVER['SCRIPT_NAME'] . '?page=newstatpress/newstatpress.php&newstatpress_action='.$action.'&pp=' . $i .'">' . $i . '</a> ';
+            echo '<a href="?page=newstatpress/newstatpress.php&newstatpress_action='.$action.'&pp=' . $i .'">' . $i . '</a> ';
           } else { 
               if (($GUIL1 == FALSE) OR ($i==$pp+4)) {
                 echo "..."; 
@@ -900,7 +904,7 @@ function newstatpress_print_pp_pa_link($NP,$pp,$action,$NA,$pa) {
           echo " [{$j}] ";
         else { // Not the current page Hyperlink them
           if (($j <= 5) or (( $j>=$pa-2) and ($j <= $pa+2)) or ($j >= $NA-2)) 
-            echo '<a href="' . $_SERVER['SCRIPT_NAME'] . '?page=newstatpress/newstatpress.php&newstatpress_action='.$action.'&pp=' . $pp . '&pa='. $j . '">' . $j . '</a> ';
+            echo '<a href="?page=newstatpress/newstatpress.php&newstatpress_action='.$action.'&pp=' . $pp . '&pa='. $j . '">' . $j . '</a> ';
           else { 
             if ($GUIL1 == FALSE) echo "... "; $GUIL1 = TRUE;
             if (($j == $pa+4) and ($GUIL2 == FALSE)) {
@@ -1445,21 +1449,28 @@ function iri_NewStatPress_Abbrevia($s,$c) {
 	
 }
 
-
+/**
+ * Decode the given url
+ *
+ * @param out_url the given url to decode
+ * @return the decoded url
+ */
 function iri_NewStatPress_Decode($out_url) {
-	if($out_url == '') { $out_url=__('Page','newstatpress').": Home"; }
-	if(substr($out_url,0,4)=="cat=") { $out_url=__('Category','newstatpress').": ".get_cat_name(substr($out_url,4)); }
-	if(substr($out_url,0,2)=="m=") { $out_url=__('Calendar','newstatpress').": ".substr($out_url,6,2)."/".substr($out_url,2,4); }
-	if(substr($out_url,0,2)=="s=") { $out_url=__('Search','newstatpress').": ".substr($out_url,2); }
-	if(substr($out_url,0,2)=="p=") {
-		$post_id_7 = get_post(substr($out_url,2), ARRAY_A);
-		$out_url = $post_id_7['post_title'];
-	}
-	if(substr($out_url,0,8)=="page_id=") {
-		$post_id_7=get_page(substr($out_url,8), ARRAY_A);
-		$out_url = __('Page','newstatpress').": ".$post_id_7['post_title'];
-	}
-	return $out_url;
+  if($out_url == '') { $out_url=__('Page','newstatpress').": Home"; }
+  if(substr($out_url,0,4)=="cat=") { $out_url=__('Category','newstatpress').": ".get_cat_name(substr($out_url,4)); }
+  if(substr($out_url,0,2)=="m=") { $out_url=__('Calendar','newstatpress').": ".substr($out_url,6,2)."/".substr($out_url,2,4); }
+  if(substr($out_url,0,2)=="s=") { $out_url=__('Search','newstatpress').": ".substr($out_url,2); }
+  if(substr($out_url,0,2)=="p=") {
+    $subOut=substr($out_url,2);
+    $post_id_7 = get_post($subOut, ARRAY_A);
+    $out_url = $post_id_7['post_title'];
+  }
+  if(substr($out_url,0,8)=="page_id=") {
+    $subOut=substr($out_url,8);
+    $post_id_7=get_page($subOut, ARRAY_A);
+    $out_url = __('Page','newstatpress').": ".$post_id_7['post_title'];
+  }
+  return $out_url;
 }
 
 
@@ -1611,13 +1622,19 @@ function iriGetBrowser($arg) {
   return '';
 }
 
+/**
+ * Check if the given ip is to ban
+ *
+ * @param arg the ip to check
+ * @return '' id the address is banned
+ */
 function iriCheckBanIP($arg){
-	$lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/banips.dat');
-	foreach($lines as $line_num => $banip) {
-		if(strpos($arg,rtrim($banip,"\n"))===FALSE) continue;
-    	return ''; // riconosciuto, da scartare
-	}
-    return $arg;
+  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/banips.dat');
+  foreach($lines as $line_num => $banip) {
+    if(strpos($arg,rtrim($banip,"\n"))===FALSE) continue;
+    return ''; // this is banned
+  }
+  return $arg;
 }
 
 function iriGetSE($referrer = null){
@@ -1685,7 +1702,7 @@ function iri_NewStatPress_CreateTable() {
       id mediumint(9) NOT NULL AUTO_INCREMENT,
       date int(8),
       time time,
-      ip varchar(15),
+      ip varchar(39),
       urlrequested varchar(250),
       agent varchar(250),
       referrer varchar(250),
@@ -3237,7 +3254,7 @@ function iriOverview($print = TRUE) {
     ORDER BY pageview DESC
     LIMIT 1
   ");
-  $maxxday=$qry->pageview;
+  if ($qry != null) $maxxday=$qry->pageview;
   if($maxxday == 0) { $maxxday = 1; }
   # Y
   $gd=(90/$gdays).'%';
