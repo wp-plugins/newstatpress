@@ -2,10 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: statpress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-14 10:21+0100\n"
-"PO-Revision-Date: 2008-01-03 07:06+0200\n"
-"Last-Translator: Berkant <berkant@berkant.info>\n"
+"POT-Creation-Date: 2012-09-23 18:57+0100\n"
+"PO-Revision-Date: 2012-09-23 18:57+0100\n"
+"Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,304 +14,565 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-Country: SPAIN\n"
-"X-Poedit-SearchPath-0: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress\n"
+"X-Poedit-SearchPath-0: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk\n"
 
-# www.berkant.info'da kulanıldığım  statpressin gelişmesine katkıda bulunmak için Berkant tarfından çevirilmiştir.
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress
-#: copia.php:688
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:1027
-msgid "Title:"
-msgstr "Başlık: "
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress
-#: copia.php:689
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:1028
-msgid "Body:"
-msgstr "Ana:"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:33
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:147
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:51
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2906
 msgid "Overview"
 msgstr "Genel Görünüm"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:34
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:52
 msgid "Details"
 msgstr "Ayrıntılar"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:35
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:439
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:53
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1195
 msgid "Spy"
 msgstr "Ajan"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:36
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:509
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:548
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:642
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
+msgid "New Spy"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1116
+msgid "Spy Bot"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:784
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:796
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1308
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1351
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1448
 msgid "Search"
 msgstr "Arama "
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:37
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:113
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:493
 msgid "Export"
 msgstr "Dışa Aktar"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:38
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:71
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:58
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:172
 msgid "Options"
 msgstr "Ayarlar"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:68
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:59
+msgid "NewStatPressUpdate"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:60
+msgid "NewStatpress blog"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:61
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:402
+msgid "Credits"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:169
 msgid "Saved"
 msgstr "Kaydedildi"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:74
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:175
 msgid "Collect data about logged users, too."
 msgstr "Kayıtlı kullanıcılar içinde de bilgileri kaydet"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:76
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:176
+msgid "Do not collect spiders visits"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:177
+msgid "Crypt IP addresses"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:178
+msgid "Show NewStatPress dashboard widget"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:181
+msgid "New Spy: number of IP per page"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:188
+msgid "New Spy: number of visits for IP"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:195
+msgid "Spy Bot: number of bot per page"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:202
+msgid "Spy Bot: number of bot for IP"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:209
 msgid "Automatically delete visits older than"
 msgstr "Belli bir tarihten eski ziyaretleri otomatik olarak sil. "
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:78
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:211
 msgid "Never delete!"
 msgstr "Hiçbir zaman Silme. "
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:79
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:212
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:364
 msgid "month"
 msgstr "Ay"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:80
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:81
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:213
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:214
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:365
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:366
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:367
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:368
 msgid "months"
 msgstr "Aylar "
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:82
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:215
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:369
 msgid "year"
 msgstr "Yıl"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:85
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:218
 msgid "Days in Overview graph"
 msgstr "Genel Görünüm Grafiğindeki Günler"
 
-# www.berkant.info'da kullandığım statpress'in gelişmesine katkıda bulunmak için Türkçeleştirdim. Yararlı olmasını umud ediyorum.
-# İyi bloglamalar.
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:94
-msgid "Save options"
-msgstr "Ayarları kaydet"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:227
+msgid "Minimum capability to view stats"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:109
-msgid "Export stats to text file"
-msgstr "Yazı dosyasına kaydet."
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:111
-msgid "From"
-msgstr "Bu tarihten"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:112
-msgid "To"
-msgstr "Bu tarihe kadar "
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
-msgid "Total"
-msgstr "Toplam"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
-msgid "Last month"
-msgstr "Geçtiğimiz Ay"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
-msgid "This month"
-msgstr "Bu ay"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
-msgid "Yesterday"
-msgstr "Dün"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:148
-msgid "Today"
-msgstr "Bugün"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:152
-msgid "Visitors"
-msgstr "Ziyaretçiler"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:175
-msgid "Pageviews"
-msgstr "Sayfa İzlenimleri"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
-msgid "Last hits"
-msgstr "Son tıklamalar"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
-msgid "Date"
-msgstr "Tarih"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
-msgid "Time"
-msgstr "Zaman"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
-msgid "Domain"
-msgstr "Alan Adı "
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:320
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:639
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:649
-msgid "Page"
-msgstr "Sayfa"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
-msgid "Last search terms"
-msgstr "Son arama kriterleri"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
-msgid "Terms"
-msgstr "Terimler"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
-msgid "Engine"
-msgstr "Motor"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:340
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
-msgid "Result"
-msgstr "Sonuçlar"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:344
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:354
-msgid "page viewed"
-msgstr "İzlenen sayfalar"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
-msgid "Last referrers"
-msgstr "Son Referans verenler "
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:350
-msgid "URL"
-msgstr "URL"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
-msgid "Last agents"
-msgstr "Son ajanlar"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:500
-msgid "Agent"
-msgstr "Ajanlar"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:359
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
-msgid "What"
-msgstr "Nedir ? "
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:369
-msgid "Last pages"
-msgstr "Son sayfalar"
-
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:458
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:231
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1044
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1243
 msgid "more info"
 msgstr "Daha fazla bilgi"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:480
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:482
-msgid "arrived from"
-msgstr "Geldiği yer"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:237
+msgid "Logged users to ignore"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:480
-msgid "searching"
-msgstr "Arama kriteri"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:238
+msgid "Enter a list of users you don't want to track, separated by commas, even if collect data about logged users is on"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:499
-msgid "URL Requested"
-msgstr "İstek yapan  url"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:245
+msgid "IP addresses to ignore"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:501
-msgid "Referrer"
-msgstr "Referans Gösteren"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:246
+msgid "Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly."
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:502
-msgid "Search terms"
-msgstr "Arama kriterleri"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:253
+msgid "Pages and posts to ignore"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:503
-msgid "Search engine"
-msgstr "Arama motoru"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:254
+msgid "Enter a list of permalinks you don't want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them."
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:504
-msgid "Operative system"
-msgstr "İşletim sistemi"
+# www.berkant.info'da kullandığım statpress'in gelişmesine katkıda bulunmak için Türkçeleştirdim. Yararlı olmasını umud ediyorum.
+# İyi bloglamalar.
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:264
+#, fuzzy
+msgid "Details options"
+msgstr "Ayarları kaydet"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:514
-msgid "Field"
-msgstr "Alan"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:269
+msgid "Elements in Top days (default 5)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:521
-msgid "Group by"
-msgstr "Grubunda"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:275
+msgid "Elements in O.S. (default 10)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:522
-msgid "Sort by"
-msgstr "Sıralayan"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:281
+msgid "Elements in Browser (default 10)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:523
-msgid "if contains"
-msgstr "Eğer içeriyorsa"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:287
+msgid "Elements in Feed (default 5)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:533
-msgid "sort by count if grouped"
-msgstr "Eğer gruplandıysa sayıma göre sırala"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:293
+msgid "Elements in Search Engines (default 10)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:534
-msgid "include spiders/crawlers/bot"
-msgstr "spiders/crawlers/bot'ları da kapsa "
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:299
+msgid "Elements in Top Search Terms (default 20)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:535
-msgid "include feed"
-msgstr "beslemeleri de içer "
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:305
+msgid "Elements in Top Refferer (default 10)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:542
-msgid "Limit results to"
-msgstr "Sonuçları sınırla"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:311
+msgid "Elements in Countries/Languages (default 20)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:605
-msgid "Results"
-msgstr "Sonuçlar"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:317
+msgid "Elements in Spiders (default 10)"
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:612
-msgid "Count"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:323
+msgid "Elements in Top Pages (default 5)"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:329
+msgid "Elements in Top Days - Unique visitors (default 5)"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:335
+msgid "Elements in Top Days - Pageviews (default 5)"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:341
+msgid "Elements in Top IPs - Pageviews (default 5)"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:349
+msgid "Database update option"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:353
+msgid "Select the interval of date from today you want to use for updating your database with new definitions. More it is big and more times and resources it require. You can choose to not update some fields if you want."
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:358
+msgid "Update data in the given period"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:360
+msgid "All!"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:361
+msgid "week"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:362
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:363
+msgid "weeks"
+msgstr ""
+
+# www.berkant.info'da kullandığım statpress'in gelişmesine katkıda bulunmak için Türkçeleştirdim. Yararlı olmasını umud ediyorum.
+# İyi bloglamalar.
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:375
+msgid "Save options"
+msgstr "Ayarları kaydet"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:488
+msgid "Export stats to text file"
+msgstr "Yazı dosyasına kaydet."
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:490
+msgid "From"
+msgstr "Bu tarihten"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:491
+msgid "To"
+msgstr "Bu tarihe kadar "
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:492
+msgid "Fields delimiter"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:555
+msgid "Last hits"
+msgstr "Son tıklamalar"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:555
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:592
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:606
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:682
+msgid "Date"
+msgstr "Tarih"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:555
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:592
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:606
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:682
+msgid "Time"
+msgstr "Zaman"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:555
+#, fuzzy
+msgid "Country"
 msgstr "Sayılan"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:640
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:555
+msgid "Language"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:555
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:781
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:791
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:794
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:804
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1445
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1455
+msgid "Page"
+msgstr "Sayfa"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:592
+msgid "Last search terms"
+msgstr "Son arama kriterleri"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:592
+msgid "Terms"
+msgstr "Terimler"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:592
+msgid "Engine"
+msgstr "Motor"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:592
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:606
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1920
+msgid "Result"
+msgstr "Sonuçlar"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:601
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:618
+msgid "page viewed"
+msgstr "İzlenen sayfalar"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:606
+msgid "Last referrers"
+msgstr "Son Referans verenler "
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:606
+msgid "URL"
+msgstr "URL"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:624
+msgid "Last agents"
+msgstr "Son ajanlar"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:624
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:682
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1299
+msgid "Agent"
+msgstr "Ajanlar"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
+msgid "Last pages"
+msgstr "Son sayfalar"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
+msgid "OS"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
+msgid "Browser"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:682
+#, fuzzy
+msgid "Last spiders"
+msgstr "Son sayfalar"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:682
+msgid "Spider"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:782
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:795
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1446
 msgid "Category"
 msgstr "Kategori"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:641
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:783
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1447
 msgid "Calendar"
 msgstr "Takvim"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:697
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:848
+msgid "period of days"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:891
+#, fuzzy
+msgid "Pages"
+msgstr "Sayfa"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:990
+#, fuzzy
+msgid "Visitor Spy"
+msgstr "Ziyaretçiler"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1029
+msgid "Http domain"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1040
+msgid "Hostip country"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1061
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1062
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1069
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1070
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1269
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1271
+msgid "arrived from"
+msgstr "Geldiği yer"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1061
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1069
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1269
+msgid "searching"
+msgstr "Arama kriteri"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1298
+msgid "URL Requested"
+msgstr "İstek yapan  url"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1300
+msgid "Referrer"
+msgstr "Referans Gösteren"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1301
+msgid "Search terms"
+msgstr "Arama kriterleri"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1302
+msgid "Search engine"
+msgstr "Arama motoru"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1303
+msgid "Operative system"
+msgstr "İşletim sistemi"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1313
+msgid "Field"
+msgstr "Alan"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1320
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1321
+msgid "Group by"
+msgstr "Grubunda"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1323
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1324
+msgid "Sort by"
+msgstr "Sıralayan"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1326
+msgid "if contains"
+msgstr "Eğer içeriyorsa"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1336
+msgid "sort by count if grouped"
+msgstr "Eğer gruplandıysa sayıma göre sırala"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1337
+msgid "include spiders/crawlers/bot"
+msgstr "spiders/crawlers/bot'ları da kapsa "
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1338
+msgid "include feed"
+msgstr "beslemeleri de içer "
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1345
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2447
+msgid "Limit results to"
+msgstr "Sonuçları sınırla"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1412
+msgid "Results"
+msgstr "Sonuçlar"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1419
+msgid "Count"
+msgstr "Sayılan"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1505
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2448
 msgid "Visits"
 msgstr "Ziyaretler"
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:889
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:900
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:911
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:922
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:943
-msgid "done"
-msgstr "Tamamlandı"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1920
+msgid "Updating..."
+msgstr ""
 
-#: /Users/danielelippi/sviluppo/statpress/statpress/trunk/wp-statpress/statpress.php:947
-msgid "Updated"
-msgstr "Güncellendi "
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1920
+msgid "Size"
+msgstr ""
 
+# www.berkant.info'da kulanıldığım  statpressin gelişmesine katkıda bulunmak için Berkant tarfından çevirilmiştir.
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2410
+msgid "Title:"
+msgstr "Başlık: "
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2411
+msgid "Body:"
+msgstr "Ana:"
+
+# www.berkant.info'da kulanıldığım  statpressin gelişmesine katkıda bulunmak için Berkant tarfından çevirilmiştir.
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2446
+#, fuzzy
+msgid "Title"
+msgstr "Başlık: "
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2567
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2909
+#, fuzzy
+msgid "Total since"
+msgstr "Toplam"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2570
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2912
+msgid "Last month"
+msgstr "Geçtiğimiz Ay"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2571
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2572
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2913
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2914
+msgid "This month"
+msgstr "Bu ay"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2573
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2915
+msgid "Yesterday"
+msgstr "Dün"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2574
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2916
+msgid "Today"
+msgstr "Bugün"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2579
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2922
+msgid "Visitors"
+msgstr "Ziyaretçiler"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2654
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2997
+msgid "Pageviews"
+msgstr "Sayfa İzlenimleri"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2880
+#, fuzzy
+msgid "More details"
+msgstr "Ayrıntılar"
+
+#~ msgid "Total"
+#~ msgstr "Toplam"
+
+#~ msgid "Domain"
+#~ msgstr "Alan Adı "
+
+#~ msgid "What"
+#~ msgstr "Nedir ? "
+
+#~ msgid "done"
+#~ msgstr "Tamamlandı"
+
+#~ msgid "Updated"
+#~ msgstr "Güncellendi "
