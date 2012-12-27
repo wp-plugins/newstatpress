@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.4.8
+Version: 0.4.9
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.4.8';
+$_NEWSTATPRESS['version']='0.4.9';
 $_NEWSTATPRESS['feedtype']='';
 
 include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -1518,7 +1518,7 @@ function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $
   if ($queryfld == '') { 
     $queryfld = $fld; 
   }
-  $text = "<div class='wrap'><table class='widefat'><thead><tr><th scope='col' style='width:400px;'><h2>$fldtitle</h2></th><th scope='col' style='width:100px;'>".__('Visits','newstatpress')."</th><th></th></tr></thead>";
+  $text = "<div class='wrap'><table class='widefat'><thead><tr><th scope='col' style='width:80%;'><h2>$fldtitle</h2></th><th scope='col' style='width:20%;text-align:center;'>".__('Visits','newstatpress')."</th><th></th></tr></thead>";
   $rks = $wpdb->get_var("
      SELECT count($param $queryfld) as rks 
      FROM $table_name 
@@ -1556,14 +1556,15 @@ function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $
     if($fld == 'nation') {
       $chart=iriGoogleGeo("","",$data);
     } else {
-        $chart=iriGoogleChart("","500x200",$data);
+        $chart=iriGoogleChart("","550x250",$data);
       }
-    $text = $text. "<tr><td></td><td></td><td rowspan='".($limit+2)."'>$chart</td></tr>";
+    #$text = $text. "<tr><td></td><td></td><td rowspan='".($limit+2)."'>$chart</td></tr>";
     foreach ($data as $key => $value) {
-      $text = $text."<tr><td style='width:500px;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;'>".$key;
-      $text = $text."</td><td style='width:100px;text-align:center;'>".$value."</td>";
+      $text = $text."<tr><td style='width:80%;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;'>".$key;
+      $text = $text."</td><td style='width:20%;text-align:center;'>".$value."</td>";
       $text = $text."</tr>";
     }
+    $text = $text. "<tr><td colspan=2 style='width:100%;'>$chart</td></tr>";
   }
   $text = $text."</tbody></table></div><br>\n";
   if ($print) print $text;
@@ -3330,6 +3331,9 @@ function iriOverview($print = TRUE) {
 
 // Create the function use in the action hook
 
+/**
+ * Add the dashboard widget if option for that is on
+ */
 function iri_add_dashboard_widgets() {
   global $wp_meta_boxes;
 
@@ -3338,6 +3342,20 @@ function iri_add_dashboard_widgets() {
   } else unset($wp_meta_boxes['dashboard']['side']['core']['wp_dashboard_setup']);
 } 
 
+/**
+ * Set the header for the page.
+ * It loads google api
+ */
+function iri_page_header() {
+  ##  echo "<style id='NewStatPress' type='text/css'>\n";
+  ##  echo stripslashes(file_get_contents(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/css/newstatpress.css'));
+  ##  echo "</style>\n";
+  #echo "<script type=\'text/javascript\' src=\'https://www.google.com/jsapi\'></script>"
+  echo '<script type="text/javascript" src="http://www.google.com/jsapi"></script>';
+  echo '<script type="text/javascript">';
+  echo 'google.load(\'visualization\', \'1\', {packages: [\'geochart\']});';
+  echo '</script>';
+}
 
 load_plugin_textdomain('newstatpress', 'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/locale', '/'.dirname(plugin_basename(__FILE__)).'/locale');
 
@@ -3345,6 +3363,7 @@ add_action('admin_menu', 'iri_add_pages');
 add_action('plugins_loaded', 'widget_newstatpress_init');
 add_action('send_headers', 'iriStatAppend');  //add_action('wp_head', 'iriStatAppend');
 add_action('init','iri_checkExport');
+###add_action('wp_head', 'iri_page_header');
 
 // Hoook into the 'wp_dashboard_setup' action to register our other functions
 add_action('wp_dashboard_setup', 'iri_add_dashboard_widgets' );
