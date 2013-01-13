@@ -310,6 +310,7 @@ Check at http://newstatpress.altervista.org
 = 0.5.1 =
 
 * Add Slovak translation  (thanks to Branco - WebHostingGeeks.com http://webhostinggeeks.com/blog/) 
+* Fix mising msn spider images (thanks to Christian)
 
 == Upgrade Notice ==
 
@@ -479,4 +480,4 @@ Check at http://newstatpress.altervista.org
 
 = 0.5.1 =
 
-* released 08/01/2013
+* released 13/01/2013
