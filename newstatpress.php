@@ -3,15 +3,16 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.5.1
+Version: 0.5.2
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.5.1';
+$_NEWSTATPRESS['version']='0.5.2';
 $_NEWSTATPRESS['feedtype']='';
 
-include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
+#include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
+include WP_CONTENT_DIR.'/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
 
 /**
  * Get the url of the plugin
@@ -1783,7 +1784,7 @@ function iriStatAppend() {
     if (empty($mask)) $mask = 32;
     $long_ip_to_ignore = ip2long($ip_to_ignore);
     $long_mask = bindec( str_pad('', $mask, '1') . str_pad('', 32-$mask, '0') );
-    $long_masked_user_ip = $ipAddress & $long_mask;
+    $long_masked_user_ip = ip2long($ipAddress) & $long_mask;
     $long_masked_ip_to_ignore = $long_ip_to_ignore & $long_mask;
     if ($long_masked_user_ip == $long_masked_ip_to_ignore) { return ''; }
   }
@@ -2387,6 +2388,19 @@ function iri_NewStatPress_Vars($body) {
     $body = str_replace("%topos%", iri_NewStatPress_Decode($qry[0]->os), $body);
   }
 
+  # look for %topsearch%
+  if(strpos(strtolower($body),"%topsearch%") !== FALSE) {
+    $qry = $wpdb->get_results(
+      "SELECT search, count(*) AS csearch
+       FROM $table_name 
+       WHERE 
+         search<>'' 
+       GROUP BY search
+       ORDER BY csearch DESC
+       LIMIT 1;
+      ");
+    $body = str_replace("%topsearch%", iri_NewStatPress_Decode($qry[0]->search), $body);
+  }
   return $body;
 }
 
