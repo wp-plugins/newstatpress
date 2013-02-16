@@ -3,8 +3,8 @@ Contributors: ice00
 Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
-Tested up to: 3.4.1
-Stable Tag: 0.5.2
+Tested up to: 3.5.1
+Stable Tag: 0.5.3
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -315,9 +315,15 @@ Check at http://newstatpress.altervista.org
 = 0.5.2 =
 
 * Fix inherited bug about CDIR comparison in blocking IP function
-* Add %topsearch% fopr getting the top search term (it implement partially the tracker ID 297 and 243)
+* Add %topsearch% fopr getting the top search term (it implements partially the tracker ID 297 and 243)
 * Fix bug ID 299
 * Add missing yahoo feedseacker spider image
+
+= 0.5.3 =
+
+* Fix collision of permalinksEnabled with statpress-visitors
+* Increase size from 50 to 250 into details visualization
+* New Browser (+17),New OS (+2), fix bug id 315
 
 == Upgrade Notice ==
 
@@ -492,3 +498,7 @@ Check at http://newstatpress.altervista.org
 = 0.5.2 =
 
 * released 12/02/2013
+
+= 0.5.3 =
+
+* released 15/02/2013

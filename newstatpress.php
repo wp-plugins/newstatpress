@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.5.2
+Version: 0.5.3
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.5.2';
+$_NEWSTATPRESS['version']='0.5.3';
 $_NEWSTATPRESS['feedtype']='';
 
 #include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -788,7 +788,7 @@ function newstatpress_hdate($dt = "00000000") {
  * Decode the url in a better manner
  */
 function newstatpress_Decode($out_url) {
-  if(!permalinksEnabled()) {
+  if(!iriNewStatPressPermalinksEnabled()) {
     if ($out_url == '') $out_url = __('Page', 'newstatpress') . ": Home";
     if (my_substr($out_url, 0, 4) == "cat=") $out_url = __('Category', 'statpress') . ": " . get_cat_name(my_substr($out_url, 4));
     if (my_substr($out_url, 0, 2) == "m=") $out_url = __('Calendar', 'newstatpress') . ": " . my_substr($out_url, 6, 2) . "/" . my_substr($out_url, 2, 4);
@@ -828,7 +828,7 @@ function newstatpress_Decode($out_url) {
  *
  * @return true if permalink is enabled in Wordpress
  */
-function permalinksEnabled() { 
+function iriNewStatPressPermalinksEnabled() { 
   global $wpdb;
       
   $result = $wpdb->get_row('SELECT `option_value` FROM `' . $wpdb->prefix . 'options` WHERE `option_name` = "permalink_structure"');
@@ -1552,7 +1552,7 @@ function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $
       if($fld == 'nation') { $rk->$fld = strtoupper($rk->$fld); }
       if($fld == 'date') { $rk->$fld = irihdate($rk->$fld); }
       if($fld == 'urlrequested') { $rk->$fld = iri_NewStatPress_Decode($rk->$fld); }
-      $data[substr($rk->$fld,0,50)]=$rk->pageview;
+      $data[substr($rk->$fld,0,250)]=$rk->pageview;
     }
   }
 
