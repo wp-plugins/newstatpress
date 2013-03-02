@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.5.1
-Stable Tag: 0.5.3
+Stable Tag: 0.5.4
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -56,6 +56,7 @@ Widget is customizable. These are the available variables:
 * %toppost% - The most viewed Post
 * %topbrowser% - The most used Browser
 * %topos% - The most used O.S.
+* %topsearch% - The most used search terms
 
 Now you could add these values everywhere! NewStatPress offers a new PHP function *NewStatPress_Print()*.
 * i.e. NewStatPress_Print("%totalvisits% total visits.");
@@ -315,7 +316,7 @@ Check at http://newstatpress.altervista.org
 = 0.5.2 =
 
 * Fix inherited bug about CDIR comparison in blocking IP function
-* Add %topsearch% fopr getting the top search term (it implements partially the tracker ID 297 and 243)
+* Add %topsearch% for getting the top search term (it implements partially the tracker ID 297 and 243)
 * Fix bug ID 299
 * Add missing yahoo feedseacker spider image
 
@@ -324,6 +325,10 @@ Check at http://newstatpress.altervista.org
 * Fix collision of permalinksEnabled with statpress-visitors
 * Increase size from 50 to 250 into details visualization
 * New Browser (+17),New OS (+2), fix bug id 315
+
+= 0.5.4 =
+
+* Add Hungarian translation (Thanks to Peter Bago)
 
 == Upgrade Notice ==
 
@@ -502,3 +507,7 @@ Check at http://newstatpress.altervista.org
 = 0.5.3 =
 
 * released 15/02/2013
+
+= 0.5.4 =
+
+* released 02/03/2013
