@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.5.5
+Version: 0.5.6
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.5.5';
+$_NEWSTATPRESS['version']='0.5.6';
 $_NEWSTATPRESS['feedtype']='';
 
 #include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -1583,7 +1583,7 @@ function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $
     if($fld == 'nation') {
       // inser geochart of nation
       $chart="<iframe ";
-      $chart = $chart." src=\"".plugins_url('newstatpress')."/includes/geocharts.frame".iriGetGoogleGeo($data)."\"";
+      $chart = $chart." src=\"".plugins_url('newstatpress')."/includes/geocharts.html".iriGetGoogleGeo($data)."\"";
       $chart = $chart." class=\"framebox\"";
       $chart = $chart."  style=\"width: 100%; height: 550px;\">";
       $chart = $chart."  <p>[This section requires a browser that supports iframes.]</p>";
