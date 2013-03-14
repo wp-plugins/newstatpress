@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.5.1
-Stable Tag: 0.5.4
+Stable Tag: 0.5.5
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -330,6 +330,12 @@ Check at http://newstatpress.altervista.org
 
 * Add Hungarian translation (Thanks to Peter Bago)
 
+= 0.5.5 =
+
+* Porting the GeoMap chart to the new Google API: Geochart.
+  Map is rendered into an iframe with SVG or VML. 
+  See http://newstatpress.altervista.org/?p=373 for an example
+
 == Upgrade Notice ==
 
 = 0.1.0 =
@@ -511,3 +517,7 @@ Check at http://newstatpress.altervista.org
 = 0.5.4 =
 
 * released 02/03/2013
+
+= 0.5.5 =
+
+* released 14/03/2013

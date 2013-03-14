@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.5.4
+Version: 0.5.5
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.5.4';
+$_NEWSTATPRESS['version']='0.5.5';
 $_NEWSTATPRESS['feedtype']='';
 
 #include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
@@ -1521,6 +1521,22 @@ function iriindextablesize($table) {
 	return number_format(($index_lenght/1024/1024), 2, ",", " ")." Mb";
 }
 
+/**
+ * Get google url query for geo data
+ *
+ * @param data_array the array of data_array
+ * @return the url with data
+ */
+function iriGetGoogleGeo($data_array) {
+  if(empty($data_array)) { return ''; }
+  // get hash
+  foreach($data_array as $key => $value ) {
+    $values[] = $value;
+    $labels[] = $key;
+  }
+  return "?cht=Country&chd=".(implode(",",$values))."&chlt=Popularity&chld=".(implode(",",$labels));
+}
+
 
 function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $exclude= "", $print = TRUE) {
   global $wpdb;
@@ -1565,7 +1581,14 @@ function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $
   $text = $text."<tbody id='the-list'>";
   if($rks > 0) {  // Chart!
     if($fld == 'nation') {
-      $chart=iriGoogleGeo("","",$data);
+      // inser geochart of nation
+      $chart="<iframe ";
+      $chart = $chart." src=\"".plugins_url('newstatpress')."/includes/geocharts.frame".iriGetGoogleGeo($data)."\"";
+      $chart = $chart." class=\"framebox\"";
+      $chart = $chart."  style=\"width: 100%; height: 550px;\">";
+      $chart = $chart."  <p>[This section requires a browser that supports iframes.]</p>";
+      $chart = $chart."</iframe>";
+
     } else {
         $chart=iriGoogleChart("","550x250",$data);
       }
