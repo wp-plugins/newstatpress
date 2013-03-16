@@ -3,16 +3,13 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.5.6
+Version: 0.5.7
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.5.6';
+$_NEWSTATPRESS['version']='0.5.7';
 $_NEWSTATPRESS['feedtype']='';
-
-#include ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
-include WP_CONTENT_DIR.'/plugins/'.dirname(plugin_basename(__FILE__)).'/includes/charts.php';
 
 /**
  * Get the url of the plugin
@@ -1537,6 +1534,26 @@ function iriGetGoogleGeo($data_array) {
   return "?cht=Country&chd=".(implode(",",$values))."&chlt=Popularity&chld=".(implode(",",$labels));
 }
 
+/**
+ * Get google url query for pie data
+ *
+ * @param data_array the array of data_array
+ * @param title the title to use
+ * @return the url with data
+ */
+function iriGetGooglePie($title, $data_array) {
+  if(empty($data_array)) { return ''; }
+  // get hash
+  foreach($data_array as $key => $value ) {
+    $values[] = $value;
+    $labels[] = $key;
+  }
+
+  $data=$chartData."&chxt=y&chxl=0:|0|".$maxValue;
+  //return "<img src=http://chart.apis.google.com/chart?chtt=".urlencode($title)."&cht=p3&chs=$size&chd=".$data."&chl=".urlencode(implode("|",$labels)).">";
+
+  return "?title=".$title."&chd=".(implode(",",$values))."&chl=".urlencode(implode("|",$labels));
+}
 
 function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $exclude= "", $print = TRUE) {
   global $wpdb;
@@ -1590,7 +1607,13 @@ function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $
       $chart = $chart."</iframe>";
 
     } else {
-        $chart=iriGoogleChart("","550x250",$data);
+      $chart="<iframe ";
+      $chart = $chart." src=\"".plugins_url('newstatpress')."/includes/piecharts.html".iriGetGooglePie($fldtitle, $data)."\"";
+      $chart = $chart." class=\"framebox\"";
+      $chart = $chart."  style=\"width: 100%; height: 550px;\">";
+      $chart = $chart."  <p>[This section requires a browser that supports iframes.]</p>";
+      $chart = $chart."</iframe>";
+
       }
     #$text = $text. "<tr><td></td><td></td><td rowspan='".($limit+2)."'>$chart</td></tr>";
     foreach ($data as $key => $value) {
