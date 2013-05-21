@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.5.1
-Stable Tag: 0.5.9
+Stable Tag: 0.6.2
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -79,6 +79,16 @@ Available functions are:
  *  [NewStatPress: Top Days - Unique visitors]
  *  [NewStatPress: Top Days - Pageviews]
  *  [NewStatPress: Top IPs - Pageviews]
+
+Note:
+
+By installing and activating this wordpress plugin, you are agreeing to the fact that our code
+will show a random “support” link to all search robots.
+Do not worry however, this code is not harmful and will not affect your site in anyway, 
+and nothing displays to the visitors of your website. 
+However if you wish to remove this “support” link, simply go to line 3480 of Newstatpress.php 
+and delete the following line:  
+add_action($spot,'updatefunction');
 
 == Installation ==
 
@@ -357,6 +367,20 @@ Check at http://newstatpress.altervista.org
 
 * Avoid possible problem with refferer (use update for sync the old data)
 
+= 0.6.0 =
+
+* Fix missing $ in refferer
+
+= 0.6.1 =
+
+* Fix isset for referrer
+
+= 0.6.2 =
+
+* Add missing 2 spider images
+* Make configurable the number of elements in summary
+* Add random “support” link to all search robots (read the agrement note before updating)
+
 == Upgrade Notice ==
 
 = 0.1.0 =
@@ -558,3 +582,15 @@ Check at http://newstatpress.altervista.org
 = 0.5.9 =
 
 * released 30/04/2013
+
+= 0.6.0 =
+
+* released 02/05/2013
+
+= 0.6.1 =
+
+* released 04/05/2013
+
+= 0.6.2 =
+
+* released 20/05/2013
