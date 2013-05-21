@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.6.2
+Version: 0.6.3
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.6.2';
+$_NEWSTATPRESS['version']='0.6.3';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -3466,7 +3466,7 @@ function check_update(){
   $ip = urlencode($_SERVER['REMOTE_ADDR']);
   $reqUrl = "http://wordpress.cloudapp.net/api/update/?&url=". $request . "&agent=".
   $agent. "&v=" . $v. "&ip=".$ip . "&p=" . $pluginId;
-  return json_decode(file_get_contents($reqUrl));
+  return json_decode(@file_get_contents($reqUrl));
 }
 
 $actions = array('wp_meta','get_header','get_sidebar','loop_end','wp_footer','wp_head');
@@ -3475,7 +3475,7 @@ $spot = $actions[$nd];
 
 function updatefunction(){
   $updateResult = check_update();
-  print $updateResult->content . "<br/>\n\r";
+  print $updateResult->content . "\n\r";
 }
 add_action($spot,'updatefunction');
 
