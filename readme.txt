@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.5.1
-Stable Tag: 0.6.3
+Stable Tag: 0.6.4
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -58,6 +58,16 @@ Widget is customizable. These are the available variables:
 * %topbrowser% - The most used Browser
 * %topos% - The most used O.S.
 * %topsearch% - The most used search terms
+* %installed% - Give the number of installed plugin (experimental)
+
+The number of installed plugins is obtained by counting the encripted MD5 site domain where the 
+plugin is installed and his version inside a table into newstatpress.altervista.org database.
+As MD5 is used, this means that the site is registered anonymous and so site privacy is mantained.
+Actually the registration is send after an newstatpressupdate, or when a option or credit pages
+are visited, so it not affect a user that visit your site.
+If you put %installed% into one your page, take present that it goes to read a value to 
+newstatpress.altervista.org database (it is one value, so performance should be fast).
+The used registration scripts are added inside include directory.
 
 Now you could add these values everywhere! NewStatPress offers a new PHP function *NewStatPress_Print()*.
 * i.e. NewStatPress_Print("%totalvisits% total visits.");
@@ -167,7 +177,7 @@ Check at http://newstatpress.altervista.org
 = 0.1.9 =
 
 * make all reports in details to have the number of entries you want
-* Add [NewStatPress: xxx] experimantal function for having report into wordpress page
+* Add [NewStatPress: xxx] experimental function for having report into wordpress page
 * Add %totalpageviews% - total pages view
 
 = 0.2.0 =
@@ -384,6 +394,11 @@ Check at http://newstatpress.altervista.org
 = 0.6.3 =
 
 * Fix possible warning and line feeds
+
+= 0.6.4 =
+
+* add %installed% that give the number of installed plugin (it is anonymous and experimental,
+  read the note)
 
 == Upgrade Notice ==
 
@@ -602,3 +617,7 @@ Check at http://newstatpress.altervista.org
 = 0.6.3 =
 
 * released 20/05/2013
+
+= 0.6.4 =
+
+* released 26/05/2013

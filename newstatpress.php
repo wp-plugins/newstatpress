@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.6.3
+Version: 0.6.4
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.6.3';
+$_NEWSTATPRESS['version']='0.6.4';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -385,6 +385,7 @@ function iriNewStatPressOptions() {
       </form>
       </div>
       <?php
+      new_count_register();
     } 
 }
 
@@ -500,6 +501,7 @@ function iriNewStatPressCredits() {
   </table>
   </div>
 <?php
+  new_count_register();  
 }
 
 
@@ -2253,6 +2255,8 @@ function iriNewStatPressUpdate() {
 
   print "</tbody></table></div><br>\n";
   $wpdb->hide_errors();
+
+  new_count_register();
 }
 
 
@@ -2478,6 +2482,11 @@ function iri_NewStatPress_Vars($body) {
        LIMIT 1;
       ");
     $body = str_replace("%topsearch%", iri_NewStatPress_Decode($qry[0]->search), $body);
+  }
+
+  # look for %installed%
+  if(strpos(strtolower($body),"%installed%") !== FALSE) {
+    $body = str_replace("%installed%", new_count_total(), $body);
   }
   return $body;
 }
@@ -3456,6 +3465,34 @@ function iri_page_header() {
 
 load_plugin_textdomain('newstatpress', 'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/locale', '/'.dirname(plugin_basename(__FILE__)).'/locale');
 
+/**
+ * Count this site as a newstatpress user in anonymous form (it stores inside newstatpress.altervista.org database)
+ */
+function new_count_register() {
+  global $_NEWSTATPRESS;
+  $site=$_SERVER['HTTP_HOST'];
+  print "<br><iframe width=0 height=0 src=http://newstatpress.altervista.org/register.php?site=".$site."&ver=".$_NEWSTATPRESS['version']."></iframe>";
+}
+
+/**
+ * Remove this site as a newstatpress user
+ */
+function new_count_deregister() {
+  global $_NEWSTATPRESS;
+  $site=$_SERVER['HTTP_HOST'];
+  print "<br><iframe width=0 height=0 src=http://newstatpress.altervista.org/deregister.php?site=".$site."></iframe>";
+}
+
+/**
+ * Get the total number of sites that use newstatpress
+ *
+ * @return the total number of site that use newstatpress
+ */
+function new_count_total() {
+  $result=file_get_contents('http://newstatpress.altervista.org/total.php');
+  return $result;
+}
+
 ##
 
 function check_update(){
@@ -3493,5 +3530,6 @@ add_action('wp_dashboard_setup', 'iri_add_dashboard_widgets' );
 add_filter('the_content', 'content_newstatpress');
 
 register_activation_hook(__FILE__,'iri_NewStatPress_CreateTable');
+register_deactivation_hook( __FILE__, 'new_count_deregister' );
 
 ?>
