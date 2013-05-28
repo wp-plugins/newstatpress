@@ -385,7 +385,7 @@ function iriNewStatPressOptions() {
       </form>
       </div>
       <?php
-      new_count_register();
+      ///new_count_register();
     } 
 }
 
@@ -501,7 +501,7 @@ function iriNewStatPressCredits() {
   </table>
   </div>
 <?php
-  new_count_register();  
+  ///new_count_register();  
 }
 
 
@@ -2256,7 +2256,7 @@ function iriNewStatPressUpdate() {
   print "</tbody></table></div><br>\n";
   $wpdb->hide_errors();
 
-  new_count_register();
+  ///new_count_register();
 }
 
 
@@ -3500,9 +3500,9 @@ function newstatpress_update() {
   global $_NEWSTATPRESS;
 
   $active_version = get_option('newstatpress_version', '0' );
-print "GGGGGGGGGGGGGGGGGGG";
+
   if (version_compare( $active_version, $_NEWSTATPRESS['version'], '<' )) {
-    set_option('newstatpress_version', $_NEWSTATPRESS['version']);
+    update_option('newstatpress_version', $_NEWSTATPRESS['version']);
 
     new_count_register();
   }
