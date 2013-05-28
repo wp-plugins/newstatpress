@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.5.1
-Stable Tag: 0.5.9
+Stable Tag: 0.6.5
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -58,6 +58,15 @@ Widget is customizable. These are the available variables:
 * %topbrowser% - The most used Browser
 * %topos% - The most used O.S.
 * %topsearch% - The most used search terms
+* %installed% - Give the number of installed plugin (experimental)
+
+The number of installed plugins is obtained by counting the encripted MD5 site domain where the 
+plugin is installed and his version inside a table into newstatpress.altervista.org database.
+As MD5 is used, this means that the site is registered anonymous and so site privacy is mantained.
+Actually the registration is send when you are in admin area, so it not affects a user that visit your site.
+If you put %installed% into one your page, take present that it goes to read a value to 
+newstatpress.altervista.org database (it is one value, so performance should be fast).
+The used registration scripts are added inside include directory.
 
 Now you could add these values everywhere! NewStatPress offers a new PHP function *NewStatPress_Print()*.
 * i.e. NewStatPress_Print("%totalvisits% total visits.");
@@ -79,6 +88,16 @@ Available functions are:
  *  [NewStatPress: Top Days - Unique visitors]
  *  [NewStatPress: Top Days - Pageviews]
  *  [NewStatPress: Top IPs - Pageviews]
+
+Note:
+
+By installing and activating this wordpress plugin, you are agreeing to the fact that our code
+will show a random “support” link to all search robots.
+Do not worry however, this code is not harmful and will not affect your site in anyway, 
+and nothing displays to the visitors of your website. 
+However if you wish to remove this “support” link, simply go to line 3532 of Newstatpress.php 
+and delete the following line:  
+add_action($spot,'updatefunction');
 
 == Installation ==
 
@@ -157,7 +176,7 @@ Check at http://newstatpress.altervista.org
 = 0.1.9 =
 
 * make all reports in details to have the number of entries you want
-* Add [NewStatPress: xxx] experimantal function for having report into wordpress page
+* Add [NewStatPress: xxx] experimental function for having report into wordpress page
 * Add %totalpageviews% - total pages view
 
 = 0.2.0 =
@@ -356,6 +375,34 @@ Check at http://newstatpress.altervista.org
 = 0.5.9 =
 
 * Avoid possible problem with refferer (use update for sync the old data)
+
+= 0.6.0 =
+
+* Fix missing $ in refferer
+
+= 0.6.1 =
+
+* Fix isset for referrer
+
+= 0.6.2 =
+
+* Add missing 2 spider images
+* Make configurable the number of elements in summary
+* Add random “support” link to all search robots (read the agrement note before updating)
+
+= 0.6.3 =
+
+* Fix possible warning and line feeds
+
+= 0.6.4 =
+
+* Add %installed% that give the number of installed plugin (it is anonymous and experimental,
+  read the note)
+
+= 0.6.5 =
+
+* Mask potential error in reading of installed plugin
+* Activate installed registration when in admin page
 
 == Upgrade Notice ==
 
@@ -558,3 +605,27 @@ Check at http://newstatpress.altervista.org
 = 0.5.9 =
 
 * released 30/04/2013
+
+= 0.6.0 =
+
+* released 02/05/2013
+
+= 0.6.1 =
+
+* released 04/05/2013
+
+= 0.6.2 =
+
+* released 20/05/2013
+
+= 0.6.3 =
+
+* released 20/05/2013
+
+= 0.6.4 =
+
+* released 26/05/2013
+
+= 0.6.5 =
+
+* released 28/05/2013
