@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.5.1
-Stable Tag: 0.6.4
+Stable Tag: 0.6.5
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -63,8 +63,7 @@ Widget is customizable. These are the available variables:
 The number of installed plugins is obtained by counting the encripted MD5 site domain where the 
 plugin is installed and his version inside a table into newstatpress.altervista.org database.
 As MD5 is used, this means that the site is registered anonymous and so site privacy is mantained.
-Actually the registration is send after an newstatpressupdate, or when a option or credit pages
-are visited, so it not affect a user that visit your site.
+Actually the registration is send when you are in admin area, so it not affects a user that visit your site.
 If you put %installed% into one your page, take present that it goes to read a value to 
 newstatpress.altervista.org database (it is one value, so performance should be fast).
 The used registration scripts are added inside include directory.
@@ -96,7 +95,7 @@ By installing and activating this wordpress plugin, you are agreeing to the fact
 will show a random “support” link to all search robots.
 Do not worry however, this code is not harmful and will not affect your site in anyway, 
 and nothing displays to the visitors of your website. 
-However if you wish to remove this “support” link, simply go to line 3480 of Newstatpress.php 
+However if you wish to remove this “support” link, simply go to line 3532 of Newstatpress.php 
 and delete the following line:  
 add_action($spot,'updatefunction');
 
@@ -397,8 +396,13 @@ Check at http://newstatpress.altervista.org
 
 = 0.6.4 =
 
-* add %installed% that give the number of installed plugin (it is anonymous and experimental,
+* Add %installed% that give the number of installed plugin (it is anonymous and experimental,
   read the note)
+
+= 0.6.5 =
+
+* Mask potential error in reading of installed plugin
+* Activate installed registration when in admin page
 
 == Upgrade Notice ==
 
@@ -621,3 +625,7 @@ Check at http://newstatpress.altervista.org
 = 0.6.4 =
 
 * released 26/05/2013
+
+= 0.6.5 =
+
+* released 28/05/2013

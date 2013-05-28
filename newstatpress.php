@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.6.4
+Version: 0.6.5
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.6.4';
+$_NEWSTATPRESS['version']='0.6.5';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -3489,8 +3489,23 @@ function new_count_deregister() {
  * @return the total number of site that use newstatpress
  */
 function new_count_total() {
-  $result=file_get_contents('http://newstatpress.altervista.org/total.php');
+  $result=@file_get_contents('http://newstatpress.altervista.org/total.php');
   return $result;
+}
+
+/**
+ * check for update of the plugin
+ */
+function newstatpress_update() {
+  global $_NEWSTATPRESS;
+
+  $active_version = get_option('newstatpress_version', '0' );
+print "GGGGGGGGGGGGGGGGGGG";
+  if (version_compare( $active_version, $_NEWSTATPRESS['version'], '<' )) {
+    set_option('newstatpress_version', $_NEWSTATPRESS['version']);
+
+    new_count_register();
+  }
 }
 
 ##
@@ -3522,6 +3537,7 @@ add_action('admin_menu', 'iri_add_pages');
 add_action('plugins_loaded', 'widget_newstatpress_init');
 add_action('send_headers', 'iriStatAppend');  //add_action('wp_head', 'iriStatAppend');
 add_action('init','iri_checkExport');
+add_action( 'admin_init', 'newstatpress_update' );
 ###add_action('wp_head', 'iri_page_header');
 
 // Hoook into the 'wp_dashboard_setup' action to register our other functions
