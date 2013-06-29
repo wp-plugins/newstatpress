@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 3.5.1
-Stable Tag: 0.6.5
+Stable Tag: 0.6.6
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -95,7 +95,7 @@ By installing and activating this wordpress plugin, you are agreeing to the fact
 will show a random “support” link to all search robots.
 Do not worry however, this code is not harmful and will not affect your site in anyway, 
 and nothing displays to the visitors of your website. 
-However if you wish to remove this “support” link, simply go to line 3532 of Newstatpress.php 
+However if you wish to remove this “support” link, simply go to line 3535 of Newstatpress.php 
 and delete the following line:  
 add_action($spot,'updatefunction');
 
@@ -404,6 +404,10 @@ Check at http://newstatpress.altervista.org
 * Mask potential error in reading of installed plugin
 * Activate installed registration when in admin page
 
+= 0.6.6 =
+
+* Try to fix bug-id 423/434 (needs PHP5)
+
 == Upgrade Notice ==
 
 = 0.1.0 =
@@ -629,3 +633,7 @@ Check at http://newstatpress.altervista.org
 = 0.6.5 =
 
 * released 28/05/2013
+
+= 0.6.6 =
+
+* released 29/06/2013
