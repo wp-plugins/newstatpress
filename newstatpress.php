@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.6.8
+Version: 0.6.9
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.6.8';
+$_NEWSTATPRESS['version']='0.6.9';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -1557,9 +1557,6 @@ function iriGetGooglePie($title, $data_array) {
     $values[] = $value;
     $labels[] = $key;
   }
-
-  $data=$chartData."&chxt=y&chxl=0:|0|".$maxValue;
-  //return "<img src=http://chart.apis.google.com/chart?chtt=".urlencode($title)."&cht=p3&chs=$size&chd=".$data."&chl=".urlencode(implode("|",$labels)).">";
 
   return "?title=".$title."&chd=".(implode(",",$values))."&chl=".urlencode(implode("|",$labels));
 }
@@ -3453,10 +3450,6 @@ function iri_add_dashboard_widgets() {
  * It loads google api
  */
 function iri_page_header() {
-  ##  echo "<style id='NewStatPress' type='text/css'>\n";
-  ##  echo stripslashes(file_get_contents(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/css/newstatpress.css'));
-  ##  echo "</style>\n";
-  #echo "<script type=\'text/javascript\' src=\'https://www.google.com/jsapi\'></script>"
   echo '<script type="text/javascript" src="http://www.google.com/jsapi"></script>';
   echo '<script type="text/javascript">';
   echo 'google.load(\'visualization\', \'1\', {packages: [\'geochart\']});';
