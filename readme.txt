@@ -3,8 +3,8 @@ Contributors: ice00
 Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
-Tested up to: 3.5.2
-Stable Tag: 0.7.0
+Tested up to: 3.6
+Stable Tag: 0.7.1
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -415,6 +415,10 @@ Check at http://newstatpress.altervista.org
 * Make tables compatible with qTransalte plugin
 * Fix bug id 390 (Graph Legend includes + Sign) 
 
+= 0.7.1 =
+
+* Add Os (+6), Browser (+14)
+
 == Upgrade Notice ==
 
 = 0.1.0 =
@@ -661,3 +665,6 @@ Check at http://newstatpress.altervista.org
 
 * released 20/07/2013
 
+= 0.7.1 =
+
+* released 17/08/2013
