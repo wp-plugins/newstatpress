@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.7.1
+Version: 0.7.2
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.7.1';
+$_NEWSTATPRESS['version']='0.7.2';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -57,6 +57,7 @@ function iri_add_pages() {
   add_submenu_page(__FILE__, __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=up', 'iriNewStatPress');  
   add_submenu_page(__FILE__, __('NewStatpress blog','newstatpress'), __('NewStatpress blog','newstatpress'), $mincap,  __FILE__ . '&newstatpress_action=redirect', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Credits','newstatpress'), __('Credits','newstatpress'), $mincap,  __FILE__ . '&newstatpress_action=credits', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Remove','newstatpress'), __('Remove','newstatpress'), $mincap,  __FILE__ . '&newstatpress_action=remove', 'iriNewStatPress');
 }
 
 /**
@@ -86,6 +87,8 @@ function iriNewStatPress() {
            iriNewStatPressRedirect();      
       } elseif ($_GET['newstatpress_action'] == 'credits') {
            iriNewStatPressCredits();
+      } elseif ($_GET['newstatpress_action'] == 'remove') {
+           iriNewStatPressRemove();
       } 
    } else iriNewStatPressMain();
 }
@@ -125,6 +128,30 @@ function iriNewStatPress_trim_value(&$value) {
 }
 
 /**
+ * Generate HTML for remove menu in Wordpress
+ */
+function iriNewStatPressRemove() {
+  if(isset($_POST['removeit']) && $_POST['removeit'] == 'yes') {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "statpress";
+    $results =$wpdb->query( "DELETE FROM " . $table_name);
+    print "<br /><div class='remove'><p>".__('All data removed','newstatpress')."!</p></div>";
+  }  else {
+      ?>
+      <div class='wrap'><h2><?php _e('Remove','newstatpress'); ?></h2>
+      <form method=post>
+      <?php _e("Warning: pressing the below button will make all your stored data to be erased!","newstatpress")?><br>
+      <?php _e("It is added for the people that did not want to use the plugin anymore and so they want to remove the stored data.","newstatpress")?><br>
+      <?php _e("If you are in doubt about this function, don't use it.","newstatpress")?><br><br>
+      <input type=submit value="<?php _e('Remove','newstatpress'); ?>" onclick="return confirm('<?php _e('Are you sure?','newstatpress'); ?>');" >
+      <input type=hidden name=removeit value=yes>      
+      </form>
+      </div>
+      <?php
+  }
+}
+
+/**
  * Generate HTML for option menu in Wordpress
  */
 function iriNewStatPressOptions() {
@@ -136,6 +163,7 @@ function iriNewStatPressOptions() {
     update_option('newstatpress_bot_per_page_spybot', $_POST['newstatpress_bot_per_page_spybot']);
     update_option('newstatpress_visits_per_bot_spybot', $_POST['newstatpress_visits_per_bot_spybot']);
     update_option('newstatpress_autodelete', $_POST['newstatpress_autodelete']);
+    update_option('newstatpress_autodelete_spiders', $_POST['newstatpress_autodelete_spiders']);
     update_option('newstatpress_daysinoverviewgraph', $_POST['newstatpress_daysinoverviewgraph']);
     update_option('newstatpress_mincap', $_POST['newstatpress_mincap']);
     if (isset($_POST['newstatpress_donotcollectspider'])) update_option('newstatpress_donotcollectspider', $_POST['newstatpress_donotcollectspider']);
@@ -218,6 +246,15 @@ function iriNewStatPressOptions() {
           <option value="3 months" <?php if(get_option('newstatpress_autodelete') == "3 months") print "selected"; ?>>3 <?php _e('months','newstatpress'); ?></option>
           <option value="6 months" <?php if(get_option('newstatpress_autodelete') == "6 months") print "selected"; ?>>6 <?php _e('months','newstatpress'); ?></option>
           <option value="1 year" <?php if(get_option('newstatpress_autodelete') == "1 year") print "selected"; ?>>1 <?php _e('year','newstatpress'); ?></option>
+        </select></td></tr>
+
+      <tr><td><?php _e('Automatically delete only spiders visits older than','newstatpress'); ?>
+        <select name="newstatpress_autodelete_spiders">
+          <option value="" <?php if(get_option('newstatpress_autodelete_spiders') =='' ) print "selected"; ?>><?php _e('Never delete!','newstatpress'); ?></option>
+          <option value="1 month" <?php if(get_option('newstatpress_autodelete_spiders') == "1 month") print "selected"; ?>>1 <?php _e('month','newstatpress'); ?></option>
+          <option value="3 months" <?php if(get_option('newstatpress_autodelete_spiders') == "3 months") print "selected"; ?>>3 <?php _e('months','newstatpress'); ?></option>
+          <option value="6 months" <?php if(get_option('newstatpress_autodelete_spiders') == "6 months") print "selected"; ?>>6 <?php _e('months','newstatpress'); ?></option>
+          <option value="1 year" <?php if(get_option('newstatpress_autodelete_spiders') == "1 year") print "selected"; ?>>1 <?php _e('year','newstatpress'); ?></option>
         </select></td></tr>
 
       <tr><td><?php _e('Days in Overview graph','newstatpress'); ?>
@@ -385,7 +422,6 @@ function iriNewStatPressOptions() {
       </form>
       </div>
       <?php
-      ///new_count_register();
     } 
 }
 
@@ -500,8 +536,7 @@ function iriNewStatPressCredits() {
    </tr>
   </table>
   </div>
-<?php
-  ///new_count_register();  
+<?php 
 }
 
 
@@ -1918,6 +1953,17 @@ function iriStatAppend() {
     $t=gmdate("Ymd",strtotime('-'.get_option('newstatpress_autodelete')));
     $results =$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
   }
+  // Auto-delete spiders visits if...
+  if(get_option('newstatpress_autodelete_spiders') != '') {
+    $t=gmdate("Ymd",strtotime('-'.get_option('newstatpress_autodelete_spiders')));
+    $results =$wpdb->query( 
+       "DELETE FROM " . $table_name . " 
+        WHERE date < '" . $t . "' and 
+              feed='' and 
+              spider<>'' 
+       ");
+  }
+
   if ((!is_user_logged_in()) OR (get_option('newstatpress_collectloggeduser')=='checked')) {
     if (is_user_logged_in() AND (get_option('newstatpress_collectloggeduser')=='checked')) {
       $current_user = wp_get_current_user();
@@ -2259,8 +2305,6 @@ function iriNewStatPressUpdate() {
 
   print "</tbody></table></div><br>\n";
   $wpdb->hide_errors();
-
-  ///new_count_register();
 }
 
 
