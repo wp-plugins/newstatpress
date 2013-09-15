@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.5.9
+Version: 0.7.2
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.5.9';
+$_NEWSTATPRESS['version']='0.7.2';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -57,6 +57,7 @@ function iri_add_pages() {
   add_submenu_page(__FILE__, __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=up', 'iriNewStatPress');  
   add_submenu_page(__FILE__, __('NewStatpress blog','newstatpress'), __('NewStatpress blog','newstatpress'), $mincap,  __FILE__ . '&newstatpress_action=redirect', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Credits','newstatpress'), __('Credits','newstatpress'), $mincap,  __FILE__ . '&newstatpress_action=credits', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Remove','newstatpress'), __('Remove','newstatpress'), $mincap,  __FILE__ . '&newstatpress_action=remove', 'iriNewStatPress');
 }
 
 /**
@@ -86,6 +87,8 @@ function iriNewStatPress() {
            iriNewStatPressRedirect();      
       } elseif ($_GET['newstatpress_action'] == 'credits') {
            iriNewStatPressCredits();
+      } elseif ($_GET['newstatpress_action'] == 'remove') {
+           iriNewStatPressRemove();
       } 
    } else iriNewStatPressMain();
 }
@@ -125,6 +128,30 @@ function iriNewStatPress_trim_value(&$value) {
 }
 
 /**
+ * Generate HTML for remove menu in Wordpress
+ */
+function iriNewStatPressRemove() {
+  if(isset($_POST['removeit']) && $_POST['removeit'] == 'yes') {
+    global $wpdb;
+    $table_name = $wpdb->prefix . "statpress";
+    $results =$wpdb->query( "DELETE FROM " . $table_name);
+    print "<br /><div class='remove'><p>".__('All data removed','newstatpress')."!</p></div>";
+  }  else {
+      ?>
+      <div class='wrap'><h2><?php _e('Remove','newstatpress'); ?></h2>
+      <form method=post>
+      <?php _e("Warning: pressing the below button will make all your stored data to be erased!","newstatpress")?><br>
+      <?php _e("It is added for the people that did not want to use the plugin anymore and so they want to remove the stored data.","newstatpress")?><br>
+      <?php _e("If you are in doubt about this function, don't use it.","newstatpress")?><br><br>
+      <input type=submit value="<?php _e('Remove','newstatpress'); ?>" onclick="return confirm('<?php _e('Are you sure?','newstatpress'); ?>');" >
+      <input type=hidden name=removeit value=yes>      
+      </form>
+      </div>
+      <?php
+  }
+}
+
+/**
  * Generate HTML for option menu in Wordpress
  */
 function iriNewStatPressOptions() {
@@ -136,6 +163,7 @@ function iriNewStatPressOptions() {
     update_option('newstatpress_bot_per_page_spybot', $_POST['newstatpress_bot_per_page_spybot']);
     update_option('newstatpress_visits_per_bot_spybot', $_POST['newstatpress_visits_per_bot_spybot']);
     update_option('newstatpress_autodelete', $_POST['newstatpress_autodelete']);
+    update_option('newstatpress_autodelete_spiders', $_POST['newstatpress_autodelete_spiders']);
     update_option('newstatpress_daysinoverviewgraph', $_POST['newstatpress_daysinoverviewgraph']);
     update_option('newstatpress_mincap', $_POST['newstatpress_mincap']);
     if (isset($_POST['newstatpress_donotcollectspider'])) update_option('newstatpress_donotcollectspider', $_POST['newstatpress_donotcollectspider']);
@@ -147,6 +175,7 @@ function iriNewStatPressOptions() {
     update_option('newstatpress_ignore_users', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_users']));
     update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
     update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
+    update_option('newstatpress_el_overwiew', $_POST['newstatpress_el_overwiew']);
     update_option('newstatpress_el_top_days', $_POST['newstatpress_el_top_days']);
     update_option('newstatpress_el_os', $_POST['newstatpress_el_os']);
     update_option('newstatpress_el_browser', $_POST['newstatpress_el_browser']);
@@ -175,6 +204,12 @@ function iriNewStatPressOptions() {
         print "<tr><td><input type=checkbox name='newstatpress_cryptip' value='checked' ".get_option('newstatpress_cryptip')."> ".__('Crypt IP addresses','newstatpress')."</td></tr>";
         print "<tr><td><input type=checkbox name='newstatpress_dashboard' value='checked' ".get_option('newstatpress_dashboard')."> ".__('Show NewStatPress dashboard widget','newstatpress')."</td></tr>";
       ?>
+
+      <tr>
+        <td>
+        <label for="newstatpress_el_overwiew"><?php _e('Elements in Overview (default 10)','newstatpress') ?></label>
+        <input type="text" name="newstatpress_el_overwiew" value="<?php echo (get_option('newstatpress_el_overwiew')=='') ? 10:get_option('newstatpress_el_overwiew'); ?>" size="3" maxlength="3" />
+       </td></tr>
 
       <tr><td><?php _e('New Spy: number of IP per page','newstatpress'); ?>
         <select name="newstatpress_ip_per_page_newspy">          
@@ -211,6 +246,15 @@ function iriNewStatPressOptions() {
           <option value="3 months" <?php if(get_option('newstatpress_autodelete') == "3 months") print "selected"; ?>>3 <?php _e('months','newstatpress'); ?></option>
           <option value="6 months" <?php if(get_option('newstatpress_autodelete') == "6 months") print "selected"; ?>>6 <?php _e('months','newstatpress'); ?></option>
           <option value="1 year" <?php if(get_option('newstatpress_autodelete') == "1 year") print "selected"; ?>>1 <?php _e('year','newstatpress'); ?></option>
+        </select></td></tr>
+
+      <tr><td><?php _e('Automatically delete only spiders visits older than','newstatpress'); ?>
+        <select name="newstatpress_autodelete_spiders">
+          <option value="" <?php if(get_option('newstatpress_autodelete_spiders') =='' ) print "selected"; ?>><?php _e('Never delete!','newstatpress'); ?></option>
+          <option value="1 month" <?php if(get_option('newstatpress_autodelete_spiders') == "1 month") print "selected"; ?>>1 <?php _e('month','newstatpress'); ?></option>
+          <option value="3 months" <?php if(get_option('newstatpress_autodelete_spiders') == "3 months") print "selected"; ?>>3 <?php _e('months','newstatpress'); ?></option>
+          <option value="6 months" <?php if(get_option('newstatpress_autodelete_spiders') == "6 months") print "selected"; ?>>6 <?php _e('months','newstatpress'); ?></option>
+          <option value="1 year" <?php if(get_option('newstatpress_autodelete_spiders') == "1 year") print "selected"; ?>>1 <?php _e('year','newstatpress'); ?></option>
         </select></td></tr>
 
       <tr><td><?php _e('Days in Overview graph','newstatpress'); ?>
@@ -492,7 +536,7 @@ function iriNewStatPressCredits() {
    </tr>
   </table>
   </div>
-<?php
+<?php 
 }
 
 
@@ -562,7 +606,7 @@ function iriNewStatPressMain() {
 
   $_newstatpress_url=PluginUrl();
 
-  $querylimit="LIMIT 10";
+  $querylimit="LIMIT ".((get_option('newstatpress_el_overwiew')=='') ? 10:get_option('newstatpress_el_overwiew'));
     
   # Tabella Last hits
   print "<div class='wrap'><h2>". __('Last hits','newstatpress'). "</h2><table class='widefat'><thead><tr><th scope='col'>". __('Date','newstatpress'). "</th><th scope='col'>". __('Time','newstatpress'). "</th><th scope='col'>IP</th><th scope='col'>". __('Country','newstatpress').'/'.__('Language','newstatpress'). "</th><th scope='col'>". __('Page','newstatpress'). "</th><th scope='col'>Feed</th><th></th><th scope='col' style='width:120px;'>OS</th><th></th><th scope='col' style='width:120px;'>Browser</th></tr></thead>";
@@ -733,7 +777,7 @@ function iriNewStatPressDetails() {
   global $wpdb;
   $table_name = $wpdb->prefix . "statpress";
 
-  $querylimit="LIMIT 10";
+  //$querylimit="LIMIT 10";
 
   # Top days
   iriValueTable2("date","Top days",(get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'));
@@ -1451,10 +1495,17 @@ function iriNewStatPressSearch($what='') {
   }
 }
 
+/**
+ * Abbreviate the given string to a fixed length
+ *
+ * @param s the string
+ * @param c the numebr of chars
+ * @return the abbreviate string
+ */
 function iri_NewStatPress_Abbrevia($s,$c) {
-	$res=""; if(strlen($s)>$c) { $res="..."; }
-	return substr($s,0,$c).$res;
-	
+  $s=__($s);
+  $res=""; if(strlen($s)>$c) { $res="..."; }
+  return substr($s,0,$c).$res;
 }
 
 /**
@@ -1548,9 +1599,6 @@ function iriGetGooglePie($title, $data_array) {
     $values[] = $value;
     $labels[] = $key;
   }
-
-  $data=$chartData."&chxt=y&chxl=0:|0|".$maxValue;
-  //return "<img src=http://chart.apis.google.com/chart?chtt=".urlencode($title)."&cht=p3&chs=$size&chd=".$data."&chl=".urlencode(implode("|",$labels)).">";
 
   return "?title=".$title."&chd=".(implode(",",$values))."&chl=".urlencode(implode("|",$labels));
 }
@@ -1876,8 +1924,8 @@ function iriStatAppend() {
       $browser=iriGetBrowser($userAgent);
 
      $exp_referrer=iriGetSE($referrer);
-     if (isset($exp_refferer)) {
-      list($searchengine,$search_phrase)=explode("|",exp_referrer);
+     if (isset($exp_referrer)) {
+      list($searchengine,$search_phrase)=explode("|",$exp_referrer);
      } else {
          $searchengine='';
          $search_phrase='';
@@ -1905,6 +1953,17 @@ function iriStatAppend() {
     $t=gmdate("Ymd",strtotime('-'.get_option('newstatpress_autodelete')));
     $results =$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
   }
+  // Auto-delete spiders visits if...
+  if(get_option('newstatpress_autodelete_spiders') != '') {
+    $t=gmdate("Ymd",strtotime('-'.get_option('newstatpress_autodelete_spiders')));
+    $results =$wpdb->query( 
+       "DELETE FROM " . $table_name . " 
+        WHERE date < '" . $t . "' and 
+              feed='' and 
+              spider<>'' 
+       ");
+  }
+
   if ((!is_user_logged_in()) OR (get_option('newstatpress_collectloggeduser')=='checked')) {
     if (is_user_logged_in() AND (get_option('newstatpress_collectloggeduser')=='checked')) {
       $current_user = wp_get_current_user();
@@ -2471,6 +2530,11 @@ function iri_NewStatPress_Vars($body) {
        LIMIT 1;
       ");
     $body = str_replace("%topsearch%", iri_NewStatPress_Decode($qry[0]->search), $body);
+  }
+
+  # look for %installed%
+  if(strpos(strtolower($body),"%installed%") !== FALSE) {
+    $body = str_replace("%installed%", new_count_total(), $body);
   }
   return $body;
 }
@@ -3437,10 +3501,6 @@ function iri_add_dashboard_widgets() {
  * It loads google api
  */
 function iri_page_header() {
-  ##  echo "<style id='NewStatPress' type='text/css'>\n";
-  ##  echo stripslashes(file_get_contents(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/css/newstatpress.css'));
-  ##  echo "</style>\n";
-  #echo "<script type=\'text/javascript\' src=\'https://www.google.com/jsapi\'></script>"
   echo '<script type="text/javascript" src="http://www.google.com/jsapi"></script>';
   echo '<script type="text/javascript">';
   echo 'google.load(\'visualization\', \'1\', {packages: [\'geochart\']});';
@@ -3449,10 +3509,59 @@ function iri_page_header() {
 
 load_plugin_textdomain('newstatpress', 'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/locale', '/'.dirname(plugin_basename(__FILE__)).'/locale');
 
+/**
+ * Count this site as a newstatpress user in anonymous form (it stores inside newstatpress.altervista.org database)
+ */
+function new_count_register() {
+  global $_NEWSTATPRESS;
+  $site=$_SERVER['HTTP_HOST'];
+  print "<br><iframe width=0 height=0 src=http://newstatpress.altervista.org/register.php?site=".$site."&ver=".$_NEWSTATPRESS['version']."></iframe>";
+}
+
+/**
+ * Remove this site as a newstatpress user
+ */
+function new_count_deregister() {
+  global $_NEWSTATPRESS;
+  $site=$_SERVER['HTTP_HOST'];
+  print "<br><iframe width=0 height=0 src=http://newstatpress.altervista.org/deregister.php?site=".$site."></iframe>";
+}
+
+/**
+ * Get the total number of sites that use newstatpress
+ *
+ * @return the total number of site that use newstatpress
+ */
+function new_count_total() {
+  if (version_compare(phpversion(), '5.0.0', '>=')) {
+    // prevent that if my site is slow this plugin slow down your
+    $ctx=stream_context_create(array('http'=> array( 'timeout' => 1)));
+    $result=@file_get_contents('http://newstatpress.altervista.org/total.php', false, $ctx);
+  } else $result=@file_get_contents('http://newstatpress.altervista.org/total.php');
+
+  return $result;
+}
+
+/**
+ * check for update of the plugin
+ */
+function newstatpress_update() {
+  global $_NEWSTATPRESS;
+
+  $active_version = get_option('newstatpress_version', '0' );
+
+  if (version_compare( $active_version, $_NEWSTATPRESS['version'], '<' )) {
+    update_option('newstatpress_version', $_NEWSTATPRESS['version']);
+
+    new_count_register();
+  }
+}
+
 add_action('admin_menu', 'iri_add_pages');
 add_action('plugins_loaded', 'widget_newstatpress_init');
 add_action('send_headers', 'iriStatAppend');  //add_action('wp_head', 'iriStatAppend');
 add_action('init','iri_checkExport');
+add_action( 'admin_init', 'newstatpress_update' );
 ###add_action('wp_head', 'iri_page_header');
 
 // Hoook into the 'wp_dashboard_setup' action to register our other functions
@@ -3461,5 +3570,6 @@ add_action('wp_dashboard_setup', 'iri_add_dashboard_widgets' );
 add_filter('the_content', 'content_newstatpress');
 
 register_activation_hook(__FILE__,'iri_NewStatPress_CreateTable');
+register_deactivation_hook( __FILE__, 'new_count_deregister' );
 
 ?>
