@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.7.3
+Version: 0.7.4
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.7.3';
+$_NEWSTATPRESS['version']='0.7.4';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -1092,7 +1092,7 @@ document.getElementById(thediv).style.display="none"
         } else {
             $ch = curl_init('http://api.hostip.info/country.php?ip='.$rk->ip);
             curl_setopt($ch, CURLOPT_HEADER, 0);
-            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POST, 0);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             $output = curl_exec($ch); 
             $output .=".png";
@@ -1290,7 +1290,7 @@ document.getElementById(thediv).style.display="none"
     } else {
         $ch = curl_init('http://api.hostip.info/country.php?ip='.$rk->ip);
         curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POST, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($ch); 
         $output .=".png";
