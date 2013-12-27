@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.7.4
+Version: 0.7.5
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.7.4';
+$_NEWSTATPRESS['version']='0.7.5';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -606,6 +606,11 @@ function iriNewStatPressMain() {
 
   $_newstatpress_url=PluginUrl();
 
+  // determine the structure to use for URL
+  $permalink_structure = get_settings('permalink_structure');
+  if ($permalink_structure=='') $extra="/?";
+  else $extra="/";
+
   $querylimit="LIMIT ".((get_option('newstatpress_el_overwiew')=='') ? 10:get_option('newstatpress_el_overwiew'));
     
   # Tabella Last hits
@@ -655,7 +660,7 @@ function iriNewStatPressMain() {
     ORDER BY id DESC $querylimit
   ");
   foreach ($qry as $rk) {
-    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".$rk->search."</a></td><td>".$rk->searchengine."</td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."' target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
+    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".$rk->search."</a></td><td>".$rk->searchengine."</td><td><a href='".get_bloginfo('url').$extra.$rk->urlrequested."' target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
   }
   print "</table></div>";
 
@@ -672,7 +677,7 @@ function iriNewStatPressMain() {
      ) ORDER BY id DESC $querylimit
   ");
   foreach ($qry as $rk) {
-    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".iri_NewStatPress_Abbrevia($rk->referrer,80)."</a></td><td><a href='".get_bloginfo('url')."/?".$rk->urlrequested."'  target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
+    print "<tr><td>".irihdate($rk->date)."</td><td>".$rk->time."</td><td><a href='".$rk->referrer."' target='_blank'>".iri_NewStatPress_Abbrevia($rk->referrer,80)."</a></td><td><a href='".get_bloginfo('url').$extra.$rk->urlrequested."'  target='_blank'>". __('page viewed','newstatpress'). "</a></td></tr>\n";
   }
   print "</table></div>";
 
@@ -1534,39 +1539,39 @@ function iri_NewStatPress_Decode($out_url) {
 
 
 function iri_NewStatPress_URL() {
-    $urlRequested = (isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '' );
-	if ( $urlRequested == "" ) { // SEO problem!
-	    $urlRequested = (isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : '' );
-	}
-	if(substr($urlRequested,0,2) == '/?') { $urlRequested=substr($urlRequested,2); }
-	if($urlRequested == '/') { $urlRequested=''; }
-	return $urlRequested;
+  $urlRequested = (isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '' );
+  if ( $urlRequested == "" ) { // SEO problem!
+    $urlRequested = (isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : '' );
+  }
+  if(substr($urlRequested,0,2) == '/?') { $urlRequested=substr($urlRequested,2); }
+  if($urlRequested == '/') { $urlRequested=''; }
+  return $urlRequested;
 }
 
 
 # Converte da data us to default format di Wordpress
 function irihdate($dt = "00000000") {
-	return mysql2date(get_option('date_format'), substr($dt,0,4)."-".substr($dt,4,2)."-".substr($dt,6,2));
+  return mysql2date(get_option('date_format'), substr($dt,0,4)."-".substr($dt,4,2)."-".substr($dt,6,2));
 }
 
 
 function iritablesize($table) {
-	global $wpdb;
-	$res = $wpdb->get_results("SHOW TABLE STATUS LIKE '$table'");
-	foreach ($res as $fstatus) {
-		$data_lenght = $fstatus->Data_length;
-		$data_rows = $fstatus->Rows;
-	}
-	return number_format(($data_lenght/1024/1024), 2, ",", " ")." Mb ($data_rows records)";
+  global $wpdb;
+  $res = $wpdb->get_results("SHOW TABLE STATUS LIKE '$table'");
+  foreach ($res as $fstatus) {
+    $data_lenght = $fstatus->Data_length;
+    $data_rows = $fstatus->Rows;
+  }
+  return number_format(($data_lenght/1024/1024), 2, ",", " ")." Mb ($data_rows records)";
 }
 
 function iriindextablesize($table) {
-	global $wpdb;
-	$res = $wpdb->get_results("SHOW TABLE STATUS LIKE '$table'");
-	foreach ($res as $fstatus) {
-		$index_lenght = $fstatus->Index_length;
-	}
-	return number_format(($index_lenght/1024/1024), 2, ",", " ")." Mb";
+  global $wpdb;
+  $res = $wpdb->get_results("SHOW TABLE STATUS LIKE '$table'");
+  foreach ($res as $fstatus) {
+    $index_lenght = $fstatus->Index_length;
+  }
+  return number_format(($index_lenght/1024/1024), 2, ",", " ")." Mb";
 }
 
 /**
@@ -1678,19 +1683,18 @@ function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $
 
 
 function iriGetLanguage($accepted) {
-	return substr($accepted,0,2);
+  return substr($accepted,0,2);
 }
 
 
 function iriGetQueryPairs($url){
-$parsed_url = parse_url($url);
-$tab=parse_url($url);
-$host = $tab['host'];
-if(key_exists("query",$tab)){
- $query=$tab["query"];
- return explode("&",$query);
-}
-else{return null;}
+  $parsed_url = parse_url($url);
+  $tab=parse_url($url);
+  $host = $tab['host'];
+  if(key_exists("query",$tab)){
+    $query=$tab["query"];
+    return explode("&",$query);
+  } else {return null;}
 }
 
 
@@ -1743,21 +1747,28 @@ function iriCheckBanIP($arg){
   return $arg;
 }
 
+/**
+ * Get the search engines
+ *
+ * @param refferer the url to test
+ * @return the search engine present in the url
+ */
 function iriGetSE($referrer = null){
-	$key = null;
-	$lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/searchengines.dat');
-	foreach($lines as $line_num => $se) {
-		list($nome,$url,$key)=explode("|",$se);
-		if(strpos($referrer,$url)===FALSE) continue;
-		# trovato se
-		$variables = iriGetQueryPairs(html_entity_decode($referrer));
-		$i = count($variables);
-		while($i--){
-		   $tab=explode("=",$variables[$i]);
-			   if($tab[0] == $key){return ($nome."|".urldecode($tab[1]));}
-		}
-	}
-	return null;
+  $key = null;
+  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/searchengines.dat');
+  foreach($lines as $line_num => $se) {
+    list($nome,$url,$key)=explode("|",$se);
+    if(strpos($referrer,$url)===FALSE) continue;
+
+    # find if
+    $variables = iriGetQueryPairs(html_entity_decode($referrer));
+    $i = count($variables);
+    while($i--){
+      $tab=explode("=",$variables[$i]);
+      if($tab[0] == $key){return ($nome."|".urldecode($tab[1]));}
+    }
+  }
+  return null;
 }
 
 /**
@@ -1779,6 +1790,11 @@ function iriGetSpider($agent = null){
   return null;
 }
 
+/**
+ * Get the previous month in 'YYYYMM' format
+ *
+ * @return the previous month
+ */
 function iri_NewStatPress_lastmonth() {
   $ta = getdate(current_time('timestamp'));
     
@@ -1840,16 +1856,22 @@ function iri_NewStatPress_CreateTable() {
   dbDelta($sql_createtable);	
 }
 
+/**
+ * Get if this is a feed
+ *
+ * @param url the url to test
+ * @return the kind of feed that is fount
+ */
 function iri_NewStatPress_is_feed($url) {
-	if (stristr($url,get_bloginfo('rdf_url')) != FALSE) { return 'RDF'; }
-	if (stristr($url,get_bloginfo('rss2_url')) != FALSE) { return 'RSS2'; }
-	if (stristr($url,get_bloginfo('rss_url')) != FALSE) { return 'RSS'; }
-	if (stristr($url,get_bloginfo('atom_url')) != FALSE) { return 'ATOM'; }
-	if (stristr($url,get_bloginfo('comments_rss2_url')) != FALSE) { return 'COMMENT'; }
-	if (stristr($url,get_bloginfo('comments_atom_url')) != FALSE) { return 'COMMENT'; }
-	if (stristr($url,'wp-feed.php') != FALSE) { return 'RSS2'; }
-	if (stristr($url,'/feed/') != FALSE) { return 'RSS2'; }
-	return '';
+  if (stristr($url,get_bloginfo('rdf_url')) != FALSE) { return 'RDF'; }
+  if (stristr($url,get_bloginfo('rss2_url')) != FALSE) { return 'RSS2'; }
+  if (stristr($url,get_bloginfo('rss_url')) != FALSE) { return 'RSS'; }
+  if (stristr($url,get_bloginfo('atom_url')) != FALSE) { return 'ATOM'; }
+  if (stristr($url,get_bloginfo('comments_rss2_url')) != FALSE) { return 'COMMENT'; }
+  if (stristr($url,get_bloginfo('comments_atom_url')) != FALSE) { return 'COMMENT'; }
+  if (stristr($url,'wp-feed.php') != FALSE) { return 'RSS2'; }
+  if (stristr($url,'/feed/') != FALSE) { return 'RSS2'; }
+  return '';
 }
 
 /**
@@ -1901,6 +1923,7 @@ function iriStatAppend() {
   if (stristr($urlRequested,"/wp-content/plugins") != FALSE) { return ''; }
   if (stristr($urlRequested,"/wp-content/themes") != FALSE) { return ''; }
   if (stristr($urlRequested,"/wp-admin/") != FALSE) { return ''; }
+  $urlRequested=mysql_real_escape_string($urlRequested);
 
   // Is a given permalink blacklisted?
   $to_ignore = get_option('newstatpress_ignore_permalink', array());
@@ -1909,7 +1932,9 @@ function iriStatAppend() {
   }
 
   $referrer = (isset($_SERVER['HTTP_REFERER']) ? htmlentities($_SERVER['HTTP_REFERER']) : '');
+  $referrer=mysql_real_escape_string($referrer); 
   $userAgent = (isset($_SERVER['HTTP_USER_AGENT']) ? htmlentities($_SERVER['HTTP_USER_AGENT']) : '');
+  $userAgent=mysql_real_escape_string($userAgent); 
   $spider=iriGetSpider($userAgent);
 
   if(($spider != '') and (get_option('newstatpress_donotcollectspider')=='checked')) { return ''; }
@@ -2019,7 +2044,7 @@ function iriStatAppend() {
 
 
 /**
- * Get the days a use has choice for updating the database
+ * Get the days a user has choice for updating the database
  *
  * @return the number of days of -1 for all days
  */
