@@ -21,6 +21,7 @@ Windows 3.1|Win3.1|
 Windows CE|WindowsCE|
 Windows CE|WinCE|
 Windows|Win32|
+Windows Phone OS 8|Windows Phone 8.0|
 Windows Phone OS 7|WindowsPhoneOS7.0|
 Windows Phone OS|WindowsPhoneOS|
 Windows Mobile|WindowsMobile|
@@ -41,6 +42,7 @@ iOS 3|iPhoneOS3|
 iOS 4|iPhoneOS4|
 iOS 5|iPhoneOS5|
 iOS 6|iPhoneOS6|
+iOS 7|iPhoneOS7|
 iPhone|iPhone|
 iPod|iPod|
 iPad|iPad|
@@ -85,7 +87,7 @@ Debian Linux|Debian|
 Ubuntu Hardy|Ubuntu/8.04|
 Ubuntu Jaunty|Ubuntu/9.25|
 Ubuntu Maverick|Ubuntu/10.10| 
-Ubuntu lucid Lynx|Ubuntu/10.04|
+Ubuntu Lucid Lynx|Ubuntu/10.04|
 Ubuntu Chromium|Ubuntu/11.04|
 Ubuntu Oneiric Ocelot|Ubuntu/11.10|
 Ubuntu Precise Pangolin|Ubuntu/12.04|
@@ -97,6 +99,9 @@ Suse Linux|SUSE|
 Fedora Linux|Fedora|
 Linux Mint 10 Julia|Linux Mint/10 (Julia)|
 Linux Mint 9 Isadora|Linux Mint/9 Isadora|
+Linux Mint 9 Isadora|Linux Mint/9 (Isadora)|
+Linux Mint 8 Helena|Linux Mint/8 (Helena)|
+Linux Mint 6 Felicia|Linux Mint/6 (Felicia)|
 Linux Mint|Linux Mint|
 Linux|Linux|
 Linux|linux|
@@ -110,3 +115,5 @@ SGI Irix|Irix|
 Unix|Unix|
 Unix|X11|
 QNX|QNX|
+Playstation 3|PLAYSTATION 3|
+PSP|PSP (PlayStation Portable)|
