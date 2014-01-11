@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.7.5
+Version: 0.7.6
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.7.5';
+$_NEWSTATPRESS['version']='0.7.6';
 $_NEWSTATPRESS['feedtype']='';
 
 /**
@@ -2820,7 +2820,12 @@ function iri_dashboard_widget_function() {
   print "<td>" . $qry_tmonth->visitors . $qry_tmonth->change . "</td>\n";
 
   #TARGET
-  $qry_tmonth->target = round($qry_tmonth->visitors / date("d", current_time('timestamp')) * 30);
+  $qry_tmonth->target = round($qry_tmonth->visitors / (
+    (date("d", current_time('timestamp')) - 1 + 
+    (date("H", current_time('timestamp')) + 
+    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
+  ); 
+
   if($qry_lmonth->visitors <> 0) {
     $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->visitors ) - 100,1);
     if($pt >= 0) $pt = "+" . $pt;
@@ -2896,7 +2901,11 @@ function iri_dashboard_widget_function() {
   print "<td>" . $qry_tmonth->pageview . $qry_tmonth->change . "</td>\n";
 
   #TARGET
-  $qry_tmonth->target = round($qry_tmonth->pageview / date("d", current_time('timestamp')) * 30);
+  $qry_tmonth->target = round($qry_tmonth->pageview / (
+    (date("d", current_time('timestamp')) - 1 + 
+    (date("H", current_time('timestamp')) + 
+    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
+  );
   if($qry_lmonth->pageview <> 0) {
     $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->pageview ) - 100,1);
     if($pt >= 0) $pt = "+" . $pt;
@@ -2972,7 +2981,11 @@ function iri_dashboard_widget_function() {
   print "<td>" . $qry_tmonth->spiders . $qry_tmonth->change . "</td>\n";
 
   #TARGET
-  $qry_tmonth->target = round($qry_tmonth->spiders / date("d", current_time('timestamp')) * 30);
+  $qry_tmonth->target = round($qry_tmonth->spiders / (
+    (date("d", current_time('timestamp')) - 1 + 
+    (date("H", current_time('timestamp')) + 
+    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
+  );
   if($qry_lmonth->spiders <> 0) {
     $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->spiders ) - 100,1);
     if($pt >= 0) $pt = "+" . $pt;
@@ -3046,7 +3059,11 @@ function iri_dashboard_widget_function() {
   print "<td>" . $qry_tmonth->feeds . $qry_tmonth->change . "</td>\n";
 
   #TARGET
-  $qry_tmonth->target = round($qry_tmonth->feeds / date("d", current_time('timestamp')) * 30);
+  $qry_tmonth->target = round($qry_tmonth->feeds / (
+    (date("d", current_time('timestamp')) - 1 + 
+    (date("H", current_time('timestamp')) + 
+    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
+  );
   if($qry_lmonth->feeds <> 0) {
     $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->feeds ) - 100,1);
     if($pt >= 0) $pt = "+" . $pt;
@@ -3163,7 +3180,11 @@ function iriOverview($print = TRUE) {
   $result = $result. "<td>" . $qry_tmonth->visitors . $qry_tmonth->change . "</td>\n";
 
   #TARGET
-  $qry_tmonth->target = round($qry_tmonth->visitors / date("d", current_time('timestamp')) * 30);
+  $qry_tmonth->target = round($qry_tmonth->visitors / (
+    (date("d", current_time('timestamp')) - 1 + 
+    (date("H", current_time('timestamp')) + 
+    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
+  );
   if($qry_lmonth->visitors <> 0) {
     $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->visitors ) - 100,1);
     if($pt >= 0) $pt = "+" . $pt;
@@ -3239,7 +3260,11 @@ function iriOverview($print = TRUE) {
   $result = $result. "<td>" . $qry_tmonth->pageview . $qry_tmonth->change . "</td>\n";
 
   #TARGET
-  $qry_tmonth->target = round($qry_tmonth->pageview / date("d", current_time('timestamp')) * 30);
+  $qry_tmonth->target = round($qry_tmonth->pageview / (
+    (date("d", current_time('timestamp')) - 1 + 
+    (date("H", current_time('timestamp')) + 
+    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
+  );
   if($qry_lmonth->pageview <> 0) {
     $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->pageview ) - 100,1);
     if($pt >= 0) $pt = "+" . $pt;
@@ -3316,7 +3341,11 @@ function iriOverview($print = TRUE) {
   $result = $result. "<td>" . $qry_tmonth->spiders . $qry_tmonth->change . "</td>\n";
 
   #TARGET
-  $qry_tmonth->target = round($qry_tmonth->spiders / date("d", current_time('timestamp')) * 30);
+  $qry_tmonth->target = round($qry_tmonth->spiders / (
+    (date("d", current_time('timestamp')) - 1 + 
+    (date("H", current_time('timestamp')) + 
+    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
+  );
   if($qry_lmonth->spiders <> 0) {
     $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->spiders ) - 100,1);
     if($pt >= 0) $pt = "+" . $pt;
@@ -3389,7 +3418,11 @@ function iriOverview($print = TRUE) {
   $result = $result. "<td>" . $qry_tmonth->feeds . $qry_tmonth->change . "</td>\n";
 
   #TARGET
-  $qry_tmonth->target = round($qry_tmonth->feeds / date("d", current_time('timestamp')) * 30);
+  $qry_tmonth->target = round($qry_tmonth->feeds / (
+    (date("d", current_time('timestamp')) - 1 + 
+    (date("H", current_time('timestamp')) + 
+    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
+  );
   if($qry_lmonth->feeds <> 0) {
     $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->feeds ) - 100,1);
     if($pt >= 0) $pt = "+" . $pt;
