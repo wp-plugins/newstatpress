@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.7.7
+Version: 0.7.8
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.7.7';
+$_NEWSTATPRESS['version']='0.7.8';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir;
@@ -1019,6 +1019,7 @@ function newstatpress_page_posts() {
  */
 function iriNewStatPressNewSpy() {
   global $wpdb;
+  global $newstatpress_dir;
   $action="newspy";
   $table_name = $wpdb->prefix . "statpress";
  
@@ -1151,6 +1152,7 @@ document.getElementById(thediv).style.display="none"
  */
 function iriNewStatPressSpyBot() {
   global $wpdb;
+  global $newstatpress_dir;
 
   $action="spybot";
   $table_name = $wpdb->prefix . "statpress";
@@ -1256,6 +1258,8 @@ document.getElementById(thediv).style.display="none"
  */
 function iriNewStatPressSpy() {
   global $wpdb;
+  global $newstatpress_dir;
+
   $table_name = $wpdb->prefix . "statpress";
 
   # Spy
@@ -1708,6 +1712,8 @@ function iriGetQueryPairs($url){
  * @return the OS find in configuration file
  */
 function iriGetOS($arg) {
+  global $newstatpress_dir;
+
   $arg=str_replace(" ","",$arg);
   $lines = file($newstatpress_dir.'/def/os.dat');
   foreach($lines as $line_num => $os) {
@@ -1725,6 +1731,8 @@ function iriGetOS($arg) {
  * @return the Browser find in configuration file
  */
 function iriGetBrowser($arg) {
+  global $newstatpress_dir;
+
   $arg=str_replace(" ","",$arg);
   $lines = file($newstatpress_dir.'/def/browser.dat');
   foreach($lines as $line_num => $browser) {
@@ -1742,6 +1750,8 @@ function iriGetBrowser($arg) {
  * @return '' id the address is banned
  */
 function iriCheckBanIP($arg){
+  global $newstatpress_dir;
+
   $lines = file($newstatpress_dir.'/def/banips.dat');
   foreach($lines as $line_num => $banip) {
     if(strpos($arg,rtrim($banip,"\n"))===FALSE) continue;
@@ -1757,6 +1767,8 @@ function iriCheckBanIP($arg){
  * @return the search engine present in the url
  */
 function iriGetSE($referrer = null){
+  global $newstatpress_dir;
+
   $key = null;
   $lines = file($newstatpress_dir.'/def/searchengines.dat');
   foreach($lines as $line_num => $se) {
@@ -1781,6 +1793,8 @@ function iriGetSE($referrer = null){
  * @return agent the fount agent
  */
 function iriGetSpider($agent = null){
+  global $newstatpress_dir;
+
   $agent=str_replace(" ","",$agent);
   $key = null;
   $lines = file($newstatpress_dir.'/def/spider.dat');
@@ -2077,6 +2091,8 @@ function iriNewStatPressDays() {
  */
 function iriNewStatPressUpdate() {
   global $wpdb;
+  global $newstatpress_dir;
+
   $table_name = $wpdb->prefix . "statpress";
 
   $wpdb->flush();     // flush for counting right the queries
