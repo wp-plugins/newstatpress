@@ -1,3 +1,4 @@
+Windows 8.1|WindowsNT6.3|
 Windows 8|WindowsNT6.2|
 Windows 7|WindowsNT7|
 Windows 7|WindowsNT6.1|
@@ -43,6 +44,7 @@ iOS 4|iPhoneOS4|
 iOS 5|iPhoneOS5|
 iOS 6|iPhoneOS6|
 iOS 7|iPhoneOS7|
+iOS 8|iPhoneOS8|
 iPhone|iPhone|
 iPod|iPod|
 iPad|iPad|
@@ -93,10 +95,17 @@ Ubuntu Oneiric Ocelot|Ubuntu/11.10|
 Ubuntu Precise Pangolin|Ubuntu/12.04|
 Ubuntu Quantal Quetzal|Ubuntu/12.10|
 Ubuntu Raring Ringtail|Ubuntu/13.04|
+Ubuntu Saucy Salamander|Ubuntu/13.10|
 Ubuntu Linux|Ubuntu|
 Suse Linux|Suse|
 Suse Linux|SUSE|
 Fedora Linux|Fedora|
+Linux Mint 16 Petra|Linux Mint/15 (Petra)|
+Linux Mint 15 Olivia|Linux Mint/15 (Olivia)|
+Linux Mint 14 Nadia|Linux Mint/14 (Nadia)|
+Linux Mint 13 Maya|Linux Mint/13 (Maya)|
+Linux Mint 12 Lisa|Linux Mint/12 (Lisa)|
+Linux Mint 11 Katya|Linux Mint/11 (Katya)|
 Linux Mint 10 Julia|Linux Mint/10 (Julia)|
 Linux Mint 9 Isadora|Linux Mint/9 Isadora|
 Linux Mint 9 Isadora|Linux Mint/9 (Isadora)|

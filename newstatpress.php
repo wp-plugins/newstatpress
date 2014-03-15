@@ -3,13 +3,16 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.7.6
+Version: 0.7.7
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.7.6';
+$_NEWSTATPRESS['version']='0.7.7';
 $_NEWSTATPRESS['feedtype']='';
+
+global $newstatpress_dir;
+$newstatpress_dir = WP_PLUGIN_DIR . '/' .dirname(plugin_basename(__FILE__));
 
 /**
  * Get the url of the plugin
@@ -1087,7 +1090,7 @@ document.getElementById(thediv).style.display="none"
         if($rk->nation <> '') { 
           // the nation exist
           $img=strtolower($rk->nation).".png"; 
-          $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/domain.dat');
+          $lines = file($newstatpress_dir.'/def/domain.dat');
           foreach($lines as $line_num => $nation) { 
             list($id,$title)=explode("|",$nation);
             if($id===$rk->nation) break;
@@ -1221,7 +1224,7 @@ document.getElementById(thediv).style.display="none"
             <td colspan='2' bgcolor='#dedede'>";
       $img=str_replace(" ","_",strtolower($rk->spider));
       $img=str_replace('.','',$img).".png";
-      $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/spider.dat');
+      $lines = file($newstatpress_dir.'/def/spider.dat');
       foreach($lines as $line_num => $spider) { //seeks the tooltip corresponding to the photo
         list($title,$id)=explode("|",$spider);
         if($title==$rk->spider) break; // break, the tooltip ($title) is found
@@ -1286,7 +1289,7 @@ document.getElementById(thediv).style.display="none"
     if($rk->nation <> '') { 
       // the nation exist
       $img=strtolower($rk->nation).".png"; 
-      $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/domain.dat');
+      $lines = file($newstatpress_dir.'/def/domain.dat');
       foreach($lines as $line_num => $nation) { 
         list($id,$title)=explode("|",$nation);
         if($id===$rk->nation) break;
@@ -1706,7 +1709,7 @@ function iriGetQueryPairs($url){
  */
 function iriGetOS($arg) {
   $arg=str_replace(" ","",$arg);
-  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/os.dat');
+  $lines = file($newstatpress_dir.'/def/os.dat');
   foreach($lines as $line_num => $os) {
     list($nome_os,$id_os)=explode("|",$os);
     if(strpos($arg,$id_os)===FALSE) continue;
@@ -1723,7 +1726,7 @@ function iriGetOS($arg) {
  */
 function iriGetBrowser($arg) {
   $arg=str_replace(" ","",$arg);
-  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/browser.dat');
+  $lines = file($newstatpress_dir.'/def/browser.dat');
   foreach($lines as $line_num => $browser) {
     list($nome,$id)=explode("|",$browser);
     if(strpos($arg,$id)===FALSE) continue;
@@ -1739,7 +1742,7 @@ function iriGetBrowser($arg) {
  * @return '' id the address is banned
  */
 function iriCheckBanIP($arg){
-  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/banips.dat');
+  $lines = file($newstatpress_dir.'/def/banips.dat');
   foreach($lines as $line_num => $banip) {
     if(strpos($arg,rtrim($banip,"\n"))===FALSE) continue;
     return ''; // this is banned
@@ -1755,7 +1758,7 @@ function iriCheckBanIP($arg){
  */
 function iriGetSE($referrer = null){
   $key = null;
-  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/searchengines.dat');
+  $lines = file($newstatpress_dir.'/def/searchengines.dat');
   foreach($lines as $line_num => $se) {
     list($nome,$url,$key)=explode("|",$se);
     if(strpos($referrer,$url)===FALSE) continue;
@@ -1780,7 +1783,7 @@ function iriGetSE($referrer = null){
 function iriGetSpider($agent = null){
   $agent=str_replace(" ","",$agent);
   $key = null;
-  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/spider.dat');
+  $lines = file($newstatpress_dir.'/def/spider.dat');
   foreach($lines as $line_num => $spider) {
     list($nome,$key)=explode("|",$spider);
     if(strpos($agent,$key)===FALSE) continue;
@@ -2004,6 +2007,8 @@ function iriStatAppend() {
       iri_NewStatPress_CreateTable();
     }
 
+    $login = $userdata ? $userdata->user_login : null;
+
     $insert = 
       "INSERT INTO " . $table_name . "(
         date, 
@@ -2035,7 +2040,7 @@ function iriStatAppend() {
         '$searchengine',
         '$spider',
         '$feed',
-        '$userdata->user_login', 
+        '$login', 
         '$timestamp'
        )";
     $results = $wpdb->query( $insert );
@@ -2092,10 +2097,10 @@ function iriNewStatPressUpdate() {
   print "<tbody id='the-list'>";
 
   # check if ip2nation .sql file exists
-  if(file_exists(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql')) {
+  if(file_exists($newstatpress_dir.'/ip2nation.sql')) {
     print "<tr><td>ip2nation.sql</td>";
-    $FP = fopen (ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql', 'r' ); 
-    $READ = fread ( $FP, filesize (ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/ip2nation.sql') ); 
+    $FP = fopen ($newstatpress_dir.'/ip2nation.sql', 'r' ); 
+    $READ = fread ( $FP, filesize ($newstatpress_dir.'/ip2nation.sql') ); 
     $READ = explode ( ";\n", $READ ); 
     foreach ( $READ as $RED ) { 
       if($RES != '') { $wpdb->query($RED); }
@@ -2219,7 +2224,7 @@ function iriNewStatPressUpdate() {
     SET os = ''
     WHERE date BETWEEN $from_date AND $to_date;"
   );
-  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/os.dat');
+  $lines = file($newstatpress_dir.'/def/os.dat');
   foreach($lines as $line_num => $os) {
     list($nome_os,$id_os)=explode("|",$os);
     $qry="
@@ -2242,7 +2247,7 @@ function iriNewStatPressUpdate() {
     SET browser = ''
     WHERE date BETWEEN $from_date AND $to_date;"
   );
-  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/browser.dat');
+  $lines = file($newstatpress_dir.'/def/browser.dat');
   foreach($lines as $line_num => $browser) {
     list($nome,$id)=explode("|",$browser);
     $qry="
@@ -2265,7 +2270,7 @@ function iriNewStatPressUpdate() {
     SET spider = ''
     WHERE date BETWEEN $from_date AND $to_date;"
   );
-  $lines = file(ABSPATH.'wp-content/plugins/'.dirname(plugin_basename(__FILE__)).'/def/spider.dat');
+  $lines = file($newstatpress_dir.'/def/spider.dat');
   foreach($lines as $line_num => $spider) {
     list($nome,$id)=explode("|",$spider);
     $qry="
@@ -2771,7 +2776,7 @@ function iri_dashboard_widget_function() {
   print "</font></th>
   <th scope='col'>". __('Last month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0])) ."</font></th>
   <th scope='col'>". __('This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
-  <th scope='col'>Target ". __('This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
+  <th scope='col'>". __('Target This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
   <th scope='col'>". __('Yesterday','newstatpress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')-86400) ."</font></th>
   <th scope='col'>". __('Today','newstatpress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')) ."</font></th>
   </tr></thead>
