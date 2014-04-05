@@ -2,20 +2,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: statpress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-02 08:50+0100\n"
-"PO-Revision-Date: 2013-03-02 08:50+0100\n"
+"POT-Creation-Date: 2014-04-05 11:00+0100\n"
+"PO-Revision-Date: 2014-04-05 11:04+0100\n"
 "Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk\n"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:52
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2948
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3151
 msgid "Overview"
 msgstr "Sommario"
 
@@ -23,36 +23,27 @@ msgstr "Sommario"
 msgid "Details"
 msgstr "Dettagli"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1210
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1273
 msgid "Spy"
 msgstr "Spia"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
-msgid "New Spy"
-msgstr "Nuovo Spia"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1131
-msgid "Spy Bot"
-msgstr "Spia Bot"
-
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:795
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:809
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1323
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1366
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1468
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:854
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:868
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1386
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1429
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1538
 msgid "Search"
 msgstr "Ricerca"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:58
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:504
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:558
 msgid "Export"
 msgstr "Esporta"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:59
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:173
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:202
 msgid "Options"
 msgstr "Opzioni"
 
@@ -65,486 +56,699 @@ msgid "NewStatpress blog"
 msgstr "NewStatpress blog"
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:62
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:403
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:447
 msgid "Credits"
 msgstr "Crediti"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:170
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:63
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:144
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:149
+msgid "Remove"
+msgstr "Rimozione"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:141
+msgid "All data removed"
+msgstr "Tutti i dati sono stati rimossi"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:146
+msgid ""
+"Warning: pressing the below button will make all your stored data to be "
+"erased!"
+msgstr ""
+"Attenzione: premendo il pulsante qui sotto, tutti i dati memorizzati "
+"verranno cancellati!"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:147
+msgid ""
+"It is added for the people that did not want to use the plugin anymore and "
+"so they want to remove the stored data."
+msgstr ""
+"Questo è stato aggiunto per le persone che non vogliono più usare il plugin "
+"e pertanto vogliono liberare lo spazio occupato."
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:148
+msgid "If you are in doubt about this function, don't use it."
+msgstr "Se sei in dubbio circa l'uso di questa funzione, non usarla."
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:149
+msgid "Are you sure?"
+msgstr "Sei sicuro?"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:199
 msgid "Saved"
 msgstr "Salvato"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:176
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:205
 msgid "Collect data about logged users, too."
 msgstr "Registra anche i dati degli utenti autenticati."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:177
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:206
 msgid "Do not collect spiders visits"
 msgstr "Non registrare le visite degli spider"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:178
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:207
 msgid "Crypt IP addresses"
 msgstr "Crypta gli indirizzi IP"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:179
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:208
 msgid "Show NewStatPress dashboard widget"
 msgstr "Mostra il dashboard widget di NewStatPress "
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:182
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:213
+msgid "Elements in Overview (default 10)"
+msgstr "Numero elementi nel sommario (default 10)"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:217
 msgid "New Spy: number of IP per page"
 msgstr "Nuovo Spia: numero di IP per pagina"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:189
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:224
 msgid "New Spy: number of visits for IP"
 msgstr "Nuovo Spia: numero di visite per IP"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:196
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:231
 msgid "Spy Bot: number of bot per page"
 msgstr "Spia Bot: numero di IP per pagina"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:203
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:238
 msgid "Spy Bot: number of bot for IP"
 msgstr "Spia Bot: numero di visite per IP"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:210
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:245
 msgid "Automatically delete visits older than"
 msgstr "Automaticamente cancella le visite più vecchie di"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:212
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:247
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:256
 msgid "Never delete!"
 msgstr "Mai!"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:213
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:365
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:248
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:257
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:409
 msgid "month"
 msgstr "mese"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:214
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:215
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:366
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:367
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:368
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:369
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:249
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:250
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:258
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:259
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:410
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:411
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:412
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:413
 msgid "months"
 msgstr "mesi"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:216
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:370
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:251
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:260
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:414
 msgid "year"
 msgstr "anno"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:219
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:254
+msgid "Automatically delete only spiders visits older than"
+msgstr "Automaticamente cancella le visite dei soli spider più vecchie di"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:263
 msgid "Days in Overview graph"
 msgstr "Giorni nel grafico di Overview"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:228
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:272
 msgid "Minimum capability to view stats"
 msgstr "Capability minima per visualizzare le statistiche"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:232
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1059
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1258
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:276
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1119
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1321
 msgid "more info"
 msgstr "dettagli"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:238
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:282
 msgid "Logged users to ignore"
 msgstr "Utenti autenticati da ignorare"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:239
-msgid "Enter a list of users you don't want to track, separated by commas, even if collect data about logged users is on"
-msgstr "Inserisci uan lista di utenti che non vuoi tracciare, separati da virgole, anche se hai abilitato di registrare anche i dati di utenti autenticati."
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:283
+msgid ""
+"Enter a list of users you don't want to track, separated by commas, even if "
+"collect data about logged users is on"
+msgstr ""
+"Inserisci uan lista di utenti che non vuoi tracciare, separati da virgole, "
+"anche se hai abilitato di registrare anche i dati di utenti autenticati."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:246
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:290
 msgid "IP addresses to ignore"
 msgstr "Inidirizzi IP da ignorare"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:247
-msgid "Enter a list of networks you don't want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not track pageviews properly."
-msgstr "Inserisci una lista di reti che non vuoi tracciare, separate da virgola. Ogni rete  <strong>deve</strong> essere definita usando la notazione CIDR (ad esempio 192.168.1.1/24). Se il formato non è corretto,  NewStatPress potrebbe non funzionare correttamente."
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:291
+msgid ""
+"Enter a list of networks you don't want to track, separated by commas. Each "
+"network <strong>must</strong> be defined using the CIDR notation (i.e. "
+"<em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not "
+"track pageviews properly."
+msgstr ""
+"Inserisci una lista di reti che non vuoi tracciare, separate da virgola. "
+"Ogni rete  <strong>deve</strong> essere definita usando la notazione CIDR "
+"(ad esempio 192.168.1.1/24). Se il formato non è corretto,  NewStatPress "
+"potrebbe non funzionare correttamente."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:254
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:298
 msgid "Pages and posts to ignore"
 msgstr "Pagine e post da ignorare"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:255
-msgid "Enter a list of permalinks you don't want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them."
-msgstr "Inserisci una lista di permalink che non vuoi tracciare, separati da virgola. Non è necessario indicare il dominio: <em>/about, p=1</em>, ecc. NewStatPress ignorerà tutte le richieste il cui permalink <strong>contiene</strong> uno di quelli indicati."
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:299
+msgid ""
+"Enter a list of permalinks you don't want to track, separated by commas. You "
+"should omit the domain name from these resources: <em>/about, p=1</em>, etc. "
+"NewStatPress will ignore all the pageviews whose permalink <strong>contains</"
+"strong> at least one of them."
+msgstr ""
+"Inserisci una lista di permalink che non vuoi tracciare, separati da "
+"virgola. Non è necessario indicare il dominio: <em>/about, p=1</em>, ecc. "
+"NewStatPress ignorerà tutte le richieste il cui permalink <strong>contiene</"
+"strong> uno di quelli indicati."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:265
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:309
 msgid "Details options"
 msgstr "Opzioni dei dettagli"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:270
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:314
 msgid "Elements in Top days (default 5)"
 msgstr "Elementi in Top days (default 5)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:276
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:320
 msgid "Elements in O.S. (default 10)"
 msgstr "Elementi negli O.S. (default 10)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:282
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:326
 msgid "Elements in Browser (default 10)"
 msgstr "Elementi nei Browser (default 10)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:288
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:332
 msgid "Elements in Feed (default 5)"
 msgstr "Elementi nei Feed (default 5)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:294
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:338
 msgid "Elements in Search Engines (default 10)"
 msgstr "Elementi nei Search Engines (default 10)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:300
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:344
 msgid "Elements in Top Search Terms (default 20)"
 msgstr "Elementi in Top Search Terms (default 20)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:306
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:350
 msgid "Elements in Top Refferer (default 10)"
 msgstr "Elementi in Top Refferer (default 10)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:312
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:356
 msgid "Elements in Countries/Languages (default 20)"
 msgstr "Elementi in Countries/Languages (default 20)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:318
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:362
 msgid "Elements in Spiders (default 10)"
 msgstr "Elementi in Spiders (default 10)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:324
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:368
 msgid "Elements in Top Pages (default 5)"
 msgstr "Elementi in Top Pages (default 5)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:330
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:374
 msgid "Elements in Top Days - Unique visitors (default 5)"
 msgstr "Elementi in Top Days - Unique visitors (default 5)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:336
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:380
 msgid "Elements in Top Days - Pageviews (default 5)"
 msgstr "Elementi in Top Days - Pageviews (default 5)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:342
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:386
 msgid "Elements in Top IPs - Pageviews (default 5)"
 msgstr "Elementi in Top IPs - Pageviews (default 5)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:350
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:394
 msgid "Database update option"
 msgstr "Opzioni aggiornamento database"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:354
-msgid "Select the interval of date from today you want to use for updating your database with new definitions. More it is big and more times and resources it require. You can choose to not update some fields if you want."
-msgstr "Selezionare l'intervallo di date a partire da oggi che deve essere usato per aggiornare il database con le nuove definizioni. Più è ampio e più tempo e risorse richiede. Puoi anche scegliere di non aggiornare alcuni campi."
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:398
+msgid ""
+"Select the interval of date from today you want to use for updating your "
+"database with new definitions. More it is big and more times and resources "
+"it require. You can choose to not update some fields if you want."
+msgstr ""
+"Selezionare l'intervallo di date a partire da oggi che deve essere usato per "
+"aggiornare il database con le nuove definizioni. Più è ampio e più tempo e "
+"risorse richiede. Puoi anche scegliere di non aggiornare alcuni campi."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:359
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:403
 msgid "Update data in the given period"
 msgstr "Aggiorna i dati nel periodo dato"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:361
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:405
 msgid "All!"
 msgstr "Tutti!"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:362
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:406
 msgid "week"
 msgstr "settimana"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:363
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:364
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:407
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:408
 msgid "weeks"
 msgstr "settimane"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:376
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:420
 msgid "Save options"
 msgstr "Salva le opzioni"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:499
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:553
 msgid "Export stats to text file"
 msgstr "Esporta statistiche in file di testo"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:501
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:555
 msgid "From"
 msgstr "Da"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:502
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:555
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:556
+msgid "YYYYMMDD"
+msgstr "YYYYMMDD"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:556
 msgid "To"
 msgstr "A"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:503
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:557
 msgid "Fields delimiter"
 msgstr "Delimitatori di campi"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:566
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
 msgid "Last hits"
 msgstr "Ultimi accessi"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:566
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:603
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:617
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:664
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:693
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:662
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:676
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:723
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:752
 msgid "Date"
 msgstr "Data"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:566
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:603
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:617
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:664
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:693
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:662
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:676
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:723
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:752
 msgid "Time"
 msgstr "Ora"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:566
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
 msgid "Country"
 msgstr "Nazione"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:566
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
 msgid "Language"
 msgstr "Lingua"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:566
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:664
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:792
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:804
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:807
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:819
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1465
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1477
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:723
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:851
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:863
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:866
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:878
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1535
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1547
 msgid "Page"
 msgstr "Pagina"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:603
-msgid "Last search terms"
-msgstr "Ultimi termini di ricerca"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
+msgid "Feed"
+msgstr "Feed"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:603
-msgid "Terms"
-msgstr "Termini"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:603
-msgid "Engine"
-msgstr "Motore"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:603
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:617
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1949
-msgid "Result"
-msgstr "Risultato"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:612
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:629
-msgid "page viewed"
-msgstr "pagina vista"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:617
-msgid "Last referrers"
-msgstr "Ultime provenienze"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:617
-msgid "URL"
-msgstr "URL"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:635
-msgid "Last agents"
-msgstr "Ultimi agent"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:635
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:693
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1314
-msgid "Agent"
-msgstr "Agent"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:664
-msgid "Last pages"
-msgstr "Ultime pagine"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:664
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:694
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:723
 msgid "OS"
 msgstr "Sistema Operativo"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:664
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:625
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:694
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:723
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1382
 msgid "Browser"
 msgstr "Browser"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:693
-msgid "Last spiders"
-msgstr "Ultimi spider"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:662
+msgid "Last search terms"
+msgstr "Ultimi termini di ricerca"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:693
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:662
+msgid "Terms"
+msgstr "Termini"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:662
+msgid "Engine"
+msgstr "Motore"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:662
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:676
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2117
+msgid "Result"
+msgstr "Risultato"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:671
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:688
+msgid "page viewed"
+msgstr "pagina vista"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:676
+msgid "Last referrers"
+msgstr "Ultime provenienze"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:676
+msgid "URL"
+msgstr "URL"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:694
+msgid "Last agents"
+msgstr "Ultimi agent"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:694
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:752
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1377
+msgid "Agent"
+msgstr "Agent"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:694
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:752
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1383
 msgid "Spider"
 msgstr "Spider"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:793
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:723
+msgid "Last pages"
+msgstr "Ultime pagine"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:752
+msgid "Last spiders"
+msgstr "Ultimi spider"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:796
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:826
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:829
+msgid "Top days"
+msgstr "Top days"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:799
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2242
+msgid "OSes"
+msgstr "OS"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:802
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2265
+#, fuzzy
+msgid "Browsers"
+msgstr "Browser"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:805
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2144
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3047
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3407
+msgid "Feeds"
+msgstr "Feeds"
+
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:808
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1466
-msgid "Category"
-msgstr "Categoria"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:794
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1467
-msgid "Calendar"
-msgstr "Calendario"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:863
-msgid "period of days"
-msgstr "periodo di giorni"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:906
-msgid "Pages"
-msgstr "Pagine"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1005
-msgid "Visitor Spy"
-msgstr "Spia Visitatori"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1044
-msgid "Http domain"
-msgstr "Dominio Http"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1055
-msgid "Hostip country"
-msgstr "Nazione di Hostip"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1076
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1077
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1084
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1085
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1284
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1286
-msgid "arrived from"
-msgstr "arrivato da"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1076
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1084
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1284
-msgid "searching"
-msgstr "cercando"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1313
-msgid "URL Requested"
-msgstr "URL richiesto"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1315
-msgid "Referrer"
-msgstr "Provenienza"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1316
-msgid "Search terms"
-msgstr "Termini di ricerca"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1317
-msgid "Search engine"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2311
+#, fuzzy
+msgid "Search engines"
 msgstr "Motore di ricerca"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1318
-msgid "Operative system"
-msgstr "Sistema operativo"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:811
+#, fuzzy
+msgid "Top search terms"
+msgstr "Ultimi termini di ricerca"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1328
-msgid "Field"
-msgstr "Campo"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:814
+#, fuzzy
+msgid "Top referrers"
+msgstr "Ultime provenienze"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1335
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1336
-msgid "Group by"
-msgstr "Raggruppa"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:817
+#, fuzzy
+msgid "Countries"
+msgstr "Nazione"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1338
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1339
-msgid "Sort by"
-msgstr "Ordina"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:817
+#, fuzzy
+msgid "Languages"
+msgstr "Lingua"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1341
-msgid "if contains"
-msgstr "se contiene"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:820
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2288
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2967
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3326
+#, fuzzy
+msgid "Spiders"
+msgstr "Spider"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1351
-msgid "sort by count if grouped"
-msgstr "ordina per il conteggio se raggruppato"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:823
+#, fuzzy
+msgid "Top pages"
+msgstr "Ultime pagine"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1352
-msgid "include spiders/crawlers/bot"
-msgstr "includi spiders/crawlers/bot"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1353
-msgid "include feed"
-msgstr "includi feed"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1360
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2489
-msgid "Limit results to"
-msgstr "Limita i risultati a"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1427
-msgid "Results"
-msgstr "Risultati"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1434
-msgid "Count"
-msgstr "Conteggio"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1527
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2490
-msgid "Visits"
-msgstr "Visite"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1949
-msgid "Updating..."
-msgstr "Aggiornamento..."
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1949
-msgid "Size"
-msgstr "Dimensione"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2452
-msgid "Title:"
-msgstr "Titolo:"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2453
-msgid "Body:"
-msgstr "Corpo:"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2488
-msgid "Title"
-msgstr "Titolo:"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2609
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2951
-msgid "Total since"
-msgstr "Totale dal"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2612
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2954
-msgid "Last month"
-msgstr "Mese precedente"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2613
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2614
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2955
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2956
-msgid "This month"
-msgstr "Mese corrente"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2615
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2957
-msgid "Yesterday"
-msgstr "Ieri"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2616
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2958
-msgid "Today"
-msgstr "Oggi"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2621
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2964
-msgid "Visitors"
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:826
+#, fuzzy
+msgid "Unique visitors"
 msgstr "Visitatori"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2696
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3039
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:829
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:832
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2887
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3246
 msgid "Pageviews"
 msgstr "Pagine viste"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2922
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:832
+msgid "Top IPs"
+msgstr "Top IPs"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:852
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:867
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1536
+msgid "Category"
+msgstr "Categoria"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:853
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1537
+msgid "Calendar"
+msgstr "Calendario"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:922
+msgid "period of days"
+msgstr "periodo di giorni"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:965
+msgid "Pages"
+msgstr "Pagine"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1065
+msgid "Visitor Spy"
+msgstr "Spia Visitatori"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1104
+msgid "Http domain"
+msgstr "Dominio Http"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1115
+msgid "Hostip country"
+msgstr "Nazione di Hostip"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1136
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1137
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1144
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1145
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1347
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1349
+msgid "arrived from"
+msgstr "arrivato da"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1136
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1144
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1347
+msgid "searching"
+msgstr "cercando"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
+msgid "Spy Bot"
+msgstr "Spia Bot"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1376
+msgid "URL Requested"
+msgstr "URL richiesto"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1378
+msgid "Referrer"
+msgstr "Provenienza"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1379
+msgid "Search terms"
+msgstr "Termini di ricerca"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1380
+msgid "Search engine"
+msgstr "Motore di ricerca"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1381
+msgid "Operative system"
+msgstr "Sistema operativo"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1384
+msgid "IP"
+msgstr "IP"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1391
+msgid "Field"
+msgstr "Campo"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1398
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1399
+msgid "Group by"
+msgstr "Raggruppa"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1401
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1402
+msgid "Sort by"
+msgstr "Ordina"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1404
+msgid "if contains"
+msgstr "se contiene"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1414
+msgid "sort by count if grouped"
+msgstr "ordina per il conteggio se raggruppato"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1415
+msgid "include spiders/crawlers/bot"
+msgstr "includi spiders/crawlers/bot"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1416
+msgid "include feed"
+msgstr "includi feed"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1423
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2675
+msgid "Limit results to"
+msgstr "Limita i risultati a"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1490
+msgid "Results"
+msgstr "Risultati"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1497
+msgid "Count"
+msgstr "Conteggio"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1577
+msgid "records"
+msgstr "record"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1630
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2676
+msgid "Visits"
+msgstr "Visite"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2117
+msgid "Updating..."
+msgstr "Aggiornamento..."
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2117
+msgid "Size"
+msgstr "Dimensione"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2134
+msgid "Structure"
+msgstr "Struttura"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2139
+msgid "Index"
+msgstr "Indice"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2341
+msgid "Final Structure"
+msgstr "Struttura Finale"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2345
+msgid "Final Index"
+msgstr "Indice Finale"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2349
+msgid "Duration of the update"
+msgstr "Durata dell'aggiornamento"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2353
+msgid "This update was done in"
+msgstr "L'aggiornamento è stato eseguito in"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2354
+msgid "SQL queries"
+msgstr "Numero queries SQL"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2638
+msgid "Title:"
+msgstr "Titolo:"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2639
+msgid "Body:"
+msgstr "Corpo:"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2674
+msgid "Title"
+msgstr "Titolo:"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2795
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3154
+msgid "Total since"
+msgstr "Totale dal"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2798
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3157
+msgid "Last month"
+msgstr "Mese precedente"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2799
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3158
+msgid "This month"
+msgstr "Mese corrente"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2800
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3159
+msgid "Target This month"
+msgstr "Obiettivo Mese corrente"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2801
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3160
+msgid "Yesterday"
+msgstr "Ieri"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2802
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3161
+msgid "Today"
+msgstr "Oggi"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2807
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3167
+msgid "Visitors"
+msgstr "Visitatori"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3125
 msgid "More details"
 msgstr "Dettagli"
+
+#~ msgid "New Spy"
+#~ msgstr "Nuovo Spia"
+
+#, fuzzy
+#~ msgid "Elements in Summary (default 10)"
+#~ msgstr "Elementi negli O.S. (default 10)"
 
 #~ msgid "Total"
 #~ msgstr "Totale"
