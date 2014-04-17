@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: NewStatPress v0.7.8   >>>>>> with correction for "
 "language\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-05 11:00+0100\n"
-"PO-Revision-Date: 2014-04-05 11:00+0100\n"
+"POT-Creation-Date: 2014-04-17 19:39+0100\n"
+"PO-Revision-Date: 2014-04-17 19:39+0100\n"
 "Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -31,10 +31,20 @@ msgid "Details"
 msgstr "Détails"
 
 # @ newstatpress
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1273
 msgid "Spy"
 msgstr "Espion"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+msgid "New Spy"
+msgstr ""
+
+# @ newstatpress
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
+msgid "Spy Bot"
+msgstr "Robot"
 
 # @ newstatpress
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
@@ -698,11 +708,6 @@ msgstr "arrivé depuis"
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1347
 msgid "searching"
 msgstr "recherche"
-
-# @ newstatpress
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
-msgid "Spy Bot"
-msgstr "Robot"
 
 # @ newstatpress
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1376

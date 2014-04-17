@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: statpress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-05 11:00+0100\n"
-"PO-Revision-Date: 2014-04-05 11:00+0100\n"
+"POT-Creation-Date: 2014-04-17 19:39+0100\n"
+"PO-Revision-Date: 2014-04-17 19:39+0100\n"
 "Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -26,10 +26,19 @@ msgstr "Detaljer"
 
 # The German translation of "Spy" sounds weird in this context. I chose to name it "visitor information" instead.
 # I agree, I choose the same translation for Swedish. :)
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1273
 msgid "Spy"
 msgstr "Besöksinformation"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+msgid "New Spy"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
+msgid "Spy Bot"
+msgstr ""
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:854
@@ -566,10 +575,6 @@ msgstr "kom från"
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1347
 msgid "searching"
 msgstr "söker"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
-msgid "Spy Bot"
-msgstr ""
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1376
 msgid "URL Requested"

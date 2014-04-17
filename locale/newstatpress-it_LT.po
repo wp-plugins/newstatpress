@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: statpress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-05 11:00+0100\n"
-"PO-Revision-Date: 2014-04-05 11:00+0100\n"
+"POT-Creation-Date: 2014-04-17 19:39+0100\n"
+"PO-Revision-Date: 2014-04-17 19:39+0100\n"
 "Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team:  <Host1Free>\n"
 "Language: lt_LT\n"
@@ -24,10 +24,19 @@ msgstr "Apžvalga"
 msgid "Details"
 msgstr "Informacija"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1273
 msgid "Spy"
 msgstr "Šnipas"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+msgid "New Spy"
+msgstr "Naujas Šnipas"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
+msgid "Spy Bot"
+msgstr ""
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:854
@@ -577,10 +586,6 @@ msgstr "atvyko iš"
 msgid "searching"
 msgstr "ieškoma"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
-msgid "Spy Bot"
-msgstr ""
-
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1376
 msgid "URL Requested"
 msgstr "URL Pareikalauta"
@@ -744,9 +749,6 @@ msgstr "Lankytojai"
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3125
 msgid "More details"
 msgstr "Daugiau informacijos"
-
-#~ msgid "New Spy"
-#~ msgstr "Naujas Šnipas"
 
 #, fuzzy
 #~ msgid "Elements in Summary (default 10)"

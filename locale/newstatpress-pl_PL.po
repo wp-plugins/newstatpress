@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: statpress-pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-05 11:00+0100\n"
-"PO-Revision-Date: 2014-04-05 11:00+0100\n"
+"POT-Creation-Date: 2014-04-17 19:39+0100\n"
+"PO-Revision-Date: 2014-04-17 19:39+0100\n"
 "Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team: e-wsparcie Barbara Muszko <e-wsparcie@e-wsparcie.com.pl>\n"
 "Language: pl_PL\n"
@@ -31,10 +31,19 @@ msgid "Details"
 msgstr "Szczegóły"
 
 # @ newstatpress
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1273
 msgid "Spy"
 msgstr "Szpieg"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+msgid "New Spy"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
+msgid "Spy Bot"
+msgstr ""
 
 # @ newstatpress
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
@@ -634,10 +643,6 @@ msgstr "przybył z"
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1347
 msgid "searching"
 msgstr "wyszukiwanie"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
-msgid "Spy Bot"
-msgstr ""
 
 # @ newstatpress
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1376

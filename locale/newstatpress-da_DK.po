@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: StatPress v1.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-05 11:00+0100\n"
-"PO-Revision-Date: 2014-04-05 11:00+0100\n"
+"POT-Creation-Date: 2014-04-17 19:39+0100\n"
+"PO-Revision-Date: 2014-04-17 19:39+0100\n"
 "Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team: \n"
 "Language: da_DK\n"
@@ -26,10 +26,19 @@ msgstr "Oversigt"
 msgid "Details"
 msgstr "Detaljer"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1273
 msgid "Spy"
 msgstr "Spionere"
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
+msgid "New Spy"
+msgstr ""
+
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
+#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
+msgid "Spy Bot"
+msgstr ""
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:854
@@ -566,10 +575,6 @@ msgstr "kommet fra"
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1347
 msgid "searching"
 msgstr "søger"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1192
-msgid "Spy Bot"
-msgstr ""
 
 #: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1376
 msgid "URL Requested"

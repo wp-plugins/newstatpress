@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.7.9   
+Version: 0.8.0   
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.7.9';
+$_NEWSTATPRESS['version']='0.8.0';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir;
@@ -51,9 +51,9 @@ function iri_add_pages() {
   add_menu_page('NewStatPress', 'NewStatPress', $mincap, __FILE__, 'iriNewStatPress', plugins_url('newstatpress/images/stat.png',dirname(plugin_basename(__FILE__))));
   add_submenu_page(__FILE__, __('Overview','newstatpress'), __('Overview','newstatpress'), $mincap, __FILE__, 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Details','newstatpress'), __('Details','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=details', 'iriNewStatPress');
-  # add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
-  add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=newspy', 'iriNewStatPress');
-  #add_submenu_page(__FILE__, __('Spy Bot','newstatpress'), __('Spy Bot','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spybot', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('New Spy','newstatpress'), __('New Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=newspy', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Spy Bot','newstatpress'), __('Spy Bot','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spybot', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Search','newstatpress'), __('Search','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=search', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=export', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Options','newstatpress'), __('Options','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=options', 'iriNewStatPress');
@@ -814,7 +814,7 @@ function iriNewStatPressDetails() {
   iriValueTable2("referrer",__('Top referrers','newstatpress') ,(get_option('newstatpress_el_referrer')=='') ? 10:get_option('newstatpress_el_referrer'),"","","AND referrer<>'' AND referrer NOT LIKE '%".get_bloginfo('url')."%'");
  
   # Languages
-  iriValueTable2("nation",__('Countries','newstatpress'),'/',__('Languages','newstatpress') ,(get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'),"","","AND nation<>'' AND spider=''");
+  iriValueTable2("nation",__('Countries','newstatpress').'/'.__('Languages','newstatpress') ,(get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'),"","","AND nation<>'' AND spider=''");
 
   # Spider
   iriValueTable2("spider",__('Spiders','newstatpress') ,(get_option('newstatpress_el_spiders')=='') ? 10:get_option('newstatpress_el_spiders'),"","","AND spider<>''");
@@ -823,13 +823,13 @@ function iriNewStatPressDetails() {
   iriValueTable2("urlrequested",__('Top pages','newstatpress') ,(get_option('newstatpress_el_pages')=='') ? 5:get_option('newstatpress_el_pages'),"","urlrequested","AND feed='' and spider=''");
 
   # Top Days - Unique visitors
-  iriValueTable2("date",__('Top days','newstatpress'), ' - ' ,__('Unique visitors','newstatpress') ,(get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'),"distinct","ip","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+  iriValueTable2("date",__('Top days','newstatpress').' - '.__('Unique visitors','newstatpress') ,(get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'),"distinct","ip","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
 
   # Top Days - Pageviews
-  iriValueTable2("date",__('Top days','newstatpress'), ' - ' ,__('Pageviews','newstatpress'),(get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+  iriValueTable2("date",__('Top days','newstatpress').' - '.__('Pageviews','newstatpress'),(get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
 
   # Top IPs - Pageviews
-  iriValueTable2("ip",__('Top IPs','newstatpress'), ' - ' ,__('Pageviews','newstatpress'),(get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
+  iriValueTable2("ip",__('Top IPs','newstatpress').' - '.__('Pageviews','newstatpress'),(get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'),"","urlrequested","AND feed='' and spider=''"); /* Maddler 04112007: required patching iriValueTable */
 }
 
 
@@ -1945,7 +1945,7 @@ function iriStatAppend() {
   if (stristr($urlRequested,"/wp-content/plugins") != FALSE) { return ''; }
   if (stristr($urlRequested,"/wp-content/themes") != FALSE) { return ''; }
   if (stristr($urlRequested,"/wp-admin/") != FALSE) { return ''; }
-  $urlRequested=mysql_real_escape_string($urlRequested);
+  $urlRequested=esc_sql($urlRequested);
 
   // Is a given permalink blacklisted?
   $to_ignore = get_option('newstatpress_ignore_permalink', array());
@@ -1954,9 +1954,9 @@ function iriStatAppend() {
   }
 
   $referrer = (isset($_SERVER['HTTP_REFERER']) ? htmlentities($_SERVER['HTTP_REFERER']) : '');
-  $referrer=mysql_real_escape_string($referrer); 
+  $referrer=esc_sql($referrer); 
   $userAgent = (isset($_SERVER['HTTP_USER_AGENT']) ? htmlentities($_SERVER['HTTP_USER_AGENT']) : '');
-  $userAgent=mysql_real_escape_string($userAgent); 
+  $userAgent=esc_sql($userAgent); 
   $spider=iriGetSpider($userAgent);
 
   if(($spider != '') and (get_option('newstatpress_donotcollectspider')=='checked')) { return ''; }
