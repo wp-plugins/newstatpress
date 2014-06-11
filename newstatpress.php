@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.8.2  
+Version: 0.8.3  
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.8.2';
+$_NEWSTATPRESS['version']='0.8.3';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir;
@@ -449,41 +449,34 @@ function iriNewStatPressCredits() {
    <tr>
     <th>People</th>
     <th>Description</th>
-    <th>Link</th>
    </tr>
    <tr>
     <td>Stefano Tognon</td>
     <td>NewStatPress develoup</td>
-    <td><a href="http://newstatpress.altervista.org">NewStatPress site</a></td>
    </tr>
    <tr>
     <td>Daniele Lippi</td>
     <td>Original StatPress develoup</td>
-    <td><a href="http://wordpress.org/extend/plugins/statpress/">StatPress site</a></td>
    </tr>
    <tr>
     <td>Pawel Dworniak</td>
     <td>Better polish translation</td>
-    <td></td>
    </tr>
    <tr>
     <td>Sisko</td>
     <td>Open link in new tab/window<br>
         New displays of data for spy function<br>
     </td>
-    <td></td>
    </tr>
    <tr>
     <td>from wp_slimstat</td>
     <td>Add option for not track given IPs<br>
         Add option for not track given permalinks
     </td>
-    <td></td>
    </tr>
    <tr>
     <td>Ladislav</td>
     <td>Let Search function to works again</td>
-    <td></td>
    </tr>
    <tr>
     <td>from statpress-visitors</td>
@@ -491,12 +484,10 @@ function iriNewStatPressCredits() {
         Add in the option the ability to update in a range of date<br>
         New spy and bot
     </td>
-    <td></td>
    </tr>
    <tr>
     <td>Christopher Meng</td>
     <td>Add Simplified Chinese translation</td>
-    <td><a href="http://cicku.me">cicku.me</a></td>
    </tr>
    <tr>
     <td>Maurice Cramer</td>
@@ -505,52 +496,42 @@ function iriNewStatPressCredits() {
         Fix missing browser image and IE aligment failure in spy section<br>
         Fix nation image display in spy
     </td>
-    <td></td>
    </tr>
    <tr>
     <td>shilom</td>
     <td>Updating French translation</td>
-    <td></td>
    </tr>
    <tr>
     <td>Vincent G</td>
     <td>Add Lithuanian translation</td>
-    <td><a href="http://www.Host1Free.com">Host1Free (Free Hosting)</a></td>
    </tr>
    <tr>
     <td>Ruud van der Veen</td>
     <td>Add tab delimiter for exporting data</td>
-    <td></td>
    </tr>
    <tr>
     <td>godOFslaves</td>
     <td>Update Russian translation</td>
-    <td><a href="http://www.htconexapk.ru">www.htconexapk.ru</a></td>
    </tr>
    <tr>
     <td>Branco</td>
     <td>Add Slovak translation</td>
-    <td><a href="http://webhostinggeeks.com/blog/">WebHostingGeeks.com</a></td>
    </tr>
    <tr>
     <td>Peter Bago</td>
     <td>Add Hungarian translation</td>
-    <td><a href="http://webrestaurator.hu">webrestaurator.hu</a></td>
    </tr>
    <tr>
     <td>Alphonse PHILIPPE </td>
     <td>Update French translation</td>
-    <td><a href="http://www.papinette.fr">papinette.fr</a></td>
    </tr>
    <tr>
     <td>Boulis Antoniou</td>
     <td>Add Greek translation</td>
-    <td><a href="http://boulistips.com">boulistips.com</a></td>
    </tr>
    <tr>
     <td>Michael Yunat</td>
     <td>Add Ukranian translation</td>
-    <td><a href="http://getvoip.com/blog">getvoip.com</a></td>
    </tr>
   </table>
   </div>
