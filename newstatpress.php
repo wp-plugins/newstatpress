@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.8.3  
+Version: 0.8.4
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.8.3';
+$_NEWSTATPRESS['version']='0.8.4';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir;
@@ -51,8 +51,8 @@ function iri_add_pages() {
   add_menu_page('NewStatPress', 'NewStatPress', $mincap, __FILE__, 'iriNewStatPress', plugins_url('newstatpress/images/stat.png',dirname(plugin_basename(__FILE__))));
   add_submenu_page(__FILE__, __('Overview','newstatpress'), __('Overview','newstatpress'), $mincap, __FILE__, 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Details','newstatpress'), __('Details','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=details', 'iriNewStatPress');
-  add_submenu_page(__FILE__, __('Spy','newstatpress'), __('Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
-  add_submenu_page(__FILE__, __('New Spy','newstatpress'), __('New Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=newspy', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Last visitors by Spy','newstatpress'), __('Last visitors by Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spy', 'iriNewStatPress');
+  add_submenu_page(__FILE__, __('Visitors by Spy','newstatpress'), __('Visitors by Spy','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=newspy', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Spy Bot','newstatpress'), __('Spy Bot','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=spybot', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Search','newstatpress'), __('Search','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=search', 'iriNewStatPress');
   add_submenu_page(__FILE__, __('Export','newstatpress'), __('Export','newstatpress'), $mincap, __FILE__ . '&newstatpress_action=export', 'iriNewStatPress');
@@ -214,14 +214,14 @@ function iriNewStatPressOptions() {
         <input type="text" name="newstatpress_el_overwiew" value="<?php echo (get_option('newstatpress_el_overwiew')=='') ? 10:get_option('newstatpress_el_overwiew'); ?>" size="3" maxlength="3" />
        </td></tr>
 
-      <tr><td><?php _e('New Spy: number of IP per page','newstatpress'); ?>
+      <tr><td><?php _e('Visitors by Spy: number of IP per page','newstatpress'); ?>
         <select name="newstatpress_ip_per_page_newspy">          
           <option value="20" <?php if(get_option('newstatpress_ip_per_page_newspy') == "20") print "selected"; ?>>20</option>
           <option value="50" <?php if(get_option('newstatpress_ip_per_page_newspy') == "50") print "selected"; ?>>50</option>
           <option value="100" <?php if(get_option('newstatpress_ip_per_page_newspy') == "100") print "selected"; ?>>100</option>          
         </select></td></tr>
 
-      <tr><td><?php _e('New Spy: number of visits for IP','newstatpress'); ?>
+      <tr><td><?php _e('Visitors by Spy: number of visits for IP','newstatpress'); ?>
         <select name="newstatpress_visits_per_ip_newspy">          
           <option value="20" <?php if(get_option('newstatpress_visits_per_ip_newspy') == "20") print "selected"; ?>>20</option>
           <option value="50" <?php if(get_option('newstatpress_visits_per_ip_newspy') == "50") print "selected"; ?>>50</option>
@@ -1053,7 +1053,7 @@ function iriNewStatPressNewSpy() {
 
   $qry = $wpdb->get_results($sql);
 
-  echo "<div class='wrap'><h2>" . __('Visitor Spy', 'newstatpress') . "</h2>";
+  echo "<div class='wrap'><h2>" . __('Visitors', 'newstatpress') . "</h2>";
 ?>
 <script>
 function ttogle(thediv){
@@ -1069,7 +1069,7 @@ document.getElementById(thediv).style.display="none"
   newstatpress_print_pp_link($NP,$pp,$action);
   echo'</div><table id="mainspytab" name="mainspytab" width="99%" border="0" cellspacing="0" cellpadding="4">';    
   foreach ($qry as $rk) {
-    // Visitor Spy
+    // Visitors
     if ($ip <> $rk->ip) { 
       //this is the first time these ip appear, print informations
       echo "<tr><td colspan='2' bgcolor='#dedede'><div align='left'>";  
@@ -1261,7 +1261,7 @@ function iriNewStatPressSpy() {
   # Spy
   $today = gmdate('Ymd', current_time('timestamp'));
   $yesterday = gmdate('Ymd', current_time('timestamp')-86400);
-  print "<div class='wrap'><h2>".__('Spy','newstatpress')."</h2>";
+  print "<div class='wrap'><h2>".__('Last visitors','newstatpress')."</h2>";
   $sql="
     SELECT ip,nation,os,browser,agent 
     FROM $table_name 
@@ -3543,10 +3543,10 @@ function iriOverview($print = TRUE) {
     }  # week-cut
     $result = $result. "><div style='float:left;height: 100%;width:100%;font-family:Helvetica;font-size:7pt;text-align:center;border-right:1px solid white;color:black;'>
        <div style='background:#ffffff;width:100%;height:".$px_white."px;'></div>
-       <div style='background:$unique_color;width:100%;height:".$px_visitors."px;' title='".$qry_visitors->total." visitors'></div>
-       <div style='background:$web_color;width:100%;height:".$px_pageviews."px;' title='".$qry_pageviews->total." pageviews'></div>
-       <div style='background:$spider_color;width:100%;height:".$px_spiders."px;' title='".$qry_spiders->total." spiders'></div>
-       <div style='background:$rss_color;width:100%;height:".$px_feeds."px;' title='".$qry_feeds->total." feeds'></div>
+       <div style='background:$unique_color;width:100%;height:".$px_visitors."px;' title='".$qry_visitors->total." ".__(' visitors','newstatpress')."'></div>
+       <div style='background:$web_color;width:100%;height:".$px_pageviews."px;' title='".$qry_pageviews->total." ".__('pageviews','newstatpress')."'></div>
+       <div style='background:$spider_color;width:100%;height:".$px_spiders."px;' title='".$qry_spiders->total." ".__('spiders','newstatpress')."'></div>
+       <div style='background:$rss_color;width:100%;height:".$px_feeds."px;' title='".$qry_feeds->total." ".__('feeds','newstatpress')."'></div>
        <div style='background:gray;width:100%;height:1px;'></div>
        <br />".gmdate('d', current_time('timestamp')-86400*$gg) . ' ' . gmdate('M', current_time('timestamp')-86400*$gg) . "</div></td>\n";
   }
