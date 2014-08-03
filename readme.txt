@@ -3,8 +3,8 @@ Contributors: ice00
 Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
-Tested up to: 3.5.1
-Stable Tag: 0.5.9
+Tested up to: 3.9.1
+Stable Tag: 0.8.5
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -58,6 +58,15 @@ Widget is customizable. These are the available variables:
 * %topbrowser% - The most used Browser
 * %topos% - The most used O.S.
 * %topsearch% - The most used search terms
+* %installed% - Give the number of installed plugin (experimental)
+
+The number of installed plugins is obtained by counting the encripted MD5 site domain where the 
+plugin is installed and his version inside a table into newstatpress.altervista.org database.
+As MD5 is used, this means that the site is registered anonymous and so site privacy is mantained.
+Actually the registration is send when you are in admin area, so it not affects a user that visit your site.
+If you put %installed% into one your page, take present that it goes to read a value to 
+newstatpress.altervista.org database (it is one value, so performance should be fast).
+The used registration scripts are added inside include directory.
 
 Now you could add these values everywhere! NewStatPress offers a new PHP function *NewStatPress_Print()*.
 * i.e. NewStatPress_Print("%totalvisits% total visits.");
@@ -157,7 +166,7 @@ Check at http://newstatpress.altervista.org
 = 0.1.9 =
 
 * make all reports in details to have the number of entries you want
-* Add [NewStatPress: xxx] experimantal function for having report into wordpress page
+* Add [NewStatPress: xxx] experimental function for having report into wordpress page
 * Add %totalpageviews% - total pages view
 
 = 0.2.0 =
@@ -356,6 +365,125 @@ Check at http://newstatpress.altervista.org
 = 0.5.9 =
 
 * Avoid possible problem with refferer (use update for sync the old data)
+
+= 0.6.0 =
+
+* Fix missing $ in refferer
+
+= 0.6.1 =
+
+* Fix isset for referrer
+
+= 0.6.2 =
+
+* Add missing 2 spider images
+* Make configurable the number of elements in summary
+* Add random “support” link to all search robots (read the agrement note before updating)
+
+= 0.6.3 =
+
+* Fix possible warning and line feeds
+
+= 0.6.4 =
+
+* Add %installed% that give the number of installed plugin (it is anonymous and experimental,
+  read the note)
+
+= 0.6.5 =
+
+* Mask potential error in reading of installed plugin
+* Activate installed registration when in admin page
+
+= 0.6.6 =
+
+* Try to fix bug-id 423/434 (needs PHP5)
+
+= 0.6.7 =
+
+* Fix not resolve completly, so remove support link
+
+= 0.6.8 =
+
+* Insert timeout in reading the total number of newstatpress installation if you use %installed%
+
+= 0.6.9 =
+
+* Remove old (unused) chart code that was present over the new Google Api
+
+= 0.7.0 =
+
+* Make tables compatible with qTransalte plugin
+* Fix bug id 390 (Graph Legend includes + Sign) 
+
+= 0.7.1 =
+
+* Add Os (+6), Browser (+14)
+
+= 0.7.2 =
+
+* Add option to prune only the spiders
+* Add remove menu for deleting all stored data
+
+= 0.7.3 =
+
+* Fix maxxday missing declaration
+
+= 0.7.4 =
+
+* Fix POST request for flag API services that needs GET (Thanks to Giuseppe Chiesa)
+
+= 0.7.5 =
+
+* Fix possible security issue (backported from statpress)
+* Resolve /? problem for permalink in links
+
+= 0.7.6 =
+
+* Change target formula to use the true month's days duration and computes it according even with hours/minutes (thanks to Capitalist)
+
+= 0.7.7 =
+
+* Fix $userdata issue if it is empty (thanks to szaleq)
+* Fix plugin directory usage when not standard wp installation is used (thanks to szaleq)
+* Add 'Target' to be translated (thanks to ALPPH)
+* Add OS (+9), Browser (+1)
+
+= 0.7.8 =
+
+* Fix global definitions
+
+= 0.7.9 =
+
+* Update French translaction (thanks to Alphonse PHILIPPE)
+
+= 0.8.0 =
+
+* Fix spy/new spy/spy bot menu
+* Fix 4 missing details
+* Replace mysql_real_escape_string with esc_sql for WP 3.9
+
+= 0.8.1 =
+
+* Add Greek translaction (thanks to Boulis Antoniou)
+
+= 0.8.2 =
+
+* Add Ukranian translaction (thanks to Michael Yunat)
+
+= 0.8.3 =
+
+* Remove greetings link as new Wordpress policy
+
+= 0.8.4 =
+
+* Spy menu reorganziation (thanks to Alphonse PHILIPPE)
+* Update French translaction (thanks to Alphonse PHILIPPE)
+* Update Italian translaction
+
+= 0.8.5 =
+
+* Add Browser (+10)
+* Increase refferer from 250 to 512 chars
 
 == Upgrade Notice ==
 
@@ -558,3 +686,107 @@ Check at http://newstatpress.altervista.org
 = 0.5.9 =
 
 * released 30/04/2013
+
+= 0.6.0 =
+
+* released 02/05/2013
+
+= 0.6.1 =
+
+* released 04/05/2013
+
+= 0.6.2 =
+
+* released 20/05/2013
+
+= 0.6.3 =
+
+* released 20/05/2013
+
+= 0.6.4 =
+
+* released 26/05/2013
+
+= 0.6.5 =
+
+* released 28/05/2013
+
+= 0.6.6 =
+
+* released 29/06/2013
+
+= 0.6.7 =
+
+* released 29/06/2013
+
+= 0.6.8 =
+
+* released 29/06/2013
+
+= 0.6.9 =
+
+* released 30/06/2013
+
+= 0.7.0 =
+
+* released 20/07/2013
+
+= 0.7.1 =
+
+* released 17/08/2013
+
+= 0.7.2 =
+
+* released 15/09/2013
+
+= 0.7.3 =
+
+* released 22/09/2013
+
+= 0.7.4 =
+
+* released 01/10/2013
+
+= 0.7.5 =
+
+* released 27/12/2013
+
+= 0.7.6 =
+
+* released 11/01/2014
+
+= 0.7.7 =
+
+* released 14/03/2014
+
+= 0.7.8 =
+
+* released 14/03/2014
+
+= 0.7.9 =
+
+* released 05/04/2014
+
+= 0.8.0 =
+
+* released 17/04/2014
+
+= 0.8.1 =
+
+* released 25/05/2014
+
+= 0.8.2 =
+
+* released 07/06/2014
+
+= 0.8.3 =
+
+* released 11/06/2014
+
+= 0.8.4 =
+
+* released 13/07/2014
+
+= 0.8.5 =
+
+* released 03/08/2014
