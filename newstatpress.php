@@ -533,6 +533,10 @@ function iriNewStatPressCredits() {
     <td>Michael Yunat</td>
     <td>Add Ukranian translation</td>
    </tr>
+   <tr>
+    <td>kjmtsh</td>
+    <td>Many fixes about empty query result and obsolete functions</td>
+   </tr>
   </table>
   </div>
 <?php 
