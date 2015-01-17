@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.8.7
+Version: 0.8.8
 Author: Stefano Tognon (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.8.7';
+$_NEWSTATPRESS['version']='0.8.8';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir;
@@ -2441,16 +2441,23 @@ function iri_NewStatPress_Vars($body) {
   # look for %alltotalvisits%
   if(strpos(strtolower($body),"%alltotalvisits%") !== FALSE) {
     $qry = $wpdb->get_results(
-      "SELECT SUM(pageview) AS pageview 
-       FROM (
-         SELECT count(DISTINCT(ip)) AS pageview 
-         FROM $table_name AS t1 
-         WHERE 
-           spider='' AND 
-           feed='' AND 
-           urlrequested!='' 
-         GROUP BY urlrequested
-       ) AS t2;
+      //"SELECT SUM(pageview) AS pageview 
+      // FROM (
+      //   SELECT count(DISTINCT(ip)) AS pageview 
+      //   FROM $table_name AS t1 
+      //   WHERE 
+      //     spider='' AND 
+      //     feed='' AND 
+      //     urlrequested!='' 
+      //   GROUP BY urlrequested
+      // ) AS t2;
+      //");
+      "SELECT count(distinct urlrequested, ip) AS pageview 
+       FROM $table_name AS t1
+       WHERE 
+         spider='' AND 
+         feed='' AND 
+         urlrequested!=''; 
       ");
     $body = str_replace("%alltotalvisits%", $qry[0]->pageview, $body); 
   }
@@ -2487,15 +2494,16 @@ function iri_NewStatPress_Vars($body) {
 
   # look for %visitorsonline%
   if(strpos(strtolower($body),"%visitorsonline%") !== FALSE) { 	
-    $to_time =  current_time('timestamp');
-    $from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
-    $to_time = date('Y-m-d H:i:s', $to_time);
+    $act_time = current_time('timestamp');
+    $from_time = date('Y-m-d H:i:s', strtotime('-4 minutes', $act_time));
+    $to_time = date('Y-m-d H:i:s', $act_time);
     $qry = $wpdb->get_results(
       "SELECT count(DISTINCT(ip)) AS visitors 
        FROM $table_name 
        WHERE 
          spider='' AND
          feed='' AND 
+         date = '".gmdate("Ymd", $act_time)."' AND
          timestamp BETWEEN '$from_time' AND '$to_time';
       ");
     $body = str_replace("%visitorsonline%", $qry[0]->visitors, $body);
@@ -2503,15 +2511,16 @@ function iri_NewStatPress_Vars($body) {
 
   # look for %usersonline%
   if(strpos(strtolower($body),"%usersonline%") !== FALSE) { 	
-    $to_time =  current_time('timestamp');
-    $from_time =  date('Y-m-d H:i:s', strtotime('-4 minutes', $to_time));
-    $to_time = date('Y-m-d H:i:s', $to_time);
+    $act_time = current_time('timestamp');
+    $from_time = date('Y-m-d H:i:s', strtotime('-4 minutes', $act_time));
+    $to_time = date('Y-m-d H:i:s', $act_time);
     $qry = $wpdb->get_results(
       "SELECT count(DISTINCT(ip)) AS users 
        FROM $table_name 
        WHERE 
          spider='' AND 
          feed='' AND 
+         date = '".gmdate("Ymd", $act_time)."' AND
          user<>'' AND 
          timestamp BETWEEN '$from_time' AND '$to_time';
       ");
