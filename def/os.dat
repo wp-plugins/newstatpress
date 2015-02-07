@@ -1,3 +1,4 @@
+Windows 8.1|WindowsNT6.3|
 Windows 8|WindowsNT6.2|
 Windows 7|WindowsNT7|
 Windows 7|WindowsNT6.1|
@@ -21,6 +22,7 @@ Windows 3.1|Win3.1|
 Windows CE|WindowsCE|
 Windows CE|WinCE|
 Windows|Win32|
+Windows Phone OS 8|Windows Phone 8.0|
 Windows Phone OS 7|WindowsPhoneOS7.0|
 Windows Phone OS|WindowsPhoneOS|
 Windows Mobile|WindowsMobile|
@@ -41,6 +43,8 @@ iOS 3|iPhoneOS3|
 iOS 4|iPhoneOS4|
 iOS 5|iPhoneOS5|
 iOS 6|iPhoneOS6|
+iOS 7|iPhoneOS7|
+iOS 8|iPhoneOS8|
 iPhone|iPhone|
 iPod|iPod|
 iPad|iPad|
@@ -50,6 +54,7 @@ Android Linux 1|Android1|
 Android Linux 2|Android2|
 Android Linux 3|Android3|
 Android Linux 4|Android4|
+Android Linux 5|Android5|
 Android Linux|Android|
 Bada 1.2|Bada/1.2|
 Bada|Bada|
@@ -59,6 +64,8 @@ BlackBerry 4.6|BlackBerry8520/4.6|
 BlackBerry|BlackBerry|
 Mac OS X Cheetah|MacOSX10.0|
 Mac OS X Cheetah|MacOSX10_0|
+Mac OS X Yosemite|MacOSX10.10|
+Mac OS X Yosemite|MacOSX10_10|
 Mac OS X Puma|MacOSX10.1|
 Mac OS X Puma|MacOSX10_1|
 Mac OS X Jaguar|MacOSX10.2|
@@ -85,18 +92,31 @@ Debian Linux|Debian|
 Ubuntu Hardy|Ubuntu/8.04|
 Ubuntu Jaunty|Ubuntu/9.25|
 Ubuntu Maverick|Ubuntu/10.10| 
-Ubuntu lucid Lynx|Ubuntu/10.04|
+Ubuntu Lucid Lynx|Ubuntu/10.04|
 Ubuntu Chromium|Ubuntu/11.04|
 Ubuntu Oneiric Ocelot|Ubuntu/11.10|
 Ubuntu Precise Pangolin|Ubuntu/12.04|
 Ubuntu Quantal Quetzal|Ubuntu/12.10|
 Ubuntu Raring Ringtail|Ubuntu/13.04|
+Ubuntu Saucy Salamander|Ubuntu/13.10|
+Ubuntu Trusty Tahr|Ubuntu/14.04|
+Ubuntu Utopic Unicorn|Ubuntu/14.10|
 Ubuntu Linux|Ubuntu|
 Suse Linux|Suse|
 Suse Linux|SUSE|
 Fedora Linux|Fedora|
+Linux Mint 17 Rebecca|Linux Mint/17 (Rebecca)|
+Linux Mint 16 Petra|Linux Mint/16 (Petra)|
+Linux Mint 15 Olivia|Linux Mint/15 (Olivia)|
+Linux Mint 14 Nadia|Linux Mint/14 (Nadia)|
+Linux Mint 13 Maya|Linux Mint/13 (Maya)|
+Linux Mint 12 Lisa|Linux Mint/12 (Lisa)|
+Linux Mint 11 Katya|Linux Mint/11 (Katya)|
 Linux Mint 10 Julia|Linux Mint/10 (Julia)|
 Linux Mint 9 Isadora|Linux Mint/9 Isadora|
+Linux Mint 9 Isadora|Linux Mint/9 (Isadora)|
+Linux Mint 8 Helena|Linux Mint/8 (Helena)|
+Linux Mint 6 Felicia|Linux Mint/6 (Felicia)|
 Linux Mint|Linux Mint|
 Linux|Linux|
 Linux|linux|
@@ -110,3 +130,5 @@ SGI Irix|Irix|
 Unix|Unix|
 Unix|X11|
 QNX|QNX|
+Playstation 3|PLAYSTATION 3|
+PSP|PSP (PlayStation Portable)|
