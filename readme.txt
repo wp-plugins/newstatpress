@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 4.1
-Stable Tag: 0.8.8
+Stable Tag: 0.8.9
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -48,6 +48,8 @@ Widget is customizable. These are the available variables:
 * %todaytotalpageviews% -  total pages view today
 * %since% - Date of the first hit
 * %visits% - Today visits
+* %yvisits% - Yesterday visits
+* %mvisits% - Month visits
 * %totalvisits% - Total visits
 * %os% - Operative system
 * %browser% - Browser
@@ -502,6 +504,25 @@ Check at http://newstatpress.altervista.org
 * Optimize %visitorsonline% query (uses more indexes)
 * Optimize %usersonline% query () (uses more indexes)
 
+= 0.8.9 =
+
+* Add Ip2nation download function in option page
+* Add plugin homepage link, news feeds link, bouton donation in credit page
+* Add CSS style to stylesheet (./css/style.css), partially done
+*  remove page
+*  update page
+*  credit page
+* Optimization of the option page
+* Optimization of the credit page
+* Optimization of the export page
+* Optimization of the remove page
+* Optimization of the database update page
+* Fixed 'selected sub-menu' bug
+* Fixed wrong path to update IP2nation when database is updated (/includes)
+* Add variables %yvisits% (yesterday visits) %mvisits% (month visits)
+* Fix 5 bots, add 13 new bots
+* Update locate Italian and French
+
 
 == Upgrade Notice ==
 
@@ -820,3 +841,7 @@ Check at http://newstatpress.altervista.org
 = 0.8.8 =
 
 * released 17/01/2015
+
+= 0.8.9 =
+
+* released 07/02/2015

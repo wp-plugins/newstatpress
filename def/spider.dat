@@ -11,11 +11,13 @@ BackType|support@backtype.com|
 Baiduspider|Baiduspider|
 BecomeBot|BecomeBot|
 Bing|www.bing.com|
+Bit.ly|bitlybot|
 Biz360|Biz360|
 Blogged|blogged_crawl|
 Bloggsi|Bloggsi|
 Bloggsi|http://bloggsi.com/|
 Bloglines|Bloglines|
+bloglovin|Bloglovin/1.0|
 BlogPulse|BlogPulse|
 BlogScope|BlogScope|
 BlogScope|www.blogscope.net|
@@ -35,14 +37,17 @@ Cazoodle|Cazoodle|
 CCBot|CCBot|
 CCBot|commoncrawl.org/bot.html|
 Cityreview|cityreview|
+comentluv|http://www.commentluv.com|
 Cuil|Twiceler|
 cURL|curl/|
+DataSift|TweetmemeBot/4.0|
 discobot|discobot|
 DiscoveryEngine|disco/Nutch|
 DoCoMo|DoCoMo|
 DotBot|DotBot|
 EnaBall|EnaBot|
 Entireweb|entireweb.com|
+embed.ly|Embedly/0.2|
 Exabot|Exabot|
 Exalead|NG/2.0|
 Ezooms|ezooms.bot@gmail.com|
@@ -51,8 +56,10 @@ Fastsearch|FASTMetaWebCrawler|
 Fastsearch|fastsearch|
 FeedBurner|FeedBurner|
 Feed::Find|Feed::Find|
+Feedly|Feedly/1.0|
 Feedster|Feedster|
 Feedster|Feedster Crawler|
+flipboard|http://flipboard.com/browserproxy
 FriendFeed|FriendFeedBot|
 Gaisbot|Gaisbot|
 Galbot|www.galbot.com|
@@ -99,6 +106,7 @@ LinkedIn|www.linkedin.com|
 LinkWalker|LinkWalker|
 LiteFinder|LiteFinder|
 Livedoor|livedoorScreenShot|
+Livlap|LivelapBot/0.2|
 llssbot|llssbot|
 LOGICIEL|LOGICIEL|
 LookSmart|grub-client|
@@ -108,6 +116,7 @@ Majestic-12|MJ12bot|
 McBot|McBot|
 Megite|Megite2.0|
 METASpider|METASpider|
+MetaURI|MetaURI API/2.0|
 Micosi JP|micosi.jp|
 Micro$oft Bot |MSRBOT|
 Microsoft URL Control|MicrosoftURLControl|
@@ -126,6 +135,7 @@ Netseer|www.netseer.com|
 Neugierig|Neugierig|
 Nexen|www.nexen.net|
 NG 2.0|NG/2.0|
+OrangeBot|OrangeBot/2.0|
 OrangeSpider|OrangeSpider|
 Outbrain|SphereScout|
 PHP version tracker Nexen.net|www.nexen.net|
@@ -154,8 +164,9 @@ Spinn3r|Spinn3r|
 Spinn3r|Tailrank|
 Spinn3r|www.tailrank.com|
 SpokeSpider|SpokeSpider|
-Steeler|Steeler
+Steeler|Steeler|
 Summify|Summify|
+Superfeedr|http://superfeedr.com|
 Synoo|Synoobot|
 Technorati|Technoratibot|
 Trendiction|trendictionbot|
@@ -168,6 +179,8 @@ Twingly|TwinglyRecon|
 UMBC Memeta|UMBC-Memeta|
 UniversalFeedParser|UniversalFeedParser/|
 Unknow|Mozilla/4.0 (compatible; ICS 1.2.105)|
+Unknow|python-requests/2.1.0|
+Unknow|Google-HTTP-Java-Client/1.17.0-rc|
 Unknown Spam Bot|Mozilla/4.0(compatible;)|
 Unknown Spam Bot|Mozilla/0.6Beta(Windows)|
 Unknown Spam Bot|Mozilla/0.91Beta(Windows)|
@@ -198,11 +211,11 @@ YaCy|yacybot|
 Yahoo FeedSeeker|YahooFeedSeeker|
 Yahoo FeedSeeker|YahooFeedSeeker/|
 Yahoo|Yahoo-Yahoo-YSM|
-Yahoo! Japan|Y!J-|
-Yahoo!|MMCrawler|
-Yahoo!|slurp@inktomi|
-Yahoo!|Yahoo-Test|
-Yahoo!|Yahoo!Slurp|
+Yahoo Japan|Y!J-|
+Yahoo|MMCrawler|
+Yahoo|slurp@inktomi|
+Yahoo|Yahoo-Test|
+Yahoo|Yahoo!Slurp|
 Yandex|yandex|
 Yandex|Yandex|
 Yanga|Yanga|
