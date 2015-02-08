@@ -2,37 +2,38 @@
 
 function iriNewStatPressCredits() {
 
-  $contributors = [
-    ['Stefano Tognon', 'NewStatPress develoup'],
-    ['cHab', 'NewStatPress collaborator'],
-    ['Daniele Lippi', 'Original StatPress develoup'],
-    ['Sisko', 'Open link in new tab/window<br>New displays of data for spy function<br>'],
-    ['from wp_slimstat', 'Add option for not track given IPs<br /> Add option for not track given permalinks'],
-    ['Ladislav', 'Let Search function to works again'],
-    ['from statpress-visitors', 'Add new OS (+44), browsers (+52) and spiders (+71)<br /> Add in the option the ability to update in a range of date<br /> New spy and bot'],
-    ['Maurice Cramer','Add dashboard widget<br /> Fix total since in overwiew<br /> Fix missing browser image and IE aligment failure in spy section<br /> Fix nation image display in spy'],
-    ['Ruud van der Veen', 'Add tab delimiter for exporting data'],
-    ['kjmtsh', 'Many fixes about empty query result and obsolete functions'],
-    ['shilom', 'French translation Update'],
-    ['Alphonse PHILIPPE', 'French translation Update'],
-    ['Vincent G.', 'Lithuanian translation Addition'],
-    ['Christopher Meng', 'Simplified Chinese translation Addition'],
-    ['godOFslaves', 'Russian translation Update'],
-    ['Branco', 'Slovak translation Addition'],
-    ['Peter Bago', 'Hungarian translation Addition'],
-    ['Boulis Antoniou', 'Greek translation Addition'],
-    ['Michael Yunat', 'Ukranian translation Addition'],
-    ['Pawel Dworniak', 'Polish translation Update']
-  ];
+  $contributors = array(
+    array('Stefano Tognon', 'NewStatPress develoup'),
+    array('cHab', 'NewStatPress collaborator'),
+    array('Daniele Lippi', 'Original StatPress develoup'),
+    array('Sisko', 'Open link in new tab/window<br>New displays of data for spy function<br>'),
+    array('from wp_slimstat', 'Add option for not track given IPs<br /> Add option for not track given permalinks'),
+    array('Ladislav', 'Let Search function to works again'),
+    array('from statpress-visitors', 'Add new OS (+44), browsers (+52) and spiders (+71)<br /> Add in the option the ability to update in a range of date<br /> New spy and bot'),
+    array('Maurice Cramer','Add dashboard widget<br /> Fix total since in overwiew<br /> Fix missing browser image and IE aligment failure in spy section<br /> Fix nation image display in spy'),
+    array('Ruud van der Veen', 'Add tab delimiter for exporting data'),
+    array('kjmtsh', 'Many fixes about empty query result and obsolete functions'),
+    array('shilom', 'French translation Update'),
+    array('Alphonse PHILIPPE', 'French translation Update'),
+    array('Vincent G.', 'Lithuanian translation Addition'),
+    array('Christopher Meng', 'Simplified Chinese translation Addition'),
+    array('godOFslaves', 'Russian translation Update'),
+    array('Branco', 'Slovak translation Addition'),
+    array('Peter Bago', 'Hungarian translation Addition'),
+    array('Boulis Antoniou', 'Greek translation Addition'),
+    array('Michael Yunat', 'Ukranian translation Addition'),
+    array('Pawel Dworniak', 'Polish translation Update')
+  );
   echo "<div class='wrap'><h2>"; _e('Credits','newstatpress'); echo "</h2>";
   echo "<br /><table id='credit'>\n";
   echo "<thead>\n<tr><th class='cell-l'>";  _e('Contributor','newstatpress'); echo "</th>\n<th class='cell-r'>"; _e('Description','newstatpress'); echo "</th></tr>\n</thead>\n<tbody>";
-  foreach($contributors as $user)
+
+  foreach($contributors as $contributors)
   {
     list($name, $contribution) = $user;
     echo "<tr>\n";
-    echo "<td class='cell-l'>$name</td>\n";
-    echo "<td class='cell-r'>$contribution</td>\n";
+    echo "<td class='cell-l'>$contributors[0]</td>\n";
+    echo "<td class='cell-r'>$contributors[1]</td>\n";
     echo "</tr>\n";
   };
   echo "<tbody></table></div>";

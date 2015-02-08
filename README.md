@@ -6,9 +6,17 @@
 - tab construction for option page
 - tab construction for overview page
 
-## 0.9.0
+## 0.9.2 
 
 - [x] Fixed 'ALTER INDEX' error warning when user database is updated
+
+## 0.9.1
+
+- [x] Activate changes of 0.8.9 in version 0.9.1 with PHP fixes
+
+## 0.9.0
+
+- [x] Revert to version 0.8.8 for problems with old PHP version
 
 ## 0.8.9
 
