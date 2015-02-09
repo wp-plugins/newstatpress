@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 4.1
-Stable Tag: 0.9.1
+Stable Tag: 0.9.2
 
 NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
 
@@ -533,6 +533,10 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 
 * Fix PHP to be compatible with a old version (all 0.8.9 chaneges are now activated)
 
+= 0.9.2 =
+
+* CSS fix, Overview fix and wp_enqueue_style compatibility fix
+
 
 == Upgrade Notice ==
 
@@ -863,3 +867,7 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 = 0.9.1 =
 
 * released 08/02/2015
+
+= 0.9.2 =
+
+* released 09/02/2015

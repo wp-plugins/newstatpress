@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.9.1
+Version: 0.9.2
 Author: Stefano Tognon and cHab (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.9.1';
+$_NEWSTATPRESS['version']='0.9.2';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir, $option_list_info;
@@ -33,13 +33,27 @@ $option_list_info=array( // list of option variable name, with default value ass
 );
 
 
-// add by chab
-//include stylesheet
-// TODO : TO NEED to use your function for old version of WP
-//add function to register only on the admin option
-wp_enqueue_style('styles', plugins_url('./css/style.css', __FILE__));
+/**
+ * add by chab
+ *
+ * Add the plugin CSS style only on admin page
+ * TODO :  use your function for old version of WP
+ */
+  function register_plugin_styles() {
 
-// add by chab
+      $style_path=plugins_url('./css/style.css', __FILE__);
+
+      wp_register_style('NewStatPressStyles', $style_path);
+      wp_enqueue_style('NewStatPressStyles');
+  }
+  add_action( 'admin_enqueue_scripts', 'register_plugin_styles' );
+
+/**
+ * add by chab
+ *
+ * iriNewStatPressCredits() — credit menu page
+ * iriNewStatPressRemove() — remove menu page
+ */
 require ('includes/functions-extra.php');
 
 
@@ -63,14 +77,14 @@ function PluginUrl() {
  * Add pages with NewStatPress commands
  */
 function iri_add_pages() {
-  # Create/update table if it not exists
+  // Create/update table if it not exists
   global $wpdb;
   $table_name = $wpdb->prefix . "statpress";
   if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
     iri_NewStatPress_CreateTable();
   }
 
-  # add submenu
+  // check the level fixed
   $mincap=get_option('newstatpress_mincap');
   if($mincap == '') {
     $mincap="level_8";
@@ -88,7 +102,6 @@ function iri_add_pages() {
   add_submenu_page('NSP-main', __('Search','newstatpress'), __('Search','newstatpress'), $mincap, 'search-page', 'iriNewStatPressSearch');
   add_submenu_page('NSP-main', __('Export','newstatpress'), __('Export','newstatpress'), $mincap, 'export-page', 'iriNewStatPressExport');
   add_submenu_page('NSP-main', __('Options','newstatpress'), __('Options','newstatpress'), $mincap, 'options-page', 'iriNewStatPressOptions');
-  // add_submenu_page('NSP-main', __('NewStatPressUpdate','newstatpress'), __('NewStatPressUpdate','newstatpress'), $mincap, 'update-page', 'iriNewStatPressUpdate');
   add_submenu_page('NSP-main', __('Credits','newstatpress'), __('Credits','newstatpress'), $mincap, 'credits-page', 'iriNewStatPressCredits');
   add_submenu_page('NSP-main', __('Remove','newstatpress'), __('Remove','newstatpress'), $mincap,  'remove-page', 'iriNewStatPressRemove');
 }
@@ -3205,60 +3218,55 @@ function iriOverview($print = TRUE) {
   global $wpdb;
   $table_name = $wpdb->prefix . "statpress";
 
-  $result="";
-
+  $result='';
   # Tabella OVERVIEW
-  $unique_color="#114477";
-  $web_color="#3377B6";
-  $rss_color="#f38f36";
-  $spider_color="#83b4d8";
+  // $unique_color="#114477";
+  // $web_color="#3377B6";
+  // $rss_color="#f38f36";
+  // $spider_color="#83b4d8";
 
   $since = NewStatPress_Print('%since%');
   $lastmonth = iri_NewStatPress_lastmonth();
-  $pastyear = gmdate('Y', current_time('timestamp'))-1;
+  // $pastyear = gmdate('Y', current_time('timestamp'))-1;
   $thismonth = gmdate('Ym', current_time('timestamp'));
-  $thismonthH = gmdate('M, Y', current_time('timestamp'));
-  $yesterday = gmdate('Y,md', current_time('timestamp')-86400);
-  $yesterdayH = gmdate('d M', current_time('timestamp')-86400);
+  $yesterday = gmdate('Ymd', current_time('timestamp')-86400);
   $today = gmdate('Ymd', current_time('timestamp'));
-  $todayH = gmdate('d M', current_time('timestamp'));
   $tlm[0]=substr($lastmonth,0,4); $tlm[1]=substr($lastmonth,4,2);
-  $lastmonthH = gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0]));
+
+  $lastmonthHeader = gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0]));
+  $thismonthHeader = gmdate('M, Y', current_time('timestamp'));
+  $yesterdayHeader = gmdate('d M', current_time('timestamp')-86400);
+  $todayHeader = gmdate('d M', current_time('timestamp'));
 
 
-  $result = $result. "<div class='wrap'><h2>". __('Overview','newstatpress'). "</h2>
-         <table class='widefat center nsp'>
-         <thead><tr>
-         <th></th>
-         <th>". __('Total since','newstatpress'). "<span class='date-overview'>" . $since ."</span></th>
-         <th scope='col'>". __('Last month','newstatpress'). "<span class='date-overview'>" . $lastmonthH ."</span></th>
-         <th scope='col'>". __('This month','newstatpress'). "<span class='date-overview'>" . $thismonthH ."</span></th>
-         <th scope='col'>". __('Target This month','newstatpress'). "<span class='date-overview'>" . $thismonthH ."</span></th>
-         <th scope='col'>". __('Yesterday','newstatpress'). "<span class='date-overview'>" . $yesterdayH ."</span></th>
-         <th scope='col'>". __('Today','newstatpress'). "<span class='date-overview'>" . $todayH ."</span></th>
-         </tr></thead>
-         <tbody id='the-list-overview'>";
+  $result.="<div class='wrap'><h2>". __('Overview','newstatpress'). "</h2>
+            <table class='widefat center nsp'>
+            <thead><tr>
+            <th></th>
+            <th>". __('Total since','newstatpress'). "<span class='date-overview'> $since </span></th>
+            <th scope='col'>". __('Last month','newstatpress'). "<span class='date-overview'> $lastmonthHeader </span></th>
+            <th scope='col'>". __('This month','newstatpress'). "<span class='date-overview'> $thismonthHeader </span></th>
+            <th scope='col'>". __('Target This month','newstatpress'). "<span class='date-overview'> $thismonthHeader </span></th>
+            <th scope='col'>". __('Yesterday','newstatpress'). "<span class='date-overview'> $yesterdayHeader </span></th>
+            <th scope='col'>". __('Today','newstatpress'). "<span class='date-overview'> $todayHeader </span></th>
+            </tr></thead>
+            <tbody id='the-list-overview'>";
 
   ################################################################################################
   # VISITORS ROW
-  $result = $result. "<tr><td class='test visitors'>". __('Visitors','newstatpress'). "</td>"; // add by chab
-
-  // $result = $result. "<tr ><td><div style='background:$unique_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Visitors','newstatpress'). "</td>";
+  $result.="<tr><td class='test visitors'>". __('Visitors','newstatpress'). "</td>";
 
   #TOTAL
-  $qry_total = $wpdb->get_row("SELECT count(DISTINCT ip) AS visitors FROM $table_name WHERE feed='' AND spider=''  AND date LIKE ?");
-  $result = $result. "<td>" . $qry_total->visitors . "</td>\n";
+  $qry_total = $wpdb->get_row("SELECT count(DISTINCT ip) AS visitors FROM $table_name WHERE feed='' AND spider=''");
+  $result.="<td>$qry_total->visitors</td>\n";
 
   #LAST MONTH
-  $qry_lmonth = $wpdb->get_row("
-    SELECT count(DISTINCT ip) AS visitors
-    FROM $table_name
-    WHERE
+  $qry_lmonth = $wpdb->get_row("SELECT count(DISTINCT ip) AS visitors FROM $table_name WHERE
       feed='' AND
       spider='' AND
       date LIKE '" . $lastmonth . "%'
   ");
-  $result = $result. "<td>" . $qry_lmonth->visitors . "</td>\n";
+  $result.="<td>$qry_lmonth->visitors</td>\n";
 
   #THIS MONTH
   $qry_tmonth = $wpdb->get_row("
@@ -3300,7 +3308,7 @@ function iriOverview($print = TRUE) {
        spider='' AND
        date = '$yesterday'
   ");
-  $result = $result. "<td>" . $qry_y->visitors . "</td>\n";
+  $result.="<td>$qry_y->visitors</td>\n";
 
   #TODAY
   $qry_t = $wpdb->get_row("
@@ -3563,7 +3571,7 @@ function iriOverview($print = TRUE) {
   # last "N" days graph  NEW
   $gdays=get_option('newstatpress_daysinoverviewgraph'); if($gdays == 0) { $gdays=20; }
   $start_of_week = get_option('start_of_week');
-  $result = $result. '<table width="100%" border="0"><tr>';
+  $overview_graph.='<table width="100%" border="0"><tr>';
   $qry = $wpdb->get_row("
     SELECT count(date) as pageview, date
     FROM $table_name
@@ -3624,26 +3632,24 @@ function iriOverview($print = TRUE) {
 
     $px_white = 100 - $px_feeds - $px_spiders - $px_pageviews - $px_visitors;
 
-    $result = $result.'<td width="'.$gd.'" valign="bottom"';
+    $overview_graph.='<td width="'.$gd.'" valign="bottom"';
     if($start_of_week == gmdate('w',current_time('timestamp')-86400*$gg)) {
-      $result = $result.' style="border-left:2px dotted gray; padding-left: 0px;
-      padding-right: 0px;"';
+      $overview_graph.=' style="border-left:2px dotted gray; padding-left: 0px; padding-right: 0px;"';
     }  # week-cut
-    $result = $result. "><div class='testons'>
+    $overview_graph.="><div class='testons'>
        <div style='background:#ffffff;width:100%;height:".$px_white."px;'></div>
-       <div style='background:$unique_color;width:100%;height:".$px_visitors."px;' title='".$qry_visitors->total." ".__(' visitors','newstatpress')."'></div>
-       <div style='background:$web_color;width:100%;height:".$px_pageviews."px;' title='".$qry_pageviews->total." ".__('pageviews','newstatpress')."'></div>
-       <div style='background:$spider_color;width:100%;height:".$px_spiders."px;' title='".$qry_spiders->total." ".__('spiders','newstatpress')."'></div>
-       <div class='feeds-r' style='height:".$px_feeds."px;' title='".$qry_feeds->total." ".__('feeds','newstatpress')."'></div>
+       <div class='visitors_bar' style='height:".$px_visitors."px;' title='".$qry_visitors->total." ".__('Visitors','newstatpress')."'></div>
+       <div class='web_bar' style='height:".$px_pageviews."px;' title='".$qry_pageviews->total." ".__('Pageviews','newstatpress')."'></div>
+       <div class='spiders_bar' style='height:".$px_spiders."px;' title='".$qry_spiders->total." ".__('Spiders','newstatpress')."'></div>
+       <div class='feeds-r' style='height:".$px_feeds."px;' title='".$qry_feeds->total." ".__('Feeds','newstatpress')."'></div>
        <div style='background:gray;width:100%;height:1px;'></div>
        <br />".gmdate('d', current_time('timestamp')-86400*$gg) . ' ' . gmdate('M', current_time('timestamp')-86400*$gg) . "</div></td>\n";
   }
-  $result = $result.'</tr></table>';
+  $overview_graph.='</tr></table></div>';
 
-  $result = $result.'</div>';
   # END OF OVERVIEW
   ####################################################################################################
-
+  $result=$result.$overview_graph;
   if ($print) print $result;
   else return $result;
 }

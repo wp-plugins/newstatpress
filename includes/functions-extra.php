@@ -30,7 +30,7 @@ function iriNewStatPressCredits() {
 
   foreach($contributors as $contributors)
   {
-    list($name, $contribution) = $user;
+    // list($name, $contribution) = $user;
     echo "<tr>\n";
     echo "<td class='cell-l'>$contributors[0]</td>\n";
     echo "<td class='cell-r'>$contributors[1]</td>\n";

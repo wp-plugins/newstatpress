@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NewStatPress v0.8.9\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-07 17:06+0100\n"
-"PO-Revision-Date: 2015-02-07 17:08+0100\n"
+"POT-Creation-Date: 2015-02-08 23:11+0100\n"
+"PO-Revision-Date: 2015-02-08 23:12+0100\n"
 "Last-Translator: ice00 <ice00@libero.it>\n"
 "Language-Team: cHab <chabdev@free.fr>\n"
 "Language: fr_FR\n"
@@ -37,33 +37,33 @@ msgstr "Contributeur"
 msgid "Description"
 msgstr "Description"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:40
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:42
 msgid "Plugin homepage"
 msgstr "Page d'accueil du Plugin"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:41
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:43
 msgid "RSS news"
 msgstr "Fil RSS"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:41
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:43
 msgid "News"
 msgstr "News"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:46
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:48
 msgid "Make a donation"
 msgstr "Faire un don"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:62
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:64
 msgid "All data removed"
 msgstr "Toutes les données ont été supprimées"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:66
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:68
 msgid "Remove NewStatPress database"
 msgstr "Supprimer la base de données NewStatPress"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:69
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:71
 msgid ""
 "Warning: pressing the below button will make all your stored data to be "
 "erased!"
@@ -71,7 +71,7 @@ msgstr ""
 "Attention : un appui sur le bouton ci-dessous effacera toutes vos données !"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:73
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:75
 msgid ""
 "It is added for the people that did not want to use the plugin anymore and "
 "so they want to remove the stored data."
@@ -81,24 +81,24 @@ msgstr ""
 "stockées."
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:75
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:77
 msgid "If you are in doubt about this function, don't use it."
 msgstr "Si vous avez un doute sur cette fonction, ne l'utilisez pas."
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:78
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:80
 #: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:93
 msgid "Remove"
 msgstr "Supprimer"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:78
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/includes/functions-extra.php:80
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr ?"
 
 # @ newstatpress
 #: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:81
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3227
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3228
 msgid "Overview"
 msgstr "Sommaire"
 
@@ -119,23 +119,23 @@ msgstr "Visiteurs"
 
 # @ newstatpress
 #: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:87
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1212
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1214
 msgid "Spy Bot"
 msgstr "Robot"
 
 # @ newstatpress
 #: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:88
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:874
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:888
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1406
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1449
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1558
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:876
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:890
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1408
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1451
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1560
 msgid "Search"
 msgstr "Recherche"
 
 # @ newstatpress
 #: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:89
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:575
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:577
 msgid "Export"
 msgstr "Exporter"
 
@@ -251,63 +251,63 @@ msgid "Elements in Overview (default %d)"
 msgstr "Nombre d'éléments dans la vue d'ensemble (%d par défaut)"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:353
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:354
 msgid "Visitors by Spy: number of IP per page"
 msgstr "Visiteurs par l'espion : nombre d'IP par page"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:357
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:358
 msgid "Visitors by Spy: number of visits for IP"
 msgstr "Visiteurs par l'espion : nombre de visites par page"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:361
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:362
 msgid "Spy Bot: number of bot per page"
 msgstr "Robot : nombre de robots par page"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:365
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:366
 msgid "Spy Bot: number of bot for IP"
 msgstr "Robot : nombre de robots par IP"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:370
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:371
 msgid "Automatically delete visits older than"
 msgstr "Supprimer automatiquement les visites antérieures à"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:374
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:375
 msgid "Automatically delete only spiders visits older than"
 msgstr ""
 "Supprimer automatiquement et seulement les visites des robots antérieures à"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:379
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:381
 msgid "Days number in Overview graph"
 msgstr "Nombre de jours dans l'aperçu graphique"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:383
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:385
 msgid "Minimum capability to view stats"
 msgstr "Niveau minimum de droit requis pour voir les statistiques"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:383
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1139
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1341
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:385
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1141
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1343
 msgid "more info"
 msgstr "plus d'infos"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:392
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:394
 msgid "Parameters to ignore"
 msgstr "Paramètres à ignorer"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:396
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:398
 msgid "Logged users to ignore"
 msgstr "Utilisateurs connectés à ignorer"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:398
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:400
 msgid ""
 "Enter a list of users you don't want to track, separated by commas, even if "
 "collect data about logged users is on"
@@ -317,11 +317,11 @@ msgstr ""
 "active"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:402
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:404
 msgid "IP addresses to ignore"
 msgstr "Adresses IP à ignorer"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:404
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:406
 msgid ""
 "Enter a list of networks you don't want to track, separated by commas. Each "
 "network <strong>must</strong> be defined using the CIDR notation (i.e. "
@@ -334,11 +334,11 @@ msgstr ""
 "incorrect, NewStatPress peut ne pas suivre correctement les pages vues."
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:407
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:409
 msgid "Pages and posts to ignore"
 msgstr "Pages et articles à ignorer"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:409
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:411
 msgid ""
 "Enter a list of permalinks you don't want to track, separated by commas. You "
 "should omit the domain name from these resources: <em>/about, p=1</em>, etc. "
@@ -350,96 +350,96 @@ msgstr ""
 "<em>/ about, p = 1,</em> etc. <br /> NewStatPress ignorera toutes les pages "
 "vues dont le percaline <strong>contient</strong> au moins un d'entre eux."
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:416
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:418
 msgid "Details menu options"
 msgstr " Options du menu Détails"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:420
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:422
 #, php-format
 msgid "Elements in Top days (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans le Top jours - Pages visitées (%d par "
 "défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:423
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:425
 #, php-format
 msgid "Elements in O.S. (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans la liste des systèmes (%d par défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:426
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:428
 #, php-format
 msgid "Elements in Browser (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans la liste des navigateurs (%d par défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:429
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:431
 #, php-format
 msgid "Elements in Feed (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans la liste des flux RSS (%d par défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:432
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:434
 #, php-format
 msgid "Elements in Search Engines (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans la liste des moteurs de recherche (%d par "
 "défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:435
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:437
 #, php-format
 msgid "Elements in Top Search Terms (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans le Top termes recherchés (%d par défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:438
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:440
 #, php-format
 msgid "Elements in Top Referrer (default %d)"
 msgstr "Nombre d'éléments à afficher dans le Top Origine (%d par défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:441
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:443
 #, php-format
 msgid "Elements in Countries/Languages (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans la liste des pays ou langues (%d par "
 "défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:444
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:446
 #, php-format
 msgid "Elements in Spiders (default %d)"
 msgstr "Nombre d'éléments à afficher dans la liste des robots (%d par défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:447
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:449
 #, php-format
 msgid "Elements in Top Pages (default %d)"
 msgstr "Nombre d'éléments à afficher dans le Top pages (%d par défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:450
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:452
 #, php-format
 msgid "Elements in Top Days - Unique visitors (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans le Top jours - Visiteurs uniques (%d par "
 "défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:453
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:455
 #, php-format
 msgid "Elements in Top Days - Pageviews (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans le Top jours - Pages visitées (%d par "
 "défaut)"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:456
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:458
 #, php-format
 msgid "Elements in Top IPs - Pageviews (default %d)"
 msgstr ""
 "Nombre d'éléments à afficher dans le Top IPs - Pages visitées (%d par défaut)"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:462
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:464
 msgid "Database update option"
 msgstr "Option de mise à jour de la Base de Données"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:466
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:468
 msgid ""
 "Select the interval of date from today you want to use for updating your "
 "database with new definitions. "
@@ -448,7 +448,7 @@ msgstr ""
 "utiliser pour mettre à jour votre base de données avec de nouvelles "
 "définitions."
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:467
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:469
 msgid ""
 "Be aware, larger is the interval, longer is the update and bigger are the "
 "resources required."
@@ -457,555 +457,555 @@ msgstr ""
 "longue et plus les ressources nécessaires sont importantes. "
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:474
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:476
 msgid "Update data in the given period"
 msgstr "Mettre à jour les données dans une période donnée"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:479
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:481
 msgid "Save options"
 msgstr "Sauvegarder les options"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:520
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:522
 msgid "Failure to save content locally, please try to re-install."
 msgstr ""
 "La tentative de sauvegarde locale a échoué, essayez de renouveler "
 "l'opération."
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:537
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:539
 msgid "Failure to unzip archive, please try to re-install"
 msgstr ""
 "La tentative de décompression de l'archive a échoué, essayez de renouveler "
 "l'opération."
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:540
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:542
 msgid "Instalation of IP2nation database was successful"
 msgstr ""
 "L'installation de la base de données IP2nation s'est effectuée avec succès."
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:552
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:554
 msgid "Export stats to text file"
 msgstr "Exporter les statistiques dans un fichier texte"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:553
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:555
 msgid "You should define the stats period you want to export:"
 msgstr "Vous devez définir la période des Stats à exporter :"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:557
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:559
 msgid "From:"
 msgstr "Du :"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:558
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:562
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:560
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:564
 msgid "YYYYMMDD"
 msgstr "AAAAMMJJ"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:561
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:563
 msgid "To:"
 msgstr "Au :"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:567
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:569
 msgid "You should choose a fields delimiter to separate the data:"
 msgstr "Vous devez choisir un délimiter de champs pour séparer les données :"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
 msgid "Last hits"
 msgstr "Dernières ressources demandées"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:682
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:696
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:743
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:772
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:684
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:698
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:745
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:774
 msgid "Date"
 msgstr "Date"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:682
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:696
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:743
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:772
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:684
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:698
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:745
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:774
 msgid "Time"
 msgstr "Heure"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
 msgid "Country"
 msgstr "Pays"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
 msgid "Language"
 msgstr "Langue"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:743
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:871
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:883
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:886
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:898
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1555
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1567
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:745
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:873
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:885
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:888
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:900
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1557
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1569
 msgid "Page"
 msgstr "Page"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
 msgid "Feed"
 msgstr "Flux"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:714
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:743
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:716
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:745
 msgid "OS"
 msgstr "Système"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:642
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:714
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:743
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1402
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:644
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:716
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:745
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1404
 msgid "Browser"
 msgstr "Navigateur"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:682
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:684
 msgid "Last search terms"
 msgstr "Derniers termes recherchés"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:682
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:684
 msgid "Terms"
 msgstr "Termes"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:682
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:684
 msgid "Engine"
 msgstr "Moteur"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:682
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:696
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2156
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:684
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:698
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2158
 msgid "Result"
 msgstr "Résultat"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:691
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:708
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:693
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:710
 msgid "page viewed"
 msgstr "page visitée"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:696
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:698
 msgid "Last referrers"
 msgstr "Dernières origines"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:696
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:698
 msgid "URL"
 msgstr "URL"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:714
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:716
 msgid "Last agents"
 msgstr "Derniers agents"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:714
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:772
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1397
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:716
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:774
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1399
 msgid "Agent"
 msgstr "Agent"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:714
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:772
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1403
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:716
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:774
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1405
 msgid "Spider"
 msgstr "Robot"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:743
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:745
 msgid "Last pages"
 msgstr "Dernières pages"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:772
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:774
 msgid "Last spiders"
 msgstr "Derniers robots"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:816
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:846
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:849
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:818
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:848
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:851
 msgid "Top days"
 msgstr "Top jours"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:819
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2282
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:821
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2284
 msgid "OSes"
 msgstr "Systèmes"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:822
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2305
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:824
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2307
 msgid "Browsers"
 msgstr "Navigateurs"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:825
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2184
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3120
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3482
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:827
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2186
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3122
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3481
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3633
 msgid "Feeds"
 msgstr "Flux"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:828
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2351
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:830
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2353
 msgid "Search engines"
 msgstr "Moteurs de recherche"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:831
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:833
 msgid "Top search terms"
 msgstr "Top termes recherchés"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:834
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:836
 msgid "Top referrers"
 msgstr "Top origines"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:837
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:839
 msgid "Countries"
 msgstr "Pays"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:837
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:839
 msgid "Languages"
 msgstr "Langages"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:840
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2328
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3040
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3399
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:842
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2330
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3042
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3398
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3632
 msgid "Spiders"
 msgstr "Robots"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:843
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:845
 msgid "Top pages"
 msgstr "Top pages"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:846
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:848
 msgid "Unique visitors"
 msgstr "Visiteurs unique"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:849
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:852
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2960
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3317
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:851
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:854
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2962
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3316
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3631
 msgid "Pageviews"
 msgstr "Pages visitées"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:852
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:854
 msgid "Top IPs"
 msgstr "Top IPs"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:872
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:887
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1556
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:874
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:889
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1558
 msgid "Category"
 msgstr "Categorie"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:873
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1557
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:875
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1559
 msgid "Calendar"
 msgstr "Calendrier"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:942
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:944
 msgid "period of days"
 msgstr "nombre de jours"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:985
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:987
 msgid "Pages"
 msgstr "Pages"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1085
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2880
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3242
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1087
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2882
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3243
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3630
 msgid "Visitors"
 msgstr "Visiteurs"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1124
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1126
 msgid "Http domain"
 msgstr "Nom de domaine"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1135
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1137
 msgid "Hostip country"
 msgstr "Pays de l'adresse IP"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1156
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1157
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1164
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1165
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1367
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1158
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1159
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1166
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1167
 #: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1369
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1371
 msgid "arrived from"
 msgstr "arrivé depuis"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1156
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1164
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1367
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1158
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1166
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1369
 msgid "searching"
 msgstr "recherche"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1293
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1295
 msgid "Last visitors"
 msgstr "Visiteurs récents"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1396
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1398
 msgid "URL Requested"
 msgstr "URL demandées"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1398
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1400
 msgid "Referrer"
 msgstr "Origine"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1399
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1401
 msgid "Search terms"
 msgstr "Termes recherchés"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1400
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1402
 msgid "Search engine"
 msgstr "Moteur de recherche"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1401
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1403
 msgid "Operative system"
 msgstr "Système d'exploitation"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1404
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1406
 msgid "IP"
 msgstr "IP"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1411
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1413
 msgid "Field"
 msgstr "Champ"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1418
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1419
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1420
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1421
 msgid "Group by"
 msgstr "groupé par"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1421
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1422
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1423
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1424
 msgid "Sort by"
 msgstr "trié par"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1424
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1426
 msgid "if contains"
 msgstr "s'il contient"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1434
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1436
 msgid "sort by count if grouped"
 msgstr "Trier par compte si groupés"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1435
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1437
 msgid "include spiders/crawlers/bot"
 msgstr "Inclure les robots"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1436
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1438
 msgid "include feed"
 msgstr "Inclure les flux"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1443
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2748
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1445
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2750
 msgid "Limit results to"
 msgstr "Limiter les résultats à"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1510
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1512
 msgid "Results"
 msgstr "Résultats"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1517
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1519
 msgid "Count"
 msgstr "Compte"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1597
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1599
 msgid "records"
 msgstr "enregistrements"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1650
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2749
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:1652
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2751
 msgid "Visits"
 msgstr "Visites"
 
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2154
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2156
 msgid "Database Update"
 msgstr "Mise à jour de la base de données"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2156
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2158
 msgid "Updating..."
 msgstr "Mise à jour..."
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2156
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2158
 msgid "Size"
 msgstr "Taille"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2175
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2177
 msgid "Structure"
 msgstr "Structure"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2179
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2181
 msgid "Index"
 msgstr "Index"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2381
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2383
 msgid "Final Structure"
 msgstr "Structure finale"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2385
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2387
 msgid "Final Index"
 msgstr "Index final"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2389
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2391
 msgid "Duration of the update"
 msgstr "Durée de cette mise à jour"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2393
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2395
 msgid "This update was done in"
 msgstr "Cette mise à jour a été faite en"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2394
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2396
 msgid "SQL queries"
 msgstr "requêtes SQL"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2711
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2713
 msgid "Title:"
 msgstr "Titre :"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2712
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2714
 msgid "Body:"
 msgstr "Corps :"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2747
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2749
 msgid "Title"
 msgstr "Titre"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2868
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3231
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2870
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3232
 msgid "Total since"
 msgstr "Total depuis"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2871
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3232
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2873
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3233
 msgid "Last month"
 msgstr "Mois précédent"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2872
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3233
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2874
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3234
 msgid "This month"
 msgstr "Mois en cours"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2873
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3234
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2875
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3235
 msgid "Target This month"
 msgstr "Cible de ce mois-ci"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2874
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3235
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2876
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3236
 msgid "Yesterday"
 msgstr "Hier"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2875
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3236
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:2877
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3237
 msgid "Today"
 msgstr "Aujourd'hui"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3193
+#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3195
 msgid "More details"
 msgstr "Voir les détails"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3632
-msgid " visitors"
-msgstr " visiteurs"
+#~ msgid "pageviews"
+#~ msgstr " pages visitées"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3633
-msgid "pageviews"
-msgstr " pages visitées"
+#~ msgid "feeds"
+#~ msgstr " flux"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3634
-msgid "spiders"
-msgstr " robots"
+#~ msgid " visitors"
+#~ msgstr " visiteurs"
 
 # @ newstatpress
-#: /Applications/MAMP/htdocs/wordpress/wp-content/plugins/newstatpress/newstatpress.php:3635
-msgid "feeds"
-msgstr " flux"
+#~ msgid "spiders"
+#~ msgstr " robots"
 
 # @ newstatpress
 #~ msgid "NewStatPressUpdate"

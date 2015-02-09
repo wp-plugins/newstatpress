@@ -44,10 +44,6 @@ $spider_color="#83b4d8";
 
 }
 
-.feeds-r {
-  background:#f38f36;
-  width:100%;
-}
 
 .testons {
   float:left;
@@ -105,6 +101,27 @@ $spider_color="#83b4d8";
   content: "\25a9";
   color:#114477;
   margin-right: 5px;
+}
+
+/*#graph*/
+.visitors_bar {
+  background: #114477;
+  width: 100%;
+}
+
+.web_bar {
+  background: #3377B6;
+  width: 100%;
+}
+
+.spiders_bar {
+  background: #83b4d8;
+  width:100%;
+}
+
+.feeds-r {
+  background:#f38f36;
+  width:100%;
 }
 
 
