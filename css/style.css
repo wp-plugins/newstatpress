@@ -1,0 +1,232 @@
+/*newstatspress css style*/
+/*
+$unique_color="#114477";
+$web_color="#3377B6";
+$rss_color="#f38f36";
+$spider_color="#83b4d8";
+*/
+
+
+/* Table NSP style */
+.nsp thead {
+  background-color:#FAFAFA;
+}
+
+
+
+/*----------------------------------*/
+/* overview                         */
+/*----------------------------------*/
+
+/* table overview */
+.center th {
+  text-align:center;
+}
+.nsp #the-list-overview td {
+  text-align:center;
+  /*padding-right:20px;*/
+}
+
+.date-overview {
+  display: block;
+  font-size:10px;
+}
+
+
+.carre-feeds-row {
+  background:#f38f36;
+  width:10px;
+  height:10px;
+  float:left;
+  margin-top:4px;
+  margin-right:5px;
+  text-align:left;
+
+}
+
+
+.testons {
+  float:left;
+  height: 100%;
+  width:100%;
+  font-family:Helvetica;
+  font-size:7pt;
+  text-align:center;
+  border-right:1px solid white;
+  color:black;
+}
+
+.img_os {
+  border: 0px;
+  height: 16px;
+}
+
+.img_browser {
+  border: 0px;
+  width: 16px;
+  height: 16px;
+}
+
+
+
+
+#the-list-overview td {
+  /*text-align:center;
+  padding-right:20px;*/
+}
+
+#the-list-overview td.test {
+  text-align:left;
+}
+
+#the-list-overview td.feeds::before {
+  content: "\25a9";
+  color:#f38f36;
+  margin-right: 5px;
+}
+
+#the-list-overview td.spiders::before {
+  content: "\25a9";
+  color:#83b4d8;
+  margin-right: 5px;
+}
+
+#the-list-overview td.pageviews::before {
+  content: "\25a9";
+  color:#3377B6;
+  margin-right: 5px;
+}
+
+#the-list-overview td.visitors::before {
+  content: "\25a9";
+  color:#114477;
+  margin-right: 5px;
+}
+
+/*#graph*/
+.visitors_bar {
+  background: #114477;
+  width: 100%;
+}
+
+.web_bar {
+  background: #3377B6;
+  width: 100%;
+}
+
+.spiders_bar {
+  background: #83b4d8;
+  width:100%;
+}
+
+.feeds-r {
+  background:#f38f36;
+  width:100%;
+}
+
+
+/*----------------------------------*/
+/* update page style                */
+/*----------------------------------*/
+.update_img {
+  border: 0px;
+  width: 20px;
+  height: 20px;
+}
+
+/*----------------------------------*/
+/* option page style                */
+/*----------------------------------*/
+#settings h3 {
+  margin-top: 40px;
+}
+
+#settings h4 {
+  margin-bottom: -10px;
+}
+
+.table-option {
+  border: 0px solid;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.table-databaseupdate {
+  width: 60%;
+}
+
+/*----------------------------------*/
+/* credit page style                */
+/*----------------------------------*/
+#credit table {
+  border-top: 2px solid;
+}
+
+#credit thead {
+  text-align: left;
+  vertical-align: center;
+  background: #dedede;
+}
+#credit th {
+  align: left;
+  font-size: 16px;
+  padding: 3px 0 3px 0;
+}
+
+#credit tbody {
+  border-top: 2px solid;
+}
+
+#credit tr {
+  vertical-align: top;
+}
+
+#credit td {
+  padding-bottom: 5px;
+  border-bottom:1px dotted #ccc;
+}
+
+#credit .cell-l {
+  font-weight: bold;
+  vertical-align: top;
+  padding-left: 5px;
+}
+
+#credit .cell-r {
+  padding-left: 15px;
+}
+
+/*----------------------------------*/
+/* details page style               */
+/*----------------------------------*/
+.framebox {
+	width: 100%;
+	height: 550px;
+}
+
+.keytab-head {
+  width:80%;
+}
+
+.valuetab-head {
+  width:20%;
+  text-align:center;
+}
+
+.keytab {
+  width:80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.valuetab {
+	width:20%;
+  text-align:center;
+}
