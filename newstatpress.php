@@ -3227,7 +3227,6 @@ function iriOverview($print = TRUE) {
 
   $since = NewStatPress_Print('%since%');
   $lastmonth = iri_NewStatPress_lastmonth();
-  // $pastyear = gmdate('Y', current_time('timestamp'))-1;
   $thismonth = gmdate('Ym', current_time('timestamp'));
   $yesterday = gmdate('Ymd', current_time('timestamp')-86400);
   $today = gmdate('Ymd', current_time('timestamp'));
