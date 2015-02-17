@@ -5,13 +5,25 @@
 - why did you not provide directly a version of ip2nation by default?
 - tab construction for option page
 - tab construction for overview page
+- [ ] irihdate function in double with newstatpress_hdate => to clean
+- [ ] Fix number of dot of navbar in Visitors page
+- [ ] bot rss https://github.com/feedjira/feedjira/tree/master
+
 
 ## 0.9.3
 
-- [ ] Fixed 'ALTER INDEX' error warning when user database is updated
-- [ ] Api for variables
-- [ ] irihdate function in double => to clean
-
+- [x] Add Visits page with tab navigation
+- [x] Add tab navigation in Crédits page
+- [x] Add 'Donator' tab in Crédits page
+- [x] Add 'visits' and 'options' links in Dashboard widget
+- [x] Add CSS style to navbar in Visitors page
+- [x] Add colored variation in overview table
+- [x] Re-writed Overview function
+- [x] Fix Duplicate INDEX when User database is updated (function rewrited)
+- [x] Fix dashboard 'details' dead link
+- [x] Fix navbar dead link in visitors page
+- [x] Various code fixing
+- [x] Api for variables (10x faster to load page with widget)
 
 ## 0.9.2
 

@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.9.2
+Version: 0.9.3
 Author: Stefano Tognon and cHab (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 */
 
-$_NEWSTATPRESS['version']='0.9.2';
+$_NEWSTATPRESS['version']='0.9.3';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir, $option_list_info;
@@ -32,12 +32,11 @@ $option_list_info=array( // list of option variable name, with default value ass
   'ippages'=>array('name'=>'newstatpress_el_ippages','value'=>'5')
 );
 
-
 /**
  * add by chab
  *
  * Add the plugin CSS style only on admin page
- * TODO :  use your function for old version of WP
+ * TODO :  use your function for old version of WP (<2.6)
  */
   function register_plugin_styles() {
 
@@ -51,10 +50,10 @@ $option_list_info=array( // list of option variable name, with default value ass
 /**
  * add by chab
  *
- * iriNewStatPressCredits() — credit menu page
- * iriNewStatPressRemove() — remove menu page
+ * TODO Make include if we are in admin.php
  */
 require ('includes/functions-extra.php');
+require ('includes/credits.php');
 
 
 /**
@@ -76,36 +75,33 @@ function PluginUrl() {
 /**
  * Add pages with NewStatPress commands
  */
-function iri_add_pages() {
-  // Create/update table if it not exists
-  global $wpdb;
-  $table_name = $wpdb->prefix . "statpress";
-  if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
-    iri_NewStatPress_CreateTable();
-  }
+function nsp_BuildPluginMenu() {
 
-  // check the level fixed
-  $mincap=get_option('newstatpress_mincap');
-  if($mincap == '') {
-    $mincap="level_8";
-  }
+  // Create table if it doesn't exists
+  // global $wpdb;
+  // $table_name = $wpdb->prefix . "statpress";
+  // if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+  //   nsp_BuildPluginSQLTable('create');
+  // }
 
-  // ORIG   add_submenu_page('index.php', 'StatPress', 'StatPress', 8, 'statpress', 'iriNewStatPress');
+  // Fix capability if not defined
+  $capability=get_option('newstatpress_mincap') ;
+  if(!$capability)
+    $capability='switch_themes';
 
-  add_submenu_page('NSP-main', __('Overview','newstatpress'), __('Overview','newstatpress'), $mincap, 'NSP-main', 'iriNewStatPressMain');
-  add_menu_page('NewStatPres', 'NewStatPress', $mincap, 'NSP-main', 'iriNewStatPressMain', plugins_url('newstatpress/images/stat.png',dirname(plugin_basename(__FILE__))));
+  add_menu_page('NewStatPres', 'NewStatPress', $capability, 'nsp-main', 'iriNewStatPressMain', plugins_url('newstatpress/images/stat.png',dirname(plugin_basename(__FILE__))));
+  add_submenu_page('nsp-main', __('Overview','newstatpress'), __('Overview','newstatpress'), $capability, 'nsp-main', 'iriNewStatPressMain');
+  add_submenu_page('nsp-main', __('Details','newstatpress'), __('Details','newstatpress'), $capability, 'details-page', 'iriNewStatPressDetails');
+  add_submenu_page('nsp-main', __('Visits','newstatpress'), __('Visits','newstatpress'), $capability, 'visits-page', 'nsp_DisplayVisitsPage');
+  add_submenu_page('nsp-main', __('Search','newstatpress'), __('Search','newstatpress'), $capability, 'search-page', 'iriNewStatPressSearch');
+  add_submenu_page('nsp-main', __('Export','newstatpress'), __('Export','newstatpress'), $capability, 'export-page', 'iriNewStatPressExport');
+  add_submenu_page('nsp-main', __('Options','newstatpress'), __('Options','newstatpress'), $capability, 'options-page', 'iriNewStatPressOptions');
+  add_submenu_page('nsp-main', __('Credits','newstatpress'), __('Credits','newstatpress'), $capability, 'credits-page', 'nsp_DisplayCreditsPage');
+  add_submenu_page('nsp-main', __('Remove','newstatpress'), __('Remove','newstatpress'), $capability,  'remove-page', 'iriNewStatPressRemove');
 
-  add_submenu_page('NSP-main', __('Details','newstatpress'), __('Details','newstatpress'), $mincap, 'details-page', 'iriNewStatPressDetails');
-  add_submenu_page('NSP-main', __('Last visitors by Spy','newstatpress'), __('Last visitors by Spy','newstatpress'), $mincap, 'spy-page', 'iriNewStatPressSpy');
-  add_submenu_page('NSP-main', __('Visitors by Spy','newstatpress'), __('Visitors by Spy','newstatpress'), $mincap, 'newspy-page', 'iriNewStatPressNewSpy');
-  add_submenu_page('NSP-main', __('Spy Bot','newstatpress'), __('Spy Bot','newstatpress'), $mincap, 'spybot-page', 'iriNewStatPressSpyBot');
-  add_submenu_page('NSP-main', __('Search','newstatpress'), __('Search','newstatpress'), $mincap, 'search-page', 'iriNewStatPressSearch');
-  add_submenu_page('NSP-main', __('Export','newstatpress'), __('Export','newstatpress'), $mincap, 'export-page', 'iriNewStatPressExport');
-  add_submenu_page('NSP-main', __('Options','newstatpress'), __('Options','newstatpress'), $mincap, 'options-page', 'iriNewStatPressOptions');
-  add_submenu_page('NSP-main', __('Credits','newstatpress'), __('Credits','newstatpress'), $mincap, 'credits-page', 'iriNewStatPressCredits');
-  add_submenu_page('NSP-main', __('Remove','newstatpress'), __('Remove','newstatpress'), $mincap,  'remove-page', 'iriNewStatPressRemove');
+
 }
-add_action('admin_menu', 'iri_add_pages');
+add_action('admin_menu', 'nsp_BuildPluginMenu');
 
 
 /**
@@ -195,18 +191,6 @@ function print_textaera($option_title,$option_var,$option_description) {
 }
 
 
-// function ilc_admin_tabs( $current = 'homepage' ) {
-//     $tabs = array( 'homepage' => 'Newstatpress Settings', 'general' => 'General', 'ip2nation' => 'IP2nation', 'database' => 'Update Database' );
-//     echo '<div id="icon-themes" class="icon32"><br></div>';
-//     echo '<h2 class="nav-tab-wrapper">';
-//     foreach( $tabs as $tab => $name ){
-//         $class = ( $tab == $current ) ? ' nav-tab-active' : '';
-//         echo "<a class='nav-tab $class' href='?page=theme-settings&tab=$tab'>$name</a>";
-//
-//     }
-//     echo '</h2>';
-// }
-
 /**
  * Generate HTML for option menu in Wordpress
  */
@@ -254,7 +238,7 @@ function iriNewStatPressOptions() {
     update_option('newstatpress_updateint', $_POST['newstatpress_updateint']);
 
     // update database too and print message confirmation
-    iri_NewStatPress_CreateTable();
+    nsp_BuildPluginSQLTable('update');
     print "<br /><div class='updated'><p>".__('Options saved!','newstatpress')."</p></div>";
   }
   ?>
@@ -321,12 +305,21 @@ function iriNewStatPressOptions() {
       </form>
     </div>
 
-
+<br />
     <form method=post>
+      <h3 class='r'> <?php _e('General option','newstatpress'); ?></h3>
 
       <!-- General option -->
-      <h3><?php _e('General option','newstatpress'); ?></h3>
       <table class='table-option'>
+        <!-- <thead>
+
+    <tr>
+        <th colspan="2">
+        </th>
+    </tr>
+
+</thead> -->
+
         <?php
 
         global $option_list_info;
@@ -358,11 +351,10 @@ function iriNewStatPressOptions() {
         $option_title=__('Show NewStatPress dashboard widget','newstatpress');
         $option_var='newstatpress_dashboard';
         print_checked($option_title,$option_var);
-
+echo '<tr><th colspan="2"><hr /><th></tr>';
         $option_title=sprintf(__('Elements in Overview (default %d)','newstatpress'), $option_list_info['overview']['value']);
         print_row_input($option_title,$option_list_info['overview'],$input_size,$input_maxlength);
 
-        // $val=array(['20',''], ['50',''], ['100','']);
         $val=array(array(20,''),array(50,''),array(100,''));
         $option_title=__('Visitors by Spy: number of IP per page','newstatpress');
         $option_var='newstatpress_ip_per_page_newspy';
@@ -389,7 +381,6 @@ function iriNewStatPressOptions() {
         $option_var='newstatpress_autodelete_spiders';
         print_option($option_title,$option_var,$val);
 
-        // $val= array(['7',''],['10',''],['20',''],['30',''],['50','']);
         $val=array(array(7,''),array(10,''),array(20,''),array(30,''),array(50,''));
         $option_title=__('Days number in Overview graph','newstatpress');
         $option_var='newstatpress_daysinoverviewgraph';
@@ -642,7 +633,7 @@ function iriNewStatPressMain() {
   global $wpdb;
   $table_name = $wpdb->prefix . "statpress";
 
-  iriOverview();
+  nsp_MakeOverview('main');
 
   $_newstatpress_url=PluginUrl();
 
@@ -948,22 +939,25 @@ function my_substr($str, $x, $y = 0) {
  * @param NP the group of pages
  * @param pp the page to show
  * @param action the action
+ *
+ * TODO change print into return $result
  */
 function newstatpress_print_pp_link($NP,$pp,$action) {
   // For all pages ($NP) Display first 3 pages, 3 pages before current page($pp), 3 pages after current page , each 25 pages and the 3 last pages for($action)
   $GUIL1 = FALSE;
   $GUIL2 = FALSE;// suspension points  not writed  style='border:0px;width:16px;height:16px;   style="border:0px;width:16px;height:16px;"
   if ($NP >1) {
-    print "<font size='1'>".__('period of days','newstatpress')." : </font>";
+    // print "<font size='1'>".__('period of days','newstatpress')." : </font>";
     for ($i = 1; $i <= $NP; $i++) {
       if ($i <= $NP) {
         // $page is not the last page
-        if($i == $pp) echo " [{$i}] "; // $page is current page
+        if($i == $pp) echo " <span class='current'>{$i} </span> "; // $page is current page
         else {
           // Not the current page Hyperlink them
           if (($i <= 3) or (($i >= $pp-3) and ($i <= $pp+3)) or ($i >= $NP-3) or is_int($i/100)) {
-            echo '<a href="?page=newstatpress/newstatpress.php&newstatpress_action='.$action.'&pp=' . $i .'">' . $i . '</a> ';
+            echo '<a href="?page=visits-page&tab=visitors&newstatpress_action='.$action.'&pp=' . $i .'">' . $i . '</a> ';
           } else {
+
               if (($GUIL1 == FALSE) OR ($i==$pp+4)) {
                 echo "...";
                 $GUIL1 = TRUE;
@@ -972,13 +966,13 @@ function newstatpress_print_pp_link($NP,$pp,$action) {
               if (is_int(($i-1)/100)) echo ".";
               if ($i == $NP-4) echo "..";
               // suspension points writed
-            }
+
          }
       }
     }
   }
 }
-
+}
 /**
  * Display links for group of pages
  *
@@ -987,6 +981,8 @@ function newstatpress_print_pp_link($NP,$pp,$action) {
  * @param action the action
  * @param NA group
  * @param pa current page
+ *
+ * TODO change print into return $result
  */
 function newstatpress_print_pp_pa_link($NP,$pp,$action,$NA,$pa) {
   if ($NP<>0) newstatpress_print_pp_link($NP,$pp,$action);
@@ -1097,7 +1093,7 @@ function iriNewStatPressNewSpy() {
 
   $qry = $wpdb->get_results($sql);
 
-  echo "<div class='wrap'><h2>" . __('Visitors', 'newstatpress') . "</h2>";
+  // echo "<div class='wrap'><h2>" . __('Visitors', 'newstatpress') . "</h2>";
 ?>
 <script>
 function ttogle(thediv){
@@ -1109,7 +1105,7 @@ document.getElementById(thediv).style.display="none"
 <?php
   $ip = 0;
   $num_row=0;
-  echo'<div id="paginating" align="center">';
+  echo "<div id='paginating' align='center' class='pagination'>";
   newstatpress_print_pp_link($NP,$pp,$action);
   echo'</div><table id="mainspytab" name="mainspytab" width="99%" border="0" cellspacing="0" cellpadding="4">';
   foreach ($qry as $rk) {
@@ -1183,8 +1179,9 @@ document.getElementById(thediv).style.display="none"
       }
    }
    echo "</div></td></tr>\n</table>";
+   echo "<div id='paginating' align='center' class='pagination'>";
    newstatpress_print_pp_link($NP,$pp,$action);
-   echo "</div>";
+   echo "</div></div>";
 }
 
 /**
@@ -1224,7 +1221,8 @@ function iriNewStatPressSpyBot() {
   ");
   $NA = ceil($Num/$LIMIT);
 
-  echo "<div class='wrap'><h2>" . __('Spy Bot', 'newstatpress') . "</h2>";
+  // echo "<div class='wrap'><h2>" . __('Spy Bot', 'newstatpress') . "</h2>";
+  echo "<br />";
 
   // selection of spider, group by spider, order by most recently visit (last id in the table)
   $sql = "
@@ -1293,6 +1291,7 @@ document.getElementById(thediv).style.display="none"
   echo "</div>";
 }
 
+
 /**
  * Newstatpress spy function
  */
@@ -1305,7 +1304,8 @@ function iriNewStatPressSpy() {
   # Spy
   $today = gmdate('Ymd', current_time('timestamp'));
   $yesterday = gmdate('Ymd', current_time('timestamp')-86400);
-  print "<div class='wrap'><h2>".__('Last visitors','newstatpress')."</h2>";
+  // print "<div class='wrap'><h2>".__('Last visitors','newstatpress')."</h2>";
+  echo "<br />";
   $sql="
     SELECT ip,nation,os,browser,agent
     FROM $table_name
@@ -1338,7 +1338,7 @@ document.getElementById(thediv).style.display="none"
         list($id,$title)=explode("|",$nation);
         if($id===$rk->nation) break;
       }
-      echo "<IMG class='img_os' alt='".$title."' title='".$title."' SRC='" .plugins_url('newstatpress/images/domain/'.$img, dirname(plugin_basename(__FILE__))). "'>  ";
+      echo "<IMG style='border:0px;height:16px;' alt='".$title."' title='".$title."' SRC='" .plugins_url('newstatpress/images/domain/'.$img, dirname(plugin_basename(__FILE__))). "'>  ";
     } else {
         $ch = curl_init('http://api.hostip.info/country.php?ip='.$rk->ip);
         curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -1391,6 +1391,50 @@ document.getElementById(thediv).style.display="none"
 </table>
 </div>
 <?php
+}
+
+/**
+ * Visits Page to finish
+ */
+function nsp_DisplayVisitsPage() {
+  // global $wpdb;
+  // global $newstatpress_dir;
+  //
+  // $table_name = $wpdb->prefix . "statpress";
+
+  global $pagenow;
+  $VisitsPage_tabs = array( 'lastvisitors' => __('Last visitors','newstatpress'),
+                            'visitors' => __('Visitors','newstatpress'),
+                            'spybot' => __('Spy Bot','newstatpress')
+                          );
+  $ref='visits-page';
+
+  print "<div class='wrap'><h2>".__('Visits','newstatpress')."</h2>";
+
+
+  if ( isset ( $_GET['tab'] ) ) nsp_DisplayTabsNavbarForMenuPage($VisitsPage_tabs,$_GET['tab'],$ref);
+  else nsp_DisplayTabsNavbarForMenuPage($VisitsPage_tabs, 'lastvisitors',$ref);
+
+  if ( $pagenow == 'admin.php' && $_GET['page'] == $ref ) {
+
+    if ( isset ( $_GET['tab'] ) ) $tab = $_GET['tab'];
+    else $tab = 'lastvisitors';
+
+    switch ($tab) {
+
+      case 'lastvisitors' :
+      iriNewStatPressSpy();
+      break;
+
+      case 'visitors' :
+      iriNewStatPressNewSpy();
+      break;
+
+      case 'spybot' :
+      iriNewStatPressSpyBot();
+      break;
+    }
+  }
 }
 
 
@@ -1724,7 +1768,6 @@ function iriGetLanguage($accepted) {
   return substr($accepted,0,2);
 }
 
-
 function iriGetQueryPairs($url){
   $parsed_url = parse_url($url);
   $tab=parse_url($url);
@@ -1863,23 +1906,30 @@ function iri_NewStatPress_lastmonth() {
 /**
  * Create or update the table
  */
- function iri_NewStatPress_CreateTable() {
+ function nsp_BuildPluginSQLTable($action) {
+
    global $wpdb;
    global $wp_db_version;
    $table_name = $wpdb->prefix . "statpress";
-
+   $charset_collate = $wpdb->get_charset_collate();
+   $index_list=array(array('Key_name'=>"spider_nation", 'Column_name'=>"(spider, nation)"),
+                     array('Key_name'=>"ip_date", 'Column_name'=>"(ip, date)"),
+                     array('Key_name'=>"agent", 'Column_name'=>"(agent)"),
+                     array('Key_name'=>"search", 'Column_name'=>"(search)"),
+                     array('Key_name'=>"referrer", 'Column_name'=>"(referrer)"),
+                     array('Key_name'=>"feed_spider_os", 'Column_name'=>"(feed, spider, os)"),
+                     array('Key_name'=>"os", 'Column_name'=>"(os)"),
+                     array('Key_name'=>"date_feed_spider", 'Column_name'=>"(date, feed, spider)"),
+                     array('Key_name'=>"feed_spider_browser", 'Column_name'=>"(feed, spider, browser)"),
+                     array('Key_name'=>"browser", 'Column_name'=>"(browser)")
+                     );
    // Add by chab
-   // If the database is already created then DROP INDEX for update
-///   if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name) { $list_index_to_drop=['spider_nation','agent','ip_date','search','os','browser','referrer','feed_spider_os','date_feed_spider', 'feed_spider_browser'];
-///     foreach ($list_index_to_drop as $i)
-///     {
-///       $sql_createtable = "ALTER TABLE $table_name DROP INDEX $i";
-///       $wpdb->query($sql_createtable);
-///     }
-///   }
+   // IF the table is already created then DROP INDEX for update
+   if ($action=='')
+     $action='create';
 
-  $sql_createtable = "
-    CREATE TABLE " . $table_name . " (
+   $sql_createtable = "
+    CREATE TABLE ". $table_name . " (
       id mediumint(9) NOT NULL AUTO_INCREMENT,
       date int(8),
       time time,
@@ -1896,18 +1946,31 @@ function iri_NewStatPress_lastmonth() {
       feed varchar(8),
       user varchar(16),
       timestamp timestamp DEFAULT 0,
-      UNIQUE KEY id (id),
-      INDEX spider_nation (spider, nation),
-      INDEX ip_date (ip, date),
-      INDEX agent (agent),
-      index search (search),
-      index referrer (referrer),
-      index feed_spider_os (feed, spider, os),
-      index os (os),
-      index date_feed_spider (date, feed, spider),
-      index feed_spider_browser (feed, spider, browser),
-      index browser (browser)
-    );";
+      UNIQUE KEY id (id)";
+
+   if ($action=='create') {
+     foreach ($index_list as $index)
+     {
+       $Key_name=$index['Key_name'];
+       $Column_name=$index['Column_name'];
+       $sql_createtable.=", INDEX $Key_name $Column_name";
+     }
+   }
+   elseif ($action=='update') {
+       foreach ($index_list as $index)
+       {
+         $Key_name=$index['Key_name'];
+         $Column_name=$index['Column_name'];
+         if ($wpdb->query("SHOW INDEXES FROM $table_name WHERE Key_name ='$Key_name'")=='') {
+           $sql_createtable.=",\n INDEX $Key_name $Column_name";
+         }
+       }
+   }
+   $sql_createtable.=") $charset_collate;";
+
+
+  //  echo $sql_createtable;
+
   if($wp_db_version >= 5540) $page = 'wp-admin/includes/upgrade.php';
   else $page = 'wp-admin/upgrade'.'-functions.php';
 
@@ -2060,7 +2123,7 @@ function iriStatAppend() {
     }
 
     if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
-      iri_NewStatPress_CreateTable();
+      nsp_BuildPluginSQLTable();
     }
 
     $login = $userdata ? $userdata->user_login : null;
@@ -2185,7 +2248,7 @@ function iriNewStatPressUpdate() {
   }
 
   # update table
-  iri_NewStatPress_CreateTable();
+  nsp_BuildPluginSQLTable('update');
 
   print "<tr><td>". __('Structure','newstatpress'). " $table_name</td>";
   print "<td>".iritablesize($wpdb->prefix."statpress")."</td>";
@@ -2394,11 +2457,11 @@ function iriNewStatPressUpdate() {
 
   # Final statistics
   print "<tr><td>". __('Final Structure','newstatpress'). " $table_name</td>";
-  print "<td>".iritablesize($wpdb->prefix."statpress")."</td>";
+  print "<td>".iritablesize($wpdb->prefix."statpress")."</td>"; // todo chab : to clean
   print "<td><img class'update_img' src='$img_ok'></td></tr>";
 
   print "<tr><td>". __('Final Index','newstatpress'). " $table_name</td>";
-  print "<td>".iriindextablesize($wpdb->prefix."statpress")."</td>";
+  print "<td>".iriindextablesize($wpdb->prefix."statpress")."</td>"; // todo chab : to clean
   print "<td><img class'update_img' src='$img_ok'></td></tr>";
 
   print "<tr><td>". __('Duration of the update','newstatpress'). "</td>";
@@ -2422,9 +2485,38 @@ function NewStatPress_Widget($w='') {
  * Return the expanded vars into the give code. Wrapper for internal use
  */
 function NewStatPress_Print($body='') {
-  return iri_NewStatPress_Vars($body);
+  return nsp_ExpandVarsInsideCode($body);
 }
 
+/**
+ * Generate the Ajax code for the given variable
+ *
+ * @param var variable to get
+ * @param limit optional limit value for query
+ * @param flag optional flag value for checked
+ */
+function nsp_generateAjaxVar($var, $limit=0, $flag='') {
+  global $newstatpress_dir;
+
+  $res = "<span id=\"".$var."\">_</span>
+          <script type=\"text/javascript\">
+
+            var xmlhttp_".$var." = new XMLHttpRequest();
+
+            xmlhttp_".$var.".onreadystatechange = function() {
+              if (xmlhttp_".$var.".readyState == 4 && xmlhttp_".$var.".status == 200) {
+                document.getElementById(\"".$var."\").innerHTML=xmlhttp_".$var.".responseText;
+              }
+            }
+
+            var url=\"".plugins_url('newstatpress')."/includes/api/variables.php?VAR=".$var."&LIMIT=".$limit."&FLAG=".$flag."\";
+
+            xmlhttp_".$var.".open(\"GET\", url, true);
+            xmlhttp_".$var.".send();
+          </script>
+         ";
+  return $res;
+}
 
 /**
  * Expand vars into the give code
@@ -2432,118 +2524,25 @@ function NewStatPress_Print($body='') {
  * @param boby the code where to look for variables to expand
  * @return the modified code
  */
-function iri_NewStatPress_Vars($body) {
+function nsp_ExpandVarsInsideCode($body) {
   global $wpdb;
   $table_name = $wpdb->prefix . "statpress";
 
-  # look for %visits%
-  if(strpos(strtolower($body),"%visits%") !== FALSE) {
-    $qry = $wpdb->get_results(
-      "SELECT count(DISTINCT(ip)) AS pageview
-       FROM $table_name
-       WHERE
-        date = '".gmdate("Ymd",current_time('timestamp'))."' AND
-        spider='' and feed='';
-      ");
-    $body = str_replace("%visits%", $qry[0]->pageview, $body);
-  }
+  $vars_list=array('visits',
+                   'yvisits',
+                   'mvisits',
+                   'totalvisits',
+                   'totalpageviews',
+                   'todaytotalpageviews',
+                   'thistotalvisits',
+                   'alltotalvisits'
+                  );
 
-  # look for %yvisits%
-  if(strpos(strtolower($body),"%yvisits%") !== FALSE) {
-    $qry = $wpdb->get_results(
-      "SELECT count(DISTINCT(ip)) AS pageview
-       FROM $table_name
-       WHERE
-        date = '".gmdate("Ymd",current_time('timestamp')-86400)."' AND
-        spider='' and feed='';
-      ");
-    $body = str_replace("%yvisits%", $qry[0]->pageview, $body);
-  }
-
-  # look for %mvisits%
-  if(strpos(strtolower($body),"%mvisits%") !== FALSE) {
-    $qry = $wpdb->get_results(
-      "SELECT count(DISTINCT(ip)) AS pageview
-       FROM $table_name
-       WHERE
-        date LIKE '".gmdate('Ym', current_time('timestamp'))."%'
-        spider='' and feed='';
-      ");
-    $body = str_replace("%mvisits%", $qry[0]->pageview, $body);
-  }
-
-  # look for %totalvisits%
-  if(strpos(strtolower($body),"%totalvisits%") !== FALSE) {
-    $qry = $wpdb->get_results(
-      "SELECT count(DISTINCT(ip)) AS pageview
-       FROM $table_name
-       WHERE
-         spider='' AND
-         feed='';
-      ");
-    $body = str_replace("%totalvisits%", $qry[0]->pageview, $body);
-  }
-
-  # look for %totalpageviews%
-  if(strpos(strtolower($body),"%totalpageviews%") !== FALSE) {
-    $qry = $wpdb->get_results(
-      "SELECT count(id) AS pageview
-       FROM $table_name
-       WHERE
-         spider='' AND
-         feed='';
-      ");
-    $body = str_replace("%totalpageviews%", $qry[0]->pageview, $body);
-  }
-
-  # look for %todaytotalpageviews%
-  if(strpos(strtolower($body),"%todaytotalpageviews%") !== FALSE) {
-    $qry = $wpdb->get_results(
-      "SELECT count(id) AS pageview
-       FROM $table_name
-       WHERE
-         date = '".gmdate("Ymd",current_time('timestamp'))."' AND
-         spider='' AND
-         feed='';
-      ");
-    $body = str_replace("%todaytotalpageviews%", $qry[0]->pageview, $body);
-  }
-
-  # look for %thistotalvisits%
-  if(strpos(strtolower($body),"%thistotalvisits%") !== FALSE) {
-    $qry = $wpdb->get_results(
-      "SELECT count(DISTINCT(ip)) AS pageview
-       FROM $table_name
-       WHERE
-         spider='' AND
-         feed='' AND
-         urlrequested='".iri_NewStatPress_URL()."';
-      ");
-    $body = str_replace("%thistotalvisits%", $qry[0]->pageview, $body);
-  }
-
-  # look for %alltotalvisits%
-  if(strpos(strtolower($body),"%alltotalvisits%") !== FALSE) {
-    $qry = $wpdb->get_results(
-      //"SELECT SUM(pageview) AS pageview
-      // FROM (
-      //   SELECT count(DISTINCT(ip)) AS pageview
-      //   FROM $table_name AS t1
-      //   WHERE
-      //     spider='' AND
-      //     feed='' AND
-      //     urlrequested!=''
-      //   GROUP BY urlrequested
-      // ) AS t2;
-      //");
-      "SELECT count(distinct urlrequested, ip) AS pageview
-       FROM $table_name AS t1
-       WHERE
-         spider='' AND
-         feed='' AND
-         urlrequested!='';
-      ");
-    $body = str_replace("%alltotalvisits%", $qry[0]->pageview, $body);
+  # look for $vars_list
+  foreach($vars_list as $var) {
+    if(strpos(strtolower($body),"%$var%") !== FALSE) {
+      $body = str_replace("%$var%", nsp_GenerateAjaxVar($var), $body);
+    }
   }
 
   # look for %since%
@@ -2678,6 +2677,7 @@ function iri_NewStatPress_Vars($body) {
   return $body;
 }
 
+/// note: if working, move the contents into the caller instead of this function
 /**
  * Get top posts
  *
@@ -2686,27 +2686,8 @@ function iri_NewStatPress_Vars($body) {
  * @return result of extraction
  */
 function iri_NewStatPress_TopPosts($limit=5, $showcounts='checked') {
-  global $wpdb;
-  $res="\n<ul>\n";
-  $table_name = $wpdb->prefix . "statpress";
-  $qry = $wpdb->get_results(
-    "SELECT urlrequested,count(*) as totale
-     FROM $table_name
-     WHERE
-       spider='' AND
-       feed='' AND
-       urlrequested LIKE '%p=%'
-     GROUP BY urlrequested
-     ORDER BY totale DESC LIMIT $limit;
-    ");
-
-  foreach ($qry as $rk) {
-    $res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
-    if(strtolower($showcounts) == 'checked') { $res.=" (".$rk->totale.")"; }
-  }
-  return "$res</ul>\n";
+  return nsp_GenerateAjaxVar("widget_topposts", $limit, $showcounts);
 }
-
 
 function widget_newstatpress_init($args) {
   if ( !function_exists('wp_register_sidebar_widget') || !function_exists('wp_register_widget_control') ) return;
@@ -2723,9 +2704,39 @@ function widget_newstatpress_init($args) {
     $title = htmlspecialchars($options['title'], ENT_QUOTES);
     $body = htmlspecialchars($options['body'], ENT_QUOTES);
      // the form
-    echo '<p style="text-align:right;"><label for="newstatpress-title">' . __('Title:', 'newstatpress') . ' <input style="width: 250px;" id="newstatpress-title" name="newstatpress-title" type="text" value="'.$title.'" /></label></p>';
-    echo '<p style="text-align:right;"><label for="newstatpress-body"><div>' . __('Body:', 'newstatpress') . '</div><textarea style="width: 288px;height:100px;" id="newstatpress-body" name="newstatpress-body" type="textarea">'.$body.'</textarea></label></p>';
-    echo '<input type="hidden" id="newstatpress-submit" name="newstatpress-submit" value="1" /><div style="font-size:7pt;">%totalvisits% %visits% %thistotalvisits% %os% %browser% %ip% %since% %visitorsonline% %usersonline% %toppost% %topbrowser% %topos%</div>';
+
+    $widget_vars=array('visits',
+                       'yvisits',
+                       'mvisits',
+                       'totalvisits',
+                       'totalpageviews',
+                       'todaytotalpageviews',
+                       'thistotalvisits',
+                       'alltotalvisits',
+                       'os',
+                       'browser',
+                       'ip',
+                       'since',
+                       'visitorsonline',
+                       'usersonline',
+                       'toppost'
+                      );
+
+    echo "<p><label for='newstatpress-title'>"; _e('Title:', 'newstatpress');
+    echo "</label><input class='widget-title' id='newstatpress-title' name='newstatpress-title' type='text' value=$title /></p>";
+
+    echo "<p><label for='newstatpress-body'>"; _e('Body:', 'newstatpress');
+    echo "</label><textarea class='widget-body' id='newstatpress-body' name='newstatpress-body' type='textarea'>$body</textarea></p>";
+
+    echo '<input type="hidden" id="newstatpress-submit" name="newstatpress-submit" value="1" />';
+
+    echo "<p>"; _e('Stats available: ', 'newstatpress');
+    echo "<br/ ><span class='widget_varslist'>";
+    foreach($widget_vars as $var) {
+        echo "%$var%  ";
+      }
+    echo "</span>"; echo "</p>";
+
   }
   function widget_newstatpress($args) {
     extract($args);
@@ -2734,7 +2745,7 @@ function widget_newstatpress_init($args) {
     $body = $options['body'];
     echo $before_widget;
     print($before_title . $title . $after_title);
-    print iri_NewStatPress_Vars($body);
+    print nsp_ExpandVarsInsideCode($body);
     echo $after_widget;
   }
   wp_register_sidebar_widget('NewStatPress', 'NewStatPress', 'widget_newstatpress');
@@ -2808,7 +2819,7 @@ function content_newstatpress($content = '') {
   foreach ($TYPEs[1] as $k => $TYPE) {
     switch ($TYPE) {
       case "Overview":
-        $replacement=iriOverview(FALSE);
+        $replacement=nsp_MakeOverview(FALSE);
         break;
       case "Top days":
         $replacement=iriValueTable2("date","Top days", (get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'), FALSE);
@@ -2858,799 +2869,272 @@ function content_newstatpress($content = '') {
   return $content;
 }
 
+function nsp_CalculateVariation($month,$lmonth,$row) {
 
-/**
- * Show statistics in dashboard
- */
-function iri_dashboard_widget_function() {
-  global $wpdb;
-  $table_name = $wpdb->prefix . "statpress";
-
-  # Tabella OVERVIEW
-  $unique_color="#114477";
-  $web_color="#3377B6";
-  $rss_color="#f38f36";
-  $spider_color="#83b4d8";
-  $lastmonth = iri_NewStatPress_lastmonth();
-  $thismonth = gmdate('Ym', current_time('timestamp'));
-  $yesterday = gmdate('Ymd', current_time('timestamp')-86400);
-  $today = gmdate('Ymd', current_time('timestamp'));
-  $tlm[0]=substr($lastmonth,0,4); $tlm[1]=substr($lastmonth,4,2);
-
-  //print "<div class='wrap'><h2>". __('Overview','NewStatPress'). "</h2>";
-  print "<table class='widefat'><thead><tr>
-  <th scope='col'></th>
-  <th scope='col'>". __('Total since','newstatpress'). "<br /><font size=1>";
-  print NewStatPress_Print('%since%');
-  print "</font></th>
-  <th scope='col'>". __('Last month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0])) ."</font></th>
-  <th scope='col'>". __('This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
-  <th scope='col'>". __('Target This month','newstatpress'). "<br /><font size=1>" . gmdate('M, Y', current_time('timestamp')) ."</font></th>
-  <th scope='col'>". __('Yesterday','newstatpress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')-86400) ."</font></th>
-  <th scope='col'>". __('Today','newstatpress'). "<br /><font size=1>" . gmdate('d M, Y', current_time('timestamp')) ."</font></th>
-  </tr></thead>
-  <tbody id='the-list'>";
-  ################################################################################################
-  # VISITORS ROW
-  print "<tr><td><div style='background:$unique_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Visitors','newstatpress'). "</td>";
-
-  #TOTAL
-  $qry_total = $wpdb->get_row("
-    SELECT count(DISTINCT ip) AS visitors
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider=''
-  ");
-  print "<td>" . $qry_total->visitors . "</td>\n";
-
-  #LAST MONTH
-  $qry_lmonth = $wpdb->get_row("
-   SELECT count(DISTINCT ip) AS visitors
-   FROM $table_name
-   WHERE
-     feed='' AND
-     spider='' AND
-     date LIKE '" . $lastmonth . "%'
-  ");
-  print "<td>" . $qry_lmonth->visitors . "</td>\n";
-
-  #THIS MONTH
-  $qry_tmonth = $wpdb->get_row("
-    SELECT count(DISTINCT ip) AS visitors
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date LIKE '" . $thismonth . "%'
-  ");
-  $qry_tmonth->change = null;
-  $qry_tmonth->added = null;
-  if($qry_lmonth->visitors <> 0) {
-    $pc = round( 100 * ($qry_tmonth->visitors / $qry_lmonth->visitors ) - 100,1);
-    if($pc >= 0) $pc = "+" . $pc;
-    $qry_tmonth->change = "<code> (" . $pc . "%)</code>";
-  }
-  print "<td>" . $qry_tmonth->visitors . $qry_tmonth->change . "</td>\n";
-
-  #TARGET
-  $qry_tmonth->target = round($qry_tmonth->visitors / (
+  $target = round($month->$row / (
     (date("d", current_time('timestamp')) - 1 +
     (date("H", current_time('timestamp')) +
     (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
   );
 
-  if($qry_lmonth->visitors <> 0) {
-    $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->visitors ) - 100,1);
-    if($pt >= 0) $pt = "+" . $pt;
-    $qry_tmonth->added = "<code> (" . $pt . "%)</code>";
+  $month->change = null;
+  $added = null;
+
+  if($lmonth->$row <> 0) {
+    $percent_change = round( 100 * ($month->$row / $lmonth->$row ) - 100,1);
+    $percent_target = round( 100 * ($target / $lmonth->$row ) - 100,1);
+
+    if($percent_change >= 0) {
+      $percent_change=sprintf("+%'04.1f", $percent_target);
+      $month->change = "<td class='coll'><code style='color:green'>($percent_change%)</code></td>";
+    }
+    else {
+      $percent_change=sprintf("%'05.1f", $percent_change);
+      $month->change = "<td class='coll'><code style='color:red'>($percent_change%)</code></td>";
+    }
+
+    if($percent_target >= 0) {
+      $percent_target=sprintf("+%'04.1f", $percent_target);
+      $added = "<td class='coll'><code style='color:green'>($percent_target%)</code></td>";
+    }
+    else {
+      $percent_target=sprintf("%'05.1f", $percent_target);
+      $added = "<td class='coll'><code style='color:red'>($percent_target%)</code></td>";
+    }
   }
-  print "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
-
-  #YESTERDAY
-  $qry_y = $wpdb->get_row("
-    SELECT count(DISTINCT ip) AS visitors
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date = '$yesterday'
-  ");
-  print "<td>" . $qry_y->visitors . "</td>\n";
-
-  #TODAY
-  $qry_t = $wpdb->get_row("
-    SELECT count(DISTINCT ip) AS visitors
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date = '$today'
-  ");
-  print "<td>" . $qry_t->visitors . "</td>\n";
-  print "</tr>";
-
-  ################################################################################################
-  # PAGEVIEWS ROW
-  print "<tr><td><div style='background:$web_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Pageviews','newstatpress'). "</td>";
-
-  #TOTAL
-  $qry_total = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider=''
-  ");
-  print "<td>" . $qry_total->pageview . "</td>\n";
-
-  #LAST MONTH
-  $prec=0;
-  $qry_lmonth = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date LIKE '" . $lastmonth . "%'
-  ");
-  print "<td>".$qry_lmonth->pageview."</td>\n";
-
-  #THIS MONTH
-  $qry_tmonth = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date LIKE '" . $thismonth . "%'
-  ");
-  $qry_tmonth->change = null;
-  $qry_tmonth->added = null;
-  if($qry_lmonth->pageview <> 0) {
-    $pc = round( 100 * ($qry_tmonth->pageview / $qry_lmonth->pageview ) - 100,1);
-    if($pc >= 0) $pc = "+" . $pc;
-    $qry_tmonth->change = "<code> (" . $pc . "%)</code>";
+  else {
+    $month->change = "<td></td>";
+    $added = "<td class='coll'></td>";
   }
-  print "<td>" . $qry_tmonth->pageview . $qry_tmonth->change . "</td>\n";
 
-  #TARGET
-  $qry_tmonth->target = round($qry_tmonth->pageview / (
-    (date("d", current_time('timestamp')) - 1 +
-    (date("H", current_time('timestamp')) +
-    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
-  );
-  if($qry_lmonth->pageview <> 0) {
-    $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->pageview ) - 100,1);
-    if($pt >= 0) $pt = "+" . $pt;
-      $qry_tmonth->added = "<code> (" . $pt . "%)</code>";
-  }
-  print "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
-
-  #YESTERDAY
-  $qry_y = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date = '$yesterday'
-  ");
-  print "<td>" . $qry_y->pageview . "</td>\n";
-
-  #TODAY
-  $qry_t = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date = '$today'
-  ");
-  print "<td>" . $qry_t->pageview . "</td>\n";
-  print "</tr>";
-
-  ################################################################################################
-  # SPIDERS ROW
-  print "<tr><td><div style='background:$spider_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Spiders','newstatpress'). "</td>";
-  #TOTAL
-  $qry_total = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>''
-  ");
-  print "<td>" . $qry_total->spiders . "</td>\n";
-
-  #LAST MONTH
-  $prec=0;
-  $qry_lmonth = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>'' AND
-      date LIKE '" . $lastmonth . "%'
-  ");
-  print "<td>" . $qry_lmonth->spiders. "</td>\n";
-
-  #THIS MONTH
-  $prec=$qry_lmonth->spiders;
-  $qry_tmonth = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>'' AND
-      date LIKE '" . $thismonth . "%'
-  ");
-  $qry_tmonth->change = null;
-  $qry_tmonth->added = null;
-  if($qry_lmonth->spiders <> 0) {
-    $pc = round( 100 * ($qry_tmonth->spiders / $qry_lmonth->spiders ) - 100,1);
-    if($pc >= 0) $pc = "+" . $pc;
-    $qry_tmonth->change = "<code> (" . $pc . "%)</code>";
-  }
-  print "<td>" . $qry_tmonth->spiders . $qry_tmonth->change . "</td>\n";
-
-  #TARGET
-  $qry_tmonth->target = round($qry_tmonth->spiders / (
-    (date("d", current_time('timestamp')) - 1 +
-    (date("H", current_time('timestamp')) +
-    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
-  );
-  if($qry_lmonth->spiders <> 0) {
-    $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->spiders ) - 100,1);
-    if($pt >= 0) $pt = "+" . $pt;
-    $qry_tmonth->added = "<code> (" . $pt . "%)</code>";
-  }
-  print "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
-
-  #YESTERDAY
-  $qry_y = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>'' AND
-      date = '$yesterday'
-  ");
-  print "<td>" . $qry_y->spiders . "</td>\n";
-
-  #TODAY
-  $qry_t = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>'' AND
-      date = '$today'
-  ");
-  print "<td>" . $qry_t->spiders . "</td>\n";
-  print "</tr>";
-
-  ################################################################################################
-  # FEEDS ROW
-  print "<tr><td><div class='feeds-row'></div>". __('Feeds','newstatpress'). "</td>";
-  #TOTAL
-  $qry_total = $wpdb->get_row("SELECT count(date) as feeds FROM $table_name WHERE feed<>'' AND spider='' ");
-  print "<td>".$qry_total->feeds."</td>\n";
-
-
-  #LAST MONTH
-  $qry_lmonth = $wpdb->get_row("
-    SELECT count(date) as feeds
-    FROM $table_name
-    WHERE
-      feed<>'' AND
-      spider='' AND
-      date LIKE '" . $lastmonth . "%'
-  ");
-  print "<td>".$qry_lmonth->feeds."</td>\n";
-
-  #THIS MONTH
-  $qry_tmonth = $wpdb->get_row("
-   SELECT count(date) as feeds
-   FROM $table_name
-   WHERE
-     feed<>'' AND
-     spider='' AND
-     date LIKE '" . $thismonth . "%'
-  ");
-  $qry_tmonth->change = null;
-  $qry_tmonth->added = null;
-  if($qry_lmonth->feeds <> 0) {
-    $pc = round( 100 * ($qry_tmonth->feeds / $qry_lmonth->feeds ) - 100,1);
-    if($pc >= 0) $pc = "+" . $pc;
-    $qry_tmonth->change = "<code> (" . $pc . "%)</code>";
-  }
-  print "<td>" . $qry_tmonth->feeds . $qry_tmonth->change . "</td>\n";
-
-  #TARGET
-  $qry_tmonth->target = round($qry_tmonth->feeds / (
-    (date("d", current_time('timestamp')) - 1 +
-    (date("H", current_time('timestamp')) +
-    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
-  );
-  if($qry_lmonth->feeds <> 0) {
-    $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->feeds ) - 100,1);
-    if($pt >= 0) $pt = "+" . $pt;
-    $qry_tmonth->added = "<code> (" . $pt . "%)</code>";
-  }
-  print "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
-
-  $qry_y = $wpdb->get_row("
-    SELECT count(date) as feeds
-    FROM $table_name
-    WHERE
-      feed<>'' AND
-      spider='' AND
-      date = '".$yesterday."'
-  ");
-  print "<td>".$qry_y->feeds."</td>\n";
-
-  $qry_t = $wpdb->get_row("
-    SELECT count(date) as feeds
-    FROM $table_name
-    WHERE
-      feed<>'' AND
-      spider='' AND
-      date = '$today'
-  ");
-  print "<td>".$qry_t->feeds."</td>\n";
-  print "</tr></table><br />\n\n";
-  print '</tr></table>';
-  print '</div>';
-  # END OF OVERVIEW
-  ####################################################################################################
-
-  print "<div class='wrap'><h4><a href='admin.php?page=newstatpress/newstatpress.php'>". __('More details','newstatpress'). " &raquo;</a></h4>";
+  $calculated_result=array($month->change,$target,$added);
+  return $calculated_result;
 }
 
-/**
- * Make the overwiew
- *
- * @param print true if to print
- * @return the printing represetnation if print is false
- */
-function iriOverview($print = TRUE) {
+function nsp_MakeOverview($print ='dashboard') {
+
   global $wpdb;
   $table_name = $wpdb->prefix . "statpress";
 
-  $result='';
-  # Tabella OVERVIEW
-  // $unique_color="#114477";
-  // $web_color="#3377B6";
-  // $rss_color="#f38f36";
-  // $spider_color="#83b4d8";
+  $overview_table='';
 
   $since = NewStatPress_Print('%since%');
   $lastmonth = iri_NewStatPress_lastmonth();
+  $thisyear = gmdate('Y', current_time('timestamp'));
   $thismonth = gmdate('Ym', current_time('timestamp'));
   $yesterday = gmdate('Ymd', current_time('timestamp')-86400);
   $today = gmdate('Ymd', current_time('timestamp'));
   $tlm[0]=substr($lastmonth,0,4); $tlm[1]=substr($lastmonth,4,2);
 
+  $thisyearHeader = gmdate('Y', current_time('timestamp'));
   $lastmonthHeader = gmdate('M, Y',gmmktime(0,0,0,$tlm[1],1,$tlm[0]));
   $thismonthHeader = gmdate('M, Y', current_time('timestamp'));
   $yesterdayHeader = gmdate('d M', current_time('timestamp')-86400);
   $todayHeader = gmdate('d M', current_time('timestamp'));
 
+  if ($print=='main'){
+    $overview_table.="<div class='wrap'><h2>". __('Overview','newstatpress'). "</h2>";
+    $overview_table.="<table class='widefat center nsp'>
+              <thead>
+              <tr class='sup'>
+                <th></th>
+                <th>". __('Total since','newstatpress'). "</th>
+                <th scope='col'>". __('This year','newstatpress'). "</th>
+                <th scope='col'>". __('Last month','newstatpress'). "</th>
+                <th scope='col' colspan='2'>". __('This month','newstatpress'). "</th>
+                <th scope='col' colspan='2'>". __('Target This month','newstatpress'). "</th>
+                <th scope='col'>". __('Yesterday','newstatpress'). "</th>
+                <th scope='col'>". __('Today','newstatpress'). "</th>
+              </tr>
+              <tr class='inf'>
+                <th></th>
+                <th><span>$since</span></th>
+                <th><span>$thisyearHeader</span></th>
+                <th><span>$lastmonthHeader</span></th>
+                <th colspan='2'><span > $thismonthHeader </span></th>
+                <th colspan='2'><span > $thismonthHeader </span></th>
+                <th><span>$yesterdayHeader</span></th>
+                <th><span>$todayHeader</span></th>
+              </tr></thead>
+              <tbody class='overview-list'>";
+}
+elseif ($print=='dashboard'){
 
-  $result.="<div class='wrap'><h2>". __('Overview','newstatpress'). "</h2>
-            <table class='widefat center nsp'>
-            <thead><tr>
+//   <th>". __('all','newstatpress'). "</th>
+//   <th scope='col'>". __('M-1','newstatpress'). "</th>
+//   <th scope='col' colspan='2'>". __('M','newstatpress'). "</th>
+//   <th scope='col' colspan='2'>". __('M-t','newstatpress'). "</th>
+//   <th scope='col'>". __('Y','newstatpress'). "</th>
+//   <th scope='col'>". __('T','newstatpress'). "</th>
+
+  $overview_table.="<table class='widefat center nsp'>
+
+            <thead>
+            <tr class='sup dashboard'>
             <th></th>
-            <th>". __('Total since','newstatpress'). "<span class='date-overview'> $since </span></th>
-            <th scope='col'>". __('Last month','newstatpress'). "<span class='date-overview'> $lastmonthHeader </span></th>
-            <th scope='col'>". __('This month','newstatpress'). "<span class='date-overview'> $thismonthHeader </span></th>
-            <th scope='col'>". __('Target This month','newstatpress'). "<span class='date-overview'> $thismonthHeader </span></th>
-            <th scope='col'>". __('Yesterday','newstatpress'). "<span class='date-overview'> $yesterdayHeader </span></th>
-            <th scope='col'>". __('Today','newstatpress'). "<span class='date-overview'> $todayHeader </span></th>
-            </tr></thead>
-            <tbody id='the-list-overview'>";
+            <th>". __('Total since','newstatpress'). "</th>
+                <th scope='col'>". __('Last month','newstatpress'). "</th>
+                <th scope='col' colspan='2'>". __('This month','newstatpress'). "</th>
+                <th scope='col' colspan='2'>". __('Target This month','newstatpress'). "</th>
+                <th scope='col'>". __('Yesterday','newstatpress'). "</th>
+                <th scope='col'>". __('Today','newstatpress'). "</th>
+            </tr>
+            <tr class='inf dashboard'>
+            <th></th>
+                <th><span>$since</span></th>
+                <th><span>$lastmonthHeader</span></th>
+                <th colspan='2'><span > $thismonthHeader </span></th>
+                <th colspan='2'><span > $thismonthHeader </span></th>
+                <th><span>$yesterdayHeader</span></th>
+                <th><span>$todayHeader</span></th>
+          </tr></thead>
+            <tbody class='overview-list'>";
+}
+  // build body overview table
+  $overview_rows=array('visitors','pageview','spiders','feeds');
 
-  ################################################################################################
-  # VISITORS ROW
-  $result.="<tr><td class='test visitors'>". __('Visitors','newstatpress'). "</td>";
+  foreach ($overview_rows as $row) {
 
-  #TOTAL
-  $qry_total = $wpdb->get_row("SELECT count(DISTINCT ip) AS visitors FROM $table_name WHERE feed='' AND spider=''");
-  $result.="<td>$qry_total->visitors</td>\n";
+    switch($row) {
 
-  #LAST MONTH
-  $qry_lmonth = $wpdb->get_row("SELECT count(DISTINCT ip) AS visitors FROM $table_name WHERE
-      feed='' AND
-      spider='' AND
-      date LIKE '" . $lastmonth . "%'
-  ");
-  $result.="<td>$qry_lmonth->visitors</td>\n";
+      case 'visitors' :
+        $row2='DISTINCT ip';
+        $row_title=__('Visitors','newstatpress');
+        $sql_QueryTotal="SELECT count($row2) AS $row FROM $table_name WHERE feed='' AND spider=''";
+      break;
 
-  #THIS MONTH
-  $qry_tmonth = $wpdb->get_row("
-    SELECT count(DISTINCT ip) AS visitors
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date LIKE '" . $thismonth . "%'
-  ");
-  $qry_tmonth->change = null;
-  $qry_tmonth->added = null;
-  if($qry_lmonth->visitors <> 0) {
-    $pc = round( 100 * ($qry_tmonth->visitors / $qry_lmonth->visitors ) - 100,1);
-    if($pc >= 0) $pc = "+" . $pc;
-    $qry_tmonth->change = "<code> (" . $pc . "%)</code>";
-  }
-  $result = $result. "<td>" . $qry_tmonth->visitors . $qry_tmonth->change . "</td>\n";
+      case 'pageview' :
+        $row2='date';
+        $row_title=__('Pageviews','newstatpress');
+        $sql_QueryTotal="SELECT count($row2) AS $row FROM $table_name WHERE feed='' AND spider=''";
+      break;
 
-  #TARGET
-  $qry_tmonth->target = round($qry_tmonth->visitors / (
-    (date("d", current_time('timestamp')) - 1 +
-    (date("H", current_time('timestamp')) +
-    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
-  );
-  if($qry_lmonth->visitors <> 0) {
-    $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->visitors ) - 100,1);
-    if($pt >= 0) $pt = "+" . $pt;
-      $qry_tmonth->added = "<code> (" . $pt . "%)</code>";
+      case 'spiders' :
+        $row2='date';
+        $row_title=__('Spiders','newstatpress');
+        $sql_QueryTotal="SELECT count($row2) AS $row FROM $table_name WHERE feed='' AND spider<>''";
+      break;
+
+      case 'feeds' :
+        $row2='date';
+        $row_title=__('Feeds','newstatpress');
+        $sql_QueryTotal="SELECT count($row2) AS $row FROM $table_name WHERE feed<>'' AND spider=''";
+      break;
     }
-  $result = $result. "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
 
-  #YESTERDAY
-  $qry_y = $wpdb->get_row("
-     SELECT count(DISTINCT ip) AS visitors
-     FROM $table_name
-     WHERE
-       feed='' AND
-       spider='' AND
-       date = '$yesterday'
-  ");
-  $result.="<td>$qry_y->visitors</td>\n";
+    // query requests
+    $qry_total = $wpdb->get_row($sql_QueryTotal);
+    $qry_tyear = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$thisyear%'");
+    $qry_lmonth = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$lastmonth%'");
+    $qry_tmonth = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$thismonth%'");
+    $qry_y = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$yesterday'");
+    $qry_t = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$today'");
 
-  #TODAY
-  $qry_t = $wpdb->get_row("
-    SELECT count(DISTINCT ip) AS visitors
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date = '$today'
-  ");
-  $result = $result. "<td>" . $qry_t->visitors . "</td>\n";
-  $result = $result. "</tr>";
+    $calculated_result=nsp_CalculateVariation($qry_tmonth,$qry_lmonth,$row);
 
-  ################################################################################################
-  # PAGEVIEWS ROW
-  $result = $result. "<tr><td class='test pageviews'>". __('Pageviews','newstatpress'). "</td>"; // add by chab
-
-  // $result = $result. "<tr><td><div style='background:$web_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Pageviews','newstatpress'). "</td>";
-
-  #TOTAL
-  $qry_total = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider=''
-  ");
-  $result = $result. "<td>" . $qry_total->pageview . "</td>\n";
-
-  #LAST MONTH
-  $prec=0;
-  $qry_lmonth = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date LIKE '" . $lastmonth . "%'
-    ");
-  $result = $result. "<td>".$qry_lmonth->pageview."</td>\n";
-
-  #THIS MONTH
-  $qry_tmonth = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date LIKE '" . $thismonth . "%'
-  ");
-  $qry_tmonth->change = null;
-  $qry_tmonth->added = null;
-  if($qry_lmonth->pageview <> 0) {
-    $pc = round( 100 * ($qry_tmonth->pageview / $qry_lmonth->pageview ) - 100,1);
-    if($pc >= 0) $pc = "+" . $pc;
-    $qry_tmonth->change = "<code> (" . $pc . "%)</code>";
+    // build full current row
+    $overview_table.="<tr><td class='row_title $row'>$row_title</td>";
+    $overview_table.="<td class='colc'>".$qry_total->$row."</td>\n";
+    if ($print=='main')
+      $overview_table.="<td class='colc'>".$qry_tyear->$row."</td>\n";
+    $overview_table.="<td class='colc'>".$qry_lmonth->$row."</td>\n";
+    $overview_table.="<td class='colr'>".$qry_tmonth->$row. $calculated_result[0] ."</td>\n";
+    $overview_table.="<td class='colr'> $calculated_result[1] $calculated_result[2] </td>\n";
+    $overview_table.="<td class='colc'>".$qry_y->$row."</td>\n";
+    $overview_table.="<td class='colc'>".$qry_t->$row."</td>\n";
+    $overview_table.="</tr>";
   }
-  $result = $result. "<td>" . $qry_tmonth->pageview . $qry_tmonth->change . "</td>\n";
 
-  #TARGET
-  $qry_tmonth->target = round($qry_tmonth->pageview / (
-    (date("d", current_time('timestamp')) - 1 +
-    (date("H", current_time('timestamp')) +
-    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
-  );
-  if($qry_lmonth->pageview <> 0) {
-    $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->pageview ) - 100,1);
-    if($pt >= 0) $pt = "+" . $pt;
-    $qry_tmonth->added = "<code> (" . $pt . "%)</code>";
+  if ($print=='dashboard'){
+    $overview_table.="</tr></table>";
   }
-  $result = $result. "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
 
-  #YESTERDAY
-  $qry_y = $wpdb->get_row("
-   SELECT count(date) as pageview
-   FROM $table_name
-   WHERE
-     feed='' AND
-     spider='' AND
-     date = '$yesterday'
-   ");
-  $result = $result."<td>" . $qry_y->pageview . "</td>\n";
+  if ($print=='main'){
+    $overview_table.= "</tr></table>\n";
 
-  #TODAY
-  $qry_t = $wpdb->get_row("
-    SELECT count(date) as pageview
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider='' AND
-      date = '$today'
-    ");
-  $result = $result."<td>" . $qry_t->pageview . "</td>\n";
-  $result = $result."</tr>";
-
-  ################################################################################################
-  # SPIDERS ROW
-  $result = $result. "<tr><td class='test spiders'>". __('Spiders','newstatpress'). "</td>"; // add by chab
-
-  // $result = $result."<tr><td><div style='background:$spider_color;width:10px;height:10px;float:left;margin-top:4px;margin-right:5px;'></div>". __('Spiders','newstatpress'). "</td>";
-
-  #TOTAL
-  $qry_total = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>''
-  ");
-  $result = $result."<td>" . $qry_total->spiders . "</td>\n";
-
-  #LAST MONTH
-  $prec=0;
-  $qry_lmonth = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>'' AND
-      date LIKE '" . $lastmonth . "%'
-  ");
-  $result = $result. "<td>" . $qry_lmonth->spiders. "</td>\n";
-
-  #THIS MONTH
-  $prec=$qry_lmonth->spiders;
-  $qry_tmonth = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>'' AND
-      date LIKE '" . $thismonth . "%'
-  ");
-  $qry_tmonth->change = null;
-  $qry_tmonth->added = null;
-  if($qry_lmonth->spiders <> 0) {
-    $pc = round( 100 * ($qry_tmonth->spiders / $qry_lmonth->spiders ) - 100,1);
-    if($pc >= 0) $pc = "+" . $pc;
-    $qry_tmonth->change = "<code> (" . $pc . "%)</code>";
-  }
-  $result = $result. "<td>" . $qry_tmonth->spiders . $qry_tmonth->change . "</td>\n";
-
-  #TARGET
-  $qry_tmonth->target = round($qry_tmonth->spiders / (
-    (date("d", current_time('timestamp')) - 1 +
-    (date("H", current_time('timestamp')) +
-    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
-  );
-  if($qry_lmonth->spiders <> 0) {
-    $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->spiders ) - 100,1);
-    if($pt >= 0) $pt = "+" . $pt;
-    $qry_tmonth->added = "<code> (" . $pt . "%)</code>";
-  }
-  $result = $result. "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
-
-  #YESTERDAY
-  $qry_y = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-      feed='' AND
-      spider<>'' AND
-      date = '$yesterday'
-  ");
-  $result = $result. "<td>" . $qry_y->spiders . "</td>\n";
-
-  #TODAY
-  $qry_t = $wpdb->get_row("
-    SELECT count(date) as spiders
-    FROM $table_name
-    WHERE
-     feed='' AND
-     spider<>'' AND
-     date = '$today'
-  ");
-  $result = $result. "<td>" . $qry_t->spiders . "</td>\n";
-  $result = $result. "</tr>";
-
-  ################################################################################################
-  # FEEDS ROW
-  $result = $result. "<tr><td class='test feeds'>". __('Feeds','newstatpress'). "</td>"; // add by chab
-
-  #TOTAL
-  $qry_total = $wpdb->get_row("
-    SELECT count(date) as feeds
-    FROM $table_name
-    WHERE
-      feed<>'' AND spider=''
-    ");
-  $result = $result. "<td>".$qry_total->feeds."</td>\n";
-
-  #LAST MONTH
-  $qry_lmonth = $wpdb->get_row("
-    SELECT count(date) as feeds
-    FROM $table_name
-    WHERE
-      feed<>'' AND
-      spider='' AND
-      date LIKE '" . $lastmonth . "%'
-  ");
-  $result = $result. "<td>".$qry_lmonth->feeds."</td>\n";
-
-  #THIS MONTH
-  $qry_tmonth = $wpdb->get_row("
-    SELECT count(date) as feeds
-    FROM $table_name
-    WHERE
-      feed<>'' AND
-      spider='' AND
-      date LIKE '" . $thismonth . "%'
-  ");
-  $qry_tmonth->change = null;
-  $qry_tmonth->added = null;
-  if($qry_lmonth->feeds <> 0) {
-    $pc = round( 100 * ($qry_tmonth->feeds / $qry_lmonth->feeds ) - 100,1);
-    if($pc >= 0) $pc = "+" . $pc;
-    $qry_tmonth->change = "<code> (" . $pc . "%)</code>";
-  }
-  $result = $result. "<td>" . $qry_tmonth->feeds . $qry_tmonth->change . "</td>\n";
-
-  #TARGET
-  $qry_tmonth->target = round($qry_tmonth->feeds / (
-    (date("d", current_time('timestamp')) - 1 +
-    (date("H", current_time('timestamp')) +
-    (date("i", current_time('timestamp')) + 1)/ 60.0) / 24.0)) * date("t", current_time('timestamp'))
-  );
-  if($qry_lmonth->feeds <> 0) {
-    $pt = round( 100 * ($qry_tmonth->target / $qry_lmonth->feeds ) - 100,1);
-    if($pt >= 0) $pt = "+" . $pt;
-    $qry_tmonth->added = "<code> (" . $pt . "%)</code>";
-  }
-  $result = $result. "<td>" . $qry_tmonth->target . $qry_tmonth->added . "</td>\n";
-
-  $qry_y = $wpdb->get_row("
-    SELECT count(date) as feeds
-    FROM $table_name
-    WHERE
-      feed<>'' AND
-      spider='' AND
-      date = '".$yesterday."'
-  ");
-  $result = $result. "<td>".$qry_y->feeds."</td>\n";
-
-  $qry_t = $wpdb->get_row("
-    SELECT count(date) as feeds
-    FROM $table_name
-    WHERE
-      feed<>'' AND
-      spider='' AND
-      date = '$today'
-  ");
-  $result = $result. "<td>".$qry_t->feeds."</td>\n";
-
-  $result = $result. "</tr></table><br />\n\n";
-
-  ################################################################################################
-  ################################################################################################
-  # THE GRAPHS
-
-  # last "N" days graph  NEW
-  $gdays=get_option('newstatpress_daysinoverviewgraph'); if($gdays == 0) { $gdays=20; }
-  $start_of_week = get_option('start_of_week');
-  $overview_graph.='<table width="100%" border="0"><tr>';
-  $qry = $wpdb->get_row("
-    SELECT count(date) as pageview, date
-    FROM $table_name
-    GROUP BY date HAVING date >= '".gmdate('Ymd', current_time('timestamp')-86400*$gdays)."'
-    ORDER BY pageview DESC
-    LIMIT 1
-  ");
-
-  $maxxday = 0;
-  if ($qry != null) $maxxday=$qry->pageview;
-  if($maxxday == 0) { $maxxday = 1; }
-  # Y
-  $gd=(90/$gdays).'%';
-  for($gg=$gdays-1;$gg>=0;$gg--) {
-    #TOTAL VISITORS
-    $qry_visitors = $wpdb->get_row("
-      SELECT count(DISTINCT ip) AS total
+    // print graph
+    //  last "N" days graph  NEW
+    $gdays=get_option('newstatpress_daysinoverviewgraph'); if($gdays == 0) { $gdays=20; }
+    $start_of_week = get_option('start_of_week');
+    $qry = $wpdb->get_row("
+      SELECT count(date) as pageview, date
       FROM $table_name
-      WHERE
-        feed='' AND
-        spider='' AND
-        date = '".gmdate('Ymd', current_time('timestamp')-86400*$gg)."'
+      GROUP BY date HAVING date >= '".gmdate('Ymd', current_time('timestamp')-86400*$gdays)."'
+      ORDER BY pageview DESC
+      LIMIT 1
     ");
-    $px_visitors = round($qry_visitors->total*100/$maxxday);
 
-    #TOTAL PAGEVIEWS (we do not delete the uniques, this is falsing the info.. uniques are not different visitors!)
-    $qry_pageviews = $wpdb->get_row("
-      SELECT count(date) as total
-      FROM $table_name
-      WHERE
-        feed='' AND
-        spider='' AND
-        date = '".gmdate('Ymd', current_time('timestamp')-86400*$gg)."'
-    ");
-    $px_pageviews = round($qry_pageviews->total*100/$maxxday);
+    $maxxday = 0;
+    if ($qry != null) $maxxday=$qry->pageview;
+    if($maxxday == 0) { $maxxday = 1; }
+    # Y
+    $gd=(90/$gdays).'%';
 
-    #TOTAL SPIDERS
-    $qry_spiders = $wpdb->get_row("
-      SELECT count(ip) AS total
-      FROM $table_name
-      WHERE
-        feed='' AND
-        spider<>'' AND
-        date = '".gmdate('Ymd', current_time('timestamp')-86400*$gg)."'
-      ");
-    $px_spiders = round($qry_spiders->total*100/$maxxday);
+    $overview_graph.="<table class='graph'><tr>";
 
-    #TOTAL FEEDS
-    $qry_feeds = $wpdb->get_row("
-      SELECT count(ip) AS total
-      FROM $table_name
-      WHERE
-        feed<>'' AND
-        spider='' AND
-        date = '".gmdate('Ymd', current_time('timestamp')-86400*$gg)."'
-    ");
-    $px_feeds = round($qry_feeds->total*100/$maxxday);
+    for($gg=$gdays-1;$gg>=0;$gg--) {
 
-    $px_white = 100 - $px_feeds - $px_spiders - $px_pageviews - $px_visitors;
+      $scale_factor=2; //2 : 200px in CSS
 
-    $overview_graph.='<td width="'.$gd.'" valign="bottom"';
-    if($start_of_week == gmdate('w',current_time('timestamp')-86400*$gg)) {
-      $overview_graph.=' style="border-left:2px dotted gray; padding-left: 0px; padding-right: 0px;"';
-    }  # week-cut
-    $overview_graph.="><div class='testons'>
-       <div style='background:#ffffff;width:100%;height:".$px_white."px;'></div>
-       <div class='visitors_bar' style='height:".$px_visitors."px;' title='".$qry_visitors->total." ".__('Visitors','newstatpress')."'></div>
-       <div class='web_bar' style='height:".$px_pageviews."px;' title='".$qry_pageviews->total." ".__('Pageviews','newstatpress')."'></div>
-       <div class='spiders_bar' style='height:".$px_spiders."px;' title='".$qry_spiders->total." ".__('Spiders','newstatpress')."'></div>
-       <div class='feeds-r' style='height:".$px_feeds."px;' title='".$qry_feeds->total." ".__('Feeds','newstatpress')."'></div>
-       <div style='background:gray;width:100%;height:1px;'></div>
-       <br />".gmdate('d', current_time('timestamp')-86400*$gg) . ' ' . gmdate('M', current_time('timestamp')-86400*$gg) . "</div></td>\n";
+      $date=gmdate('Ymd', current_time('timestamp')-86400*$gg);
+
+      $qry_visitors = $wpdb->get_row("SELECT count(DISTINCT ip) AS total FROM $table_name WHERE feed='' AND spider='' AND date = '$date'");
+      $px_visitors = $scale_factor*(round($qry_visitors->total*100/$maxxday));
+
+      $qry_pageviews = $wpdb->get_row("SELECT count(date) AS total FROM $table_name WHERE feed='' AND spider='' AND date = '$date'");
+      $px_pageviews = $scale_factor*(round($qry_pageviews->total*100/$maxxday));
+
+      $qry_spiders = $wpdb->get_row("SELECT count(date) AS total FROM $table_name WHERE feed='' AND spider<>'' AND date = '$date'");
+      $px_spiders = $scale_factor*(round($qry_spiders->total*100/$maxxday));
+
+      $qry_feeds = $wpdb->get_row("SELECT count(date) AS total FROM $table_name WHERE feed<>'' AND spider='' AND date = '$date'");
+      $px_feeds = $scale_factor*(round($qry_feeds->total*100/$maxxday));
+
+      $px_white = $scale_factor*100 - $px_feeds - $px_spiders - $px_pageviews - $px_visitors;
+
+      $overview_graph.="<td width='$gd' valign='bottom'>";
+
+      $overview_graph.="<div class='overview-graph'>
+        <div style='border-left:1px; background:#ffffff;width:100%;height:".$px_white."px;'></div>
+        <div class='visitors_bar' style='height:".$px_visitors."px;' title='".$qry_visitors->total." ".__('Visitors','newstatpress')."'></div>
+        <div class='web_bar' style='height:".$px_pageviews."px;' title='".$qry_pageviews->total." ".__('Pageviews','newstatpress')."'></div>
+        <div class='spiders_bar' style='height:".$px_spiders."px;' title='".$qry_spiders->total." ".__('Spiders','newstatpress')."'></div>
+        <div class='feeds_bar' style='height:".$px_feeds."px;' title='".$qry_feeds->total." ".__('Feeds','newstatpress')."'></div>
+        <div style='background:gray;width:100%;height:1px;'></div>";
+        if($start_of_week == gmdate('w',current_time('timestamp')-86400*$gg)) $overview_graph.="<div class='legend-W'>";
+        else $overview_graph.="<div class='legend'>";
+        $overview_graph.=gmdate('d', current_time('timestamp')-86400*$gg) . ' ' . gmdate('M', current_time('timestamp')-86400*$gg) .     "</div></div></td>\n";
+    }
+    $overview_graph.="</tr></table></div>";
+
+    $overview_table=$overview_table.$overview_graph;
   }
-  $overview_graph.='</tr></table></div>';
 
-  # END OF OVERVIEW
-  ####################################################################################################
-  $result=$result.$overview_graph;
-  if ($print) print $result;
-  else return $result;
+  if ($print!=FALSE) print $overview_table;
+  else return $overview_table;
+}
+
+/**
+ * Show statistics in dashboard
+ *
+ */
+function nsp_BuildDashboardWidget() {
+
+  nsp_MakeOverview('dashboard');
+  ?>
+
+  <ul class='nsp_dashboard'>
+    <li>
+      <a href='admin.php?page=details-page'><?php _e('Details','newstatpress')?></a> |
+    </li>
+    <li>
+      <a href='admin.php?page=visits-page'><?php _e('Visits','newstatpress')?></a> |
+    </li>
+    <li>
+      <a href='admin.php?page=options-page'><?php _e('Options','newstatpress')?>
+      </li>
+  </ul>
+  <?php
 }
 
 // Create the function use in the action hook
@@ -3660,9 +3144,9 @@ function iriOverview($print = TRUE) {
  */
 function iri_add_dashboard_widgets() {
   global $wp_meta_boxes;
-
+  $title=__('NewStatPress Overview','newstatpress');
   if (get_option('newstatpress_dashboard')=='checked') {
-    wp_add_dashboard_widget('iri_dashboard_widget', 'NewStatPress Overview', 'iri_dashboard_widget_function');
+    wp_add_dashboard_widget('dashboard_NewsStatPress_overview', $title, 'nsp_BuildDashboardWidget');
   } else unset($wp_meta_boxes['dashboard']['side']['core']['wp_dashboard_setup']);
 }
 
@@ -3727,7 +3211,6 @@ function newstatpress_update() {
   }
 }
 
-
 add_action('plugins_loaded', 'widget_newstatpress_init');
 add_action('send_headers', 'iriStatAppend');  //add_action('wp_head', 'iriStatAppend');
 add_action('init','iri_checkExport');
@@ -3739,7 +3222,7 @@ add_action('wp_dashboard_setup', 'iri_add_dashboard_widgets' );
 
 add_filter('the_content', 'content_newstatpress');
 
-register_activation_hook(__FILE__,'iri_NewStatPress_CreateTable');
+register_activation_hook(__FILE__,'nsp_BuildPluginSQLTable');
 register_deactivation_hook( __FILE__, 'new_count_deregister' );
 
 ?>
