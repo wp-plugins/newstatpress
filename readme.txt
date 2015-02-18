@@ -3,23 +3,25 @@ Contributors: ice00
 Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
-Tested up to: 3.5.1
-Stable Tag: 0.5.9
+Tested up to: 4.1
+Stable Tag: 0.9.5
 
-NewStatPress is a new version of StatPress (that was the first real-time plugin dedicated to the management of statistics about blog visits).
+NewStatPress (Statpress plugin fork) is a real-time plugin to manage the visits' statistics about your blog  (without external web analytics).
 
 == Description ==
 
-A real-time plugin dedicated to the management of statistics about blog visits. It collects information about visitors, spiders, search keywords, feeds, browsers etc.
+NewStatPress is a new version of StatPress that was the first real-time plugin dedicated to the management of statistics about blog visits.
 
-This project borned for improving the Daniele Lippi's StarPress plugin adding a new history features and make it less db consuming.
+It collects information about visitors, spiders, search keywords, feeds, browsers etc.
 
 Once the plugin NewStatPress has been activated it immediately starts to collect statistics information.
 Using NewStatPress you could spy your visitors while they are surfing your blog or check which are the preferred pages, posts and categories.
 In the Dashboard menu you will find the NewStatPress page where you could look up the statistics (overview or detailed).
 NewStatPress also includes a widget one can possibly add to a sidebar (or easy PHP code if you can't use widgets!).
 
-Note: you must disable the original StatPress plugin when activating this, as it use the same table of StatPress for storing data in DB (copy the data to another table will be very space consuming for your site, so it was better to use the same table)
+Note: you must disable the original StatPress plugin (or other plugins still based onto Statpress) when activating this, as it use the same table of StatPress for storing data in DB (copy the data to another table will be very space consuming for your site, so it was better to use the same table)
+
+With the new ajax/javascript usage for variables in widget, the plugin is faster for a user being visit your site even with 1GB or more of database to use!
 
 = Support =
 
@@ -44,10 +46,12 @@ Widget is customizable. These are the available variables:
 
 * %thistotalvisits% - this page, total visits
 * %alltotalvisits% - all page, total visits
-* %totalpageviews% - total pages view 
+* %totalpageviews% - total pages view
 * %todaytotalpageviews% -  total pages view today
 * %since% - Date of the first hit
 * %visits% - Today visits
+* %yvisits% - Yesterday visits
+* %mvisits% - Month visits
 * %totalvisits% - Total visits
 * %os% - Operative system
 * %browser% - Browser
@@ -58,6 +62,15 @@ Widget is customizable. These are the available variables:
 * %topbrowser% - The most used Browser
 * %topos% - The most used O.S.
 * %topsearch% - The most used search terms
+* %installed% - Give the number of installed plugin (experimental)
+
+The number of installed plugins is obtained by counting the encripted MD5 site domain where the
+plugin is installed and his version inside a table into newstatpress.altervista.org database.
+As MD5 is used, this means that the site is registered anonymous and so site privacy is mantained.
+Actually the registration is send when you are in admin area, so it not affects a user that visit your site.
+If you put %installed% into one your page, take present that it goes to read a value to
+newstatpress.altervista.org database (it is one value, so performance should be fast).
+The used registration scripts are added inside include directory.
 
 Now you could add these values everywhere! NewStatPress offers a new PHP function *NewStatPress_Print()*.
 * i.e. NewStatPress_Print("%totalvisits% total visits.");
@@ -67,7 +80,7 @@ New sperimental functions: place this command [NewStatPress: xxx] every were in 
 Available functions are:
  *  [NewStatPress: Overview]
  *  [NewStatPress: Top days]
- *  [NewStatPress: O.S.] 
+ *  [NewStatPress: O.S.]
  *  [NewStatPress: Browser]
  *  [NewStatPress: Feeds]
  *  [NewStatPress: Search Engine]
@@ -108,185 +121,261 @@ Check at http://newstatpress.altervista.org
 
 == Changelog ==
 
-= 0.1.0 =
+= 0.9.5 =
 
-* Adds index onto Statpress 1.4.1 table for improve velocity
-* Changes data type of some fields for saving space
-* Let the images to be visible even for relocated blog
-* Makes the update of search engine more quick
+* Fix PHP compatibility issue on old versions
 
-= 0.1.1 =
+= 0.9.4 =
 
-* Reactivate translactions
-* Add more OS (MacOSX variants, Android)
-* Add more Browser (Firefox 4, IE 9)
+* Update of Widget 'NewStatPress' (code re-writed, add variable informations)
+* Fix Overview Table (CSS)
+* Add Tool page with tab navigation
 
-= 0.1.2 =
+Note: do not install if you did not have a recent PHP version
 
-* Add images for new browser
-* Better polish translation by Pawel Dworniak
-* Separate iPhone/iPad/iPod devices
+= 0.9.3 =
 
-= 0.1.3 =
+* Add Visits page with tab navigation
+* Add tab navigation in Crédits page
+* Add 'Donator' tab in Crédits page
+* Add 'visits' and 'options' links in Dashboard widget
+* Add CSS style to navbar in Visitors page
+* Add colored variation in overview table
+* Re-writed Overview function
+* Fix Duplicate INDEX when User database is updated (function rewrited)
+* Fix dashboard 'details' dead link
+* Fix navbar dead link in visitors page
+* Various code fixing
+* Api for variables (10x faster to load page with widget)
 
-* Reactivate visitors/user online with unix timestamp
+Note: refresh your browser cache to take the new CSS settings else if you use javascript in widget where there is a %variable% of newstatpress, please take a look as now it could generate javascript error (neested code).
 
-= 0.1.4 =
+= 0.9.2 =
 
-* Fix fromDate calculation
+* CSS fix :  Overview fix and wp_enqueue_style compatibility fix
 
-= 0.1.5 =
+= 0.9.1 =
 
-* Open link in new tab/window (thanks to Sisko)
-* New displays of data for spy function (thanks to Sisko)
-* Added %alltotalvisits%
+* Fix PHP to be compatible with a old version (all 0.8.9 changes are now activated)
 
-= 0.1.6 =
+= 0.9.0 =
 
-* Add option for not track given IPs (from wp_slimstat)
-* update Italian translation
+* Revert modification to 0.8.8 to fix PHP issue for old versions
 
-= 0.1.7 =
+= 0.8.9 =
 
-* Let Search function to works again (thank to Ladislav)
+* Added Ip2nation download function in option page
+* Added plugin homepage link, news feeds link, bouton donation in credit page
+* Added variables %yvisits% (yesterday visits) %mvisits% (month visits)
+* Added CSS style to stylesheet (./css/style.css), partially done
+  *  remove page
+  *  update page
+  *  credit page
+* Optimization of the option page
+* Optimization of the credit page
+* Optimization of the export page
+* Optimization of the remove page
+* Optimization of the database update page
+* Fixed 'selected sub-menu' bug
+* Fixed wrong path to update IP2nation when database is updated (/includes)
+* Fixed 5 bots, add 13 new bots
+* Update locate : Italian and French
 
-= 0.1.8 =
+NOTE: not install this version if you have not a recent PHP version. Attend the new 0.9.1 instead.
 
-* Add option for not track given permalinks (from wp_slimstat)
+= 0.8.8 =
 
-= 0.1.9 =
+* Optimize %alltotalvisits% query (up to 5X faster)
+* Optimize %visitorsonline% query (uses more indexes)
+* Optimize %usersonline% query () (uses more indexes)
 
-* make all reports in details to have the number of entries you want
-* Add [NewStatPress: xxx] experimantal function for having report into wordpress page
-* Add %totalpageviews% - total pages view
+= 0.8.7 =
 
-= 0.2.0 =
+* Add Browser (+1)
+* Add OS (+5)
 
-* Add new OS (+44), browsers (+52) and spiders (+71) (from statpress-visitors)
+= 0.8.6 =
 
-= 0.2.1 =
+* Replace obsolete get_settings() to get_option() (thanks to kjmtsh)
+* Add empty check of the query results (thanks to kjmtsh)
+* Fix of the query string for dbDelta() function (thanks to kjmtsh)
 
-* Add new OS (+3), browsers (+6)
-* Add Simplified Chinese translation (thanks to Christopher Meng)
+= 0.8.5 =
 
-= 0.2.2 =
+* Add Browser (+10)
+* Increase referrer from 250 to 512 chars
 
-* Add source for Simplified Chinese translation (thanks to Christopher Meng)
-* Fix nb_NO over no_NO locale 
-* Lots of php warnings fixed in source
+= 0.8.4 =
 
-= 0.2.3 =
+* Spy menu reorganziation (thanks to Alphonse PHILIPPE)
+* Update French translation (thanks to Alphonse PHILIPPE)
+* Update Italian translation
 
-* Fixing charaters after closing tags
+= 0.8.3 =
 
-= 0.2.4 =
+* Remove greetings link as new Wordpress policy
 
-* Add option for show dashboard widget
-* Add dashboard widget (thanks to Maurice Cramer). Look into the blog for details.
+= 0.8.2 =
 
-= 0.2.5 =
+* Add Ukrainian translation (thanks to Michael Yunat)
 
-* Fix total since in overwiew (thanks to Maurice Cramer)
-* Add in the option the ability to update in a range of date (migrated from stapress-visitors)
+= 0.8.1 =
 
-= 0.2.6 =
+* Add Greek translation (thanks to Boulis Antoniou)
 
-* Fix missing browser image and IE aligment failure in spy section (thanks to Maurice Cramer)
-* Add new browser definitions (+2)
+= 0.8.0 =
 
-= 0.2.7 =
+* Fix spy/new spy/spy bot menu
+* Fix 4 missing details
+* Replace mysql_real_escape_string with esc_sql for WP 3.9
 
-* Replace deprecate PHP eregi function with preg_match
-* In spy show local nation images (taken from statpress-visitors)
-* New spy function taken from statpress-visitors (for beta testing)
-* Use image for newstatpress menu in administration of wordpress (taken from statpress-visitors)
+= 0.7.9 =
 
-= 0.2.8 =
+* Update French translation (thanks to Alphonse PHILIPPE)
 
-* Fix blog redirector in NewStatPressBlog (Tracker ID 137)
-* Fix nation image display in spy (thanks to Maurice Cramer)
+= 0.7.8 =
 
-= 0.2.9 =
+* Fix global definitions
 
-* Fix export action not catched (Tracker ID 146)
+= 0.7.7 =
 
-= 0.3.0 =
+* Fix $userdata issue if it is empty (thanks to szaleq)
+* Fix plugin directory usage when not standard wp installation is used (thanks to szaleq)
+* Add 'Target' to be translated (thanks to ALPPH)
+* Add OS (+9), Browser (+1)
 
-* Add new browser definitions (+1)
-* Create credits menu (to be completed)
+= 0.7.6 =
 
-= 0.3.1 =
+* Change target formula to use the true month's days duration and computes it according even with hours/minutes (thanks to Capitalist)
 
-* Fix *deprecated* register_sidebar_widget (traker ID 142)
-* Fix php warning into dashboard widget
+= 0.7.5 =
 
-= 0.3.2 =
+* Fix possible security issue (backported from statpress)
+* Resolve /? problem for permalink in links
 
-* Add new OS (+1), browsers (+7), spiders (+1)
+= 0.7.4 =
 
-= 0.3.3 =
+* Fix POST request for flag API services that needs GET (Thanks to Giuseppe Chiesa)
 
-* Updating French translation (thanks to shilom)
-* Inserting credits table
+= 0.7.3 =
 
-= 0.3.4 =
+* Fix maxxday missing declaration
 
-* Add Lithuanian translation (thanks to Vincent G)
+= 0.7.2 =
 
-= 0.3.5 =
+* Add option to prune only the spiders
+* Add remove menu for deleting all stored data
 
-* Updating French translation (thanks to shilom)
-* Fix dashboard and overview translation
+= 0.7.1 =
 
-= 0.3.6 =
+* Add Os (+6), Browser (+14)
 
-* Add Overview for [NewStatPress: xxx] command (tracker id 166)
+= 0.7.0 =
 
-= 0.3.7 =
+* Make tables compatible with qTransalte plugin
+* Fix bug id 390 (Graph Legend includes + Sign)
 
-* Fix introduced bug with previous function added of image visualization (tracker id 192)
+= 0.6.9 =
 
-= 0.3.8 =
+* Remove old (unused) chart code that was present over the new Google Api
 
-* Code restructuration
-* Add browser (+1)
+= 0.6.8 =
 
-= 0.3.9 =
+* Insert timeout in reading the total number of newstatpress installation if you use %installed%
 
-* Add the abilities to not monitoring only a given list of names 
- (so, administrators can still monitoring authenticated users) for users that are logged (tracker id 201)
-* Update Italian locale
+= 0.6.7 =
 
-= 0.4.0 =
+* Fix not resolve completly, so remove support link
 
-* Fix total since date bug (tracker id 216)
+= 0.6.6 =
 
-= 0.4.1 =
+* Try to fix bug-id 423/434 (needs PHP5)
 
-* Improve control before insert (maybe help for bug id 221)
+= 0.6.5 =
 
-= 0.4.2 =
+* Mask potential error in reading of installed plugin
+* Activate installed registration when in admin page
 
-* Update Simplified Chinese translation (thanks to Christopher Meng)
-* Add tab delimiter for export function (thanks to Ruud van der Veen)
+= 0.6.4 =
 
-= 0.4.3 =
+* Add %installed% that give the number of installed plugin (it is anonymous and experimental,
+  read the note)
 
-* Add spiders images (from statpress-visitors)
-* Initial porting of spy bot (from statpress-visitors)
-* Add browser (+2)
+= 0.6.3 =
 
-= 0.4.4 =
+* Fix possible warning and line feeds
 
-* Add browser (+2)
-* Fix spider images (bug id 236 and 237)
+= 0.6.2 =
 
-= 0.4.5 =
+* Add missing 2 spider images
+* Make configurable the number of elements in summary
+* Add random “support” link to all search robots (read the agrement note before updating)
 
-* Update Russian translation (thanks to godOFslaves)
-* update Italian translation
+= 0.6.1 =
 
-= 0.4.6 =
+* Fix isset for referrer
+
+= 0.6.0 =
+
+* Fix missing $ in referrer
+
+= 0.5.9 =
+
+* Avoid possible problem with refferer (use update for sync the old data)
+
+= 0.5.8 =
+
+* Remove Undefined offset in referrer if debug is on
+* Add %todaytotalpageviews% - total pages view today
+* Add Os (+3)
+
+= 0.5.7 =
+
+* Porting the 3D charts to the new Google API: Piechart.
+  Chart is rendered into an iframe with SVG or VML.
+  See http://newstatpress.altervista.org/?p=381 for an example
+
+= 0.5.6 =
+
+* Use .html instead of .frame as some browsers did not interpret it correctly
+
+= 0.5.5 =
+
+* Porting the GeoMap chart to the new Google API: Geochart.
+  Map is rendered into an iframe with SVG or VML.
+  See http://newstatpress.altervista.org/?p=373 for an example
+
+= 0.5.4 =
+
+* Add Hungarian translation (Thanks to Peter Bago)
+
+= 0.5.3 =
+
+* Fix collision of permalinksEnabled with statpress-visitors
+* Increase size from 50 to 250 into details visualization
+* New Browser (+17),New OS (+2), fix bug id 315
+
+= 0.5.2 =
+
+* Fix inherited bug about CDIR comparison in blocking IP function
+* Add %topsearch% for getting the top search term (it implements partially the tracker ID 297 and 243)
+* Fix bug ID 299
+* Add missing yahoo feedseacker spider image
+
+= 0.5.1 =
+
+* Add Slovak translation  (thanks to Branco - WebHostingGeeks.com http://webhostinggeeks.com/blog/)
+* Fix mising msn spider images (thanks to Christian)
+
+= 0.5.0 =
+
+* Add searchengine (+1)
+
+= 0.4.9 =
+
+* Show graphs under the table to stay into column (Google charts will be updated to SVG graphics soon)
+
+= 0.4.8 =
 
 * Add browser (+3), OS (+1)
 
@@ -297,65 +386,189 @@ Check at http://newstatpress.altervista.org
 * Remove a Notice (Trying to get property of non-object in...)
 * Avoid use of $_SERVER['SCRIPT_NAME'] as no all server handle it correctly (tracker id 258)
 
-= 0.4.8 =
+= 0.4.6 =
 
 * Add browser (+3), OS (+1)
 
-= 0.4.9 =
+= 0.4.5 =
 
-* Show graphs under the table to stay into column (Google charts will be updated to SVG graphics soon)
+* Update Russian translation (thanks to godOFslaves)
+* update Italian translation
 
-= 0.5.0 =
+= 0.4.4 =
 
-* Add searchengine (+1)
+* Add browser (+2)
+* Fix spider images (bug id 236 and 237)
 
-= 0.5.1 =
+= 0.4.3 =
 
-* Add Slovak translation  (thanks to Branco - WebHostingGeeks.com http://webhostinggeeks.com/blog/) 
-* Fix mising msn spider images (thanks to Christian)
+* Add spiders images (from statpress-visitors)
+* Initial porting of spy bot (from statpress-visitors)
+* Add browser (+2)
 
-= 0.5.2 =
+= 0.4.2 =
 
-* Fix inherited bug about CDIR comparison in blocking IP function
-* Add %topsearch% for getting the top search term (it implements partially the tracker ID 297 and 243)
-* Fix bug ID 299
-* Add missing yahoo feedseacker spider image
+* Update Simplified Chinese translation (thanks to Christopher Meng)
+* Add tab delimiter for export function (thanks to Ruud van der Veen)
 
-= 0.5.3 =
+= 0.4.1 =
 
-* Fix collision of permalinksEnabled with statpress-visitors
-* Increase size from 50 to 250 into details visualization
-* New Browser (+17),New OS (+2), fix bug id 315
+* Improve control before insert (maybe help for bug id 221)
 
-= 0.5.4 =
+= 0.4.0 =
 
-* Add Hungarian translation (Thanks to Peter Bago)
+* Fix total since date bug (tracker id 216)
 
-= 0.5.5 =
+= 0.3.9 =
 
-* Porting the GeoMap chart to the new Google API: Geochart.
-  Map is rendered into an iframe with SVG or VML. 
-  See http://newstatpress.altervista.org/?p=373 for an example
+* Add the abilities to not monitoring only a given list of names
+ (so, administrators can still monitoring authenticated users) for users that are logged (tracker id 201)
+* Update Italian locale
 
-= 0.5.6 =
+= 0.3.8 =
 
-* Use .html instead of .frame as some browsers did not interpret it correctly
+* Code restructuration
+* Add browser (+1)
 
-= 0.5.7 =
+= 0.3.7 =
 
-* Porting the 3D charts to the new Google API: Piechart.
-  Chart is rendered into an iframe with SVG or VML. 
-  See http://newstatpress.altervista.org/?p=381 for an example
+* Fix introduced bug with previous function added of image visualization (tracker id 192)
 
-= 0.5.8 =
+= 0.3.6 =
 
-* Remove Undefined offset in referrer if debug is on
-* Add %todaytotalpageviews% - total pages view today
-* Add Os (+3)
+* Add Overview for [NewStatPress: xxx] command (tracker id 166)
 
-= 0.5.9 =
+= 0.3.5 =
 
-* Avoid possible problem with refferer (use update for sync the old data)
+* Updating French translation (thanks to shilom)
+* Fix dashboard and overview translation
+
+= 0.3.4 =
+
+* Add Lithuanian translation (thanks to Vincent G)
+
+= 0.3.3 =
+
+* Updating French translation (thanks to shilom)
+* Inserting credits table
+
+= 0.3.2 =
+
+* Add new OS (+1), browsers (+7), spiders (+1)
+
+= 0.3.1 =
+
+* Fix *deprecated* register_sidebar_widget (traker ID 142)
+* Fix php warning into dashboard widget
+
+= 0.3.0 =
+
+* Add new browser definitions (+1)
+* Create credits menu (to be completed)
+
+= 0.2.9 =
+
+* Fix export action not catched (Tracker ID 146)
+
+= 0.2.8 =
+
+* Fix blog redirector in NewStatPressBlog (Tracker ID 137)
+* Fix nation image display in spy (thanks to Maurice Cramer)
+
+= 0.2.7 =
+
+* Replace deprecate PHP eregi function with preg_match
+* In spy show local nation images (taken from statpress-visitors)
+* New spy function taken from statpress-visitors (for beta testing)
+* Use image for newstatpress menu in administration of wordpress (taken from statpress-visitors)
+
+= 0.2.6 =
+
+* Fix missing browser image and IE aligment failure in spy section (thanks to Maurice Cramer)
+* Add new browser definitions (+2)
+
+= 0.2.5 =
+
+* Fix total since in overwiew (thanks to Maurice Cramer)
+* Add in the option the ability to update in a range of date (migrated from stapress-visitors)
+
+= 0.2.4 =
+
+* Add option for show dashboard widget
+* Add dashboard widget (thanks to Maurice Cramer). Look into the blog for details.
+
+= 0.2.3 =
+
+* Fixing charaters after closing tags
+
+= 0.2.2 =
+
+* Add source for Simplified Chinese translation (thanks to Christopher Meng)
+* Fix nb_NO over no_NO locale
+* Lots of php warnings fixed in source
+
+= 0.2.1 =
+
+* Add new OS (+3), browsers (+6)
+* Add Simplified Chinese translation (thanks to Christopher Meng)
+
+= 0.2.0 =
+
+* Add new OS (+44), browsers (+52) and spiders (+71) (from statpress-visitors)
+
+= 0.1.9 =
+
+* make all reports in details to have the number of entries you want
+* Add [NewStatPress: xxx] experimental function for having report into wordpress page
+* Add %totalpageviews% - total pages view
+
+= 0.1.8 =
+
+* Add option for not track given permalinks (from wp_slimstat)
+
+= 0.1.7 =
+
+* Let Search function to works again (thank to Ladislav)
+
+= 0.1.6 =
+
+* Add option for not track given IPs (from wp_slimstat)
+* update Italian translation
+
+= 0.1.5 =
+
+* Open link in new tab/window (thanks to Sisko)
+* New displays of data for spy function (thanks to Sisko)
+* Added %alltotalvisits%
+
+= 0.1.4 =
+
+* Fix fromDate calculation
+
+= 0.1.3 =
+
+* Reactivate visitors/user online with unix timestamp
+
+= 0.1.2 =
+
+* Add images for new browser
+* Better polish translation by Pawel Dworniak
+* Separate iPhone/iPad/iPod devices
+
+= 0.1.1 =
+
+* Reactivate translactions
+* Add more OS (MacOSX variants, Android)
+* Add more Browser (Firefox 4, IE 9)
+
+= 0.1.0 =
+
+* Adds index onto Statpress 1.4.1 table for improve velocity
+* Changes data type of some fields for saving space
+* Let the images to be visible even for relocated blog
+* Makes the update of search engine more quick
+
+
 
 == Upgrade Notice ==
 
@@ -558,3 +771,147 @@ Check at http://newstatpress.altervista.org
 = 0.5.9 =
 
 * released 30/04/2013
+
+= 0.6.0 =
+
+* released 02/05/2013
+
+= 0.6.1 =
+
+* released 04/05/2013
+
+= 0.6.2 =
+
+* released 20/05/2013
+
+= 0.6.3 =
+
+* released 20/05/2013
+
+= 0.6.4 =
+
+* released 26/05/2013
+
+= 0.6.5 =
+
+* released 28/05/2013
+
+= 0.6.6 =
+
+* released 29/06/2013
+
+= 0.6.7 =
+
+* released 29/06/2013
+
+= 0.6.8 =
+
+* released 29/06/2013
+
+= 0.6.9 =
+
+* released 30/06/2013
+
+= 0.7.0 =
+
+* released 20/07/2013
+
+= 0.7.1 =
+
+* released 17/08/2013
+
+= 0.7.2 =
+
+* released 15/09/2013
+
+= 0.7.3 =
+
+* released 22/09/2013
+
+= 0.7.4 =
+
+* released 01/10/2013
+
+= 0.7.5 =
+
+* released 27/12/2013
+
+= 0.7.6 =
+
+* released 11/01/2014
+
+= 0.7.7 =
+
+* released 14/03/2014
+
+= 0.7.8 =
+
+* released 14/03/2014
+
+= 0.7.9 =
+
+* released 05/04/2014
+
+= 0.8.0 =
+
+* released 17/04/2014
+
+= 0.8.1 =
+
+* released 25/05/2014
+
+= 0.8.2 =
+
+* released 07/06/2014
+
+= 0.8.3 =
+
+* released 11/06/2014
+
+= 0.8.4 =
+
+* released 13/07/2014
+
+= 0.8.5 =
+
+* released 03/08/2014
+
+= 0.8.6 =
+
+* released 20/09/2014
+
+= 0.8.7 =
+
+* released 21/12/2014
+
+= 0.8.8 =
+
+* released 17/01/2015
+
+= 0.8.9 =
+
+* released 07/02/2015
+
+= 0.9.0 =
+
+* released 07/02/2015
+
+= 0.9.1 =
+
+* released 08/02/2015
+
+= 0.9.2 =
+
+* released 09/02/2015
+
+= 0.9.3 =
+
+* released 17/02/2015
+
+= 0.9.4 =
+
+* released 18/02/2015
+
+= 0.9.5 =
+
+* released 18/02/2015
