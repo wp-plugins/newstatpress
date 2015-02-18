@@ -121,6 +121,12 @@ Check at http://newstatpress.altervista.org
 
 == Changelog ==
 
+= 0.9.4 =
+
+* Update of Widget 'NewStatPress' (code re-writed, add variable informations)
+* Fix Overview Table (CSS)
+* Add Tool page with tab navigation
+
 = 0.9.3 =
 
 * Add Visits page with tab navigation
@@ -896,3 +902,6 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 
 * released 17/02/2015
 
+= 0.9.4 =
+
+* released 18/02/2015

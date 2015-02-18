@@ -8,7 +8,12 @@
 - [ ] irihdate function in double with newstatpress_hdate => to clean
 - [ ] Fix number of dot of navbar in Visitors page
 - [ ] bot rss https://github.com/feedjira/feedjira/tree/master
+- [ ] update options use of foreach
 
+## 0.9.4
+- [x] Update of Widget 'NewStatPress' (code re-writed, add variable informations)
+- [x] Fix Overview Table (CSS)
+- [x] Add Tool page with tab navigation
 
 ## 0.9.3
 
@@ -24,6 +29,8 @@
 - [x] Fix navbar dead link in visitors page
 - [x] Various code fixing
 - [x] Api for variables (10x faster to load page with widget)
+- [x] Changelog sort by last version
+- [x] Update: locale fr_FR, it_IT
 
 ## 0.9.2
 
