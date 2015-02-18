@@ -127,6 +127,8 @@ Check at http://newstatpress.altervista.org
 * Fix Overview Table (CSS)
 * Add Tool page with tab navigation
 
+Note: do not install if you did not have a recent PHP version
+
 = 0.9.3 =
 
 * Add Visits page with tab navigation
