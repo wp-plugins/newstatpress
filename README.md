@@ -2,22 +2,31 @@
 
 **USELESS IDEA**
 - add a page help somewhere (the help for the different %variable%,...)
-- why did you not provide directly a version of ip2nation by default?
-- tab construction for option page
-- tab construction for overview page
+- [ ] tab construction for option page
+- [ ] tab construction for overview page
 - [ ] irihdate function in double with newstatpress_hdate => to clean
 - [ ] Fix number of dot of navbar in Visitors page
-- [ ] bot rss https://github.com/feedjira/feedjira/tree/master
+- [ ] Add bot rss https://github.com/feedjira/feedjira/tree/master
 - [ ] update options use of foreach
+- [ ] changer le nom du widget dashboard
+- [ ] Big problem on search function
+- [ ] Export database > dump sql (bkp)
+
+## 0.9.6
+- [x] New Option page with tabs navigation (jquery)
+- [x] Fix Search page link
+- [x] Various core fix (global definition, function, plugin page names with nsp_ prefix)
+- [x] Various debug fix (deprecated function, unset variable)
+- [x] Fix thistotalvisit api call
 
 ## 0.9.5
-
 - [x] Fix PHP compatibility issue on old versions
 
 ## 0.9.4
 - [x] Update of Widget 'NewStatPress' (code re-writed, add variable informations)
 - [x] Fix Overview Table (CSS)
 - [x] Add Tool page with tab navigation
+- [x] Update: locale fr_FR, it_IT
 
 ## 0.9.3
 
