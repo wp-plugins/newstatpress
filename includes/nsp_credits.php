@@ -33,7 +33,8 @@ $translators = array(
   array('Peter Bago', 'Hungarian Addition'),
   array('Boulis Antoniou', 'Greek Addition'),
   array('Michael Yunat', 'Ukranian Addition'),
-  array('Pawel Dworniak', 'Polish Update')
+  array('Pawel Dworniak', 'Polish Update'),
+  array('Jiri Borovy', 'Czech Update')
 );
 
 $donators = array(

@@ -50,26 +50,41 @@
 
 .overview-list .feeds::before {
   content: "\25a9";
-  color:#f38f36;
+  color:#f6ed8e;
   margin-right: 5px;
+  font-size:12pt;
+
+}
+.overview-list .visitors_feeds::before {
+  content: "\25a9";
+  color:#83b4d8;
+  margin-right: 5px;
+  font-size:12pt;
+
 }
 
 .overview-list .spiders::before {
   content: "\25a9";
-  color:#83b4d8;
+  color:#219315;
   margin-right: 5px;
+  font-size:12pt;
+
 }
 
 .overview-list .pageview::before {
   content: "\25a9";
-  color:#3377B6;
+  color:#e58825;
   margin-right: 5px;
+  font-size:12pt;
+
 }
 
 .overview-list .visitors::before {
   content: "\25a9";
   color:#114477;
   margin-right: 5px;
+  font-size:12pt;
+
 }
 
 .overview-list .colr {
@@ -214,6 +229,7 @@ table.table-option td:first-child {
 .form-tableH {
   padding-top:20px;
   /*padding-bottom:20px;*/
+  color: #444;
 
 }
 
@@ -242,6 +258,18 @@ table.table-option td:first-child {
     vertical-align: middle;
 
 }*/
+
+fieldset p {
+  margin-top:0;
+}
+input[type=radio] + label {
+  color: #999;
+}
+input[type=radio]:checked + label {
+  color: #444;
+  font-style: normal;
+}
+
 
 
 

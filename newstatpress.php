@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.9.6
+Version: 0.9.7
 Author: Stefano Tognon and cHab (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 ************************************************************/
 
-$_NEWSTATPRESS['version']='0.9.6';
+$_NEWSTATPRESS['version']='0.9.7';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir, $wpdb, $nsp_option_vars, $nsp_widget_vars;
@@ -41,11 +41,20 @@ $nsp_option_vars=array( // list of option variable name, with default value asso
                         'autodelete'=>array('name'=>'newstatpress_autodelete','value'=>''),
                         'autodelete_spiders'=>array('name'=>'newstatpress_autodelete_spiders','value'=>''),
                         'daysinoverviewgraph'=>array('name'=>'newstatpress_daysinoverviewgraph','value'=>''),
-                        'mincap'=>array('name'=>'newstatpress_mincap','value'=>''),
                         'ignore_users'=>array('name'=>'newstatpress_ignore_users','value'=>''),
                         'ignore_ip'=>array('name'=>'newstatpress_ignore_ip','value'=>''),
                         'ignore_permalink'=>array('name'=>'newstatpress_ignore_permalink','value'=>''),
-                        'updateint'=>array('name'=>'newstatpress_updateint','value'=>'')
+                        'updateint'=>array('name'=>'newstatpress_updateint','value'=>''),
+                        'calculation'=>array('name'=>'newstatpress_calculation_method','value'=>'classic'),
+                        'menu_cap'=>array('name'=>'newstatpress_mincap','value'=>'read'),
+                        'menuoverview_cap'=>array('name'=>'newstatpress_menuoverview_cap','value'=>'switch_themes'),
+                        'menudetails_cap'=>array('name'=>'newstatpress_menudetails_cap','value'=>'switch_themes'),
+                        'menuvisits_cap'=>array('name'=>'newstatpress_menuvisits_cap','value'=>'switch_themes'),
+                        'menusearch_cap'=>array('name'=>'newstatpress_menusearch_cap','value'=>'switch_themes'),
+                        'menuoptions_cap'=>array('name'=>'newstatpress_menuoptions_cap','value'=>'edit_users'),
+                        'menutools_cap'=>array('name'=>'newstatpress_menutools_cap','value'=>'switch_themes'),
+                        'menucredits_cap'=>array('name'=>'newstatpress_menucredits_cap','value'=>'read')
+
                       );
                       // ''=>array('name'=>'','value'=>''),
 
@@ -119,19 +128,48 @@ $nsp_widget_vars=array( // list of widget variables name, with description assoc
 
 function nsp_BuildPluginMenu() {
 
+  global $nsp_option_vars;
+
+
   // Fix capability if it's not defined
-  $capability=get_option('newstatpress_mincap') ;
-  if(!$capability)
-    $capability='switch_themes';
+  // $capability=get_option('newstatpress_mincap') ;
+  // if(!$capability) //default value
+    $capability=$nsp_option_vars['menu_cap']['value'];
+
+  $overview_capability=get_option('newstatpress_menuoverview_cap') ;
+  if(!$overview_capability) //default value
+    $overview_capability=$nsp_option_vars['menuoverview_cap']['value'];
+
+  $details_capability=get_option('newstatpress_menudetails_cap') ;
+  if(!$details_capability) //default value
+    $details_capability=$nsp_option_vars['menudetails_cap']['value'];
+
+  $visits_capability=get_option('newstatpress_menuvisits_cap') ;
+  if(!$visits_capability) //default value
+    $visits_capability=$nsp_option_vars['menuvisits_cap']['value'];
+
+  $search_capability=get_option('newstatpress_menusearch_cap') ;
+  if(!$search_capability) //default value
+    $search_capability=$nsp_option_vars['menusearch_cap']['value'];
+
+  $tools_capability=get_option('newstatpress_menutools_cap') ;
+  if(!$tools_capability) //default value
+    $tools_capability=$nsp_option_vars['menutools_cap']['value'];
+
+  $options_capability=get_option('newstatpress_menuoptions_cap') ;
+  if(!$options_capability) //default value
+    $options_capability=$nsp_option_vars['menuoptions_cap']['value'];
+
+  $credits_capability=$nsp_option_vars['menucredits_cap']['value'];
 
   add_menu_page('NewStatPres', 'NewStatPress', $capability, 'nsp-main', 'iriNewStatPressMain', plugins_url('newstatpress/images/stat.png',nsp_BASENAME));
-  add_submenu_page('nsp-main', __('Overview','newstatpress'), __('Overview','newstatpress'), $capability, 'nsp-main', 'iriNewStatPressMain');
-  add_submenu_page('nsp-main', __('Details','newstatpress'), __('Details','newstatpress'), $capability, 'nsp_details', 'iriNewStatPressDetails');
-  add_submenu_page('nsp-main', __('Visits','newstatpress'), __('Visits','newstatpress'), $capability, 'nsp_visits', 'nsp_DisplayVisitsPage');
-  add_submenu_page('nsp-main', __('Search','newstatpress'), __('Search','newstatpress'), $capability, 'nsp_search', 'nsp_DatabaseSearch');
-  add_submenu_page('nsp-main', __('Tools','newstatpress'), __('Tools','newstatpress'), $capability, 'nsp_tools', 'nsp_DisplayToolsPage');
-  add_submenu_page('nsp-main', __('Options','newstatpress'), __('Options','newstatpress'), $capability, 'nsp_options', 'iriNewStatPressOptions');
-  add_submenu_page('nsp-main', __('Credits','newstatpress'), __('Credits','newstatpress'), $capability, 'nsp_credits', 'nsp_DisplayCreditsPage');
+  add_submenu_page('nsp-main', __('Overview','newstatpress'), __('Overview','newstatpress'), $overview_capability, 'nsp-main', 'iriNewStatPressMain');
+  add_submenu_page('nsp-main', __('Details','newstatpress'), __('Details','newstatpress'), $details_capability, 'nsp_details', 'iriNewStatPressDetails');
+  add_submenu_page('nsp-main', __('Visits','newstatpress'), __('Visits','newstatpress'), $visits_capability, 'nsp_visits', 'nsp_DisplayVisitsPage');
+  add_submenu_page('nsp-main', __('Search','newstatpress'), __('Search','newstatpress'), $search_capability, 'nsp_search', 'nsp_DatabaseSearch');
+  add_submenu_page('nsp-main', __('Tools','newstatpress'), __('Tools','newstatpress'), $tools_capability, 'nsp_tools', 'nsp_DisplayToolsPage');
+  add_submenu_page('nsp-main', __('Options','newstatpress'), __('Options','newstatpress'), $options_capability, 'nsp_options', 'iriNewStatPressOptions');
+  add_submenu_page('nsp-main', __('Credits','newstatpress'), __('Credits','newstatpress'), $credits_capability, 'nsp_credits', 'nsp_DisplayCreditsPage');
 
 }
 add_action('admin_menu', 'nsp_BuildPluginMenu');
@@ -902,18 +940,30 @@ function iriStatAppend() {
 
   // Auto-delete visits if...
   if(get_option('newstatpress_autodelete') != '') {
-    $t=gmdate("Ymd",strtotime('-'.get_option('newstatpress_autodelete')));
-    $results =$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
+    $int = filter_var(get_option('newstatpress_autodelete'), FILTER_SANITIZE_NUMBER_INT);
+    # secure action
+    if ($int>=1) {
+      $t=gmdate('Ymd', current_time('timestamp')-86400*$int*30);
+
+      $results =$wpdb->query( "DELETE FROM " . $table_name . " WHERE date < '" . $t . "'");
+    }
   }
+
   // Auto-delete spiders visits if...
   if(get_option('newstatpress_autodelete_spiders') != '') {
-    $t=gmdate("Ymd",strtotime('-'.get_option('newstatpress_autodelete_spiders')));
-    $results =$wpdb->query(
-       "DELETE FROM " . $table_name . "
-        WHERE date < '" . $t . "' and
-              feed='' and
-              spider<>''
-       ");
+    $int = filter_var(get_option('newstatpress_autodelete_spiders'), FILTER_SANITIZE_NUMBER_INT);
+
+    # secure action
+    if ($int>=1) {
+      $t=gmdate('Ymd', current_time('timestamp')-86400*$int*30);
+
+      $results =$wpdb->query(
+         "DELETE FROM " . $table_name . "
+          WHERE date < '" . $t . "' and
+                feed='' and
+                spider<>''
+         ");
+    }
   }
 
   if ((!is_user_logged_in()) OR (get_option('newstatpress_collectloggeduser')=='checked')) {
@@ -1047,7 +1097,7 @@ function nsp_ExpandVarsInsideCode($body) {
 
   # look for %thistotalvisits%
   if(strpos(strtolower($body),"%thistotalvisits%") !== FALSE) {
-    $body = str_replace("%thistotalvisits%", nsp_GenerateAjaxVar("thistotalvisits", 0, '', iri_NewStatPress_URL()), $body); 
+    $body = str_replace("%thistotalvisits%", nsp_GenerateAjaxVar("thistotalvisits", 0, '', iri_NewStatPress_URL()), $body);
   }
 
   # look for %since%
@@ -1402,7 +1452,7 @@ function nsp_CalculateVariation($month,$lmonth,$row) {
 
 function nsp_MakeOverview($print ='dashboard') {
 
-  global $wpdb;
+  global $wpdb, $nsp_option_vars;
   $table_name = nsp_TABLENAME;
 
   $overview_table='';
@@ -1480,7 +1530,8 @@ elseif ($print=='dashboard'){
             <tbody class='overview-list'>";
 }
   // build body overview table
-  $overview_rows=array('visitors','pageview','spiders','feeds');
+  $overview_rows=array('visitors','visitors_feeds','pageview','feeds','spiders');
+  // echo "current month: ";
 
   foreach ($overview_rows as $row) {
 
@@ -1491,6 +1542,12 @@ elseif ($print=='dashboard'){
         $row_title=__('Visitors','newstatpress');
         $sql_QueryTotal="SELECT count($row2) AS $row FROM $table_name WHERE feed='' AND spider=''";
       break;
+
+      case 'visitors_feeds' :
+        $row2='DISTINCT ip';
+        $row_title=__('Visitors through Feeds','newstatpress');
+        $sql_QueryTotal="SELECT count($row2) AS $row FROM $table_name WHERE feed<>'' AND spider='' AND agent<>''";
+        break;
 
       case 'pageview' :
         $row2='date';
@@ -1506,7 +1563,7 @@ elseif ($print=='dashboard'){
 
       case 'feeds' :
         $row2='date';
-        $row_title=__('Feeds','newstatpress');
+        $row_title=__('Pageviews through Feeds','newstatpress');
         $sql_QueryTotal="SELECT count($row2) AS $row FROM $table_name WHERE feed<>'' AND spider=''";
       break;
     }
@@ -1514,8 +1571,42 @@ elseif ($print=='dashboard'){
     // query requests
     $qry_total = $wpdb->get_row($sql_QueryTotal);
     $qry_tyear = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$thisyear%'");
-    $qry_lmonth = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$lastmonth%'");
-    $qry_tmonth = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$thismonth%'");
+
+
+    if (get_option($nsp_option_vars['calculation']['name'])=='sum') {
+
+      // alternative calculation by mouth: sum of unique visitors of each day
+      $tot=0;
+      $t = getdate(current_time('timestamp'));
+      $year = $t['year'];
+      $month = sprintf('%02d', $t['mon']);
+      $day= $t['mday'];
+      $totlm=0;
+
+      for($k=$t['mon'];$k>0;$k--)
+      {
+        //current month
+
+      }
+      for($i=0;$i<$day;$i++)
+      {
+        $qry_daylmonth = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$lastmonth$i%'");
+        $qry_day=$wpdb->get_row($sql_QueryTotal. " AND date LIKE '$year$month$i%'");
+        $tot+=$qry_day->$row;
+        $totlm+=$qry_daylmonth->$row;
+
+      }
+      // echo $totlm." ,";
+      $qry_tmonth->$row=$tot;
+      $qry_lmonth->$row=$totlm;
+
+    }
+    else { // classic
+      $qry_tmonth = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$thismonth%'");
+      $qry_lmonth = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$lastmonth%'");
+    }
+
+
     $qry_y = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$yesterday'");
     $qry_t = $wpdb->get_row($sql_QueryTotal. " AND date LIKE '$today'");
 

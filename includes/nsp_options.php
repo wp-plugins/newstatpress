@@ -29,10 +29,10 @@ function iriNewStatPress_trim_value(&$value) {
 
 function print_option($option_title,$option_var,$var) {
 
-  if($option_var!='newstatpress_mincap')
+  if($option_var!='newstatpress_menuoverview_cap' AND $option_var!='newstatpress_menudetails_cap' AND $option_var!='newstatpress_menuvisits_cap' AND $option_var!='newstatpress_menusearch_cap' AND $option_var!='newstatpress_menutools_cap' AND $option_var!='newstatpress_menuoptions_cap')
     echo "<td>$option_title</td>\n";
   echo "<td><select name=$option_var>\n";
-  if($option_var=='newstatpress_mincap') {
+  if($option_var=='newstatpress_menuoverview_cap' OR $option_var=='newstatpress_menudetails_cap' OR $option_var=='newstatpress_menuvisits_cap' OR $option_var=='newstatpress_menusearch_cap' OR $option_var=='newstatpress_menutools_cap' OR $option_var=='newstatpress_menuoptions_cap') {
     $role = get_role('administrator');
     foreach($role->capabilities as $cap => $grant) {
       print "<option ";
@@ -162,11 +162,55 @@ function iriNewStatPressOptions() {
   $option_var='newstatpress_dashboard';
   print_checked($option_title,$option_var);
 
-  $option_title=__('Minimum capability to view stats','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
+  $option_title=__('Minimum capability to display the overview menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
   echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
-  $option_var='newstatpress_mincap';
-  $val=get_option('newstatpress_mincap');
+  $option_var='newstatpress_menuoverview_cap';
+  $val=get_option($option_var);
   print_option('',$option_var,$val);
+
+  echo "</tr>";
+  echo "<tr>";
+  $option_title=__('Minimum capability to display the detail menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
+  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  // $option_var=$nsp_option_vars['menudetails_cap']['name'];
+  $option_var='newstatpress_menudetails_cap';
+  $val=get_option($option_var);
+  print_option('',$option_var,$val);
+  echo "</tr>";
+  echo "<tr>";
+
+  $option_title=__('Minimum capability to display the visits menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
+  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_var='newstatpress_menuvisits_cap';
+  $val=get_option($option_var);
+  print_option('',$option_var,$val);
+  echo "</tr>";
+  echo "<tr>";
+
+  $option_title=__('Minimum capability to display the search menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
+  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_var='newstatpress_menusearch_cap';
+  $val=get_option($option_var);
+  print_option('',$option_var,$val);
+  echo "</tr>";
+  echo "<tr>";
+
+  $option_title=__('Minimum capability to display the tools menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
+echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+$option_var='newstatpress_menutools_cap';
+$val=get_option($option_var);
+print_option('',$option_var,$val);
+echo "</tr>";
+echo "<tr>";
+
+$option_title=__('Minimum capability to display the options menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
+echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+$option_var='newstatpress_menuvisits_cap';
+$val=get_option($option_var);
+print_option('',$option_var,$val);
+echo "</tr>";
+echo "<tr>";
+
 
   echo "</table></div>";
 
@@ -175,6 +219,41 @@ function iriNewStatPressOptions() {
   echo "<div id='overview'>\n<table class='form-tableH'>";
 
   echo "<tr>";
+
+  echo "<th scope='row' rowspan='2'>"; _e('Visits calculation method','newstatpress'); echo "</th>";
+  echo "</tr>";
+  echo "<tr>";
+$name=$nsp_option_vars['calculation']['name'];
+$valu=$nsp_option_vars['calculation']['value'];
+
+
+  echo "<td>
+      <fieldset>
+        <p><input type='radio' name='$name' value=";
+
+              if ((get_option($name)=='') OR (get_option($name)==$valu)) {
+                // echo $nsp_option_vars['calculation']['value'];
+                echo $valu." checked";
+              }
+              echo " ></input>
+              <label>"; _e('Simple sum of distinct IPs (Classic method)','newstatpress'); echo "</label>
+          </p>
+          <p>
+              <input type='radio' name='$name' value=";
+
+                echo 'sum';
+                  if (get_option($name)=='sum') {
+                    echo " checked";
+                  }
+
+            echo "></input>
+            <label>Sum of the distinct IPs of each day (slower than classic method for big database)</label>
+                    </p>
+      </fieldset>
+      </td>";
+  echo "</tr>";
+  echo "<tr>";
+
 
   echo "<th scope='row' rowspan='2'>"; _e('Graph','newstatpress'); echo "</th>";
   echo "</tr>";
@@ -226,7 +305,7 @@ echo "</table><table class='form-tableH'>";
     echo "<tr>";
 
     $val=array(array('', 'Never'),array(1, 'month'),array(3, 'months'),array(6, 'months'),array(12, 'months'));
-    $option_title=__('Automatically delete visits older than','newstatpress');
+    $option_title=__('Automatically delete all visits older than','newstatpress');
     $option_var='newstatpress_autodelete';
     print_option($option_title,$option_var,$val);
     echo "</tr>";

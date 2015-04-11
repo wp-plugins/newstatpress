@@ -2,33 +2,77 @@
 
 **USELESS IDEA**
 - add a page help somewhere (the help for the different %variable%,...)
-- [ ] tab construction for option page
 - [ ] tab construction for overview page
 - [ ] irihdate function in double with newstatpress_hdate => to clean
 - [ ] Fix number of dot of navbar in Visitors page
 - [ ] Add bot rss https://github.com/feedjira/feedjira/tree/master
 - [ ] update options use of foreach
-- [ ] changer le nom du widget dashboard
+- [ ] change the name of widget dashboard
 - [ ] Big problem on search function
 - [ ] Export database > dump sql (bkp)
+- [ ] add Select definitions to update
+- [ ] Add a 'unique visitors' row in the overview chart
+- [ ] Add options to (de)activate single chart/graphs of overview and details
+- [ ] Add options to let or not users (not administrator) to see or not options/owerview/details/visits
+- [ ] Add API Key in option
+- [ ] Generate extenal API interfaces
+- [ ] Add'version' in external API
+- [ ] Change days calculation into prune functions
+- [ ] add number of visitors online in the overview page
+- [ ] add jquery for credit page
+- [ ] Database migration routine with unique name
+
+
+
+
+## 0.9.7
+
+User interface changes:
+- [x] Added New option in Overview Tab : overview stats calculation method (global distinct ip OR sum of each day) (Note: online for month at the moment)
+- [x] Added New options in General Tab : add capabilities selection to display menus, options menu need to be administrator by default
+- [x] Added New information 'Visitors RSS Feeds' in Overview page
+- [x] Updated Locale fr_FR, it_IT, cs_CZ
+
+Core changes:
+- [x] Updated OS definition
+- [x] Updated Browser definition
+- [x] Fixed '3 months Purge' issue
+
 
 ## 0.9.6
-- [x] New Option page with tabs navigation (jquery)
-- [x] Fix Search page link
-- [x] Various core fix (global definition, function, plugin page names with nsp_ prefix)
-- [x] Various debug fix (deprecated function, unset variable)
-- [x] Fix thistotalvisit api call
+Released date: 2015-02-21
+
+User interface changes:
+- [x] Added Option page with tab navigation (use jQuery and idTabs)
+- [x] Fixed Search page link
+- [x] Updated Locale fr_FR, it_IT
+
+Core changes:
+- [x] Various fixes (global definition, function, plugin page names with nsp_ prefix, code spliting)
+- [x] Various debug fixes (deprecated function, unset variable)
+- [x] Fixed %thistotalvisit% in API call
+
 
 ## 0.9.5
-- [x] Fix PHP compatibility issue on old versions
+Released date: 18/02/2015
+
+- [x] Fixed PHP compatibility issue on old versions (tools page)
 
 ## 0.9.4
-- [x] Update of Widget 'NewStatPress' (code re-writed, add variable informations)
+Released date: 18/02/2015
+
+User interface changes:
+- [x] Added Tool page with tab navigation
+- [x] Added variable informations in Widget 'NewStatPress'
 - [x] Fix Overview Table (CSS)
-- [x] Add Tool page with tab navigation
-- [x] Update: locale fr_FR, it_IT
+- [x] Updated Locale fr_FR, it_IT
+
+Core changes:
+- [x] Update of Widget 'NewStatPress' : code re-writed
+
 
 ## 0.9.3
+Released date: 17/02/2015
 
 - [x] Add Visits page with tab navigation
 - [x] Add tab navigation in Crédits page
@@ -46,18 +90,22 @@
 - [x] Update: locale fr_FR, it_IT
 
 ## 0.9.2
+Released date: 09/02/2015
 
 - [x] CSS fix, Overview fix and wp_enqueue_style compatibility fix
 
 ## 0.9.1
+Released date: 08/02/2015
 
 - [x] Activate changes of 0.8.9 in version 0.9.1 with PHP fixes
 
 ## 0.9.0
+Released date: 07/02/2015
 
 - [x] Revert to version 0.8.8 for problems with old PHP version
 
 ## 0.8.9
+Released date: 07/02/2015
 
 Development:
 - [x] Add Ip2nation download function in option page

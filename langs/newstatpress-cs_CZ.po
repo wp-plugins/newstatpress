@@ -1,765 +1,954 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: statpress\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-13 18:26+0100\n"
-"PO-Revision-Date: 2014-07-13 18:26+0100\n"
-"Last-Translator: ice00 <ice00@libero.it>\n"
-"Language-Team: \n"
-"Language: cs\n"
+"Project-Id-Version: NewStatPress\n"
+"POT-Creation-Date: 2015-03-27 21:21+0100\n"
+"PO-Revision-Date: 2015-03-30 15:13+0100\n"
+"Last-Translator: Jiří Borový <jborovy@seznam.cz>\n"
+"Language-Team: Jiří Borový <jborovy@seznam.cz>\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.4\n"
-"X-Poedit-SearchPath-0: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:52
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3142
-msgid "Overview"
-msgstr "Celkový přehled"
+#: includes/nsp_credits.php:6
+msgid "support page"
+msgstr "stránka podpory"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:53
+#: includes/nsp_credits.php:7
+msgid "the author"
+msgstr "Autor"
+
+#: includes/nsp_credits.php:8
+msgid "Development"
+msgstr "Vývoj"
+
+#: includes/nsp_credits.php:9
+msgid "Translation"
+msgstr "Překlad"
+
+#: includes/nsp_credits.php:10
+msgid "Donation"
+msgstr "Příspěvek"
+
+#: includes/nsp_credits.php:46 newstatpress.php:172
+msgid "Credits"
+msgstr "Zásluhy"
+
+#: includes/nsp_credits.php:48
+#, php-format
+msgid ""
+"If you have found this plugin usefull and you like it, you can support the "
+"development by reporting bugs on the %s or  by adding/updating translation "
+"by contacting directly %s. As this plugin is maintained only on free time, "
+"you can also make a donation by clicking on the button to support the work."
+msgstr ""
+"Pokud jste objevili, že je tento plugin užitečný a líbí se vám. Můžete "
+"informovat vývojáře o chybách na %s přidáním/nebo aktualizací překladů "
+"kontaktování na %s. Vývoj tohoto pluginu je ve volném čase a tak jej můžete "
+"podpořit darem. Stiskem tlačítka autory podpoříte při jejich vývoji pluginu."
+
+#: includes/nsp_credits.php:54
+msgid "Make a donation"
+msgstr "Přizpět darem"
+
+#: includes/nsp_credits.php:66
+msgid "Contributor"
+msgstr "Spolupracovník"
+
+#: includes/nsp_credits.php:70
+msgid "Description"
+msgstr "Popis"
+
+#: includes/nsp_credits.php:78 newstatpress.php:229
+msgid "Language"
+msgstr "Jazyk"
+
+#: includes/nsp_credits.php:89 newstatpress.php:229 newstatpress.php:269
+#: newstatpress.php:283 newstatpress.php:330 newstatpress.php:359
+msgid "Date"
+msgstr "Datum"
+
+#: includes/nsp_credits.php:100
+msgid "Plugin homepage"
+msgstr "Domovská stránka pluginu"
+
+#: includes/nsp_credits.php:102
+msgid "RSS news"
+msgstr "RSS novinky"
+
+#: includes/nsp_credits.php:103
+msgid "News"
+msgstr "Novinky"
+
+#: includes/nsp_dashboard.php:12 newstatpress.php:167
 msgid "Details"
 msgstr "Detaily"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:54
-#, fuzzy
-msgid "Last visitors by Spy"
-msgstr "Návštěvníci"
+#: includes/nsp_dashboard.php:15 includes/nsp_functions-extra.php:34
+#: includes/nsp_visits.php:18 newstatpress.php:168 newstatpress.php:1302
+msgid "Visits"
+msgstr "Návštěvy"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:55
-#, fuzzy
-msgid "Visitors by Spy"
-msgstr "Návštěvníci"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:56
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1183
-msgid "Spy Bot"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:57
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:845
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:859
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1377
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1420
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1529
-msgid "Search"
-msgstr "Hledat"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:58
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:549
-msgid "Export"
-msgstr "Export"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:59
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:202
+#: includes/nsp_dashboard.php:18 newstatpress.php:171
 msgid "Options"
 msgstr "Nastavení"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:60
-msgid "NewStatPressUpdate"
-msgstr ""
+#: includes/nsp_dashboard.php:28
+msgid "NewStatPress Overview"
+msgstr "NewStatPress přehled"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:61
-msgid "NewStatpress blog"
-msgstr ""
+#: includes/nsp_details.php:10 includes/nsp_details.php:40
+#: includes/nsp_details.php:43
+msgid "Top days"
+msgstr "Top dny"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:62
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:447
-msgid "Credits"
-msgstr ""
+#: includes/nsp_details.php:13 includes/nsp_tools.php:455
+msgid "OSes"
+msgstr "Operační systémy"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:63
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:144
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:149
-msgid "Remove"
-msgstr ""
+#: includes/nsp_details.php:16 includes/nsp_tools.php:478
+msgid "Browsers"
+msgstr "Prohlížeče"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:141
-msgid "All data removed"
-msgstr ""
+#: includes/nsp_details.php:19 includes/nsp_tools.php:357
+#: newstatpress.php:1670
+msgid "Feeds"
+msgstr "Feeds"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:146
-msgid ""
-"Warning: pressing the below button will make all your stored data to be "
-"erased!"
-msgstr ""
+#: includes/nsp_details.php:22 includes/nsp_tools.php:524
+msgid "Search engines"
+msgstr "Internetové vyhledávače"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:147
-msgid ""
-"It is added for the people that did not want to use the plugin anymore and "
-"so they want to remove the stored data."
-msgstr ""
+#: includes/nsp_details.php:25
+msgid "Top search terms"
+msgstr "Poslední hledané výrazy"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:148
-msgid "If you are in doubt about this function, don't use it."
-msgstr ""
+#: includes/nsp_details.php:28
+msgid "Top referrers"
+msgstr "Top odkazové zdroje"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:149
-msgid "Are you sure?"
-msgstr ""
+#: includes/nsp_details.php:31
+msgid "Countries"
+msgstr "Země"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:199
-msgid "Saved"
-msgstr "Uloženo"
+#: includes/nsp_details.php:31
+msgid "Languages"
+msgstr "Jazyky"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:205
-msgid "Collect data about logged users, too."
-msgstr "Sbírat data o přihlášených uživatelích."
+#: includes/nsp_details.php:34 includes/nsp_tools.php:501
+#: newstatpress.php:1548 newstatpress.php:1669
+msgid "Spiders"
+msgstr "Špióni robotů"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:206
-msgid "Do not collect spiders visits"
-msgstr ""
+#: includes/nsp_details.php:37
+msgid "Top pages"
+msgstr "Top stránky"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:207
-msgid "Crypt IP addresses"
-msgstr ""
+#: includes/nsp_details.php:40
+msgid "Unique visitors"
+msgstr "Unikátní návštěvnici"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:208
-msgid "Show NewStatPress dashboard widget"
-msgstr ""
+#: includes/nsp_details.php:43 includes/nsp_details.php:46
+#: newstatpress.php:1542 newstatpress.php:1668
+msgid "Pageviews"
+msgstr "Zobrazení stránek"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:213
-msgid "Elements in Overview (default 10)"
-msgstr ""
+#: includes/nsp_details.php:46
+msgid "Top IPs"
+msgstr "Top IP"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:217
-msgid "Visitors by Spy: number of IP per page"
-msgstr ""
+#: includes/nsp_options.php:93
+msgid "NewStatPress Settings"
+msgstr "NewStatPress nastavení"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:224
-msgid "Visitors by Spy: number of visits for IP"
-msgstr ""
+#: includes/nsp_options.php:125
+msgid "Options saved!"
+msgstr "Volby uloženy!"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:231
-msgid "Spy Bot: number of bot per page"
-msgstr ""
+#: includes/nsp_options.php:135
+msgid "General"
+msgstr "Obecné"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:238
-msgid "Spy Bot: number of bot for IP"
-msgstr ""
+#: includes/nsp_options.php:136
+msgid "Data Collect"
+msgstr "Sběr dat"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:245
-msgid "Automatically delete visits older than"
-msgstr "Automaticky mazat návštěvy starší než"
+#: includes/nsp_options.php:137
+msgid "Overview Menu"
+msgstr "Přehled Menu"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:247
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:256
-msgid "Never delete!"
-msgstr "Nikdy nemazat!"
+#: includes/nsp_options.php:138
+msgid "Details Menu"
+msgstr "Podrobnosti Menu"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:248
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:257
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:409
-msgid "month"
-msgstr "měsíc"
+#: includes/nsp_options.php:139
+msgid "Visits Menu"
+msgstr "Návštěvy Menu"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:249
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:250
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:258
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:259
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:410
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:411
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:412
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:413
-msgid "months"
-msgstr "měsíce"
+#: includes/nsp_options.php:140
+msgid "Database"
+msgstr "Databáze"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:251
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:260
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:414
-msgid "year"
-msgstr "rok"
+#: includes/nsp_options.php:159
+msgid "Dashboard"
+msgstr "Nástěnka"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:254
-#, fuzzy
-msgid "Automatically delete only spiders visits older than"
-msgstr "Automaticky mazat návštěvy starší než"
+#: includes/nsp_options.php:161
+msgid "Enable NewStatPress widget"
+msgstr "Zapnout NewStatPress widget"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:263
-msgid "Days in Overview graph"
-msgstr "Dny v grafu v obecném přehledu"
+#: includes/nsp_options.php:165
+msgid "Minimum capability to display the overview menu"
+msgstr "Minimální možnosti zobrazení menu přehledu"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:272
-msgid "Minimum capability to view stats"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:276
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1110
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1312
+#: includes/nsp_options.php:165 includes/nsp_options.php:173
+#: includes/nsp_options.php:182 includes/nsp_options.php:190
+#: includes/nsp_options.php:198 includes/nsp_options.php:206
+#: includes/nsp_visits.php:215 includes/nsp_visits.php:355
 msgid "more info"
 msgstr "více info"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:282
-msgid "Logged users to ignore"
-msgstr ""
+#: includes/nsp_options.php:173
+msgid "Minimum capability to display the detail menu"
+msgstr "Minimální práva k  zobrazení menu detailů"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:283
+#: includes/nsp_options.php:182
+msgid "Minimum capability to display the visits menu"
+msgstr "Minimální práva k zobrazení menu návštěv"
+
+#: includes/nsp_options.php:190
+msgid "Minimum capability to display the search menu"
+msgstr "Minimální práva k zobrazení menu hledaní"
+
+#: includes/nsp_options.php:198
+msgid "Minimum capability to display the tools menu"
+msgstr "Minimální práva k zobrazení menu nástrojů"
+
+#: includes/nsp_options.php:206
+msgid "Minimum capability to display the options menu"
+msgstr "Minimální práva k zobrazení menu nastavení"
+
+#: includes/nsp_options.php:223
+msgid "Visits calculation method"
+msgstr "Metoda výpočtu návštěv"
+
+#: includes/nsp_options.php:239
+msgid "Simple sum of distinct IPs (Classic method)"
+msgstr "Jednoduchý součet různých IP adres (klasická metoda)"
+
+#: includes/nsp_options.php:258
+msgid "Graph"
+msgstr "Graf"
+
+#: includes/nsp_options.php:263
+msgid "Days number in Overview graph"
+msgstr "Počet dnů v přehledu grafu"
+
+#: includes/nsp_options.php:269 newstatpress.php:166 newstatpress.php:1463
+msgid "Overview"
+msgstr "Celkový přehled"
+
+#: includes/nsp_options.php:271
+#, php-format
+msgid "Elements in Overview (default %d)"
+msgstr "Prvky v přehledu (výchozí hodnota %d)"
+
+#: includes/nsp_options.php:280
+msgid "Never"
+msgstr "Nikdy"
+
+#: includes/nsp_options.php:281
+msgid "All"
+msgstr "Vše"
+
+#: includes/nsp_options.php:282
+msgid "month"
+msgstr "měsíc"
+
+#: includes/nsp_options.php:283
+msgid "months"
+msgstr "měsíce"
+
+#: includes/nsp_options.php:284
+msgid "week"
+msgstr "týden"
+
+#: includes/nsp_options.php:285
+msgid "weeks"
+msgstr "týdny"
+
+#: includes/nsp_options.php:287
+msgid "Data collection"
+msgstr "Sběr dat"
+
+#: includes/nsp_options.php:289
+msgid "Crypt IP addresses"
+msgstr "Kódovat IP adresy"
+
+#: includes/nsp_options.php:293
+msgid "Collect data about logged users, too."
+msgstr "Sbírat data o přihlášených uživatelích."
+
+#: includes/nsp_options.php:297
+msgid "Do not collect spiders visits"
+msgstr "Nesbírat data špiónů robotů."
+
+#: includes/nsp_options.php:303
+msgid "Data purge"
+msgstr "Vymazání dat"
+
+#: includes/nsp_options.php:308
+msgid "Automatically delete all visits older than"
+msgstr "Automaticky mazat všechny návštěvy starší než"
+
+#: includes/nsp_options.php:314
+msgid "Automatically delete only spiders visits older than"
+msgstr "Automaticky mazat pouze návštěvy robotů starší než"
+
+#: includes/nsp_options.php:320 includes/nsp_options.php:365
+msgid "Parameters to ignore"
+msgstr "Ignorované parametry"
+
+#: includes/nsp_options.php:325
+msgid "Logged users"
+msgstr "Přihlášení uživatelé"
+
+#: includes/nsp_options.php:327
 msgid ""
 "Enter a list of users you don't want to track, separated by commas, even if "
 "collect data about logged users is on"
 msgstr ""
+"Zadejte seznam uživatelů, které nechcete sledovat, odělené čárkou, i když je "
+"budete sledovat, když budou přihlášeni"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:290
-msgid "IP addresses to ignore"
-msgstr ""
+#: includes/nsp_options.php:330
+msgid "IP addresses"
+msgstr "IP adresy"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:291
+#: includes/nsp_options.php:332
 msgid ""
 "Enter a list of networks you don't want to track, separated by commas. Each "
 "network <strong>must</strong> be defined using the CIDR notation (i.e. "
-"<em>192.168.1.1/24</em>). If the format is incorrect, NewStatPress may not "
-"track pageviews properly."
+"<em>192.168.1.1/24</em>). <br />If the format is incorrect, NewStatPress may "
+"not track pageviews properly."
 msgstr ""
+"Zadejte seznam sítí, které nechcete sledovat, oddělených čárkami. Každá síť "
+"<strong>musí</strong> být definována pomocí CIDR notace (tj. "
+"<em>192.168.1.1/24</em>). Je-li formát nesprávný, NewStatPress nesleduje "
+"zobrazení stránek správně."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:298
-msgid "Pages and posts to ignore"
-msgstr ""
+#: includes/nsp_options.php:335
+msgid "Pages and posts"
+msgstr "Stránky a příspěvky"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:299
+#: includes/nsp_options.php:337
 msgid ""
 "Enter a list of permalinks you don't want to track, separated by commas. You "
 "should omit the domain name from these resources: <em>/about, p=1</em>, etc. "
-"NewStatPress will ignore all the pageviews whose permalink <strong>contains</"
-"strong> at least one of them."
+"<br />NewStatPress will ignore all the pageviews whose permalink "
+"<strong>contains</strong> at least one of them."
 msgstr ""
+"Zadejte seznam trvalých odkazů které nechcete sledovat, oddělených čárkami. "
+"Měli by jste vynechat název domény z těchto zdrojů: <em>/ o, p = 1</em>, "
+"atd. NewStatPress bude ignorovat všechny zobrazení stránek, jejichž trvalý "
+"odkaz <strong>obsahuje</strong> alespoň jeden ze zdrojů."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:309
-#, fuzzy
-msgid "Details options"
-msgstr "Uložit nastavení"
+#: includes/nsp_options.php:347
+msgid "Visitors by Spy"
+msgstr "Návštěvníci od špiónů robotů"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:314
-msgid "Elements in Top days (default 5)"
-msgstr ""
+#: includes/nsp_options.php:350
+msgid "number of IP per page"
+msgstr "počet IP na stránku"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:320
-msgid "Elements in O.S. (default 10)"
-msgstr ""
+#: includes/nsp_options.php:356
+msgid "number of visits for IP"
+msgstr "počet návštěv pro IP"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:326
-msgid "Elements in Browser (default 10)"
-msgstr ""
+#: includes/nsp_options.php:367
+msgid "number of bot per page"
+msgstr "počet robotů na stránku"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:332
-msgid "Elements in Feed (default 5)"
-msgstr ""
+#: includes/nsp_options.php:375
+msgid "number of bot for IP"
+msgstr "počet robotů na IP"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:338
-msgid "Elements in Search Engines (default 10)"
-msgstr ""
+#: includes/nsp_options.php:385
+msgid "Element numbers to display in"
+msgstr "Zobrazit počet prvků v"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:344
-msgid "Elements in Top Search Terms (default 20)"
-msgstr ""
+#: includes/nsp_options.php:387
+#, php-format
+msgid "Top days (default %d)"
+msgstr "Nejlepší dny (výchozí hodnota %d)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:350
-msgid "Elements in Top Refferer (default 10)"
-msgstr ""
+#: includes/nsp_options.php:390
+#, php-format
+msgid "O.S. (default %d)"
+msgstr "O.S. (výchozí hodnota %d)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:356
-msgid "Elements in Countries/Languages (default 20)"
-msgstr ""
+#: includes/nsp_options.php:393
+#, php-format
+msgid "Browser (default %d)"
+msgstr "Prohlížeč (výchozí hodnota %d)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:362
-msgid "Elements in Spiders (default 10)"
-msgstr ""
+#: includes/nsp_options.php:396
+#, php-format
+msgid "Feed (default %d)"
+msgstr "Feed (výchozí hodnota %d)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:368
-msgid "Elements in Top Pages (default 5)"
-msgstr ""
+#: includes/nsp_options.php:399
+#, php-format
+msgid "Search Engines (default %d)"
+msgstr "Vyhledávače (výchozí hodnota %d)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:374
-msgid "Elements in Top Days - Unique visitors (default 5)"
-msgstr ""
+#: includes/nsp_options.php:402
+#, php-format
+msgid "Top Search Terms (default %d)"
+msgstr "Top vyhledávací termíny (výchozí hodnota %d)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:380
-msgid "Elements in Top Days - Pageviews (default 5)"
-msgstr ""
+#: includes/nsp_options.php:405
+#, php-format
+msgid "Top Referrer (default %d)"
+msgstr "Top zdrojová stránka (výchozí hodnota %d)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:386
-msgid "Elements in Top IPs - Pageviews (default 5)"
-msgstr ""
+#: includes/nsp_options.php:408
+#, php-format
+msgid "Countries/Languages (default %d)"
+msgstr "Země/jazyky (výchozí hodnota %d)"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:394
+#: includes/nsp_options.php:411
+#, php-format
+msgid "Spiders (default %d)"
+msgstr "Špióni (výchozí hodnota %d)"
+
+#: includes/nsp_options.php:414
+#, php-format
+msgid "Top Pages (default %d)"
+msgstr "Top Stránky (výchozí hodnota %d)"
+
+#: includes/nsp_options.php:417
+#, php-format
+msgid "Top Days - Unique visitors (default %d)"
+msgstr "Nejlepší dny - unikátních návštěvníků (výchozí hodnota %d)"
+
+#: includes/nsp_options.php:420
+#, php-format
+msgid "Top Days - Pageviews (default %d)"
+msgstr "Nejlepší dny - zobrazení stránky (výchozí hodnota %d)"
+
+#: includes/nsp_options.php:423
+#, php-format
+msgid "Top IPs - Pageviews (default %d)"
+msgstr "Top IPs - zobrazení stránky (výchozí hodnota %d)"
+
+#: includes/nsp_options.php:438
 msgid "Database update option"
-msgstr ""
+msgstr "Možnost aktualizace databáze"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:398
+#: includes/nsp_options.php:442
 msgid ""
 "Select the interval of date from today you want to use for updating your "
-"database with new definitions. More it is big and more times and resources "
-"it require. You can choose to not update some fields if you want."
+"database with new definitions. "
 msgstr ""
+"Vyberte interval data od dnešního dne, které chcete použít pro aktualizaci "
+"databáze pomocí nové definice."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:403
+#: includes/nsp_options.php:443
+msgid ""
+"Be aware, larger is the interval, longer is the update and bigger are the "
+"resources required."
+msgstr ""
+"Mějte na paměti, větší je interval, delší je aktualizace a větší jsou "
+"požadované zdroje."
+
+#: includes/nsp_options.php:450
 msgid "Update data in the given period"
-msgstr ""
+msgstr "Aktualizovat data v daném období"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:405
-msgid "All!"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:406
-msgid "week"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:407
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:408
-msgid "weeks"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:420
+#: includes/nsp_options.php:458
 msgid "Save options"
 msgstr "Uložit nastavení"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:544
-msgid "Export stats to text file"
-msgstr "Exportovat statistiky to textového dokumentu"
+#: includes/nsp_search.php:6
+msgid "URL Requested"
+msgstr "Požadovaná adresa URL"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:546
-msgid "From"
-msgstr "Od"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:546
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:547
-msgid "YYYYMMDD"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:547
-msgid "To"
-msgstr "Do"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:548
-msgid "Fields delimiter"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-msgid "Last hits"
-msgstr "Poslední události"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:667
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:714
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:743
-msgid "Date"
-msgstr "Datum"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:667
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:714
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:743
-msgid "Time"
-msgstr "Čas"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-#, fuzzy
-msgid "Country"
-msgstr "Počet"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-msgid "Language"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:714
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:842
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:854
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:857
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:869
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1526
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1538
-msgid "Page"
-msgstr "Stránka"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-msgid "Feed"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:685
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:714
-msgid "OS"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:616
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:685
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:714
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1373
-msgid "Browser"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
-msgid "Last search terms"
-msgstr "Poslední hledaný výraz"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
-msgid "Terms"
-msgstr "Výraz"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
-msgid "Engine"
-msgstr "Engine"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:653
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:667
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2108
-msgid "Result"
-msgstr "Výsledky"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:662
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:679
-msgid "page viewed"
-msgstr "viděno stránek"
-
-# Again an english word. Got no better translation at the moment
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:667
-msgid "Last referrers"
-msgstr "Last referrersr"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:667
-msgid "URL"
-msgstr "URL"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:685
-msgid "Last agents"
-msgstr "Last agents"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:685
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:743
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1368
+#: includes/nsp_search.php:7 newstatpress.php:301 newstatpress.php:359
 msgid "Agent"
 msgstr "Agent"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:685
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:743
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1374
-msgid "Spider"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:714
-msgid "Last pages"
-msgstr "Poslední stránky"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:743
-#, fuzzy
-msgid "Last spiders"
-msgstr "Poslední stránky"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:787
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:817
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:820
-msgid "Top days"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:790
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2233
-msgid "OSes"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:793
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2256
-msgid "Browsers"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:796
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2135
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3038
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3398
-msgid "Feeds"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:799
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2302
-#, fuzzy
-msgid "Search engines"
-msgstr "Search engine"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:802
-#, fuzzy
-msgid "Top search terms"
-msgstr "Poslední hledaný výraz"
-
-# Again an english word. Got no better translation at the moment
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:805
-#, fuzzy
-msgid "Top referrers"
-msgstr "Last referrersr"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:808
-#, fuzzy
-msgid "Countries"
-msgstr "Počet"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:808
-#, fuzzy
-msgid "Languages"
-msgstr "Poslední stránky"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:811
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2279
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2958
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3317
-#, fuzzy
-msgid "Spiders"
-msgstr "Poslední stránky"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:814
-#, fuzzy
-msgid "Top pages"
-msgstr "Poslední stránky"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:817
-#, fuzzy
-msgid "Unique visitors"
-msgstr "Návštěvníci"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:820
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:823
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2878
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3237
-msgid "Pageviews"
-msgstr "Viděno stránek"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:823
-msgid "Top IPs"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:843
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:858
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1527
-msgid "Category"
-msgstr "Kategorie"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:844
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1528
-msgid "Calendar"
-msgstr "Kalendář"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:913
-msgid "period of days"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:956
-#, fuzzy
-msgid "Pages"
-msgstr "Stránka"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1056
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2798
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3158
-msgid "Visitors"
-msgstr "Návštěvníci"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1095
-msgid "Http domain"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1106
-msgid "Hostip country"
-msgstr ""
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1127
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1128
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1135
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1136
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1338
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1340
-msgid "arrived from"
-msgstr "přišli z"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1127
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1135
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1338
-msgid "searching"
-msgstr "hledání"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1264
-#, fuzzy
-msgid "Last visitors"
-msgstr "Poslední události"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1367
-msgid "URL Requested"
-msgstr "URL Requested"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1369
+#: includes/nsp_search.php:8
 msgid "Referrer"
-msgstr "Referrer"
+msgstr "Odkazující server"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1370
+#: includes/nsp_search.php:9
 msgid "Search terms"
-msgstr "Hledaný výraz"
+msgstr "Hledané výrazy"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1371
+#: includes/nsp_search.php:10
 msgid "Search engine"
-msgstr "Search engine"
+msgstr "Internetový vyhledávač"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1372
+#: includes/nsp_search.php:11
 msgid "Operative system"
 msgstr "Operační systém"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1375
-msgid "IP"
-msgstr ""
+#: includes/nsp_search.php:12 newstatpress.php:229 newstatpress.php:301
+#: newstatpress.php:330
+msgid "Browser"
+msgstr "Prohlížeč"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1382
+#: includes/nsp_search.php:13 newstatpress.php:301 newstatpress.php:359
+msgid "Spider"
+msgstr "Špión robotů"
+
+#: includes/nsp_search.php:14
+msgid "IP"
+msgstr "IP"
+
+#: includes/nsp_search.php:16 includes/nsp_search.php:59 newstatpress.php:169
+#: newstatpress.php:417 newstatpress.php:431 newstatpress.php:556
+msgid "Search"
+msgstr "Hledat"
+
+#: includes/nsp_search.php:21
 msgid "Field"
 msgstr "Pole"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1389
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1390
+#: includes/nsp_search.php:28 includes/nsp_search.php:29
 msgid "Group by"
-msgstr "Group by"
+msgstr "Seskupit podle"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1392
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1393
+#: includes/nsp_search.php:31 includes/nsp_search.php:32
 msgid "Sort by"
 msgstr "Seřazeno podle"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1395
+#: includes/nsp_search.php:34
 msgid "if contains"
 msgstr "pokud obsahuje"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1405
+#: includes/nsp_search.php:44
 msgid "sort by count if grouped"
-msgstr "sort by count if grouped"
+msgstr "seřadit podle počtu skupin"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1406
+#: includes/nsp_search.php:45
 msgid "include spiders/crawlers/bot"
-msgstr "include spiders/crawlers/bot"
+msgstr "včetně špiónů/indexerů/robotů"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1407
+#: includes/nsp_search.php:46
 msgid "include feed"
-msgstr "include feed"
+msgstr "včetne feedu"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1414
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2666
+#: includes/nsp_search.php:53 newstatpress.php:1301
 msgid "Limit results to"
-msgstr "Limit results to"
+msgstr "Počet výsledků"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1481
+#: includes/nsp_search.php:123
 msgid "Results"
 msgstr "Výsledky"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1488
+#: includes/nsp_search.php:130
 msgid "Count"
 msgstr "Počet"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1568
-msgid "records"
+#: includes/nsp_tools.php:16
+msgid "IP2nation"
+msgstr "IP2nation"
+
+#: includes/nsp_tools.php:17 includes/nsp_tools.php:94
+msgid "Update"
+msgstr "Aktualizovat"
+
+#: includes/nsp_tools.php:18 includes/nsp_tools.php:194
+msgid "Export"
+msgstr "Export"
+
+#: includes/nsp_tools.php:19 includes/nsp_tools.php:254
+msgid "Remove"
+msgstr "Odstranit"
+
+#: includes/nsp_tools.php:24
+msgid "Database Tools"
+msgstr "Databázové nástroje"
+
+#: includes/nsp_tools.php:42
+msgid "To import IP2nation database"
+msgstr "Import databáze IP2nation"
+
+#: includes/nsp_tools.php:51
+#, php-format
+msgid "Last version installed: %s"
+msgstr "Poslední verze instalována: %s"
+
+#: includes/nsp_tools.php:53
+msgid "To update the IP2nation database, just click on the button bellow."
 msgstr ""
+"Chcete-li aktualizovat databázi IP2nation, stačí klikněte na tlačítko níže."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:1621
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2667
-msgid "Visits"
-msgstr "Návštěvnost"
+#: includes/nsp_tools.php:57
+msgid "Last version installed: none "
+msgstr "Poslední verze instalována: žádná"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2108
+#: includes/nsp_tools.php:59
+msgid ""
+"To download and to install the IP2nation database, just click on the button "
+"bellow."
+msgstr ""
+"Chcete-li stáhnout a nainstalovat databázi IP2nation, stačí klikněte na "
+"tlačítko níže."
+
+#: includes/nsp_tools.php:85
+msgid "Database update"
+msgstr "Aktualizace databáze"
+
+#: includes/nsp_tools.php:87
+msgid "To update the newstatpress database, just click on the button bellow."
+msgstr ""
+"Chcete-li aktualizovat databázi newstatpress, stačí klikněte na tlačítko "
+"níže."
+
+#: includes/nsp_tools.php:138
+msgid "Failure to save content locally, please try to re-install."
+msgstr "Nebyly provedeny žádné změny, zkuste to prosím znovu."
+
+#: includes/nsp_tools.php:155
+msgid "Failure to unzip archive, please try to re-install"
+msgstr "Není možní rozbalit archiv, zkuste, prosím, reinstalovat."
+
+#: includes/nsp_tools.php:158
+msgid "Instalation of IP2nation database was successful"
+msgstr "Instalace databáze IP2nation byla úspěšná"
+
+#: includes/nsp_tools.php:171
+msgid "Export stats to text file"
+msgstr "Exportovat statistiky to textového dokumentu"
+
+#: includes/nsp_tools.php:172
+msgid "You should define the stats period you want to export:"
+msgstr "Definujte období, které chcete exportovat."
+
+#: includes/nsp_tools.php:176
+msgid "From:"
+msgstr "Od:"
+
+#: includes/nsp_tools.php:177 includes/nsp_tools.php:181
+msgid "YYYYMMDD"
+msgstr "RRRRMMDD"
+
+#: includes/nsp_tools.php:180
+msgid "To:"
+msgstr "Komu:"
+
+#: includes/nsp_tools.php:186
+msgid "You should choose a fields delimiter to separate the data:"
+msgstr "Vyberete oddělovat, který rozdělí data:"
+
+#: includes/nsp_tools.php:238
+msgid "All data removed"
+msgstr "Odebrána všechna data"
+
+#: includes/nsp_tools.php:242
+msgid "Remove NewStatPress database"
+msgstr "Smazání NewStatPress databáze"
+
+#: includes/nsp_tools.php:245
+msgid ""
+"Warning: pressing the below button will make all your stored data to be "
+"erased!"
+msgstr "Pozor! Po stisknutí budou všechna data smazána!"
+
+#: includes/nsp_tools.php:249
+msgid ""
+"It is added for the people that did not want to use the plugin anymore and "
+"so they want to remove the stored data."
+msgstr ""
+"Je to přidáno pro lidi, kteří nechtějí používat už nikdy tento plugin a "
+"chtějí smazat veškerá data."
+
+#: includes/nsp_tools.php:251
+msgid "If you are in doubt about this function, don't use it."
+msgstr "Pokud pochybujete, že to chcete udělat. Radši to nedělejte."
+
+#: includes/nsp_tools.php:254
+msgid "Are you sure?"
+msgstr "Jste si jisti?"
+
+#: includes/nsp_tools.php:327
+msgid "Database Update"
+msgstr "Aktualizace databáze"
+
+#: includes/nsp_tools.php:329
 msgid "Updating..."
-msgstr ""
+msgstr "Aktualizuju..."
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2108
+#: includes/nsp_tools.php:329
 msgid "Size"
-msgstr ""
+msgstr "Velikost"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2125
+#: includes/nsp_tools.php:329 newstatpress.php:269 newstatpress.php:283
+msgid "Result"
+msgstr "Výsledky"
+
+#: includes/nsp_tools.php:348
 msgid "Structure"
-msgstr ""
+msgstr "Konstruktuji"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2130
+#: includes/nsp_tools.php:352
 msgid "Index"
-msgstr ""
+msgstr "Indexuji"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2332
+#: includes/nsp_tools.php:554
 msgid "Final Structure"
-msgstr ""
+msgstr "Konstrukce dokončena"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2336
+#: includes/nsp_tools.php:558
 msgid "Final Index"
-msgstr ""
+msgstr "Index dokončen"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2340
+#: includes/nsp_tools.php:562
 msgid "Duration of the update"
-msgstr ""
+msgstr "Doba trvání aktualizace"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2344
+#: includes/nsp_tools.php:566
 msgid "This update was done in"
-msgstr ""
+msgstr "Tato aktualizace byla provedena v"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2345
+#: includes/nsp_tools.php:567
 msgid "SQL queries"
-msgstr ""
+msgstr "SQL dotazy"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2629
+#: includes/nsp_visits.php:12
+msgid "Last visitors"
+msgstr "Poslední návštěvnici"
+
+#: includes/nsp_visits.php:13 newstatpress.php:1530 newstatpress.php:1667
+msgid "Visitors"
+msgstr "Návštěvníci"
+
+#: includes/nsp_visits.php:14
+msgid "Spy Bot"
+msgstr "Špióni robotů"
+
+#: includes/nsp_visits.php:241 includes/nsp_visits.php:243
+#: includes/nsp_visits.php:372 includes/nsp_visits.php:373
+#: includes/nsp_visits.php:380 includes/nsp_visits.php:381
+msgid "arrived from"
+msgstr "přišli z"
+
+#: includes/nsp_visits.php:241 includes/nsp_visits.php:372
+#: includes/nsp_visits.php:380
+msgid "searching"
+msgstr "hledání"
+
+#: includes/nsp_visits.php:340
+msgid "Http domain"
+msgstr "Doména http"
+
+#: includes/nsp_visits.php:351
+msgid "Hostip country"
+msgstr "HostIP země"
+
+#: includes/nsp_visits.php:453
+msgid "Pages"
+msgstr "Stránky"
+
+#: newstatpress.php:62
+msgid "Today visits"
+msgstr "Dnešní návštěvy"
+
+#: newstatpress.php:63
+msgid "Yesterday visits"
+msgstr "Včerejší návštěvy"
+
+#: newstatpress.php:64
+msgid "Month visits"
+msgstr "Mesíční návštěvy"
+
+#: newstatpress.php:65
+msgid "Total visits"
+msgstr "Celkové návštěvy"
+
+#: newstatpress.php:66
+msgid "Total pages view"
+msgstr "Celkové zobrazené stránky"
+
+#: newstatpress.php:67
+msgid "Total pages view today"
+msgstr "Celkové týdenní zobrazené stránky"
+
+#: newstatpress.php:68
+msgid "This page, total visits"
+msgstr "Tato stránka, celkové návštěvy"
+
+#: newstatpress.php:69
+msgid "All page, total visits"
+msgstr "Všechny stránky, celkové návštěvy"
+
+#: newstatpress.php:70
+msgid "Visitor Operative System"
+msgstr "Návštěvy operačních systémů"
+
+#: newstatpress.php:71
+msgid "Visitor Browser"
+msgstr "Návštěvy prohlížečů"
+
+#: newstatpress.php:72
+msgid "Visitor IP address"
+msgstr "Návštěvy IP adres"
+
+#: newstatpress.php:73
+msgid "Date of the first hit"
+msgstr "Datum prvního záznamu"
+
+#: newstatpress.php:74
+msgid "Counts all online visitors"
+msgstr "Počet všech online návštěv"
+
+#: newstatpress.php:75
+msgid "Counts logged online visitors"
+msgstr "Počet přihlášených online návštěvníků"
+
+#: newstatpress.php:76
+msgid "The most viewed Post"
+msgstr "Nejvíce zobrazený příspěvek"
+
+#: newstatpress.php:170
+msgid "Tools"
+msgstr "Nástroje"
+
+#: newstatpress.php:229
+msgid "Last hits"
+msgstr "Poslední události"
+
+#: newstatpress.php:229 newstatpress.php:269 newstatpress.php:283
+#: newstatpress.php:330 newstatpress.php:359
+msgid "Time"
+msgstr "Čas"
+
+#: newstatpress.php:229
+msgid "Country"
+msgstr "Země"
+
+#: newstatpress.php:229 newstatpress.php:330 newstatpress.php:414
+#: newstatpress.php:426 newstatpress.php:429 newstatpress.php:441
+#: newstatpress.php:553 newstatpress.php:565
+msgid "Page"
+msgstr "Stránka"
+
+#: newstatpress.php:229
+msgid "Feed"
+msgstr "Feed"
+
+#: newstatpress.php:229 newstatpress.php:301 newstatpress.php:330
+msgid "OS"
+msgstr "OS"
+
+#: newstatpress.php:269
+msgid "Last search terms"
+msgstr "Poslední hledaný výraz"
+
+#: newstatpress.php:269
+msgid "Terms"
+msgstr "Výrazy"
+
+#: newstatpress.php:269
+msgid "Engine"
+msgstr "Vykreslovací jádro"
+
+#: newstatpress.php:278 newstatpress.php:295
+msgid "page viewed"
+msgstr "zobrazena stránka"
+
+#: newstatpress.php:283
+msgid "Last referrers"
+msgstr "Poslední odkazové zdroje"
+
+#: newstatpress.php:283
+msgid "URL"
+msgstr "URL"
+
+#: newstatpress.php:301
+msgid "Last agents"
+msgstr "Poslední agenti"
+
+#: newstatpress.php:330
+msgid "Last pages"
+msgstr "Poslední stránky"
+
+#: newstatpress.php:359
+msgid "Last spiders"
+msgstr "Poslední špióni robotů"
+
+#: newstatpress.php:415 newstatpress.php:430 newstatpress.php:554
+msgid "Category"
+msgstr "Rubriky"
+
+#: newstatpress.php:416 newstatpress.php:555
+msgid "Calendar"
+msgstr "Kalendář"
+
+#: newstatpress.php:595
+msgid "records"
+msgstr "záznamy"
+
+#: newstatpress.php:1252
 msgid "Title:"
-msgstr "Title:"
+msgstr "Název:"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2630
+#: newstatpress.php:1255
 msgid "Body:"
-msgstr "Body:"
+msgstr "Tělo:"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2665
-#, fuzzy
+#: newstatpress.php:1260
+msgid "Stats available: "
+msgstr "Statistiky jsou dostupné:"
+
+#: newstatpress.php:1300
 msgid "Title"
-msgstr "Title:"
+msgstr "Název"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2786
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3145
-#, fuzzy
+#: newstatpress.php:1468 newstatpress.php:1502
 msgid "Total since"
-msgstr "Celkem"
+msgstr "Celkem od"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2789
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3148
+#: newstatpress.php:1469
+msgid "This year"
+msgstr "Tento rok"
+
+#: newstatpress.php:1470 newstatpress.php:1503
 msgid "Last month"
 msgstr "Minulý měsíc"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2790
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3149
+#: newstatpress.php:1471 newstatpress.php:1504
 msgid "This month"
 msgstr "Tento měsíc"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2791
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3150
-#, fuzzy
+#: newstatpress.php:1472 newstatpress.php:1505
 msgid "Target This month"
-msgstr "Tento měsíc"
+msgstr "Cíle tohoto měsíce"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2792
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3151
+#: newstatpress.php:1473 newstatpress.php:1506
 msgid "Yesterday"
 msgstr "Včera"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:2793
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3152
+#: newstatpress.php:1474 newstatpress.php:1507
 msgid "Today"
 msgstr "Dnes"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3116
-#, fuzzy
-msgid "More details"
-msgstr "Detaily"
+#: newstatpress.php:1536
+msgid "Visitors through Feeds"
+msgstr "Návštěvníci od zdrojů feedů"
 
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3546
-#, fuzzy
-msgid " visitors"
-msgstr "Návštěvníci"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3547
-#, fuzzy
-msgid "pageviews"
-msgstr "Viděno stránek"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3548
-#, fuzzy
-msgid "spiders"
-msgstr "Poslední stránky"
-
-#: /mnt/new/home/ice/SRC/cvsroot/newstatpress/trunk/newstatpress.php:3549
-msgid "feeds"
-msgstr ""
+#: newstatpress.php:1554
+msgid "Pageviews through Feeds"
+msgstr "Zobrazení stránek od zdrojů feedů"
