@@ -23,9 +23,14 @@
 - [ ] Database migration routine with unique name
 
 
+## 0.9.8
+Released date: 2015-04-26
 
+- [x] Fix missing routine for update
+- [x] Fix cs_CZ translation
 
 ## 0.9.7
+Released date: 2015-04-11
 
 User interface changes:
 - [x] Added New option in Overview Tab : overview stats calculation method (global distinct ip OR sum of each day) (Note: online for month at the moment)

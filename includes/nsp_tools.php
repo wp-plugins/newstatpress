@@ -295,6 +295,18 @@ function nsp_RemovePluginDatabase() {
    return $days;
  }
 
+/**
+ * Extract the feed from the given url
+ *
+ * @param url the url to parse
+ * @return the extracted url
+ */
+function iriNewStatPress_extractfeedreq($url) {
+  list($null,$q)=explode("?",$url);
+  if (strpos($q, "&")!== false) list($res,$null)=explode("&",$q);
+  else $res=$q;
+  return $res;
+}
 
  /**
   * Performes database update with new definitions
