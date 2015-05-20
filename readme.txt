@@ -3,8 +3,8 @@ Contributors: ice00
 Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
-Tested up to: 4.1
-Stable Tag: 0.9.5
+Tested up to: 4.2
+Stable Tag: 0.9.9
 
 NewStatPress (Statpress plugin fork) is a real-time plugin to manage the visits' statistics about your blog  (without external web analytics).
 
@@ -22,6 +22,10 @@ NewStatPress also includes a widget one can possibly add to a sidebar (or easy P
 Note: you must disable the original StatPress plugin (or other plugins still based onto Statpress) when activating this, as it use the same table of StatPress for storing data in DB (copy the data to another table will be very space consuming for your site, so it was better to use the same table)
 
 With the new ajax/javascript usage for variables in widget, the plugin is faster for a user being visit your site even with 1GB or more of database to use!
+
+Important: all previous versions from 0.9.9 are subject to XSS and SQL injection from an old Statpress routine. You have to use at least version 0.9.9.
+Unfortunately actually over 50% of people still use versions before 0.9.0!!!!
+Please update always to the latest version available.
 
 = Support =
 
@@ -120,12 +124,52 @@ Check at http://newstatpress.altervista.org
 Check at http://newstatpress.altervista.org
 
 == Changelog ==
+= 0.9.9 =
+*Release Date - 20/05/2015*
+
+IMPORTANT CRITICAL UPDATE
+* Close a XSS and a SQL injection and possible other more complex to achieve (thanks to Adrián M. F. for discover and communicate them). Those are inside the search routine from Statpress so ALL previous versions of Newstatpress are vulnerable (and maybe they are present in lot of Statpress based plugin and Statpress itself).
+* Fix missing browser images
+* Add tools for optimize and repair the statpress table
+* Updated Locale it_IT
+
+
+= 0.9.8 =
+*Release Date - 26/04/2015*
+
+* Fix missing routine for update
+* Fix cs_CZ translation
+
+= 0.9.7 =
+*Release Date - 11/04/2015*
+
+User interface changes:
+* Added New option in Overview Tab : overview stats calculation method (global distinct ip OR sum of each day) (Note: online for month at the moment)
+* Added New options in General Tab : add capabilities selection to display menus, options menu need to be administrator by default
+* Added New information 'Visitors RSS Feeds' in Overview page
+* Updated Locale fr_FR, it_IT, cs_CZ
+
+Core changes:
+* Updated OS definition
+* Updated Browser definition
+* Fixed '3 months Purge' issue
+
+= 0.9.6 =
+*Release Date - 21/02/2015*
+
+* New Option page with tabs navigation (jquery)
+* Fix Search page link
+* Various core fix (global definition, function, plugin page names with nsp_ prefix)
+* Various debug fix (deprecated function, unset variable)
+* Fix thistotalvisit api call
 
 = 0.9.5 =
+*Release Date - 18/02/2015*
 
 * Fix PHP compatibility issue on old versions
 
 = 0.9.4 =
+*Release Date - 18/02/2015*
 
 * Update of Widget 'NewStatPress' (code re-writed, add variable informations)
 * Fix Overview Table (CSS)
@@ -134,6 +178,7 @@ Check at http://newstatpress.altervista.org
 Note: do not install if you did not have a recent PHP version
 
 = 0.9.3 =
+*Release Date - 17/02/2015*
 
 * Add Visits page with tab navigation
 * Add tab navigation in Crédits page
@@ -151,18 +196,22 @@ Note: do not install if you did not have a recent PHP version
 Note: refresh your browser cache to take the new CSS settings else if you use javascript in widget where there is a %variable% of newstatpress, please take a look as now it could generate javascript error (neested code).
 
 = 0.9.2 =
+*Release Date - 09/02/2015*
 
 * CSS fix :  Overview fix and wp_enqueue_style compatibility fix
 
 = 0.9.1 =
+*Release Date - 08/02/2015*
 
 * Fix PHP to be compatible with a old version (all 0.8.9 changes are now activated)
 
 = 0.9.0 =
+*Release Date - 07/02/2015*
 
 * Revert modification to 0.8.8 to fix PHP issue for old versions
 
 = 0.8.9 =
+*Release Date - 07/02/2015*
 
 * Added Ip2nation download function in option page
 * Added plugin homepage link, news feeds link, bouton donation in credit page
@@ -184,60 +233,72 @@ Note: refresh your browser cache to take the new CSS settings else if you use ja
 NOTE: not install this version if you have not a recent PHP version. Attend the new 0.9.1 instead.
 
 = 0.8.8 =
+*Release Date - 17/01/2015*
 
 * Optimize %alltotalvisits% query (up to 5X faster)
 * Optimize %visitorsonline% query (uses more indexes)
 * Optimize %usersonline% query () (uses more indexes)
 
 = 0.8.7 =
+*Release Date - 21/12/2014*
 
 * Add Browser (+1)
 * Add OS (+5)
 
 = 0.8.6 =
+*Release Date - 20/09/2014*
 
 * Replace obsolete get_settings() to get_option() (thanks to kjmtsh)
 * Add empty check of the query results (thanks to kjmtsh)
 * Fix of the query string for dbDelta() function (thanks to kjmtsh)
 
 = 0.8.5 =
+*Release Date - 03/08/2014*
 
 * Add Browser (+10)
 * Increase referrer from 250 to 512 chars
 
 = 0.8.4 =
+*Release Date - 13/07/2014*
 
 * Spy menu reorganziation (thanks to Alphonse PHILIPPE)
 * Update French translation (thanks to Alphonse PHILIPPE)
 * Update Italian translation
 
 = 0.8.3 =
+*Release Date - 11/06/2014*
 
 * Remove greetings link as new Wordpress policy
 
 = 0.8.2 =
+*Release Date - 07/06/2014*
 
 * Add Ukrainian translation (thanks to Michael Yunat)
 
 = 0.8.1 =
+*Release Date - 25/05/2014*
 
 * Add Greek translation (thanks to Boulis Antoniou)
 
 = 0.8.0 =
+*Release Date - 17/04/2014*
 
 * Fix spy/new spy/spy bot menu
 * Fix 4 missing details
 * Replace mysql_real_escape_string with esc_sql for WP 3.9
 
 = 0.7.9 =
+*Release Date - 05/04/2014*
 
 * Update French translation (thanks to Alphonse PHILIPPE)
 
 = 0.7.8 =
+*Release Date - 14/03/2014*
 
 * Fix global definitions
 
 = 0.7.7 =
+*Release Date - 14/03/2014*
 
 * Fix $userdata issue if it is empty (thanks to szaleq)
 * Fix plugin directory usage when not standard wp installation is used (thanks to szaleq)
@@ -245,117 +306,142 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 * Add OS (+9), Browser (+1)
 
 = 0.7.6 =
+*Release Date - 11/01/2014*
 
 * Change target formula to use the true month's days duration and computes it according even with hours/minutes (thanks to Capitalist)
 
 = 0.7.5 =
+*Release Date - 27/12/2013*
 
 * Fix possible security issue (backported from statpress)
 * Resolve /? problem for permalink in links
 
 = 0.7.4 =
+*Release Date - 01/10/2013*
 
 * Fix POST request for flag API services that needs GET (Thanks to Giuseppe Chiesa)
 
 = 0.7.3 =
+*Release Date - 22/09/2013*
 
 * Fix maxxday missing declaration
 
 = 0.7.2 =
+*Release Date - 15/09/2013*
 
 * Add option to prune only the spiders
 * Add remove menu for deleting all stored data
 
 = 0.7.1 =
+*Release Date - 17/08/2013*
 
 * Add Os (+6), Browser (+14)
 
 = 0.7.0 =
+*Release Date - 20/07/2013*
 
 * Make tables compatible with qTransalte plugin
 * Fix bug id 390 (Graph Legend includes + Sign)
 
 = 0.6.9 =
+*Release Date - 30/06/2013*
 
 * Remove old (unused) chart code that was present over the new Google Api
 
 = 0.6.8 =
+*Release Date - 29/06/2013*
 
 * Insert timeout in reading the total number of newstatpress installation if you use %installed%
 
 = 0.6.7 =
+*Release Date - 29/06/2013*
 
 * Fix not resolve completly, so remove support link
 
 = 0.6.6 =
+*Release Date - 29/06/2013*
 
 * Try to fix bug-id 423/434 (needs PHP5)
 
 = 0.6.5 =
+*Release Date - 28/05/2013*
 
 * Mask potential error in reading of installed plugin
 * Activate installed registration when in admin page
 
 = 0.6.4 =
+*Release Date - 26/05/2013*
 
 * Add %installed% that give the number of installed plugin (it is anonymous and experimental,
   read the note)
 
 = 0.6.3 =
+*Release Date - 20/05/2013*
 
 * Fix possible warning and line feeds
 
 = 0.6.2 =
+*Release Date - 20/05/2013*
 
 * Add missing 2 spider images
 * Make configurable the number of elements in summary
 * Add random “support” link to all search robots (read the agrement note before updating)
 
 = 0.6.1 =
+*Release Date - 04/05/2013*
 
 * Fix isset for referrer
 
 = 0.6.0 =
+*Release Date - 02/05/2013*
 
 * Fix missing $ in referrer
 
 = 0.5.9 =
+*Release Date - 30/04/2013*
 
 * Avoid possible problem with refferer (use update for sync the old data)
 
 = 0.5.8 =
+*Release Date - 27/04/2013*
 
 * Remove Undefined offset in referrer if debug is on
 * Add %todaytotalpageviews% - total pages view today
 * Add Os (+3)
 
 = 0.5.7 =
+*Release Date - 16/03/2013*
 
 * Porting the 3D charts to the new Google API: Piechart.
   Chart is rendered into an iframe with SVG or VML.
   See http://newstatpress.altervista.org/?p=381 for an example
 
 = 0.5.6 =
+*Release Date - 14/03/2013*
 
 * Use .html instead of .frame as some browsers did not interpret it correctly
 
 = 0.5.5 =
+*Release Date - 14/03/2013*
 
 * Porting the GeoMap chart to the new Google API: Geochart.
   Map is rendered into an iframe with SVG or VML.
   See http://newstatpress.altervista.org/?p=373 for an example
 
 = 0.5.4 =
+*Release Date - 02/03/2013*
 
 * Add Hungarian translation (Thanks to Peter Bago)
 
 = 0.5.3 =
+*Release Date - 15/02/2013*
 
 * Fix collision of permalinksEnabled with statpress-visitors
 * Increase size from 50 to 250 into details visualization
 * New Browser (+17),New OS (+2), fix bug id 315
 
 = 0.5.2 =
+*Release Date - 12/02/2013*
 
 * Fix inherited bug about CDIR comparison in blocking IP function
 * Add %topsearch% for getting the top search term (it implements partially the tracker ID 297 and 243)
@@ -363,23 +449,28 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 * Add missing yahoo feedseacker spider image
 
 = 0.5.1 =
+*Release Date - 13/01/2013*
 
 * Add Slovak translation  (thanks to Branco - WebHostingGeeks.com http://webhostinggeeks.com/blog/)
 * Fix mising msn spider images (thanks to Christian)
 
 = 0.5.0 =
+*Release Date - 29/12/2012*
 
 * Add searchengine (+1)
 
 = 0.4.9 =
+*Release Date - 27/12/2012*
 
 * Show graphs under the table to stay into column (Google charts will be updated to SVG graphics soon)
 
 = 0.4.8 =
+*Release Date - 09/12/2012*
 
 * Add browser (+3), OS (+1)
 
 = 0.4.7 =
+*Release Date - 02/11/2012*
 
 * Trace even IPv6 address (note: look at http://newstatpress.altervista.org/?p=261 for more details before apply this update)
 * Remove some Strict Standards PHP warnings (Only variables should be passed by reference in...)
@@ -387,95 +478,115 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 * Avoid use of $_SERVER['SCRIPT_NAME'] as no all server handle it correctly (tracker id 258)
 
 = 0.4.6 =
+*Release Date - 21/10/2012*
 
 * Add browser (+3), OS (+1)
 
 = 0.4.5 =
+*Release Date - 23/09/2012*
 
 * Update Russian translation (thanks to godOFslaves)
 * update Italian translation
 
 = 0.4.4 =
+*Release Date - 01/09/2012*
 
 * Add browser (+2)
 * Fix spider images (bug id 236 and 237)
 
 = 0.4.3 =
+*Release Date - 22/07/2012*
 
 * Add spiders images (from statpress-visitors)
 * Initial porting of spy bot (from statpress-visitors)
 * Add browser (+2)
 
 = 0.4.2 =
+*Release Date - 15/07/2012*
 
 * Update Simplified Chinese translation (thanks to Christopher Meng)
 * Add tab delimiter for export function (thanks to Ruud van der Veen)
 
 = 0.4.1 =
+*Release Date - 12/07/2012*
 
 * Improve control before insert (maybe help for bug id 221)
 
 = 0.4.0 =
+*Release Date - 02/07/2012*
 
 * Fix total since date bug (tracker id 216)
 
 = 0.3.9 =
+*Release Date - 01/07/2012*
 
 * Add the abilities to not monitoring only a given list of names
  (so, administrators can still monitoring authenticated users) for users that are logged (tracker id 201)
 * Update Italian locale
 
 = 0.3.8 =
+*Release Date - 10/06/2012*
 
 * Code restructuration
 * Add browser (+1)
 
 = 0.3.7 =
+*Release Date - 02/06/2012*
 
 * Fix introduced bug with previous function added of image visualization (tracker id 192)
 
 = 0.3.6 =
+*Release Date - 01/06/2012*
 
 * Add Overview for [NewStatPress: xxx] command (tracker id 166)
 
 = 0.3.5 =
+*Release Date - 16/05/2012*
 
 * Updating French translation (thanks to shilom)
 * Fix dashboard and overview translation
 
 = 0.3.4 =
+*Release Date - 02/05/2012*
 
 * Add Lithuanian translation (thanks to Vincent G)
 
 = 0.3.3 =
+*Release Date - 29/04/2012*
 
 * Updating French translation (thanks to shilom)
 * Inserting credits table
 
 = 0.3.2 =
+*Release Date - 26/04/2012*
 
 * Add new OS (+1), browsers (+7), spiders (+1)
 
 = 0.3.1 =
+*Release Date - 21/04/2012*
 
 * Fix *deprecated* register_sidebar_widget (traker ID 142)
 * Fix php warning into dashboard widget
 
 = 0.3.0 =
+*Release Date - 14/03/2012*
 
 * Add new browser definitions (+1)
 * Create credits menu (to be completed)
 
 = 0.2.9 =
+*Release Date - 01/03/2012*
 
 * Fix export action not catched (Tracker ID 146)
 
 = 0.2.8 =
+*Release Date - 17/02/2012*
 
 * Fix blog redirector in NewStatPressBlog (Tracker ID 137)
 * Fix nation image display in spy (thanks to Maurice Cramer)
 
 = 0.2.7 =
+*Release Date - 04/02/2012*
 
 * Replace deprecate PHP eregi function with preg_match
 * In spy show local nation images (taken from statpress-visitors)
@@ -483,85 +594,102 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 * Use image for newstatpress menu in administration of wordpress (taken from statpress-visitors)
 
 = 0.2.6 =
+*Release Date - 01/02/2012*
 
 * Fix missing browser image and IE aligment failure in spy section (thanks to Maurice Cramer)
 * Add new browser definitions (+2)
 
 = 0.2.5 =
+*Release Date - 28/01/2012*
 
 * Fix total since in overwiew (thanks to Maurice Cramer)
 * Add in the option the ability to update in a range of date (migrated from stapress-visitors)
 
 = 0.2.4 =
+*Release Date - 18/01/2012*
 
 * Add option for show dashboard widget
 * Add dashboard widget (thanks to Maurice Cramer). Look into the blog for details.
 
 = 0.2.3 =
+*Release Date - 12/01/2012*
 
 * Fixing charaters after closing tags
 
 = 0.2.2 =
+*Release Date - 11/01/2012*
 
 * Add source for Simplified Chinese translation (thanks to Christopher Meng)
 * Fix nb_NO over no_NO locale
 * Lots of php warnings fixed in source
 
 = 0.2.1 =
+*Release Date - 21/12/2011*
 
 * Add new OS (+3), browsers (+6)
 * Add Simplified Chinese translation (thanks to Christopher Meng)
 
 = 0.2.0 =
+*Release Date - 15/10/2011*
 
 * Add new OS (+44), browsers (+52) and spiders (+71) (from statpress-visitors)
 
 = 0.1.9 =
+*Release Date - 10/09/2011*
 
 * make all reports in details to have the number of entries you want
 * Add [NewStatPress: xxx] experimental function for having report into wordpress page
 * Add %totalpageviews% - total pages view
 
 = 0.1.8 =
+*Release Date - 23/06/2011*
 
 * Add option for not track given permalinks (from wp_slimstat)
 
 = 0.1.7 =
+*Release Date - 29/05/2011*
 
 * Let Search function to works again (thank to Ladislav)
 
 = 0.1.6 =
+*Release Date - 15/05/2011*
 
 * Add option for not track given IPs (from wp_slimstat)
 * update Italian translation
 
 = 0.1.5 =
+*Release Date - 12/05/2011*
 
 * Open link in new tab/window (thanks to Sisko)
 * New displays of data for spy function (thanks to Sisko)
 * Added %alltotalvisits%
 
 = 0.1.4 =
+*Release Date - 24/04/2011*
 
 * Fix fromDate calculation
 
 = 0.1.3 =
+*Release Date - 22/04/2011*
 
 * Reactivate visitors/user online with unix timestamp
 
 = 0.1.2 =
+*Release Date - 23/03/2011*
 
 * Add images for new browser
 * Better polish translation by Pawel Dworniak
 * Separate iPhone/iPad/iPod devices
 
 = 0.1.1 =
+*Release Date - 22/03/2011*
 
 * Reactivate translactions
 * Add more OS (MacOSX variants, Android)
 * Add more Browser (Firefox 4, IE 9)
 
 = 0.1.0 =
+*Release Date - 19/03/2011*
 
 * Adds index onto Statpress 1.4.1 table for improve velocity
 * Changes data type of some fields for saving space
@@ -569,349 +697,6 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 * Makes the update of search engine more quick
 
 
-
 == Upgrade Notice ==
 
-= 0.1.0 =
 
-* released 19/03/2011
-
-= 0.1.1 =
-
-* released 22/03/2011
-
-= 0.1.2 =
-
-* released 23/03/2011
-
-= 0.1.3 =
-
-* released 23/04/2011
-
-= 0.1.4 =
-
-* released 24/04/2011
-
-= 0.1.5 =
-
-* released 12/05/2011
-
-= 0.1.6 =
-
-* released 15/05/2011
-
-= 0.1.7 =
-
-* released 29/05/2011
-
-= 0.1.8 =
-
-* released 23/06/2011
-
-= 0.1.9 =
-
-* released 10/09/2011
-
-= 0.2.0 =
-
-* released 15/10/2011
-
-= 0.2.1 =
-
-* released 21/12/2011
-
-= 0.2.2 =
-
-* released 11/01/2012
-
-= 0.2.3 =
-
-* released 12/01/2012
-
-= 0.2.4 =
-
-* released 18/01/2012
-
-= 0.2.5 =
-
-* released 28/01/2012
-
-= 0.2.6 =
-
-* released 01/02/2012
-
-= 0.2.7 =
-
-* released 04/02/2012
-
-= 0.2.8 =
-
-* released 17/02/2012
-
-= 0.2.9 =
-
-* released 01/03/2012
-
-= 0.3.0 =
-
-* released 14/03/2012
-
-= 0.3.1 =
-
-* released 21/04/2012
-
-= 0.3.2 =
-
-* released 26/04/2012
-
-= 0.3.3 =
-
-* released 29/04/2012
-
-= 0.3.4 =
-
-* released 02/05/2012
-
-= 0.3.5 =
-
-* released 16/05/2012
-
-= 0.3.6 =
-
-* released 01/06/2012
-
-= 0.3.7 =
-
-* released 02/06/2012
-
-= 0.3.8 =
-
-* released 10/06/2012
-
-= 0.3.9 =
-
-* released 01/07/2012
-
-= 0.4.0 =
-
-* released 02/07/2012
-
-= 0.4.1 =
-
-* released 12/07/2012
-
-= 0.4.2 =
-
-* released 15/07/2012
-
-= 0.4.3 =
-
-* released 22/07/2012
-
-= 0.4.4 =
-
-* released 01/09/2012
-
-= 0.4.5 =
-
-* released 23/09/2012
-
-= 0.4.6 =
-
-* released 21/10/2012
-
-= 0.4.7 =
-
-* released 02/11/2012
-
-= 0.4.8 =
-
-* released 09/12/2012
-
-= 0.4.9 =
-
-* released 27/12/2012
-
-= 0.5.0 =
-
-* released 29/12/2012
-
-= 0.5.1 =
-
-* released 13/01/2013
-
-= 0.5.2 =
-
-* released 12/02/2013
-
-= 0.5.3 =
-
-* released 15/02/2013
-
-= 0.5.4 =
-
-* released 02/03/2013
-
-= 0.5.5 =
-
-* released 14/03/2013
-
-= 0.5.6 =
-
-* released 14/03/2013
-
-= 0.5.7 =
-
-* released 16/03/2013
-
-= 0.5.8 =
-
-* released 27/04/2013
-
-= 0.5.9 =
-
-* released 30/04/2013
-
-= 0.6.0 =
-
-* released 02/05/2013
-
-= 0.6.1 =
-
-* released 04/05/2013
-
-= 0.6.2 =
-
-* released 20/05/2013
-
-= 0.6.3 =
-
-* released 20/05/2013
-
-= 0.6.4 =
-
-* released 26/05/2013
-
-= 0.6.5 =
-
-* released 28/05/2013
-
-= 0.6.6 =
-
-* released 29/06/2013
-
-= 0.6.7 =
-
-* released 29/06/2013
-
-= 0.6.8 =
-
-* released 29/06/2013
-
-= 0.6.9 =
-
-* released 30/06/2013
-
-= 0.7.0 =
-
-* released 20/07/2013
-
-= 0.7.1 =
-
-* released 17/08/2013
-
-= 0.7.2 =
-
-* released 15/09/2013
-
-= 0.7.3 =
-
-* released 22/09/2013
-
-= 0.7.4 =
-
-* released 01/10/2013
-
-= 0.7.5 =
-
-* released 27/12/2013
-
-= 0.7.6 =
-
-* released 11/01/2014
-
-= 0.7.7 =
-
-* released 14/03/2014
-
-= 0.7.8 =
-
-* released 14/03/2014
-
-= 0.7.9 =
-
-* released 05/04/2014
-
-= 0.8.0 =
-
-* released 17/04/2014
-
-= 0.8.1 =
-
-* released 25/05/2014
-
-= 0.8.2 =
-
-* released 07/06/2014
-
-= 0.8.3 =
-
-* released 11/06/2014
-
-= 0.8.4 =
-
-* released 13/07/2014
-
-= 0.8.5 =
-
-* released 03/08/2014
-
-= 0.8.6 =
-
-* released 20/09/2014
-
-= 0.8.7 =
-
-* released 21/12/2014
-
-= 0.8.8 =
-
-* released 17/01/2015
-
-= 0.8.9 =
-
-* released 07/02/2015
-
-= 0.9.0 =
-
-* released 07/02/2015
-
-= 0.9.1 =
-
-* released 08/02/2015
-
-= 0.9.2 =
-
-* released 09/02/2015
-
-= 0.9.3 =
-
-* released 17/02/2015
-
-= 0.9.4 =
-
-* released 18/02/2015
-
-= 0.9.5 =
-
-* released 18/02/2015
