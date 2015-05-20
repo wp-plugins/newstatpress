@@ -89,16 +89,20 @@ function nsp_DatabaseSearch($what='') {
    if (!isset($_GET['feed'])) { $where.=" AND feed=''"; }
    else if($_GET['feed'] != 'checked') { $where.=" AND feed=''"; }
 
-   for($i=1;$i<=3;$i++) {
+   for($i=1;$i<=3;$i++) {   
      if(($_GET["what$i"] != '') && ($_GET["where$i"] != '')) {
-       $where.=" AND ".$_GET["where$i"]." LIKE '%".$_GET["what$i"]."%'";
+       $where_i=esc_sql($_GET["where$i"]);
+       $what_i=esc_sql($_GET["what$i"]);
+       $where.=" AND ".$where_i." LIKE '%".$what_i."%'";
      }
    }
    # ORDER BY
    $orderby="";
    for($i=1;$i<=3;$i++) {
      if (isset($_GET["sortby$i"]) && ($_GET["sortby$i"] == 'checked') && ($_GET["where$i"] != '')) {
-       $orderby.=$_GET["where$i"].',';
+       $where_i=$_GET["where$i"];
+       if (!array_key_exists($where_i, $f)) $where_i=''; // prevent to use not valid values
+       $orderby.=$where_i.',';
      }
    }
 
@@ -106,7 +110,9 @@ function nsp_DatabaseSearch($what='') {
    $groupby="";
    for($i=1;$i<=3;$i++) {
      if(isset($_GET["groupby$i"]) && ($_GET["groupby$i"] == 'checked') && ($_GET["where$i"] != '')) {
-       $groupby.=$_GET["where$i"].',';
+       $where_i=$_GET["where$i"];
+       if (!array_key_exists($where_i, $f)) $where_i=''; // prevent to use not valid values
+       $groupby.=$where_i.',';
      }
    }
    if($groupby != '') {
@@ -117,7 +123,8 @@ function nsp_DatabaseSearch($what='') {
 
    if($orderby != '') { $orderby="ORDER BY ".rtrim($orderby,','); }
 
-   $limit="LIMIT ".$_GET['limitquery'];
+   $limit_num=intval($_GET['limitquery']); // force to use integer
+   $limit="LIMIT ".$limit_num;
 
    # Results
    print "<h2>".__('Results','newstatpress')."</h2>";
@@ -125,7 +132,8 @@ function nsp_DatabaseSearch($what='') {
    //print "$sql<br>";
    print "<table class='widefat'><thead><tr>";
    for($i=1;$i<=3;$i++) {
-     if($_GET["where$i"] != '') { print "<th scope='col'>".ucfirst($_GET["where$i"])."</th>"; }
+     $where_i=strip_tags($_GET["where$i"]);
+     if($where_i != '') { print "<th scope='col'>".ucfirst(htmlspecialchars($where_i, ENT_COMPAT, 'UTF-8'))."</th>"; }
    }
    if($groupby != '') { print "<th scope='col'>".__('Count','newstatpress')."</th>"; }
      print "</tr></thead><tbody id='the-list'>";

@@ -1,7 +1,13 @@
 <?php
 
-function nsp_DisplayTabsNavbarForMenuPage($menu_tabs, $current,$ref) {
-
+/**
+ * Display tabs pf navigation bar for menu in page
+ *
+ * @param menu_tabs list of menu tabs
+ * @param current current tabs
+ * @param ref page reference
+ */
+function nsp_DisplayTabsNavbarForMenuPage($menu_tabs, $current, $ref) {
     echo '<div id="icon-themes" class="icon32"><br></div>';
     echo '<h2 class="nav-tab-wrapper">';
     foreach( $menu_tabs as $tab => $name ){
@@ -12,8 +18,7 @@ function nsp_DisplayTabsNavbarForMenuPage($menu_tabs, $current,$ref) {
 }
 
 
-
-function nsp_DisplayTabsNavbarForMenuPages($menu_tabs, $current,$ref) {
+function nsp_DisplayTabsNavbarForMenuPages($menu_tabs, $current, $ref) {
 
     echo "<div id='usual1' class='icon32 usual'><br></div>";
     echo "<h2  class='nav-tab-wrapper'>";
@@ -24,7 +29,19 @@ function nsp_DisplayTabsNavbarForMenuPages($menu_tabs, $current,$ref) {
     echo '</h2>';
 }
 
-function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $exclude= "", $print = TRUE) {
+/**
+ * Display data in table extracted from the given query
+ *
+ * @param fld GROUP BY argument of query
+ * @param fldtitle title of field
+ * @param limit quantity of elements to extract
+ * @param param extra arguemnt for query (like DISTINCT)
+ * @param queryfld field of query
+ * @param exclude WHERE argument of query
+ * @param print TRUE if the table is to print in page
+ * @return return the HTML output accoding to the sprint state
+ */
+function nsp_GetDataQuery2($fld, $fldtitle, $limit = 0, $param = "", $queryfld = "", $exclude= "", $print = TRUE) {
   global $wpdb;
   $table_name = nsp_TABLENAME;
 
@@ -87,6 +104,7 @@ function iriValueTable2($fld,$fldtitle,$limit = 0,$param = "", $queryfld = "", $
   if ($print) print $text;
   else return $text;
 }
+
 /**
  * Get google url query for geo data
  *

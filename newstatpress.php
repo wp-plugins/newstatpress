@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.9.8
+Version: 0.9.9
 Author: Stefano Tognon and cHab (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 ************************************************************/
 
-$_NEWSTATPRESS['version']='0.9.8';
+$_NEWSTATPRESS['version']='0.9.9';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir, $wpdb, $nsp_option_vars, $nsp_widget_vars;
@@ -164,11 +164,11 @@ function nsp_BuildPluginMenu() {
 
   add_menu_page('NewStatPres', 'NewStatPress', $capability, 'nsp-main', 'iriNewStatPressMain', plugins_url('newstatpress/images/stat.png',nsp_BASENAME));
   add_submenu_page('nsp-main', __('Overview','newstatpress'), __('Overview','newstatpress'), $overview_capability, 'nsp-main', 'iriNewStatPressMain');
-  add_submenu_page('nsp-main', __('Details','newstatpress'), __('Details','newstatpress'), $details_capability, 'nsp_details', 'iriNewStatPressDetails');
+  add_submenu_page('nsp-main', __('Details','newstatpress'), __('Details','newstatpress'), $details_capability, 'nsp_details', 'nsp_DisplayDetails');
   add_submenu_page('nsp-main', __('Visits','newstatpress'), __('Visits','newstatpress'), $visits_capability, 'nsp_visits', 'nsp_DisplayVisitsPage');
   add_submenu_page('nsp-main', __('Search','newstatpress'), __('Search','newstatpress'), $search_capability, 'nsp_search', 'nsp_DatabaseSearch');
   add_submenu_page('nsp-main', __('Tools','newstatpress'), __('Tools','newstatpress'), $tools_capability, 'nsp_tools', 'nsp_DisplayToolsPage');
-  add_submenu_page('nsp-main', __('Options','newstatpress'), __('Options','newstatpress'), $options_capability, 'nsp_options', 'iriNewStatPressOptions');
+  add_submenu_page('nsp-main', __('Options','newstatpress'), __('Options','newstatpress'), $options_capability, 'nsp_options', 'nsp_Options');
   add_submenu_page('nsp-main', __('Credits','newstatpress'), __('Credits','newstatpress'), $credits_capability, 'nsp_credits', 'nsp_DisplayCreditsPage');
 
 }
@@ -1361,43 +1361,43 @@ function content_newstatpress($content = '') {
         $replacement=nsp_MakeOverview(FALSE);
         break;
       case "Top days":
-        $replacement=iriValueTable2("date","Top days", (get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'), FALSE);
+        $replacement=nsp_GetDataQuery2("date","Top days", (get_option('newstatpress_el_top_days')=='') ? 5:get_option('newstatpress_el_top_days'), FALSE);
         break;
       case "O.S.":
-        $replacement=iriValueTable2("os","O.S.",(get_option('newstatpress_el_os')=='') ? 10:get_option('newstatpress_el_os'),"","","AND feed='' AND spider='' AND os<>''", FALSE);
+        $replacement=nsp_GetDataQuery2("os","O.S.",(get_option('newstatpress_el_os')=='') ? 10:get_option('newstatpress_el_os'),"","","AND feed='' AND spider='' AND os<>''", FALSE);
         break;
       case "Browser":
-        $replacement=iriValueTable2("browser","Browser",(get_option('newstatpress_el_browser')=='') ? 10:get_option('newstatpress_el_browser'),"","","AND feed='' AND spider='' AND browser<>''", FALSE);
+        $replacement=nsp_GetDataQuery2("browser","Browser",(get_option('newstatpress_el_browser')=='') ? 10:get_option('newstatpress_el_browser'),"","","AND feed='' AND spider='' AND browser<>''", FALSE);
         break;
       case "Feeds":
-        $replacement=iriValueTable2("feed","Feeds",(get_option('newstatpress_el_feed')=='') ? 5:get_option('newstatpress_el_feed'),"","","AND feed<>''", FALSE);
+        $replacement=nsp_GetDataQuery2("feed","Feeds",(get_option('newstatpress_el_feed')=='') ? 5:get_option('newstatpress_el_feed'),"","","AND feed<>''", FALSE);
         break;
       case "Search Engine":
-        $replacement=iriValueTable2("searchengine","Search engines",(get_option('newstatpress_el_searchengine')=='') ? 10:get_option('newstatpress_el_searchengine'),"","","AND searchengine<>''", FALSE);
+        $replacement=nsp_GetDataQuery2("searchengine","Search engines",(get_option('newstatpress_el_searchengine')=='') ? 10:get_option('newstatpress_el_searchengine'),"","","AND searchengine<>''", FALSE);
         break;
       case "Search terms":
-        $replacement=iriValueTable2("search","Top search terms",(get_option('newstatpress_el_search')=='') ? 20:get_option('newstatpress_el_search'),"","","AND search<>''", FALSE);
+        $replacement=nsp_GetDataQuery2("search","Top search terms",(get_option('newstatpress_el_search')=='') ? 20:get_option('newstatpress_el_search'),"","","AND search<>''", FALSE);
         break;
       case "Top referrer":
-        $replacement= iriValueTable2("referrer","Top referrer",(get_option('newstatpress_el_referrer')=='') ? 10:get_option('newstatpress_el_referrer'),"","","AND referrer<>'' AND referrer NOT LIKE '%".get_bloginfo('url')."%'", FALSE);
+        $replacement= nsp_GetDataQuery2("referrer","Top referrer",(get_option('newstatpress_el_referrer')=='') ? 10:get_option('newstatpress_el_referrer'),"","","AND referrer<>'' AND referrer NOT LIKE '%".get_bloginfo('url')."%'", FALSE);
         break;
       case "Languages":
-        $replacement=iriValueTable2("nation","Countries/Languages",(get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'),"","","AND nation<>'' AND spider=''", FALSE);
+        $replacement=nsp_GetDataQuery2("nation","Countries/Languages",(get_option('newstatpress_el_languages')=='') ? 20:get_option('newstatpress_el_languages'),"","","AND nation<>'' AND spider=''", FALSE);
         break;
       case "Spider":
-        $replacement=iriValueTable2("spider","Spiders",(get_option('newstatpress_el_spiders')=='') ? 10:get_option('newstatpress_el_spiders'),"","","AND spider<>''", FALSE);
+        $replacement=nsp_GetDataQuery2("spider","Spiders",(get_option('newstatpress_el_spiders')=='') ? 10:get_option('newstatpress_el_spiders'),"","","AND spider<>''", FALSE);
         break;
       case "Top Pages":
-        $replacement=iriValueTable2("urlrequested","Top pages",(get_option('newstatpress_el_pages')=='') ? 5:get_option('newstatpress_el_pages'),"","urlrequested","AND feed='' and spider=''", FALSE);
+        $replacement=nsp_GetDataQuery2("urlrequested","Top pages",(get_option('newstatpress_el_pages')=='') ? 5:get_option('newstatpress_el_pages'),"","urlrequested","AND feed='' and spider=''", FALSE);
         break;
       case "Top Days - Unique visitors":
-        $replacement=iriValueTable2("date","Top Days - Unique visitors",(get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'),"distinct","ip","AND feed='' and spider=''", FALSE);
+        $replacement=nsp_GetDataQuery2("date","Top Days - Unique visitors",(get_option('newstatpress_el_visitors')=='') ? 5:get_option('newstatpress_el_visitors'),"distinct","ip","AND feed='' and spider=''", FALSE);
         break;
       case "Top Days - Pageviews":
-        $replacement=iriValueTable2("date","Top Days - Pageviews",(get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'),"","urlrequested","AND feed='' and spider=''", FALSE);
+        $replacement=nsp_GetDataQuery2("date","Top Days - Pageviews",(get_option('newstatpress_el_daypages')=='') ? 5:get_option('newstatpress_el_daypages'),"","urlrequested","AND feed='' and spider=''", FALSE);
         break;
       case "Top IPs - Pageviews":
-        $replacement=iriValueTable2("ip","Top IPs - Pageviews",(get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'),"","urlrequested","AND feed='' and spider=''", FALSE);
+        $replacement=nsp_GetDataQuery2("ip","Top IPs - Pageviews",(get_option('newstatpress_el_ippages')=='') ? 5:get_option('newstatpress_el_ippages'),"","urlrequested","AND feed='' and spider=''", FALSE);
         break;
       default:
         $replacement="";

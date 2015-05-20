@@ -17,11 +17,20 @@
 - [ ] Add API Key in option
 - [ ] Generate extenal API interfaces
 - [ ] Add'version' in external API
-- [ ] Change days calculation into prune functions
+- [x] Change days calculation into prune functions
 - [ ] add number of visitors online in the overview page
 - [ ] add jquery for credit page
 - [ ] Database migration routine with unique name
 
+
+## 0.9.9
+Released date: 2015-05-20
+
+IMPORTANT CRITICAL UPDATE
+- [x] Close a XSS and a SQL injection and possible other more complex to achieve (thanks to Adrián M. F. for discover and communicate them). Those are inside the search routine from Statpress so ALL previous versions of Newstatpress are vulnerable (and maybe they are present in lot of Statpress based plugin and Statpress itself).
+- [x] Fix missing browser images
+- [x] Add tools for optimize and repair the statpress table
+- [x] Updated Locale it_IT
 
 ## 0.9.8
 Released date: 2015-04-26

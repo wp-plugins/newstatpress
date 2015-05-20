@@ -5,7 +5,7 @@
  * @param _value the value to filter
  * @return filtered value
  */
-function iriNewStatPress_filter_for_xss($_value){
+function nsp_FilterForXss($_value){
   $_value=trim($_value);
 
   // Avoid XSS attacks
@@ -14,7 +14,7 @@ function iriNewStatPress_filter_for_xss($_value){
     return array();
   } else {
       $array_values = explode(',',$clean_value);
-      array_walk($array_values, 'iriNewStatPress_trim_value');
+      array_walk($array_values, 'nsp_TrimValue');
       return $array_values;
     }
 }
@@ -22,12 +22,18 @@ function iriNewStatPress_filter_for_xss($_value){
 /**
  * Trim the given string
  */
-function iriNewStatPress_trim_value(&$value) {
+function nsp_TrimValue(&$value) {
   $value = trim($value);
 }
 
-
-function print_option($option_title,$option_var,$var) {
+/**
+ * Print the options
+ *
+ * @param option_title the title for option
+ * @param option_var the variable for option
+ * @param var variables
+ */
+function nsp_PrintOption($option_title, $option_var, $var) {
 
   if($option_var!='newstatpress_menuoverview_cap' AND $option_var!='newstatpress_menudetails_cap' AND $option_var!='newstatpress_menuvisits_cap' AND $option_var!='newstatpress_menusearch_cap' AND $option_var!='newstatpress_menutools_cap' AND $option_var!='newstatpress_menuoptions_cap')
     echo "<td>$option_title</td>\n";
@@ -60,24 +66,50 @@ function print_option($option_title,$option_var,$var) {
 }
 
 // add by chab
-function print_row_input($option_title,$nsp_option_vars,$input_size,$input_maxlength) {
+/**
+ * Print a row of input
+ *
+ * @param option_title the title for options
+ * @param nsp_option_vars the variables for options
+ * @param input_size the size of input
+ * @param input_maxlength the max length of the input
+ */
+function nsp_PrintRowInput($option_title, $nsp_option_vars, $input_size, $input_maxlength) {
   echo "<tr><td><label for=$nsp_option_vars[name]>$option_title</label></td>\n";
   echo "<td><input class='right' type='text' name=$nsp_option_vars[name] value=";
   echo (get_option($nsp_option_vars['name'])=='') ? $nsp_option_vars['value']:get_option($nsp_option_vars['name']);
   echo " size=$input_size maxlength=$input_maxlength />\n</td></tr>\n";
 }
 
-function print_row($option_title) {
+/**
+ * Print a row with given title
+ *
+ * @param option_title the title for option
+ */
+function nsp_PrintRow($option_title) {
   echo "<tr><td>$option_title</td></tr>\n";
 }
 
 // add by chab
-function print_checked($option_title,$option_var) {
+/**
+ * Print a checked row
+ *
+ * @param option_title the title for options
+ * @param option_var the variables for options
+ */
+function nsp_PrintChecked($option_title, $option_var) {
   echo "<tr><td><input type=checkbox name='$option_var' value='checked' ".get_option($option_var)."> $option_title</td></tr>\n";
 }
 
 // add by chab
-function print_textaera($option_title,$option_var,$option_description) {
+/**
+ * Print a text area
+ *
+ * @param option_title the title for options
+ * @param option_var the variables for options
+ * @param option_description the descriotion for options
+ */
+function nsp_PrintTextaera($option_title, $option_var, $option_description) {
   echo "<tr><td>\n<p class='ign'><label for=$option_var>$option_title</label></p>\n";
   echo "<p>$option_description</p>\n";
   echo "<p><textarea class='large-text code' cols='40' rows='2' name=$option_var id=$option_var>";
@@ -86,8 +118,10 @@ function print_textaera($option_title,$option_var,$option_description) {
   echo "</td></tr>\n";
 }
 
-
-function iriNewStatPressOptions() {
+/**
+ * Manages the options that the user can choose
+ */
+function nsp_Options() {
 ?>
 
 <div class='wrap'><h2><?php _e('NewStatPress Settings','newstatpress'); ?></h2>
@@ -112,11 +146,11 @@ function iriNewStatPressOptions() {
       foreach($nsp_option_vars as $var) {
 
         if ($var['name'] == 'newstatpress_ignore_ip')
-          update_option('newstatpress_ignore_ip', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_ip']));
+          update_option('newstatpress_ignore_ip', nsp_FilterForXss($_POST['newstatpress_ignore_ip']));
         elseif ($var['name'] == 'newstatpress_ignore_users')
-        update_option('newstatpress_ignore_users', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_users']));
+        update_option('newstatpress_ignore_users', nsp_FilterForXss($_POST['newstatpress_ignore_users']));
         elseif ($var['name'] == 'newstatpress_ignore_permalink')
-          update_option('newstatpress_ignore_permalink', iriNewStatPress_filter_for_xss($_POST['newstatpress_ignore_permalink']));
+          update_option('newstatpress_ignore_permalink', nsp_FilterForXss($_POST['newstatpress_ignore_permalink']));
         else update_option($var['name'], $_POST[$var['name']]);
       }
 
@@ -160,13 +194,13 @@ function iriNewStatPressOptions() {
 
   $option_title=__('Enable NewStatPress widget','newstatpress');
   $option_var='newstatpress_dashboard';
-  print_checked($option_title,$option_var);
+  nsp_PrintChecked($option_title,$option_var);
 
   $option_title=__('Minimum capability to display the overview menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
   echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
   $option_var='newstatpress_menuoverview_cap';
   $val=get_option($option_var);
-  print_option('',$option_var,$val);
+  nsp_PrintOption('',$option_var,$val);
 
   echo "</tr>";
   echo "<tr>";
@@ -175,7 +209,7 @@ function iriNewStatPressOptions() {
   // $option_var=$nsp_option_vars['menudetails_cap']['name'];
   $option_var='newstatpress_menudetails_cap';
   $val=get_option($option_var);
-  print_option('',$option_var,$val);
+  nsp_PrintOption('',$option_var,$val);
   echo "</tr>";
   echo "<tr>";
 
@@ -183,7 +217,7 @@ function iriNewStatPressOptions() {
   echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
   $option_var='newstatpress_menuvisits_cap';
   $val=get_option($option_var);
-  print_option('',$option_var,$val);
+  nsp_PrintOption('',$option_var,$val);
   echo "</tr>";
   echo "<tr>";
 
@@ -191,29 +225,27 @@ function iriNewStatPressOptions() {
   echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
   $option_var='newstatpress_menusearch_cap';
   $val=get_option($option_var);
-  print_option('',$option_var,$val);
+  nsp_PrintOption('',$option_var,$val);
   echo "</tr>";
   echo "<tr>";
 
   $option_title=__('Minimum capability to display the tools menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
-echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
-$option_var='newstatpress_menutools_cap';
-$val=get_option($option_var);
-print_option('',$option_var,$val);
-echo "</tr>";
-echo "<tr>";
+  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_var='newstatpress_menutools_cap';
+  $val=get_option($option_var);
+  nsp_PrintOption('',$option_var,$val);
+  echo "</tr>";
+  echo "<tr>";
 
-$option_title=__('Minimum capability to display the options menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
-echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
-$option_var='newstatpress_menuvisits_cap';
-$val=get_option($option_var);
-print_option('',$option_var,$val);
-echo "</tr>";
-echo "<tr>";
-
+  $option_title=__('Minimum capability to display the options menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
+  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_var='newstatpress_menuvisits_cap';
+  $val=get_option($option_var);
+  nsp_PrintOption('',$option_var,$val);
+  echo "</tr>";
+  echo "<tr>";
 
   echo "</table></div>";
-
 
   // case 'overview' :
   echo "<div id='overview'>\n<table class='form-tableH'>";
@@ -223,9 +255,8 @@ echo "<tr>";
   echo "<th scope='row' rowspan='2'>"; _e('Visits calculation method','newstatpress'); echo "</th>";
   echo "</tr>";
   echo "<tr>";
-$name=$nsp_option_vars['calculation']['name'];
-$valu=$nsp_option_vars['calculation']['value'];
-
+  $name=$nsp_option_vars['calculation']['name'];
+  $valu=$nsp_option_vars['calculation']['value'];
 
   echo "<td>
       <fieldset>
@@ -254,7 +285,6 @@ $valu=$nsp_option_vars['calculation']['value'];
   echo "</tr>";
   echo "<tr>";
 
-
   echo "<th scope='row' rowspan='2'>"; _e('Graph','newstatpress'); echo "</th>";
   echo "</tr>";
   echo "<tr>";
@@ -262,171 +292,165 @@ $valu=$nsp_option_vars['calculation']['value'];
   $val=array(array(7,''),array(10,''),array(20,''),array(30,''),array(50,''));
   $option_title=__('Days number in Overview graph','newstatpress');
   $option_var='newstatpress_daysinoverviewgraph';
-  print_option($option_title,$option_var,$val);
+  nsp_PrintOption($option_title,$option_var,$val);
   echo "</tr>";
   echo "<tr>";
 
   echo "<th scope='row' rowspan='2'>"; _e('Overview','newstatpress'); echo "</th>";
 
   $option_title=sprintf(__('Elements in Overview (default %d)','newstatpress'), $nsp_option_vars['overview']['value']);
-  print_row_input($option_title,$nsp_option_vars['overview'],$input_size,$input_maxlength);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['overview'],$input_size,$input_maxlength);
   echo "</tr>";
   echo "</table></div>";
 
   // case 'data' :
   echo "<div id='data'>\n<table class='form-tableH'>";
 
-    // traduction $variable addition for Poedit parsing
-    __('Never','newstatpress');
-    __('All','newstatpress');
-    __('month','newstatpress');
-    __('months','newstatpress');
-    __('week','newstatpress');
-    __('weeks','newstatpress');
+  // traduction $variable addition for Poedit parsing
+  __('Never','newstatpress');
+  __('All','newstatpress');
+  __('month','newstatpress');
+  __('months','newstatpress');
+  __('week','newstatpress');
+  __('weeks','newstatpress');
 
-    echo "<th scope='row' rowspan='4'>"; _e('Data collection','newstatpress'); echo "</th>";
+  echo "<th scope='row' rowspan='4'>"; _e('Data collection','newstatpress'); echo "</th>";
 
-    $option_title=__('Crypt IP addresses','newstatpress');
-    $option_var='newstatpress_cryptip';
-    print_checked($option_title,$option_var);
-    // echo "<tr></tr>";
-    $option_title=__('Collect data about logged users, too.','newstatpress');
-    $option_var='newstatpress_collectloggeduser';
-    print_checked($option_title,$option_var);
-    // echo "<tr></tr>";
-    $option_title=__('Do not collect spiders visits','newstatpress');
-    $option_var='newstatpress_donotcollectspider';
-    print_checked($option_title,$option_var);
+  $option_title=__('Crypt IP addresses','newstatpress');
+  $option_var='newstatpress_cryptip';
+  nsp_PrintChecked($option_title,$option_var);
+  // echo "<tr></tr>";
+  $option_title=__('Collect data about logged users, too.','newstatpress');
+  $option_var='newstatpress_collectloggeduser';
+  nsp_PrintChecked($option_title,$option_var);
+  // echo "<tr></tr>";
+  $option_title=__('Do not collect spiders visits','newstatpress');
+  $option_var='newstatpress_donotcollectspider';
+  nsp_PrintChecked($option_title,$option_var);
 
-echo "</table><table class='form-tableH'>";
+  echo "</table><table class='form-tableH'>";
 
-    echo "<tr><th class='padd' scope='row' rowspan='4'>"; _e('Data purge','newstatpress'); echo "</th>";
-    echo "</tr>";
-    echo "<tr>";
+  echo "<tr><th class='padd' scope='row' rowspan='4'>"; _e('Data purge','newstatpress'); echo "</th>";
+  echo "</tr>";
+  echo "<tr>";
 
-    $val=array(array('', 'Never'),array(1, 'month'),array(3, 'months'),array(6, 'months'),array(12, 'months'));
-    $option_title=__('Automatically delete all visits older than','newstatpress');
-    $option_var='newstatpress_autodelete';
-    print_option($option_title,$option_var,$val);
-    echo "</tr>";
-    echo "<tr>";
+  $val=array(array('', 'Never'),array(1, 'month'),array(3, 'months'),array(6, 'months'),array(12, 'months'));
+  $option_title=__('Automatically delete all visits older than','newstatpress');
+  $option_var='newstatpress_autodelete';
+  nsp_PrintOption($option_title,$option_var,$val);
+  echo "</tr>";
+  echo "<tr>";
 
-    $option_title=__('Automatically delete only spiders visits older than','newstatpress');
-    $option_var='newstatpress_autodelete_spiders';
-    print_option($option_title,$option_var,$val);
-    echo "</tr>";
-    //
-    echo "</table><table class='form-tableH'>";
-    echo "<tr><th class='padd' scope='row' rowspan='9'>"; _e('Parameters to ignore','newstatpress'); echo "</th>";
+  $option_title=__('Automatically delete only spiders visits older than','newstatpress');
+  $option_var='newstatpress_autodelete_spiders';
+  nsp_PrintOption($option_title,$option_var,$val);
+  echo "</tr>";
+  //
+  echo "</table><table class='form-tableH'>";
+  echo "<tr><th class='padd' scope='row' rowspan='9'>"; _e('Parameters to ignore','newstatpress'); echo "</th>";
 
-    // echo '<tr><td><h3>'; _e('Parameters to ignore','newstatpress'); echo '</h3><td><td></td></tr></table>';
-    // echo "<table class='option2'>";
+  // echo '<tr><td><h3>'; _e('Parameters to ignore','newstatpress'); echo '</h3><td><td></td></tr></table>';
+  // echo "<table class='option2'>";
 
-    $option_title=__('Logged users','newstatpress');
-    $option_var='newstatpress_ignore_users';
-    $option_description=__('Enter a list of users you don\'t want to track, separated by commas, even if collect data about logged users is on','newstatpress');
-    print_textaera($option_title,$option_var,$option_description);
+  $option_title=__('Logged users','newstatpress');
+  $option_var='newstatpress_ignore_users';
+  $option_description=__('Enter a list of users you don\'t want to track, separated by commas, even if collect data about logged users is on','newstatpress');
+  nsp_PrintTextaera($option_title,$option_var,$option_description);
 
-    $option_title=__('IP addresses','newstatpress');
-    $option_var='newstatpress_ignore_ip';
-    $option_description=__('Enter a list of networks you don\'t want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). <br />If the format is incorrect, NewStatPress may not track pageviews properly.','newstatpress');
-    print_textaera($option_title,$option_var,$option_description);
+  $option_title=__('IP addresses','newstatpress');
+  $option_var='newstatpress_ignore_ip';
+  $option_description=__('Enter a list of networks you don\'t want to track, separated by commas. Each network <strong>must</strong> be defined using the CIDR notation (i.e. <em>192.168.1.1/24</em>). <br />If the format is incorrect, NewStatPress may not track pageviews properly.','newstatpress');
+  nsp_PrintTextaera($option_title,$option_var,$option_description);
 
-    $option_title=__('Pages and posts','newstatpress');
-    $option_var='newstatpress_ignore_permalink';
-    $option_description=__('Enter a list of permalinks you don\'t want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. <br />NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them.','newstatpress');
-    print_textaera($option_title,$option_var,$option_description);
+  $option_title=__('Pages and posts','newstatpress');
+  $option_var='newstatpress_ignore_permalink';
+  $option_description=__('Enter a list of permalinks you don\'t want to track, separated by commas. You should omit the domain name from these resources: <em>/about, p=1</em>, etc. <br />NewStatPress will ignore all the pageviews whose permalink <strong>contains</strong> at least one of them.','newstatpress');
+  nsp_PrintTextaera($option_title,$option_var,$option_description);
 
-    echo "</table></div>";
+  echo "</table></div>";
 
+  // case 'visits' :
+  echo "<div id='visits'>\n<table class='form-tableH'>";
 
+  echo "<tr><th scope='row' rowspan='2'>"; _e('Visitors by Spy','newstatpress'); echo "</th>";
 
-    // case 'visits' :
-    echo "<div id='visits'>\n<table class='form-tableH'>";
+  $val=array(array(20,''),array(50,''),array(100,''));
+  $option_title=__('number of IP per page','newstatpress');
+  $option_var='newstatpress_ip_per_page_newspy';
+  nsp_PrintOption($option_title,$option_var,$val);
+  echo "</tr>";
+  echo "<tr>";
 
-    echo "<tr><th scope='row' rowspan='2'>"; _e('Visitors by Spy','newstatpress'); echo "</th>";
+  $option_title=__('number of visits for IP','newstatpress');
+  $option_var='newstatpress_visits_per_ip_newspy';
+  nsp_PrintOption($option_title,$option_var,$val);
 
-    $val=array(array(20,''),array(50,''),array(100,''));
-    $option_title=__('number of IP per page','newstatpress');
-    $option_var='newstatpress_ip_per_page_newspy';
-    print_option($option_title,$option_var,$val);
-    echo "</tr>";
-    echo "<tr>";
+  echo "</tr>";
 
-    $option_title=__('number of visits for IP','newstatpress');
-    $option_var='newstatpress_visits_per_ip_newspy';
-    print_option($option_title,$option_var,$val);
+  echo "<tr><th class='padd' scope='row' colspan='3'></th>";
+  echo "</tr>";
 
-    echo "</tr>";
+  echo "<tr><th class='padd' scope='row' rowspan='2'>"; _e('Parameters to ignore','newstatpress'); echo "</th>";
 
-    echo "<tr><th class='padd' scope='row' colspan='3'></th>";
-    echo "</tr>";
+  $option_title=__('number of bot per page','newstatpress');
+  $option_var='newstatpress_bot_per_page_spybot';
+  nsp_PrintOption($option_title,$option_var,$val);
+  echo "</tr>";
 
-    echo "<tr><th class='padd' scope='row' rowspan='2'>"; _e('Parameters to ignore','newstatpress'); echo "</th>";
+  echo "<tr>";
 
-    $option_title=__('number of bot per page','newstatpress');
-    $option_var='newstatpress_bot_per_page_spybot';
-    print_option($option_title,$option_var,$val);
-    echo "</tr>";
+  $option_title=__('number of bot for IP','newstatpress');
+  $option_var='newstatpress_visits_per_bot_spybot';
+  nsp_PrintOption($option_title,$option_var,$val);
 
+  echo "</table></div>";
 
-    echo "<tr>";
-
-    $option_title=__('number of bot for IP','newstatpress');
-    $option_var='newstatpress_visits_per_bot_spybot';
-    print_option($option_title,$option_var,$val);
-
-    echo "</table></div>";
-
-    // case 'details' :
-    echo "<div id='details'>\n<table class='form-tableH'>";
+  // case 'details' :
+  echo "<div id='details'>\n<table class='form-tableH'>";
 
 
-    echo "<tr><th class='padd' scope='row' rowspan='14'>"; _e('Element numbers to display in','newstatpress'); echo "</th>";
+  echo "<tr><th class='padd' scope='row' rowspan='14'>"; _e('Element numbers to display in','newstatpress'); echo "</th>";
 
-      $option_title=sprintf(__('Top days (default %d)','newstatpress'), $nsp_option_vars['top_days']['value']);
-      print_row_input($option_title,$nsp_option_vars['top_days'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Top days (default %d)','newstatpress'), $nsp_option_vars['top_days']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['top_days'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('O.S. (default %d)','newstatpress'), $nsp_option_vars['os']['value']);
-      print_row_input($option_title,$nsp_option_vars['os'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('O.S. (default %d)','newstatpress'), $nsp_option_vars['os']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['os'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Browser (default %d)','newstatpress'), $nsp_option_vars['browser']['value']);
-      print_row_input($option_title,$nsp_option_vars['browser'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Browser (default %d)','newstatpress'), $nsp_option_vars['browser']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['browser'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Feed (default %d)','newstatpress'), $nsp_option_vars['feed']['value']);
-      print_row_input($option_title,$nsp_option_vars['feed'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Feed (default %d)','newstatpress'), $nsp_option_vars['feed']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['feed'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Search Engines (default %d)','newstatpress'), $nsp_option_vars['searchengine']['value']);
-      print_row_input($option_title,$nsp_option_vars['searchengine'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Search Engines (default %d)','newstatpress'), $nsp_option_vars['searchengine']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['searchengine'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Top Search Terms (default %d)','newstatpress'), $nsp_option_vars['search']['value']);
-      print_row_input($option_title,$nsp_option_vars['search'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Top Search Terms (default %d)','newstatpress'), $nsp_option_vars['search']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['search'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Top Referrer (default %d)','newstatpress'), $nsp_option_vars['referrer']['value']);
-      print_row_input($option_title,$nsp_option_vars['referrer'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Top Referrer (default %d)','newstatpress'), $nsp_option_vars['referrer']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['referrer'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Countries/Languages (default %d)','newstatpress'), $nsp_option_vars['languages']['value']);
-      print_row_input($option_title,$nsp_option_vars['languages'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Countries/Languages (default %d)','newstatpress'), $nsp_option_vars['languages']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['languages'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Spiders (default %d)','newstatpress'), $nsp_option_vars['spiders']['value']);
-      print_row_input($option_title,$nsp_option_vars['spiders'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Spiders (default %d)','newstatpress'), $nsp_option_vars['spiders']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['spiders'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Top Pages (default %d)','newstatpress'), $nsp_option_vars['pages']['value']);
-      print_row_input($option_title,$nsp_option_vars['pages'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Top Pages (default %d)','newstatpress'), $nsp_option_vars['pages']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['pages'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Top Days - Unique visitors (default %d)','newstatpress'), $nsp_option_vars['visitors']['value']);
-      print_row_input($option_title,$nsp_option_vars['visitors'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Top Days - Unique visitors (default %d)','newstatpress'), $nsp_option_vars['visitors']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['visitors'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Top Days - Pageviews (default %d)','newstatpress'), $nsp_option_vars['daypages']['value']);
-      print_row_input($option_title,$nsp_option_vars['daypages'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Top Days - Pageviews (default %d)','newstatpress'), $nsp_option_vars['daypages']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['daypages'],$input_size,$input_maxlength);
 
-      $option_title=sprintf(__('Top IPs - Pageviews (default %d)', 'newstatpress'), $nsp_option_vars['ippages']['value']);
-      print_row_input($option_title,$nsp_option_vars['ippages'],$input_size,$input_maxlength);
+  $option_title=sprintf(__('Top IPs - Pageviews (default %d)', 'newstatpress'), $nsp_option_vars['ippages']['value']);
+  nsp_PrintRowInput($option_title,$nsp_option_vars['ippages'],$input_size,$input_maxlength);
 
-    echo "</table></div>";
-
-
-
+  echo "</table></div>";
 
     ?>
   <!--
@@ -449,7 +473,7 @@ echo "</table><table class='form-tableH'>";
    $val= array(array('', 'All'),array(1, 'week'),array(2, 'weeks'),array(3, 'weeks'),array(1, 'month'),array(2, 'months'),array(3, 'months'),array(6, 'months'),array(9, 'months'),array(12, 'months'));
    $option_title=__('Update data in the given period','newstatpress');
    $option_var='newstatpress_updateint';
-   print_option($option_title,$option_var,$val);
+   nsp_PrintOption($option_title,$option_var,$val);
 ?>
 </table>
 </div>
