@@ -23,6 +23,11 @@
 - [ ] Database migration routine with unique name
 
 
+## 1.0.0
+Released date: 2015-05-29
+
+- [x] Remove %installed% variable
+
 ## 0.9.9
 Released date: 2015-05-20
 

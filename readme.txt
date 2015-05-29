@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 4.2
-Stable Tag: 0.9.9
+Stable Tag: 1.0.0
 
 NewStatPress (Statpress plugin fork) is a real-time plugin to manage the visits' statistics about your blog  (without external web analytics).
 
@@ -66,15 +66,6 @@ Widget is customizable. These are the available variables:
 * %topbrowser% - The most used Browser
 * %topos% - The most used O.S.
 * %topsearch% - The most used search terms
-* %installed% - Give the number of installed plugin (experimental)
-
-The number of installed plugins is obtained by counting the encripted MD5 site domain where the
-plugin is installed and his version inside a table into newstatpress.altervista.org database.
-As MD5 is used, this means that the site is registered anonymous and so site privacy is mantained.
-Actually the registration is send when you are in admin area, so it not affects a user that visit your site.
-If you put %installed% into one your page, take present that it goes to read a value to
-newstatpress.altervista.org database (it is one value, so performance should be fast).
-The used registration scripts are added inside include directory.
 
 Now you could add these values everywhere! NewStatPress offers a new PHP function *NewStatPress_Print()*.
 * i.e. NewStatPress_Print("%totalvisits% total visits.");
@@ -124,6 +115,12 @@ Check at http://newstatpress.altervista.org
 Check at http://newstatpress.altervista.org
 
 == Changelog ==
+
+= 1.0.0 =
+*Release Date - 29/05/2015*
+
+* Remove %installed% variable
+
 = 0.9.9 =
 *Release Date - 20/05/2015*
 

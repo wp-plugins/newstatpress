@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 0.9.9
+Version: 1.0.0
 Author: Stefano Tognon and cHab (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 ************************************************************/
 
-$_NEWSTATPRESS['version']='0.9.9';
+$_NEWSTATPRESS['version']='1.0.0';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir, $wpdb, $nsp_option_vars, $nsp_widget_vars;
@@ -1225,10 +1225,6 @@ function nsp_ExpandVarsInsideCode($body) {
     $body = str_replace("%topsearch%", iri_NewStatPress_Decode($qry[0]->search), $body);
   }
 
-  # look for %installed%
-  if(strpos(strtolower($body),"%installed%") !== FALSE) {
-    $body = str_replace("%installed%", new_count_total(), $body);
-  }
   return $body;
 }
 
@@ -1712,40 +1708,6 @@ elseif ($print=='dashboard'){
 // }
 
 
-
-/**
- * Count this site as a newstatpress user in anonymous form (it stores inside newstatpress.altervista.org database)
- */
-function new_count_register() {
-  global $_NEWSTATPRESS;
-  $site=$_SERVER['HTTP_HOST'];
-  print "<br><iframe width=0 height=0 src=http://newstatpress.altervista.org/register.php?site=".$site."&ver=".$_NEWSTATPRESS['version']."></iframe>";
-}
-
-/**
- * Remove this site as a newstatpress user
- */
-function new_count_deregister() {
-  global $_NEWSTATPRESS;
-  $site=$_SERVER['HTTP_HOST'];
-  print "<br><iframe width=0 height=0 src=http://newstatpress.altervista.org/deregister.php?site=".$site."></iframe>";
-}
-
-/**
- * Get the total number of sites that use newstatpress
- *
- * @return the total number of site that use newstatpress
- */
-function new_count_total() {
-  if (version_compare(phpversion(), '5.0.0', '>=')) {
-    // prevent that if my site is slow this plugin slow down your
-    $ctx=stream_context_create(array('http'=> array( 'timeout' => 1)));
-    $result=@file_get_contents('http://newstatpress.altervista.org/total.php', false, $ctx);
-  } else $result=@file_get_contents('http://newstatpress.altervista.org/total.php');
-
-  return $result;
-}
-
 /**
  * check for update of the plugin
  */
@@ -1756,8 +1718,6 @@ function newstatpress_update() {
 
   if (version_compare( $active_version, $_NEWSTATPRESS['version'], '<' )) {
     update_option('newstatpress_version', $_NEWSTATPRESS['version']);
-
-    new_count_register();
   }
 }
 
@@ -1770,6 +1730,5 @@ add_action( 'admin_init', 'newstatpress_update' );
 add_filter('the_content', 'content_newstatpress');
 
 register_activation_hook(__FILE__,'nsp_BuildPluginSQLTable');
-register_deactivation_hook( __FILE__, 'new_count_deregister' );
 
 ?>
