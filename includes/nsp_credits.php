@@ -25,7 +25,8 @@ function nsp_DisplayCreditsPage() {
     array('Maurice Cramer','Add dashboard widget<br /> Fix total since in overwiew<br /> Fix missing browser image and IE aligment failure in spy section<br /> Fix nation image display in spy'),
     array('Ruud van der Veen', 'Add tab delimiter for exporting data'),
     array('kjmtsh', 'Many fixes about empty query result and obsolete functions'),
-    array('Adrián M. F.', 'Find a XSS and a SQL injection')
+    array('Adrián M. F.', 'Find a XSS and a SQL injection'),
+    array('White Fir Design', 'Find a SQL injection')
   );
 
   $translators = array(

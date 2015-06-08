@@ -22,6 +22,11 @@
 - [ ] add jquery for credit page
 - [ ] Database migration routine with unique name
 
+## 1.0.1
+Released date: 2015-06-08
+
+IMPORTANT CRITICAL UPDATE
+- [x] Close a SQL injection (Thanks to White Fir Design for discover and communicate). Actually the old Statpress search code seems to be sanitized all.
 
 ## 1.0.0
 Released date: 2015-05-29

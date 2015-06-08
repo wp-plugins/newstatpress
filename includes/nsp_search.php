@@ -75,8 +75,10 @@ function nsp_DatabaseSearch($what='') {
    # FIELDS
    $fields="";
    for($i=1;$i<=3;$i++) {
-     if($_GET["where$i"] != '') {
-       $fields.=$_GET["where$i"].",";
+     if($_GET["where$i"] != '') {       
+       $where_i=$_GET["where$i"];
+       if (!array_key_exists($where_i, $f)) $where_i=''; // prevent to use not valid values
+       $fields.=$where_i.',';
      }
    }
    $fields=rtrim($fields,",");
