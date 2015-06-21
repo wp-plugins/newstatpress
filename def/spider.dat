@@ -1,8 +1,10 @@
 AboutUs|AboutUsBot|
 AboutUs|www.aboutusbot.org|
+AhrefsBot|ahrefs.com/robot/|
 AideRSS|aiderss.com|
 Alexa|ia_archiver|
 AltaVista|Scooter-|
+Applebot|www.apple.com/go/applebot|
 Apple PubSub|Apple-PubSub|
 Archive.org|archive.org_bot|
 Ask.com/Teoma|Jeeves/Teoma|
@@ -48,6 +50,7 @@ DotBot|DotBot|
 EnaBall|EnaBot|
 Entireweb|entireweb.com|
 embed.ly|Embedly/0.2|
+EveryoneSocialBot|EveryoneSocialBot|
 Exabot|Exabot|
 Exalead|NG/2.0|
 Ezooms|ezooms.bot@gmail.com|
@@ -59,6 +62,7 @@ Feed::Find|Feed::Find|
 Feedly|Feedly/1.0|
 Feedster|Feedster|
 Feedster|Feedster Crawler|
+Findxbot|Findxbot|
 flipboard|http://flipboard.com/browserproxy
 FriendFeed|FriendFeedBot|
 Gaisbot|Gaisbot|
@@ -98,6 +102,7 @@ IRLbot|IRLbot|
 ISC Systems iRc Search|ISCSystems|
 Jakarta Commons|JakartaCommons|
 Java|Java/|
+James BOT|James BOT|
 Jyxobot|jyxo.cz|
 KiwiStatus|KiwiStatus|
 LarBin|larbin_|
@@ -150,10 +155,12 @@ Radian6|www.radian6.com|
 relevantNOISE|www.relevantnoise.com|
 Rome Client|RomeClient|
 Runnk|runnk|
+SearchmetricsBot|www.searchmetrics.com/en/searchmetrics-bot/|
 ScoutJet|www.scoutjet.com|
 ScSpider|ScSpider|
 Searchme.com|searchme.com|
 shelob|shelob|
+ShowyouBot|ShowyouBot|
 SimplePie|SimplePie/|
 Snapbot|Snap|
 Sogou|Sogou|
@@ -178,9 +185,9 @@ Twitturly|Twitturly|
 Twingly|TwinglyRecon|
 UMBC Memeta|UMBC-Memeta|
 UniversalFeedParser|UniversalFeedParser/|
-Unknow|Mozilla/4.0 (compatible; ICS 1.2.105)|
-Unknow|python-requests/2.1.0|
-Unknow|Google-HTTP-Java-Client/1.17.0-rc|
+Unknown|Mozilla/4.0 (compatible; ICS 1.2.105)|
+Unknown|python-requests/2.1.0|
+Unknown|Google-HTTP-Java-Client/1.17.0-rc|
 Unknown Spam Bot|Mozilla/4.0(compatible;)|
 Unknown Spam Bot|Mozilla/0.6Beta(Windows)|
 Unknown Spam Bot|Mozilla/0.91Beta(Windows)|
