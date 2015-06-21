@@ -119,7 +119,8 @@ Check at http://newstatpress.altervista.org
 = 1.0.2 =
 *Release Date - 21/06/2015*
 
-User interface changes:
+ User interface changes:
+
 * Added API key option in option menu
 * Added API activation option in option menu
 * Implement external API "version" (gives actual version of NewStatPress)
@@ -129,7 +130,8 @@ User interface changes:
 * Updated IP2nation option menu
 * Fixed Dashboard widget overflow
 
-Core changes:
+ Core changes:
+
 * Fix the plugin menu view for "subscriver"
 * Fix IP2nation database installation bug
 * Remove IP2nation download function (to be best conform with WP policy)
@@ -141,6 +143,7 @@ Core changes:
 *Release Date - 08/06/2015*
 
 IMPORTANT CRITICAL UPDATE
+
 * Close a SQL injection (Thanks to White Fir Design for discover and communicate). Actually the old Statpress search code seems to be sanitized all.
 
 
