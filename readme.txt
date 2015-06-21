@@ -23,7 +23,7 @@ Note: you must disable the original StatPress plugin (or other plugins still bas
 
 With the new ajax/javascript usage for variables in widget, the plugin is faster for a user being visit your site even with 1GB or more of database to use!
 
-Important: all previous versions from 0.9.9 are subject to XSS and SQL injection from an old Statpress routine. You have to use at least version 0.9.9.
+Important: all previous versions from 1.0.1 are subject to XSS and SQL injection from an old Statpress routine. You have to use at least version 1.0.1.
 Unfortunately actually over 50% of people still use versions before 0.9.0!!!!
 Please update always to the latest version available.
 
@@ -66,15 +66,6 @@ Widget is customizable. These are the available variables:
 * %topbrowser% - The most used Browser
 * %topos% - The most used O.S.
 * %topsearch% - The most used search terms
-* %installed% - Give the number of installed plugin (experimental)
-
-The number of installed plugins is obtained by counting the encripted MD5 site domain where the
-plugin is installed and his version inside a table into newstatpress.altervista.org database.
-As MD5 is used, this means that the site is registered anonymous and so site privacy is mantained.
-Actually the registration is send when you are in admin area, so it not affects a user that visit your site.
-If you put %installed% into one your page, take present that it goes to read a value to
-newstatpress.altervista.org database (it is one value, so performance should be fast).
-The used registration scripts are added inside include directory.
 
 Now you could add these values everywhere! NewStatPress offers a new PHP function *NewStatPress_Print()*.
 * i.e. NewStatPress_Print("%totalvisits% total visits.");
