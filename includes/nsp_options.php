@@ -10,13 +10,14 @@ function nsp_FilterForXss($_value){
 
   // Avoid XSS attacks
   $clean_value = preg_replace('/[^a-zA-Z0-9\,\.\/\ \-\_\?=&;]/', '', $_value);
-  if (strlen($_value)==0){
+  if (strlen($_value)==0) {
     return array();
-  } else {
-      $array_values = explode(',',$clean_value);
-      array_walk($array_values, 'nsp_TrimValue');
-      return $array_values;
-    }
+  }
+  else {
+    $array_values = explode(',',$clean_value);
+    array_walk($array_values, 'nsp_TrimValue');
+    return $array_values;
+  }
 }
 
 /**
@@ -65,15 +66,15 @@ function nsp_PrintOption($option_title, $option_var, $var) {
   echo "</select></td>\n";
 }
 
-// add by chab
 /**
  * Print a row of input
+ * added by cHab
  *
  * @param option_title the title for options
  * @param nsp_option_vars the variables for options
  * @param input_size the size of input
  * @param input_maxlength the max length of the input
- */
+ ****************************************************/
 function nsp_PrintRowInput($option_title, $nsp_option_vars, $input_size, $input_maxlength) {
   echo "<tr><td><label for=$nsp_option_vars[name]>$option_title</label></td>\n";
   echo "<td><input class='right' type='text' name=$nsp_option_vars[name] value=";
@@ -85,7 +86,7 @@ function nsp_PrintRowInput($option_title, $nsp_option_vars, $input_size, $input_
  * Print a row with given title
  *
  * @param option_title the title for option
- */
+ ******************************************/
 function nsp_PrintRow($option_title) {
   echo "<tr><td>$option_title</td></tr>\n";
 }
@@ -141,6 +142,9 @@ function nsp_Options() {
       $i=isset($_POST['newstatpress_dashboard']) ? $_POST['newstatpress_dashboard'] : '';
       update_option('newstatpress_dashboard', $i);
 
+      $i=isset($_POST['newstatpress_externalapi']) ? $_POST['newstatpress_externalapi'] : '';
+      update_option('newstatpress_externalapi', $i);
+
       global $nsp_option_vars;
 
       foreach($nsp_option_vars as $var) {
@@ -167,11 +171,12 @@ function nsp_Options() {
 
   <?php
   $ToolsPage_tabs = array('general' => __('General','newstatpress'),
-                          'data' => __('Data Collect','newstatpress'),
+                          'data' => __('Filters','newstatpress'),
                           'overview' => __('Overview Menu','newstatpress'),
                           'details' => __('Details Menu','newstatpress'),
                           'visits' => __('Visits Menu','newstatpress'),
-                          'database' => __('Database','newstatpress')
+                          'database' => __('Database','newstatpress'),
+                          'api' => __('API (External access)','newstatpress')
                           );
 
   echo "<ul>";
@@ -191,21 +196,22 @@ function nsp_Options() {
   $input_maxlength='3';
 
   echo "<th scope='row' rowspan='2'>"; _e('Dashboard','newstatpress'); echo "</th>";
-
   $option_title=__('Enable NewStatPress widget','newstatpress');
   $option_var='newstatpress_dashboard';
   nsp_PrintChecked($option_title,$option_var);
 
-  $option_title=__('Minimum capability to display the overview menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
-  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  echo "<tr><th scope='row' rowspan='1'>Minimum capability to display each specific menu (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)</th></tr>";
+
+  $option_title=__('Overview menu','newstatpress');
+  echo "<tr><th scope='row' rowspan='1' class='tab'>"; echo $option_title."</th>";
   $option_var='newstatpress_menuoverview_cap';
   $val=get_option($option_var);
   nsp_PrintOption('',$option_var,$val);
 
   echo "</tr>";
   echo "<tr>";
-  $option_title=__('Minimum capability to display the detail menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
-  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_title=__('Detail menu','newstatpress');
+  echo "<tr><th scope='row' rowspan='2' class='tab'>"; echo $option_title."</th>";
   // $option_var=$nsp_option_vars['menudetails_cap']['name'];
   $option_var='newstatpress_menudetails_cap';
   $val=get_option($option_var);
@@ -213,32 +219,32 @@ function nsp_Options() {
   echo "</tr>";
   echo "<tr>";
 
-  $option_title=__('Minimum capability to display the visits menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
-  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_title=__('Visits menu','newstatpress');
+  echo "<tr><th scope='row' rowspan='2' class='tab'>"; echo $option_title."</th>";
   $option_var='newstatpress_menuvisits_cap';
   $val=get_option($option_var);
   nsp_PrintOption('',$option_var,$val);
   echo "</tr>";
   echo "<tr>";
 
-  $option_title=__('Minimum capability to display the search menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
-  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_title=__('Search menu','newstatpress');
+  echo "<tr><th scope='row' rowspan='2' class='tab'>"; echo $option_title."</th>";
   $option_var='newstatpress_menusearch_cap';
   $val=get_option($option_var);
   nsp_PrintOption('',$option_var,$val);
   echo "</tr>";
   echo "<tr>";
 
-  $option_title=__('Minimum capability to display the tools menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
-  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_title=__('Tools menu','newstatpress');
+  echo "<tr><th scope='row' rowspan='2' class='tab'>"; echo $option_title."</th>";
   $option_var='newstatpress_menutools_cap';
   $val=get_option($option_var);
   nsp_PrintOption('',$option_var,$val);
   echo "</tr>";
   echo "<tr>";
 
-  $option_title=__('Minimum capability to display the options menu','newstatpress')." (<a href='http://codex.wordpress.org/Roles_and_Capabilities' target='_blank'>".__("more info",'newstatpress')."</a>)";
-  echo "<tr><th scope='row' rowspan='2'>"; echo $option_title."</th>";
+  $option_title=__('Options menu','newstatpress');
+  echo "<tr><th scope='row' rowspan='2' class='tab'>"; echo $option_title."</th>";
   $option_var='newstatpress_menuvisits_cap';
   $val=get_option($option_var);
   nsp_PrintOption('',$option_var,$val);
@@ -278,7 +284,7 @@ function nsp_Options() {
                   }
 
             echo "></input>
-            <label>Sum of the distinct IPs of each day (slower than classic method for big database)</label>
+            <label>"; _e('Sum of the distinct IPs of each day (slower than classic method for big database)','newstatpress'); echo "</label>
                     </p>
       </fieldset>
       </td>";
@@ -478,6 +484,46 @@ function nsp_Options() {
 </table>
 </div>
 
+<?php
+// case 'API Key' :
+echo "<div id='api'>\n<table class='form-tableH'>";
+
+$option_title=__('Enable External API','newstatpress');
+$option_var='newstatpress_externalapi';
+nsp_PrintChecked($option_title,$option_var);
+echo "</td></tr>";
+
+$option_title=__('API key','newstatpress');
+$option_var="newstatpress_apikey";
+$option_description=__('The external access API is build to let you to use the collected data from your Newstatpress plugin  in an other web server application (for example you can show data relative to your Wordpress blog, inside a Drupal site that run in another server). This key allows Newstatpress to recognize that you and only you want the data and not the not authorized people. Let the input form blank means that you allow everyone to get data without authorization if external API is activated. The API should be activated with the flag box. Please be aware that the external API will be also used by Newstatpress itself when are processed AJAX calls for speedup page rendering of queried data, so you will need to choose an key and activate it.
+
+<br/><br/>To retrieve data from Newstatpress plugin, you can generate automatically or set manually a private key for the external API (used for example from Multi-Newstatpress software) : only alphanumeric characters are allowed (A-Z, a-z, 0-9), length should be between 64 and 128 characters.','newstatpress');
+
+echo "<tr><td>\n<p class='ign'><label for=$option_var>$option_title</label></p>\n";
+echo "<p>$option_description</p>\n";
+echo "<div class='justified'>";
+
+echo "<p><textarea class='large-text code api' minlength='64' maxlength='128' cols='50' rows='3' name=$option_var id=$option_var>";
+echo get_option($option_var);
+echo "</textarea></p>\n";
+
+echo "</div>";
+
+echo "<tr><td>\n";
+echo "<div class='justified'>";
+echo "<div class='button' type='button' onClick='myFunction()'>";_e('Generate new API key','newstatpress');
+echo "</div>";
+echo "</td></tr>\n";
+echo "</div>";
+echo "</td></tr>\n";
+
+
+echo "</table></div";
+
+
+?>
+
+
 <p class='submit'>
 <input class='button button-primary' type=submit value="<?php _e('Save options','newstatpress'); ?>">
     <input type=hidden name=saveit value=yes>
@@ -490,6 +536,32 @@ function nsp_Options() {
 
   <script type="text/javascript">
   jQuery("#usual1 ul").idTabs(general);
+
+  function validateCode() {
+    // var TCode = document.getElementById('TCode').value;
+    var obj = document.getElementById("newstatpress_apikey").value;
+
+    if( /[^a-zA-Z0-9]/.test( obj ) ) {
+       alert('Input is not alphanumeric');
+       return false;
+    }
+    return true;
+ }
+
+ function randomString(length, chars) {
+     var result = '';
+     for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+     return result;
+ }
+
+ function myFunction() {
+     var obj = document.getElementById("newstatpress_apikey");
+     var txt = randomString(128, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+     obj.value = txt;
+ }
+
+
+
   </script>
 
 

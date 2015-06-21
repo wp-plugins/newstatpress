@@ -216,9 +216,12 @@ table.table-option td:first-child {
 }
 
 .right {
-  text-align: right;
+  text-align: right !important;
 }
 
+.tab {
+  padding-left: 45px !important;
+}
 .table-databaseupdate {
   width: 60%;
 }
@@ -340,6 +343,18 @@ font-size: 15px;
 .usual div a { color:#000; font-weight:bold; }
 
 
+.justified {
+        display: flex;
+        justify-content: center;
+    }
+
+.api {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    resize: none;
+}
+
 
 
 
@@ -397,6 +412,31 @@ font-size: 15px;
   /*padding-left: 15px;*/
 }
 
+/*----------------------------------*/
+/* Tools page                     */
+/*----------------------------------*/
+.help {
+  background-color: #EEE;
+  border-left: 4px solid #666;
+}
+
+.warning {
+  background-color: #FFF;
+  border-left: 4px solid red;
+  padding: 0 15px;
+}
+.strong {
+  font-weight: bold;
+}
+
+.desactivated {
+  background: #888 !important;
+  border-color: #555 !important;
+  box-shadow: 0px 1px 0px rgba(135, 143, 146, 0.5) inset, 0px 1px 0px rgba(0, 0, 0, 0.15) !important;
+  cursor: default;
+  pointer-events: none;
+  color: #c0c0c0;
+}
 /*----------------------------------*/
 /* Details page                     */
 /*----------------------------------*/
@@ -543,4 +583,20 @@ div.pagination span.disabled {
   margin: 2px;
   border: 1px solid #EEE;
   color: #DDD;
+}
+
+
+/*temp*/
+
+.progressBar {
+    width: 300px;
+    background: #CCC;
+    border: solid 1px #000;
+    height: 30px;
+}
+
+.bar {
+    background: #F00;
+    height: 30px;
+    width: 0%;
 }

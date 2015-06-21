@@ -29,15 +29,15 @@ function nsp_DisplayVisitsPage() {
     switch ($tab) {
 
       case 'lastvisitors' :
-      iriNewStatPressSpy();
+      nsp_Spy();
       break;
 
       case 'visitors' :
-      iriNewStatPressNewSpy();
+      nsp_NewSpy();
       break;
 
       case 'spybot' :
-      iriNewStatPressSpyBot();
+      nsp_SpyBot();
       break;
     }
   }
@@ -46,7 +46,7 @@ function nsp_DisplayVisitsPage() {
 /**
  * New spy bot function taken in statpress-visitors
  */
-function iriNewStatPressSpyBot() {
+function nsp_SpyBot() {
   global $wpdb;
   global $newstatpress_dir;
 
@@ -154,7 +154,7 @@ document.getElementById(thediv).style.display="none"
 /**
  * Newstatpress spy function
  */
-function iriNewStatPressSpy() {
+function nsp_Spy() {
   global $wpdb;
   global $newstatpress_dir;
 
@@ -235,8 +235,8 @@ document.getElementById(thediv).style.display="none"
     );
     foreach ($qry2 as $details) {
       print "<tr>";
-      print "<td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>".irihdate($details->date)." ".$details->time."</strong></font></div></td>";
-      print "<td><div><a href='".get_bloginfo('url')."/?".$details->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($details->urlrequested)."</a>";
+      print "<td valign='top' width='151'><div><font size='1' color='#3B3B3B'><strong>".nsp_hdate($details->date)." ".$details->time."</strong></font></div></td>";
+      print "<td><div><a href='".get_bloginfo('url')."/?".$details->urlrequested."' target='_blank'>".nsp_DecodeURL($details->urlrequested)."</a>";
       if($details->searchengine != '') {
         print "<br><small>".__('arrived from','newstatpress')." <b>".$details->searchengine."</b> ".__('searching','newstatpress')." <a href='".$details->referrer."' target='_blank'>".$details->search."</a></small>";
       } elseif($details->referrer != '' && strpos($details->referrer,get_option('home'))===FALSE) {
@@ -255,7 +255,7 @@ document.getElementById(thediv).style.display="none"
 /**
  * New spy function taken in statpress-visitors
  */
-function iriNewStatPressNewSpy() {
+function nsp_NewSpy() {
   global $wpdb;
   global $newstatpress_dir;
   $action="newspy";

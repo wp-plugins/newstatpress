@@ -14,7 +14,6 @@
 - [ ] Add a 'unique visitors' row in the overview chart
 - [ ] Add options to (de)activate single chart/graphs of overview and details
 - [ ] Add options to let or not users (not administrator) to see or not options/owerview/details/visits
-- [ ] Add API Key in option
 - [ ] Generate extenal API interfaces
 - [ ] Add'version' in external API
 - [x] Change days calculation into prune functions
@@ -22,15 +21,38 @@
 - [ ] add jquery for credit page
 - [ ] Database migration routine with unique name
 
+
+## 1.0.2
+*Released date: 2015-06-21
+
+User interface changes:
+- [x] Added API key option in option menu
+- [x] Added API activation option in option menu
+- [x] Implement external API "version" (gives actual version of NewStatPress)
+- [x] Added informations tabs in Tools menu ()
+- [x] Updated General tab in Option menu ()
+- [x] Updated Widgets title
+- [x] Updated IP2nation option menu
+- [x] Fixed Dashboard widget overflow
+
+Core changes:
+- [x] Fix the plugin menu view for "subscriver"
+- [x] Fix IP2nation database installation bug
+- [x] Remove IP2nation download function (to be best conform with WP policy)
+- [x] Massive code cleaning to avoid conflict with others plugins
+- [x] Added bots (+7, thanks to Nahuel)
+- [x] Updated Locale fr_FR, it_IT
+
 ## 1.0.1
-Released date: 2015-06-08
+*Released date: 2015-06-08
 
 IMPORTANT CRITICAL UPDATE
 - [x] Close a SQL injection (Thanks to White Fir Design for discover and communicate). Actually the old Statpress search code seems to be sanitized all.
 
 ## 1.0.0
-Released date: 2015-05-29
+*Released date: 2015-05-29*
 
+Core changes:
 - [x] Remove %installed% variable
 
 ## 0.9.9

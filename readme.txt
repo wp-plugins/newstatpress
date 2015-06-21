@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 4.2
-Stable Tag: 1.0.1
+Stable Tag: 1.0.2
 
 NewStatPress (Statpress plugin fork) is a real-time plugin to manage the visits' statistics about your blog  (without external web analytics).
 
@@ -23,7 +23,7 @@ Note: you must disable the original StatPress plugin (or other plugins still bas
 
 With the new ajax/javascript usage for variables in widget, the plugin is faster for a user being visit your site even with 1GB or more of database to use!
 
-Important: all previous versions from 1.0.1 are subject to XSS and SQL injection from an old Statpress routine. You have to use at least version 1.0.1.
+Important: all previous versions from 0.9.9 are subject to XSS and SQL injection from an old Statpress routine. You have to use at least version 0.9.9.
 Unfortunately actually over 50% of people still use versions before 0.9.0!!!!
 Please update always to the latest version available.
 
@@ -66,6 +66,15 @@ Widget is customizable. These are the available variables:
 * %topbrowser% - The most used Browser
 * %topos% - The most used O.S.
 * %topsearch% - The most used search terms
+* %installed% - Give the number of installed plugin (experimental)
+
+The number of installed plugins is obtained by counting the encripted MD5 site domain where the
+plugin is installed and his version inside a table into newstatpress.altervista.org database.
+As MD5 is used, this means that the site is registered anonymous and so site privacy is mantained.
+Actually the registration is send when you are in admin area, so it not affects a user that visit your site.
+If you put %installed% into one your page, take present that it goes to read a value to
+newstatpress.altervista.org database (it is one value, so performance should be fast).
+The used registration scripts are added inside include directory.
 
 Now you could add these values everywhere! NewStatPress offers a new PHP function *NewStatPress_Print()*.
 * i.e. NewStatPress_Print("%totalvisits% total visits.");
@@ -116,11 +125,33 @@ Check at http://newstatpress.altervista.org
 
 == Changelog ==
 
+= 1.0.2 =
+*Release Date - 21/06/2015*
+
+User interface changes:
+* Added API key option in option menu
+* Added API activation option in option menu
+* Implement external API "version" (gives actual version of NewStatPress)
+* Added informations tabs in Tools menu ()
+* Updated General tab in Option menu ()
+* Updated Widgets title
+* Updated IP2nation option menu
+* Fixed Dashboard widget overflow
+
+Core changes:
+* Fix the plugin menu view for "subscriver"
+* Fix IP2nation database installation bug
+* Remove IP2nation download function (to be best conform with WP policy)
+* Massive code cleaning to avoid conflict with others plugins
+* Added bots (+7, thanks to Nahuel)
+* Updated Locale fr_FR, it_IT
+
 = 1.0.1 =
 *Release Date - 08/06/2015*
 
 IMPORTANT CRITICAL UPDATE
 * Close a SQL injection (Thanks to White Fir Design for discover and communicate). Actually the old Statpress search code seems to be sanitized all.
+
 
 = 1.0.0 =
 *Release Date - 29/05/2015*
@@ -130,7 +161,10 @@ IMPORTANT CRITICAL UPDATE
 = 0.9.9 =
 *Release Date - 20/05/2015*
 
-IMPORTANT CRITICAL UPDATE
+Note: IMPORTANT CRITICAL UPDATE
+
+Core changes:
+
 * Close a XSS and a SQL injection and possible other more complex to achieve (thanks to Adrián M. F. for discover and communicate them). Those are inside the search routine from Statpress so ALL previous versions of Newstatpress are vulnerable (and maybe they are present in lot of Statpress based plugin and Statpress itself).
 * Fix missing browser images
 * Add tools for optimize and repair the statpress table
@@ -140,6 +174,8 @@ IMPORTANT CRITICAL UPDATE
 = 0.9.8 =
 *Release Date - 26/04/2015*
 
+Core changes:
+
 * Fix missing routine for update
 * Fix cs_CZ translation
 
@@ -147,12 +183,14 @@ IMPORTANT CRITICAL UPDATE
 *Release Date - 11/04/2015*
 
 User interface changes:
+
 * Added New option in Overview Tab : overview stats calculation method (global distinct ip OR sum of each day) (Note: online for month at the moment)
 * Added New options in General Tab : add capabilities selection to display menus, options menu need to be administrator by default
 * Added New information 'Visitors RSS Feeds' in Overview page
 * Updated Locale fr_FR, it_IT, cs_CZ
 
 Core changes:
+
 * Updated OS definition
 * Updated Browser definition
 * Fixed '3 months Purge' issue
@@ -701,5 +739,3 @@ NOTE: not install this version if you have not a recent PHP version. Attend the 
 
 
 == Upgrade Notice ==
-
-

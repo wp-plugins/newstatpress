@@ -1,8 +1,9 @@
 <?php
 
-/***
+/**
  * Show statistics in dashboard
- *************************************/
+ *
+ *******************************/
 function nsp_BuildDashboardWidget() {
 
   nsp_MakeOverview('dashboard');

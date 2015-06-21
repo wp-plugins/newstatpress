@@ -74,8 +74,8 @@ function nsp_GetDataQuery2($fld, $fldtitle, $limit = 0, $param = "", $queryfld =
     foreach ($qry as $rk) {
       $pc=round(($rk->pageview*100/$rks),1);
       if($fld == 'nation') { $rk->$fld = strtoupper($rk->$fld); }
-      if($fld == 'date') { $rk->$fld = irihdate($rk->$fld); }
-      if($fld == 'urlrequested') { $rk->$fld = iri_NewStatPress_Decode($rk->$fld); }
+      if($fld == 'date') { $rk->$fld = nsp_hdate($rk->$fld); }
+      if($fld == 'urlrequested') { $rk->$fld = nsp_DecodeURL($rk->$fld); }
       $data[substr($rk->$fld,0,250)]=$rk->pageview;
     }
   }
@@ -85,10 +85,10 @@ function nsp_GetDataQuery2($fld, $fldtitle, $limit = 0, $param = "", $queryfld =
   if($rks > 0) {  // Chart!
 
     if($fld == 'nation') { // Nation chart
-      $charts=plugins_url('newstatpress')."/includes/geocharts.html".iriGetGoogleGeo($data);
+      $charts=plugins_url('newstatpress')."/includes/geocharts.html".nsp_GetGoogleGeo($data);
     }
     else { // Pie chart
-      $charts=plugins_url('newstatpress')."/includes/piecharts.html".iriGetGooglePie($fldtitle, $data);
+      $charts=plugins_url('newstatpress')."/includes/piecharts.html".nsp_GetGooglePie($fldtitle, $data);
     }
 
     foreach ($data as $key => $value) {
@@ -111,7 +111,7 @@ function nsp_GetDataQuery2($fld, $fldtitle, $limit = 0, $param = "", $queryfld =
  * @param data_array the array of data_array
  * @return the url with data
  */
-function iriGetGoogleGeo($data_array) {
+function nsp_GetGoogleGeo($data_array) {
   if(empty($data_array)) { return ''; }
   // get hash
   foreach($data_array as $key => $value ) {
@@ -128,7 +128,7 @@ function iriGetGoogleGeo($data_array) {
  * @param title the title to use
  * @return the url with data
  */
-function iriGetGooglePie($title, $data_array) {
+function nsp_GetGooglePie($title, $data_array) {
   if(empty($data_array)) { return ''; }
   // get hash
   foreach($data_array as $key => $value ) {
@@ -138,6 +138,5 @@ function iriGetGooglePie($title, $data_array) {
 
   return "?title=".$title."&chd=".(implode(",",$values))."&chl=".urlencode(implode("|",$labels));
 }
-
 
 ?>
