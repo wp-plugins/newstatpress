@@ -1,0 +1,1027 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NewStatPress\n"
+"POT-Creation-Date: 2015-04-12 18:23+0100\n"
+"PO-Revision-Date: 2015-04-13 09:14+0100\n"
+"Last-Translator: Jiří Borový <jborovy@seznam.cz>\n"
+"Language-Team: Jiří Borový <jborovy@seznam.cz>\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:6
+msgid "support page"
+msgstr "stránka podpory"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:7
+msgid "the author"
+msgstr "autor"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:8
+msgid "Development"
+msgstr "Vývoj"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:9
+msgid "Translation"
+msgstr "Překlad"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:10
+msgid "Donation"
+msgstr "Přízpěvek"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:47
+#: Pluginy/newstatpress/newstatpress.php:172
+msgid "Credits"
+msgstr "Autor"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:49
+#, php-format
+msgid ""
+"If you have found this plugin usefull and you like it, you can support the "
+"development by reporting bugs on the %s or  by adding/updating translation "
+"by contacting directly %s. As this plugin is maintained only on free time, "
+"you can also make a donation by clicking on the button to support the work."
+msgstr ""
+"Pokud jste objevili, že je tento plugin užitečný a líbí se vám, můžete "
+"informovat vývojáře o chybách na %s nebo přidáním/aktualizací překladů "
+"kontaktování  %sa.  Vývoj tohoto pluginu je ve volném čase a tak jej můžete "
+"podpořit darem klikem na tlačítko \"Přizpět darem\" pro finanční podporu při "
+"tvorbě pluginu."
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:55
+msgid "Make a donation"
+msgstr "Přizpět darem"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:67
+msgid "Contributor"
+msgstr "Spolupracovník"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:71
+msgid "Description"
+msgstr "Popis"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:79
+#: Pluginy/newstatpress/newstatpress.php:229
+msgid "Language"
+msgstr "Jazyk"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:90
+#: Pluginy/newstatpress/newstatpress.php:229
+#: Pluginy/newstatpress/newstatpress.php:269
+#: Pluginy/newstatpress/newstatpress.php:283
+#: Pluginy/newstatpress/newstatpress.php:330
+#: Pluginy/newstatpress/newstatpress.php:359
+msgid "Date"
+msgstr "Datum"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:101
+msgid "Plugin homepage"
+msgstr "Domovská stránka pluginu"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:103
+msgid "RSS news"
+msgstr "RSS novinky"
+
+#: Pluginy/newstatpress/includes/nsp_credits.php:104
+msgid "News"
+msgstr "Novinky"
+
+#: Pluginy/newstatpress/includes/nsp_dashboard.php:12
+#: Pluginy/newstatpress/newstatpress.php:167
+msgid "Details"
+msgstr "Detaily"
+
+#: Pluginy/newstatpress/includes/nsp_dashboard.php:15
+#: Pluginy/newstatpress/includes/nsp_functions-extra.php:34
+#: Pluginy/newstatpress/includes/nsp_visits.php:18
+#: Pluginy/newstatpress/newstatpress.php:168
+#: Pluginy/newstatpress/newstatpress.php:1314
+msgid "Visits"
+msgstr "Návštěvnost"
+
+#: Pluginy/newstatpress/includes/nsp_dashboard.php:18
+#: Pluginy/newstatpress/newstatpress.php:171
+msgid "Options"
+msgstr "Nastavení"
+
+#: Pluginy/newstatpress/includes/nsp_dashboard.php:28
+msgid "NewStatPress Overview"
+msgstr "NewStatPress přehled"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:10
+#: Pluginy/newstatpress/includes/nsp_details.php:40
+#: Pluginy/newstatpress/includes/nsp_details.php:43
+msgid "Top days"
+msgstr "Top dny"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:13
+#: Pluginy/newstatpress/includes/nsp_tools.php:455
+msgid "OSes"
+msgstr "Operační systémy"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:16
+#: Pluginy/newstatpress/includes/nsp_tools.php:478
+msgid "Browsers"
+msgstr "Prohlížeče"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:19
+#: Pluginy/newstatpress/includes/nsp_tools.php:357
+#: Pluginy/newstatpress/newstatpress.php:1682
+msgid "Feeds"
+msgstr "Feeds"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:22
+#: Pluginy/newstatpress/includes/nsp_tools.php:524
+msgid "Search engines"
+msgstr "Internetový vyhledávač"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:25
+msgid "Top search terms"
+msgstr "Poslední hledaný výraz"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:28
+msgid "Top referrers"
+msgstr "Top odkazové zdroje"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:31
+msgid "Countries"
+msgstr "Země"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:31
+msgid "Languages"
+msgstr "Jazyky"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:34
+#: Pluginy/newstatpress/includes/nsp_tools.php:501
+#: Pluginy/newstatpress/newstatpress.php:1560
+#: Pluginy/newstatpress/newstatpress.php:1681
+msgid "Spiders"
+msgstr "Špióni robotů"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:37
+msgid "Top pages"
+msgstr "Top stránky"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:40
+msgid "Unique visitors"
+msgstr "Unikátní návštěvnici"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:43
+#: Pluginy/newstatpress/includes/nsp_details.php:46
+#: Pluginy/newstatpress/newstatpress.php:1554
+#: Pluginy/newstatpress/newstatpress.php:1680
+msgid "Pageviews"
+msgstr "Viděno stránek"
+
+#: Pluginy/newstatpress/includes/nsp_details.php:46
+msgid "Top IPs"
+msgstr "Top IP"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:93
+msgid "NewStatPress Settings"
+msgstr "NewStatPress nastavení"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:125
+msgid "Options saved!"
+msgstr "Volby uloženy!"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:135
+msgid "General"
+msgstr "Obecné"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:136
+msgid "Data Collect"
+msgstr "Sběr dat"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:137
+msgid "Overview Menu"
+msgstr "Přehled Menu"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:138
+msgid "Details Menu"
+msgstr "Podrobnosti Menu"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:139
+msgid "Visits Menu"
+msgstr "Návštěvy Menu"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:140
+msgid "Database"
+msgstr "Databáze"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:159
+msgid "Dashboard"
+msgstr "Nástěnka"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:161
+msgid "Enable NewStatPress widget"
+msgstr "Zapnout NewStatPress widget"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:165
+msgid "Minimum capability to display the overview menu"
+msgstr "Minimální možnosti zobrazení menu přehledu"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:165
+#: Pluginy/newstatpress/includes/nsp_options.php:173
+#: Pluginy/newstatpress/includes/nsp_options.php:182
+#: Pluginy/newstatpress/includes/nsp_options.php:190
+#: Pluginy/newstatpress/includes/nsp_options.php:198
+#: Pluginy/newstatpress/includes/nsp_options.php:206
+#: Pluginy/newstatpress/includes/nsp_visits.php:215
+#: Pluginy/newstatpress/includes/nsp_visits.php:355
+msgid "more info"
+msgstr "více info"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:173
+msgid "Minimum capability to display the detail menu"
+msgstr "Minimální práva k  zobrazení menu detailů"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:182
+msgid "Minimum capability to display the visits menu"
+msgstr "Minimální práva k zobrazení menu návštěv"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:190
+msgid "Minimum capability to display the search menu"
+msgstr "Minimální práva k zobrazení menu hledaní"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:198
+msgid "Minimum capability to display the tools menu"
+msgstr "Minimální práva k zobrazení menu nástrojů"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:206
+msgid "Minimum capability to display the options menu"
+msgstr "Minimální práva k zobrazení menu nastavení"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:223
+msgid "Visits calculation method"
+msgstr "Metoda výpočtu návštěv"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:239
+msgid "Simple sum of distinct IPs (Classic method)"
+msgstr "Jednoduchý součet různých IP adres (klasická metoda)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:258
+msgid "Graph"
+msgstr "Graf"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:263
+msgid "Days number in Overview graph"
+msgstr "Počet dnů v přehledu grafu"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:269
+#: Pluginy/newstatpress/newstatpress.php:166
+#: Pluginy/newstatpress/newstatpress.php:1475
+msgid "Overview"
+msgstr "Celkový přehled"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:271
+#, php-format
+msgid "Elements in Overview (default %d)"
+msgstr "Prvky v přehledu (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:280
+msgid "Never"
+msgstr "Nikdy"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:281
+msgid "All"
+msgstr "Vše"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:282
+msgid "month"
+msgstr "měsíc"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:283
+msgid "months"
+msgstr "měsíce"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:284
+msgid "week"
+msgstr "týden"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:285
+msgid "weeks"
+msgstr "týdny"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:287
+msgid "Data collection"
+msgstr "Sběr dat"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:289
+msgid "Crypt IP addresses"
+msgstr "Dekódovat IP adresu."
+
+#: Pluginy/newstatpress/includes/nsp_options.php:293
+msgid "Collect data about logged users, too."
+msgstr "Sbírat data o přihlášených uživatelích."
+
+#: Pluginy/newstatpress/includes/nsp_options.php:297
+msgid "Do not collect spiders visits"
+msgstr "Nesbírat data špiónů robotů."
+
+#: Pluginy/newstatpress/includes/nsp_options.php:303
+msgid "Data purge"
+msgstr "Vymazání dat"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:308
+msgid "Automatically delete all visits older than"
+msgstr "Automaticky mazat všechny návštěvy starší než"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:314
+msgid "Automatically delete only spiders visits older than"
+msgstr "Automaticky mazat pouze návštěvy robotů starší než"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:320
+#: Pluginy/newstatpress/includes/nsp_options.php:365
+msgid "Parameters to ignore"
+msgstr "Ignorované parametry"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:325
+msgid "Logged users"
+msgstr "Přihlášení uživatelé"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:327
+msgid ""
+"Enter a list of users you don't want to track, separated by commas, even if "
+"collect data about logged users is on"
+msgstr ""
+"Zadejte seznam uživatelů, které nechcete sledovat, odělené čárkou, i když je "
+"budete sledovat, když budou přihlášeni"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:330
+msgid "IP addresses"
+msgstr "IP adresy"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:332
+msgid ""
+"Enter a list of networks you don't want to track, separated by commas. Each "
+"network <strong>must</strong> be defined using the CIDR notation (i.e. "
+"<em>192.168.1.1/24</em>). <br />If the format is incorrect, NewStatPress may "
+"not track pageviews properly."
+msgstr ""
+"Zadejte seznam sítí, které nechcete sledovat, oddělených čárkami. Každá síť "
+"<strong>musí</strong> být definována pomocí CIDR notace (tj. "
+"<em>192.168.1.1/24</em>). Je-li formát nesprávný, NewStatPress nesleduje "
+"zobrazení stránek správně."
+
+#: Pluginy/newstatpress/includes/nsp_options.php:335
+msgid "Pages and posts"
+msgstr "Stránky a příspěvky"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:337
+msgid ""
+"Enter a list of permalinks you don't want to track, separated by commas. You "
+"should omit the domain name from these resources: <em>/about, p=1</em>, etc. "
+"<br />NewStatPress will ignore all the pageviews whose permalink "
+"<strong>contains</strong> at least one of them."
+msgstr ""
+"Zadejte seznam trvalých odkazů které nechcete sledovat, oddělených čárkami. "
+"Měli by jste vynechat název domény z těchto zdrojů: <em>/ o, p = 1</em>, "
+"atd. NewStatPress bude ignorovat všechny zobrazení stránek, jejichž trvalý "
+"odkaz <strong>obsahuje</strong> alespoň jeden ze zdrojů."
+
+#: Pluginy/newstatpress/includes/nsp_options.php:347
+msgid "Visitors by Spy"
+msgstr "Návštěvníci od špiónů robotů"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:350
+msgid "number of IP per page"
+msgstr "počet IP na stránku"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:356
+msgid "number of visits for IP"
+msgstr "počet návštěv pro IP"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:367
+msgid "number of bot per page"
+msgstr "počet robotů na stránku"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:375
+msgid "number of bot for IP"
+msgstr "počet robotů na IP"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:385
+msgid "Element numbers to display in"
+msgstr "Zobrazit počet prvků v"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:387
+#, php-format
+msgid "Top days (default %d)"
+msgstr "Nejlepší dny (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:390
+#, php-format
+msgid "O.S. (default %d)"
+msgstr "O.S. (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:393
+#, php-format
+msgid "Browser (default %d)"
+msgstr "Prohlížeč (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:396
+#, php-format
+msgid "Feed (default %d)"
+msgstr "Feed (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:399
+#, php-format
+msgid "Search Engines (default %d)"
+msgstr "Vyhledávače (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:402
+#, php-format
+msgid "Top Search Terms (default %d)"
+msgstr "Top vyhledávací termíny (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:405
+#, php-format
+msgid "Top Referrer (default %d)"
+msgstr "Top zdrojová stránka (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:408
+#, php-format
+msgid "Countries/Languages (default %d)"
+msgstr "Země/jazyky (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:411
+#, php-format
+msgid "Spiders (default %d)"
+msgstr "Špióni (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:414
+#, php-format
+msgid "Top Pages (default %d)"
+msgstr "Top Stránky (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:417
+#, php-format
+msgid "Top Days - Unique visitors (default %d)"
+msgstr "Nejlepší dny - unikátních návštěvníků (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:420
+#, php-format
+msgid "Top Days - Pageviews (default %d)"
+msgstr "Nejlepší dny - zobrazení stránky (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:423
+#, php-format
+msgid "Top IPs - Pageviews (default %d)"
+msgstr "Top IPs - zobrazení stránky (výchozí hodnota %d)"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:438
+msgid "Database update option"
+msgstr "Možnost aktualizace databáze"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:442
+msgid ""
+"Select the interval of date from today you want to use for updating your "
+"database with new definitions. "
+msgstr ""
+"Vyberte interval data od dnešního dne, které chcete použít pro aktualizaci "
+"databáze pomocí nové definice."
+
+#: Pluginy/newstatpress/includes/nsp_options.php:443
+msgid ""
+"Be aware, larger is the interval, longer is the update and bigger are the "
+"resources required."
+msgstr ""
+"Mějte na paměti, větší je interval, delší je aktualizace a větší jsou "
+"požadované zdroje."
+
+#: Pluginy/newstatpress/includes/nsp_options.php:450
+msgid "Update data in the given period"
+msgstr "Aktualizovat data v daném období"
+
+#: Pluginy/newstatpress/includes/nsp_options.php:458
+msgid "Save options"
+msgstr "Uložit nastavení"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:6
+msgid "URL Requested"
+msgstr "Požadovaná adresa URL"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:7
+#: Pluginy/newstatpress/newstatpress.php:301
+#: Pluginy/newstatpress/newstatpress.php:359
+msgid "Agent"
+msgstr "Agent"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:8
+msgid "Referrer"
+msgstr "Odkazující server"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:9
+msgid "Search terms"
+msgstr "Hledané výrazy"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:10
+msgid "Search engine"
+msgstr "Internetový vyhledávač"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:11
+msgid "Operative system"
+msgstr "Operační systém"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:12
+#: Pluginy/newstatpress/newstatpress.php:229
+#: Pluginy/newstatpress/newstatpress.php:301
+#: Pluginy/newstatpress/newstatpress.php:330
+msgid "Browser"
+msgstr "Prohlížeč"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:13
+#: Pluginy/newstatpress/newstatpress.php:301
+#: Pluginy/newstatpress/newstatpress.php:359
+msgid "Spider"
+msgstr "Špión robotů"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:14
+msgid "IP"
+msgstr "IP"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:16
+#: Pluginy/newstatpress/includes/nsp_search.php:59
+#: Pluginy/newstatpress/newstatpress.php:169
+#: Pluginy/newstatpress/newstatpress.php:417
+#: Pluginy/newstatpress/newstatpress.php:431
+#: Pluginy/newstatpress/newstatpress.php:556
+msgid "Search"
+msgstr "Hledat"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:21
+msgid "Field"
+msgstr "Pole"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:28
+#: Pluginy/newstatpress/includes/nsp_search.php:29
+msgid "Group by"
+msgstr "Seskupit podle"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:31
+#: Pluginy/newstatpress/includes/nsp_search.php:32
+msgid "Sort by"
+msgstr "Seřazeno podle"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:34
+msgid "if contains"
+msgstr "pokud obsahuje"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:44
+msgid "sort by count if grouped"
+msgstr "seřadit podle počtu skupin"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:45
+msgid "include spiders/crawlers/bot"
+msgstr "včetně špiónů/indexerů/robotů"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:46
+msgid "include feed"
+msgstr "včetne feedu"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:53
+#: Pluginy/newstatpress/newstatpress.php:1313
+msgid "Limit results to"
+msgstr "Počet výsledků"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:123
+msgid "Results"
+msgstr "Výsledky"
+
+#: Pluginy/newstatpress/includes/nsp_search.php:130
+msgid "Count"
+msgstr "Počet"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:16
+msgid "IP2nation"
+msgstr "IP2nation"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:17
+#: Pluginy/newstatpress/includes/nsp_tools.php:94
+msgid "Update"
+msgstr "Aktualizovat"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:18
+#: Pluginy/newstatpress/includes/nsp_tools.php:194
+msgid "Export"
+msgstr "Export"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:19
+#: Pluginy/newstatpress/includes/nsp_tools.php:254
+msgid "Remove"
+msgstr "Odstranit"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:24
+msgid "Database Tools"
+msgstr "Databázové nástroje"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:42
+msgid "To import IP2nation database"
+msgstr "Import databáze IP2nation"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:51
+#, php-format
+msgid "Last version installed: %s"
+msgstr "Poslední verze instalována: %s"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:53
+msgid "To update the IP2nation database, just click on the button bellow."
+msgstr ""
+"Chcete-li aktualizovat databázi IP2nation, stačí klikněte na tlačítko níže."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:57
+msgid "Last version installed: none "
+msgstr "Poslední verze instalována: žádná"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:59
+msgid ""
+"To download and to install the IP2nation database, just click on the button "
+"bellow."
+msgstr ""
+"Chcete-li stáhnout a nainstalovat databázi IP2nation, stačí klikněte na "
+"tlačítko níže."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:85
+msgid "Database update"
+msgstr "Aktualizace databáze"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:87
+msgid "To update the newstatpress database, just click on the button bellow."
+msgstr ""
+"Chcete-li aktualizovat databázi newstatpress, stačí klikněte na tlačítko "
+"níže."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:138
+msgid "Failure to save content locally, please try to re-install."
+msgstr "Nebyly provedeny žádné změny, zkuste to, prosím, znovu."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:155
+msgid "Failure to unzip archive, please try to re-install"
+msgstr "Není možní rozbalit archiv, zkuste, prosím, reinstalovat."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:158
+msgid "Instalation of IP2nation database was successful"
+msgstr "Instalace databáze IP2nation byla úspěšná"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:171
+msgid "Export stats to text file"
+msgstr "Exportovat statistiky to textového dokumentu"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:172
+msgid "You should define the stats period you want to export:"
+msgstr "Definujte období, které chcete exportovat."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:176
+msgid "From:"
+msgstr "Od:"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:177
+#: Pluginy/newstatpress/includes/nsp_tools.php:181
+msgid "YYYYMMDD"
+msgstr "RRRRMMDD"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:180
+msgid "To:"
+msgstr "Komu:"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:186
+msgid "You should choose a fields delimiter to separate the data:"
+msgstr "Vyberete oddělovat, který bude rozdělí data:"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:238
+msgid "All data removed"
+msgstr "Odebrána všechna data"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:242
+msgid "Remove NewStatPress database"
+msgstr "Smazání NewStatPress databáze"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:245
+msgid ""
+"Warning: pressing the below button will make all your stored data to be "
+"erased!"
+msgstr "Pozor! Po stisknutí budou všechna data smazána!"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:249
+msgid ""
+"It is added for the people that did not want to use the plugin anymore and "
+"so they want to remove the stored data."
+msgstr ""
+"Je to přidáno pro lidi, kteří nechtějí používat už nikdy tento plugin a "
+"chtějí smazat veškerá data."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:251
+msgid "If you are in doubt about this function, don't use it."
+msgstr "Pokud pochybujete, že to chcete udělat. Radši to nedělejte."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:254
+msgid "Are you sure?"
+msgstr "Jste si jisti?"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:327
+msgid "Database Update"
+msgstr "Aktualizace databáze"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:329
+msgid "Updating..."
+msgstr "Aktualizuju..."
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:329
+msgid "Size"
+msgstr "Velikost"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:329
+#: Pluginy/newstatpress/newstatpress.php:269
+#: Pluginy/newstatpress/newstatpress.php:283
+msgid "Result"
+msgstr "Výsledky"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:348
+msgid "Structure"
+msgstr "Konstruktuji"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:352
+msgid "Index"
+msgstr "Indexuji"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:554
+msgid "Final Structure"
+msgstr "Konstrukce dokončena"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:558
+msgid "Final Index"
+msgstr "Index dokončen"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:562
+msgid "Duration of the update"
+msgstr "Doba trvání aktualizace"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:566
+msgid "This update was done in"
+msgstr "Tato aktualizace byla provedena v"
+
+#: Pluginy/newstatpress/includes/nsp_tools.php:567
+msgid "SQL queries"
+msgstr "SQL dotazy"
+
+#: Pluginy/newstatpress/includes/nsp_visits.php:12
+msgid "Last visitors"
+msgstr "Poslední návštěvnici"
+
+#: Pluginy/newstatpress/includes/nsp_visits.php:13
+#: Pluginy/newstatpress/newstatpress.php:1542
+#: Pluginy/newstatpress/newstatpress.php:1679
+msgid "Visitors"
+msgstr "Návštěvníci"
+
+#: Pluginy/newstatpress/includes/nsp_visits.php:14
+msgid "Spy Bot"
+msgstr "Špióni robotů"
+
+#: Pluginy/newstatpress/includes/nsp_visits.php:241
+#: Pluginy/newstatpress/includes/nsp_visits.php:243
+#: Pluginy/newstatpress/includes/nsp_visits.php:372
+#: Pluginy/newstatpress/includes/nsp_visits.php:373
+#: Pluginy/newstatpress/includes/nsp_visits.php:380
+#: Pluginy/newstatpress/includes/nsp_visits.php:381
+msgid "arrived from"
+msgstr "přišli z"
+
+#: Pluginy/newstatpress/includes/nsp_visits.php:241
+#: Pluginy/newstatpress/includes/nsp_visits.php:372
+#: Pluginy/newstatpress/includes/nsp_visits.php:380
+msgid "searching"
+msgstr "hledání"
+
+#: Pluginy/newstatpress/includes/nsp_visits.php:340
+msgid "Http domain"
+msgstr "Doména http"
+
+#: Pluginy/newstatpress/includes/nsp_visits.php:351
+msgid "Hostip country"
+msgstr "HostIP země"
+
+#: Pluginy/newstatpress/includes/nsp_visits.php:453
+msgid "Pages"
+msgstr "Stránky"
+
+#: Pluginy/newstatpress/newstatpress.php:62
+msgid "Today visits"
+msgstr "Dnešní návštěvy"
+
+#: Pluginy/newstatpress/newstatpress.php:63
+msgid "Yesterday visits"
+msgstr "Včerejší návštěvy"
+
+#: Pluginy/newstatpress/newstatpress.php:64
+msgid "Month visits"
+msgstr "Mesíční návštěvy"
+
+#: Pluginy/newstatpress/newstatpress.php:65
+msgid "Total visits"
+msgstr "Celkové návštěvy"
+
+#: Pluginy/newstatpress/newstatpress.php:66
+msgid "Total pages view"
+msgstr "Celkové zobrazené stránky"
+
+#: Pluginy/newstatpress/newstatpress.php:67
+msgid "Total pages view today"
+msgstr "Celkové týdenní zobrazené stránky"
+
+#: Pluginy/newstatpress/newstatpress.php:68
+msgid "This page, total visits"
+msgstr "Tato stránka, celkové návštěvy"
+
+#: Pluginy/newstatpress/newstatpress.php:69
+msgid "All page, total visits"
+msgstr "Všechny stránky, celkové návštěvy"
+
+#: Pluginy/newstatpress/newstatpress.php:70
+msgid "Visitor Operative System"
+msgstr "Návštěvy operačních systémů"
+
+#: Pluginy/newstatpress/newstatpress.php:71
+msgid "Visitor Browser"
+msgstr "Návštěvy prohlížečů"
+
+#: Pluginy/newstatpress/newstatpress.php:72
+msgid "Visitor IP address"
+msgstr "Návštěvy IP adres"
+
+#: Pluginy/newstatpress/newstatpress.php:73
+msgid "Date of the first hit"
+msgstr "Datum prvního záznamu"
+
+#: Pluginy/newstatpress/newstatpress.php:74
+msgid "Counts all online visitors"
+msgstr "Počet všech online návštěv"
+
+#: Pluginy/newstatpress/newstatpress.php:75
+msgid "Counts logged online visitors"
+msgstr "Počet přihlášených online návštěvníků"
+
+#: Pluginy/newstatpress/newstatpress.php:76
+msgid "The most viewed Post"
+msgstr "Nejvíce zobrazený příspěvek"
+
+#: Pluginy/newstatpress/newstatpress.php:170
+msgid "Tools"
+msgstr "Nástroje"
+
+#: Pluginy/newstatpress/newstatpress.php:229
+msgid "Last hits"
+msgstr "Poslední události"
+
+#: Pluginy/newstatpress/newstatpress.php:229
+#: Pluginy/newstatpress/newstatpress.php:269
+#: Pluginy/newstatpress/newstatpress.php:283
+#: Pluginy/newstatpress/newstatpress.php:330
+#: Pluginy/newstatpress/newstatpress.php:359
+msgid "Time"
+msgstr "Čas"
+
+#: Pluginy/newstatpress/newstatpress.php:229
+msgid "Country"
+msgstr "Země"
+
+#: Pluginy/newstatpress/newstatpress.php:229
+#: Pluginy/newstatpress/newstatpress.php:330
+#: Pluginy/newstatpress/newstatpress.php:414
+#: Pluginy/newstatpress/newstatpress.php:426
+#: Pluginy/newstatpress/newstatpress.php:429
+#: Pluginy/newstatpress/newstatpress.php:441
+#: Pluginy/newstatpress/newstatpress.php:553
+#: Pluginy/newstatpress/newstatpress.php:565
+msgid "Page"
+msgstr "Stránka"
+
+#: Pluginy/newstatpress/newstatpress.php:229
+msgid "Feed"
+msgstr "Feed"
+
+#: Pluginy/newstatpress/newstatpress.php:229
+#: Pluginy/newstatpress/newstatpress.php:301
+#: Pluginy/newstatpress/newstatpress.php:330
+msgid "OS"
+msgstr "OS"
+
+#: Pluginy/newstatpress/newstatpress.php:269
+msgid "Last search terms"
+msgstr "Poslední hledaná slova"
+
+#: Pluginy/newstatpress/newstatpress.php:269
+msgid "Terms"
+msgstr "Slova"
+
+#: Pluginy/newstatpress/newstatpress.php:269
+msgid "Engine"
+msgstr "Internetový vyhledávač"
+
+#: Pluginy/newstatpress/newstatpress.php:278
+#: Pluginy/newstatpress/newstatpress.php:295
+msgid "page viewed"
+msgstr "zobrazena stránka"
+
+#: Pluginy/newstatpress/newstatpress.php:283
+msgid "Last referrers"
+msgstr "Poslední odkazové zdroje"
+
+#: Pluginy/newstatpress/newstatpress.php:283
+msgid "URL"
+msgstr "URL"
+
+#: Pluginy/newstatpress/newstatpress.php:301
+msgid "Last agents"
+msgstr "Poslední agenti"
+
+#: Pluginy/newstatpress/newstatpress.php:330
+msgid "Last pages"
+msgstr "Poslední stránky"
+
+#: Pluginy/newstatpress/newstatpress.php:359
+msgid "Last spiders"
+msgstr "Poslední špióni robotů"
+
+#: Pluginy/newstatpress/newstatpress.php:415
+#: Pluginy/newstatpress/newstatpress.php:430
+#: Pluginy/newstatpress/newstatpress.php:554
+msgid "Category"
+msgstr "Kategorie"
+
+#: Pluginy/newstatpress/newstatpress.php:416
+#: Pluginy/newstatpress/newstatpress.php:555
+msgid "Calendar"
+msgstr "Kalendář"
+
+#: Pluginy/newstatpress/newstatpress.php:595
+msgid "records"
+msgstr "záznamy"
+
+#: Pluginy/newstatpress/newstatpress.php:1264
+msgid "Title:"
+msgstr "Title:"
+
+#: Pluginy/newstatpress/newstatpress.php:1267
+msgid "Body:"
+msgstr "Tělo:"
+
+#: Pluginy/newstatpress/newstatpress.php:1272
+msgid "Stats available: "
+msgstr "Statistiky jsou dostupné:"
+
+#: Pluginy/newstatpress/newstatpress.php:1312
+msgid "Title"
+msgstr "Název"
+
+#: Pluginy/newstatpress/newstatpress.php:1480
+#: Pluginy/newstatpress/newstatpress.php:1514
+msgid "Total since"
+msgstr "Celkem od"
+
+#: Pluginy/newstatpress/newstatpress.php:1481
+msgid "This year"
+msgstr "Tento rok"
+
+#: Pluginy/newstatpress/newstatpress.php:1482
+#: Pluginy/newstatpress/newstatpress.php:1515
+msgid "Last month"
+msgstr "Minulý měsíc"
+
+#: Pluginy/newstatpress/newstatpress.php:1483
+#: Pluginy/newstatpress/newstatpress.php:1516
+msgid "This month"
+msgstr "Tento měsíc"
+
+#: Pluginy/newstatpress/newstatpress.php:1484
+#: Pluginy/newstatpress/newstatpress.php:1517
+msgid "Target This month"
+msgstr "Cíle tohoto měsíce"
+
+#: Pluginy/newstatpress/newstatpress.php:1485
+#: Pluginy/newstatpress/newstatpress.php:1518
+msgid "Yesterday"
+msgstr "Včera"
+
+#: Pluginy/newstatpress/newstatpress.php:1486
+#: Pluginy/newstatpress/newstatpress.php:1519
+msgid "Today"
+msgstr "Dnes"
+
+#: Pluginy/newstatpress/newstatpress.php:1548
+msgid "Visitors through Feeds"
+msgstr "Návštěvníci od zdrojů feedů"
+
+#: Pluginy/newstatpress/newstatpress.php:1566
+msgid "Pageviews through Feeds"
+msgstr "Zobrazení stránek od zdrojů feedů"
