@@ -4,7 +4,7 @@ Donate link: http://newstatpress.altervista.org
 Tags: stats,statistics,widget,admin,sidebar,visits,visitors,pageview,user,agent,referrer,post,posts,spy,statistiche,ip2nation,country
 Requires at least: 2.1
 Tested up to: 4.2
-Stable Tag: 1.0.2
+Stable Tag: 1.0.3
 
 NewStatPress (Statpress plugin fork) is a real-time plugin to manage the visits' statistics about your blog  (without external web analytics).
 
@@ -23,9 +23,9 @@ Note: you must disable the original StatPress plugin (or other plugins still bas
 
 With the new ajax/javascript usage for variables in widget, the plugin is faster for a user being visit your site even with 1GB or more of database to use!
 
-Important: all previous versions from 1.0.1 are subject to XSS and SQL injection from an old Statpress routine. You have to use at least version 1.0.1.
-Unfortunately actually over 50% of people still use versions before 0.9.0!!!!
-Please update always to the latest version available.
+IMPORTANT: all previous versions from 1.0.0 are subject to XSS and SQL injection from an old Statpress routine. You have to use at least version 1.0.1.
+Unfortunately actually 75% of people still use versions before 1.0.0!!!!
+PLEASE UPDATE always to the latest version available.
 
 = Support =
 
@@ -43,6 +43,22 @@ You could ban IP list from stats editing def/banips.dat file.
 
 NewStatPress can automatically delete older records to allow the insertion of newer records when limited space is present.
 This features is left as original StatPress but it will be replaced by the history data instead.
+
+= External API =
+
+External API are a way to gives the collected informations as a web service using a POST call.
+With it you can use (for example) your colected data of Wordpress inside a Drupal site.
+The API must be enables by check a flag into the option (by dafault is is disabled) and a private KEY must be entered (you can generate a random one).
+This KEY is for authenticate the called as a valid allowed client.
+Even if the API is for external usage, it will be used internally for speed up page generation using AJAX, so at some point you will need to activate it to cotinue to see overwiew and Details pages.
+
+Actually those are the available commands:
+
+Command       Paramethers     Description
+-------------------------------------------------------------------
+version         <none>        gives the Newstatpress version in use
+
+External API is actually used bu Multi-NewStatPress (a software than manages data from multiple installation of NewStatPress in different servers).
 
 = NewStatPress Widget / NewStatPress_Print function =
 
@@ -115,6 +131,12 @@ Check at http://newstatpress.altervista.org
 Check at http://newstatpress.altervista.org
 
 == Changelog ==
+
+= 1.0.3 =
+*Release Date - 23/06/2015*
+
+* Fix nsp_DecodeURL code cleanup replacement
+* Fix NewStatPress_Print missing after cleanup
 
 = 1.0.2 =
 *Release Date - 21/06/2015*

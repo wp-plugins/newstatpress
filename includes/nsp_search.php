@@ -144,7 +144,7 @@ function nsp_DatabaseSearch($what='') {
        print "<tr>";
        for($i=1;$i<=3;$i++) {
          print "<td>";
-         if($_GET["where$i"] == 'urlrequested') { print iri_NewStatPress_Decode($rk[$i-1]); }
+         if($_GET["where$i"] == 'urlrequested') { print nsp_DecodeURL($rk[$i-1]); }
          else { if(isset($rk[$i-1])) print $rk[$i-1]; }
          print "</td>";
        }

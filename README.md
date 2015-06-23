@@ -21,6 +21,17 @@
 - [ ] add jquery for credit page
 - [ ] Database migration routine with unique name
 
+## 1.0.4
+*Released date: 2015-*-*
+
+- [ ] Fix %mvisits% not giving result
+- [ ] Add %wvisits% week visits
+
+## 1.0.3
+*Released date: 2015-06-23
+
+- [x] Fix nsp_DecodeURL code cleanup replacement
+- [x] Fix NewStatPress_Print missing after cleanup
 
 ## 1.0.2
 *Released date: 2015-06-21
