@@ -26,7 +26,8 @@ function nsp_DisplayCreditsPage() {
     array('Ruud van der Veen', 'Add tab delimiter for exporting data'),
     array('kjmtsh', 'Many fixes about empty query result and obsolete functions'),
     array('Adrián M. F.', 'Find a XSS and a SQL injection'),
-    array('White Fir Design', 'Find a SQL injection')
+    array('White Fir Design', 'Find a SQL injection'),
+    array('Michael Kapfer - HSASec-Team', 'Find a persistent XSS via HTTP-Header (Referer)(no authentication required)')
   );
 
   $translators = array(

@@ -21,11 +21,17 @@
 - [ ] add jquery for credit page
 - [ ] Database migration routine with unique name
 
-## 1.0.4
+## 1.0.5
 *Released date: 2015-*-*
 
 - [ ] Fix %mvisits% not giving result
 - [ ] Add %wvisits% week visits
+
+## 1.0.4
+*Released date: 2015-06-30
+
+IMPORTANT CRITICAL UPDATE
+- [x] Close a persistent XSS via HTTP-Header (Referer) (no authentication required) (thanks to Michael Kapfer - HSASec-Team)
 
 ## 1.0.3
 *Released date: 2015-06-23
