@@ -123,7 +123,7 @@ if ($var=='alltotalvisits') {
        ORDER BY totale DESC LIMIT $limit;
       ");
    foreach ($qry as $rk) {
-     $res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
+     $res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".nsp_DecodeURL($rk->urlrequested)."</a></li>\n";
      if(strtolower($showcounts) == 'checked') { $res.=" (".$rk->totale.")"; }
    }
    echo "$res</ul>\n";
