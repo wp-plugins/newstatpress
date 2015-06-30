@@ -21,11 +21,17 @@
 - [ ] add jquery for credit page
 - [ ] Database migration routine with unique name
 
-## 1.0.5
+## 1.0.6
 *Released date: 2015-*-*
 
 - [ ] Fix %mvisits% not giving result
 - [ ] Add %wvisits% week visits
+
+## 1.0.5
+*Released date: 2015-06-30
+
+IMPORTANT CRITICAL UPDATE
+- [x] Close a XSS and a SQLI Injection involeved IMG tag (thanks to James H - g0blin Reserch)
 
 ## 1.0.4
 *Released date: 2015-06-30

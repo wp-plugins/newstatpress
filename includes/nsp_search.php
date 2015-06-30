@@ -25,11 +25,15 @@ function nsp_DatabaseSearch($what='') {
         print ">".$f[$k]."</option>";
       }
       print "</select></td>";
-      if (isset($_GET["groupby$i"])) print "<td><input type=checkbox name=groupby$i value='checked' ".$_GET["groupby$i"]."> ".__('Group by','newstatpress')."</td>";
-      else print "<td><input type=checkbox name=groupby$i value='checked' "."> ".__('Group by','newstatpress')."</td>";
+      if (isset($_GET["groupby$i"])) {
+        // must only be a "checked" value if this is set
+        print "<td><input type=checkbox name=groupby$i value='checked' "."checked"."> ".__('Group by','newstatpress')."</td>";
+      } else print "<td><input type=checkbox name=groupby$i value='checked' "."> ".__('Group by','newstatpress')."</td>";
 
-      if (isset($_GET["sortby$i"])) print "<td><input type=checkbox name=sortby$i value='checked' ".$_GET["sortby$i"]."> ".__('Sort by','newstatpress')."</td>";
-      else print "<td><input type=checkbox name=sortby$i value='checked' "."> ".__('Sort by','newstatpress')."</td>";
+      if (isset($_GET["sortby$i"])) {
+         // must only be a "checked" value if this is set
+         print "<td><input type=checkbox name=sortby$i value='checked' "."checked"."> ".__('Sort by','newstatpress')."</td>";
+      } else print "<td><input type=checkbox name=sortby$i value='checked' "."> ".__('Sort by','newstatpress')."</td>";
 
       print "<td>, ".__('if contains','newstatpress')." <input type=text name=what$i value='".$_GET["what$i"]."'></td>";
       print "</tr>";
@@ -93,7 +97,8 @@ function nsp_DatabaseSearch($what='') {
 
    for($i=1;$i<=3;$i++) {   
      if(($_GET["what$i"] != '') && ($_GET["where$i"] != '')) {
-       $where_i=esc_sql($_GET["where$i"]);
+       $where_i=$_GET["where$i"];
+       if (!array_key_exists($where_i, $f)) $where_i=''; // prevent to use not valid values
        $what_i=esc_sql($_GET["what$i"]);
        $where.=" AND ".$where_i." LIKE '%".$what_i."%'";
      }

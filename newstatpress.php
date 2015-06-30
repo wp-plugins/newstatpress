@@ -3,12 +3,12 @@
 Plugin Name: NewStatPress
 Plugin URI: http://newstatpress.altervista.org
 Description: Real time stats for your Wordpress blog
-Version: 1.0.4
+Version: 1.0.5
 Author: Stefano Tognon and cHab (from Daniele Lippi works)
 Author URI: http://newstatpress.altervista.org
 ************************************************************/
 
-$_NEWSTATPRESS['version']='1.0.4';
+$_NEWSTATPRESS['version']='1.0.5';
 $_NEWSTATPRESS['feedtype']='';
 
 global $newstatpress_dir, $wpdb, $nsp_option_vars, $nsp_widget_vars;
