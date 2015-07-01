@@ -21,11 +21,19 @@
 - [ ] add jquery for credit page
 - [ ] Database migration routine with unique name
 
-## 1.0.6
+## 1.0.7
 *Released date: 2015-*-*
 
 - [ ] Fix %mvisits% not giving result
 - [ ] Add %wvisits% week visits
+
+## 1.0.6
+*Released date: 2015-07-01
+
+IMPORTANT UPDATE
+
+- [x] Close a possible Reflected XSS attack (thanks to James H - g0blin Reserch)
+- [x] Avoid MySQL error if erroneous input is given (thanks to James H - g0blin Reserch)
 
 ## 1.0.5
 *Released date: 2015-06-30

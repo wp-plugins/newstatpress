@@ -45,9 +45,9 @@ function nsp_DatabaseSearch($what='') {
    <tr>
      <td>
        <table>
-         <tr><td><input type=checkbox name=oderbycount value=checked <?php print $_GET['oderbycount'] ?>> <?php _e('sort by count if grouped','newstatpress'); ?></td></tr>
-         <tr><td><input type=checkbox name=spider value=checked <?php print $_GET['spider'] ?>> <?php _e('include spiders/crawlers/bot','newstatpress'); ?></td></tr>
-         <tr><td><input type=checkbox name=feed value=checked <?php print $_GET['feed'] ?>> <?php _e('include feed','newstatpress'); ?></td></tr>
+         <tr><td><input type=checkbox name=oderbycount value=checked <?php print esc_html($_GET['oderbycount']) ?>> <?php _e('sort by count if grouped','newstatpress'); ?></td></tr>
+         <tr><td><input type=checkbox name=spider value=checked <?php print esc_html($_GET['spider']) ?>> <?php _e('include spiders/crawlers/bot','newstatpress'); ?></td></tr>
+         <tr><td><input type=checkbox name=feed value=checked <?php print esc_html($_GET['feed']) ?>> <?php _e('include feed','newstatpress'); ?></td></tr>
        </table>
      </td>
      <td width=15> </td>
@@ -55,7 +55,7 @@ function nsp_DatabaseSearch($what='') {
        <table>
          <tr>
            <td><?php _e('Limit results to','newstatpress'); ?>
-             <select name=limitquery><?php if($_GET['limitquery'] >0) { print "<option>".$_GET['limitquery']."</option>";} ?><option>1</option><option>5</option><option>10</option><option>20</option><option>50</option></select>
+             <select name=limitquery><?php if($_GET['limitquery'] >0) { print "<option>".esc_html($_GET['limitquery'])."</option>";} ?><option>1</option><option>5</option><option>10</option><option>20</option><option>50</option></select>
            </td>
          </tr>
          <tr><td>&nbsp;</td></tr>
@@ -98,9 +98,10 @@ function nsp_DatabaseSearch($what='') {
    for($i=1;$i<=3;$i++) {   
      if(($_GET["what$i"] != '') && ($_GET["where$i"] != '')) {
        $where_i=$_GET["where$i"];
-       if (!array_key_exists($where_i, $f)) $where_i=''; // prevent to use not valid values
-       $what_i=esc_sql($_GET["what$i"]);
-       $where.=" AND ".$where_i." LIKE '%".$what_i."%'";
+       if (array_key_exists($where_i, $f)) {
+         $what_i=esc_sql($_GET["what$i"]);
+         $where.=" AND ".$where_i." LIKE '%".$what_i."%'";
+       }  
      }
    }
    # ORDER BY
@@ -108,8 +109,9 @@ function nsp_DatabaseSearch($what='') {
    for($i=1;$i<=3;$i++) {
      if (isset($_GET["sortby$i"]) && ($_GET["sortby$i"] == 'checked') && ($_GET["where$i"] != '')) {
        $where_i=$_GET["where$i"];
-       if (!array_key_exists($where_i, $f)) $where_i=''; // prevent to use not valid values
-       $orderby.=$where_i.',';
+       if (array_key_exists($where_i, $f)) {
+         $orderby.=$where_i.',';
+       }  
      }
    }
 
@@ -118,8 +120,9 @@ function nsp_DatabaseSearch($what='') {
    for($i=1;$i<=3;$i++) {
      if(isset($_GET["groupby$i"]) && ($_GET["groupby$i"] == 'checked') && ($_GET["where$i"] != '')) {
        $where_i=$_GET["where$i"];
-       if (!array_key_exists($where_i, $f)) $where_i=''; // prevent to use not valid values
-       $groupby.=$where_i.',';
+       if (array_key_exists($where_i, $f)) {
+         $groupby.=$where_i.',';
+       }
      }
    }
    if($groupby != '') {
