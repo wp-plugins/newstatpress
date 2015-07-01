@@ -50,26 +50,41 @@
 
 .overview-list .feeds::before {
   content: "\25a9";
-  color:#f38f36;
+  color:#f6ed8e;
   margin-right: 5px;
+  font-size:12pt;
+
+}
+.overview-list .visitors_feeds::before {
+  content: "\25a9";
+  color:#83b4d8;
+  margin-right: 5px;
+  font-size:12pt;
+
 }
 
 .overview-list .spiders::before {
   content: "\25a9";
-  color:#83b4d8;
+  color:#219315;
   margin-right: 5px;
+  font-size:12pt;
+
 }
 
 .overview-list .pageview::before {
   content: "\25a9";
-  color:#3377B6;
+  color:#e58825;
   margin-right: 5px;
+  font-size:12pt;
+
 }
 
 .overview-list .visitors::before {
   content: "\25a9";
   color:#114477;
   margin-right: 5px;
+  font-size:12pt;
+
 }
 
 .overview-list .colr {
@@ -201,12 +216,147 @@ table.table-option td:first-child {
 }
 
 .right {
-  text-align: right;
+  text-align: right !important;
 }
 
+.tab {
+  padding-left: 45px !important;
+}
 .table-databaseupdate {
   width: 60%;
 }
+/*.dash-option {
+  line-height: 0;
+}*/
+
+.form-tableH {
+  padding-top:20px;
+  /*padding-bottom:20px;*/
+  color: #444;
+
+}
+
+.form-tableH td,th {
+  /*border: 1px solid;*/
+}
+.padd th {
+  padding-top:40px;
+}
+.form-tableH th {
+    vertical-align: top;
+    text-align: left;
+    padding: 10px 10px 20px 0;
+    width: 200px;
+    line-height: 1.3;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.ign {
+  margin-top:3px;
+  font-weight: 600;
+}
+/*.dashicons, .dashicons-before::before {
+
+    vertical-align: middle;
+
+}*/
+
+fieldset p {
+  margin-top:0;
+}
+input[type=radio] + label {
+  color: #999;
+}
+input[type=radio]:checked + label {
+  color: #444;
+  font-style: normal;
+}
+
+
+
+
+/*For tab in jquery*/
+
+/* Style for Usual tabs */
+.usual {
+  background:#F1F1F1;
+  color:#111;
+
+  width:100%;
+
+  margin:8px auto;
+
+}
+.usual ul {
+  border-bottom:1px solid #ccc;
+  /*border:1px solid #222;*/
+  line-height: 24px;
+height:40px;
+margin-top: 0;
+margin-bottom: 0;
+padding-left:10px;
+background:#F1F1F1;
+font-weight: 700;
+font-size: 15px;
+
+}
+.usual li {
+  list-style:none;
+  float:left;
+  padding-right:5px;
+  }
+
+.usual ul a {
+  display:block;
+  padding:6px 10px 8px 10px;
+  text-decoration:none;
+  margin:1px;
+  margin-left:0;
+
+
+  border:1px solid #ccc;
+
+  color:#555;
+  background:#E4E4E4;
+}
+.usual ul a:hover {
+  color:#000;
+  background:#fff;
+  }
+
+.usual ul .selected {
+  margin-bottom:0;
+  color:#000;
+  background:#F1F1F1;
+  border-bottom:1px solid #F1F1F1;
+  cursor:default;
+  }
+.usual div {
+  /*padding:10px 10px 8px 10px;*/
+  /**padding-top:3px;*/
+  /**margin-top:-15px;*/
+  clear:left;
+  background:#F1F1F1;
+  /*font:10pt Georgia;*/
+}
+.usual div a { color:#000; font-weight:bold; }
+
+
+.justified {
+        display: flex;
+        justify-content: center;
+    }
+
+.api {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    resize: none;
+}
+
+
+
 
 /*----------------------------------*/
 /* credit page style                */
@@ -262,6 +412,31 @@ table.table-option td:first-child {
   /*padding-left: 15px;*/
 }
 
+/*----------------------------------*/
+/* Tools page                     */
+/*----------------------------------*/
+.help {
+  background-color: #EEE;
+  border-left: 4px solid #666;
+}
+
+.warning {
+  background-color: #FFF;
+  border-left: 4px solid red;
+  padding: 0 15px;
+}
+.strong {
+  font-weight: bold;
+}
+
+.desactivated {
+  background: #888 !important;
+  border-color: #555 !important;
+  box-shadow: 0px 1px 0px rgba(135, 143, 146, 0.5) inset, 0px 1px 0px rgba(0, 0, 0, 0.15) !important;
+  cursor: default;
+  pointer-events: none;
+  color: #c0c0c0;
+}
 /*----------------------------------*/
 /* Details page                     */
 /*----------------------------------*/
@@ -353,6 +528,26 @@ table.table-option td:first-child {
 /* visitors page style              */
 /*----------------------------------*/
 
+.visits-details {
+  color:#006dca;
+  cursor:pointer;
+  border-bottom:1px dotted #AFD5F9;
+  font-size:8pt;
+}
+
+.visit-iframe {
+  overflow:hidden;
+  border:0;
+  width:100%;
+  height:60px;
+  font-family:helvetica;
+  padding:0;
+}
+
+.visit-iframe span {
+  font-weight:700;
+}
+
 /*navbar Pagination*/
 div.pagination {
   text-align:center;
@@ -388,4 +583,20 @@ div.pagination span.disabled {
   margin: 2px;
   border: 1px solid #EEE;
   color: #DDD;
+}
+
+
+/*temp*/
+
+.progressBar {
+    width: 300px;
+    background: #CCC;
+    border: solid 1px #000;
+    height: 30px;
+}
+
+.bar {
+    background: #F00;
+    height: 30px;
+    width: 0%;
 }
