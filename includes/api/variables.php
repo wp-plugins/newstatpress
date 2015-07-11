@@ -53,7 +53,18 @@ if ($var=='alltotalvisits') {
       "SELECT count(DISTINCT(ip)) AS pageview
        FROM $table_name
        WHERE
-        date LIKE '".gmdate('Ym', current_time('timestamp'))."%'
+        DATE >= DATE_FORMAT(CURDATE(), '%Y%m01') AND
+        spider='' and feed='';
+      ");  
+   if ($qry != null) {
+     echo $qry[0]->pageview;
+   }
+} elseif ($var=='wvisits') {
+    $qry = $wpdb->get_results(
+      "SELECT count(DISTINCT(ip)) AS pageview
+       FROM $table_name
+       WHERE
+        YEARWEEK (date) = YEARWEEK( CURDATE()) AND
         spider='' and feed='';
       ");  
    if ($qry != null) {
