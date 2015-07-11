@@ -53,7 +53,18 @@ if ($var=='alltotalvisits') {
       "SELECT count(DISTINCT(ip)) AS pageview
        FROM $table_name
        WHERE
-        date LIKE '".gmdate('Ym', current_time('timestamp'))."%'
+        DATE >= DATE_FORMAT(CURDATE(), '%Y%m01') AND
+        spider='' and feed='';
+      ");  
+   if ($qry != null) {
+     echo $qry[0]->pageview;
+   }
+} elseif ($var=='wvisits') {
+    $qry = $wpdb->get_results(
+      "SELECT count(DISTINCT(ip)) AS pageview
+       FROM $table_name
+       WHERE
+        YEARWEEK (date) = YEARWEEK( CURDATE()) AND
         spider='' and feed='';
       ");  
    if ($qry != null) {
@@ -123,7 +134,7 @@ if ($var=='alltotalvisits') {
        ORDER BY totale DESC LIMIT $limit;
       ");
    foreach ($qry as $rk) {
-     $res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".iri_NewStatPress_Decode($rk->urlrequested)."</a></li>\n";
+     $res.="<li><a href='?".$rk->urlrequested."' target='_blank'>".nsp_DecodeURL($rk->urlrequested)."</a></li>\n";
      if(strtolower($showcounts) == 'checked') { $res.=" (".$rk->totale.")"; }
    }
    echo "$res</ul>\n";
